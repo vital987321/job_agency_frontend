@@ -12,3 +12,52 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* User scc */
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#root{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header{
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-column-gap:10px;
+  text-align: center;
+  height: 100px;
+  background-color: #D9D9D9;
+  align-items: center;
+}
+
+.header-logo{
+  border: 1px solid green; 
+}
+
+.header-menu{
+  border: 1px solid green;
+  display:flex;
+  justify-content: space-evenly;
+}
+.header-controls{
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header-button{
+  background-color: #C0C0C0;
+  height: 40px;
+  padding:0 20px;
+  border-radius: 5px;
+  border: none;
+
+  
+}
+
+
