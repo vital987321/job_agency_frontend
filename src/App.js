@@ -1,15 +1,11 @@
-
 import './App.css';
-import { Components } from './Components/Components';
+import { BodyComponent } from './Components/BodyComponent';
 
-const { HeaderComponent, MainComponent, FooterComponent } = Components;
 
 function App() {
   return (
     <>
-      <HeaderComponent />
-      <MainComponent />
-      <FooterComponent />
+      <BodyComponent />
     </>
   );
 }

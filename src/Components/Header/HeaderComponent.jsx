@@ -1,4 +1,27 @@
 import agency_logo from "../../img/CONTROL_Agency_logo.png"
+import {BrowserRouter as Router, Route, Routes, Link, Outlet} from "react-router-dom"
+
+const NavMenu = () => {
+  return(
+    <div className="header-menu">
+      <Link to="/vacancies" className="navLinks" key="vacancies">
+        Vacancies
+      </Link>
+      <Link to="/about" className="navLinks" key="about">
+        About us
+      </Link>
+      <Link to="/reviews" className="navLinks" key="reviews">
+        Rewiews
+      </Link>
+      <Link to="/certificates" className="navLinks" key="certificates">
+        Certificates
+      </Link>
+      <Link to="/contacts" className="navLinks" key="contacts">
+        Contacts
+      </Link>
+    </div>
+  )
+}
 
 export const HeaderComponent = () => {
     return (
@@ -7,15 +30,7 @@ export const HeaderComponent = () => {
           <div className="header-logo">
             <img src={agency_logo} height={80} alt="logo" />
           </div>
-
-          <ul className="header-menu">
-            <li>Vacancies</li>
-            <li>About us</li>
-            <li>Rewiews</li>
-            <li>Certificates</li>
-            <li>Contacts</li>
-          </ul>
-
+          <NavMenu />
           <div className="header-controls">
             <button className="header-button">LogIn</button>
             <button className="header-button">User</button>
