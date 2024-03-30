@@ -56,8 +56,21 @@
   padding:0 20px;
   border-radius: 5px;
   border: none;
+}
 
+.h2-main-header{
+  text-align: center;
+}
+
+.vacancy-table{
+  margin: 0 auto;
+}
+
+.vacancy-table tr{
+  background-color: aqua;
   
 }
 
-
+.vacancy-table tr td{
+  padding: 10px 10px;
+}
