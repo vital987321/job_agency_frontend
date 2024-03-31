@@ -1,0 +1,102 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import salaryIcon from "../../svg/salary.svg";
+import locationIcon from "../../svg/location.svg";
+import contractTypeIcon from "../../svg/contract_type.svg";
+import workingHoursIcon from "../../svg/working_hours.svg";
+import "./Vacancy.css";
+import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
+
+function listSectors(sector_name) {
+    if (sector_name != undefined) {
+        if (sector_name.length == 0) {
+            return "-";
+        }
+    if (sector_name.length >= 1) {
+        const sectorArray = sector_name.map((item) => item.name)
+        return sectorArray.join(', ')
+        }
+    }
+}
+
+export const VacancyComponent = () => {
+  const { vacancy_id } = useParams();
+  const [vacancy, setVacancy] = useState({});
+  const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => setVacancy(res.data))
+        // .then(() => console.log(vacancy))
+      .catch((err) => console.log(err));
+  }, []);
+  return (
+    <>
+      <h2 className="h2-main">{vacancy.name}</h2>
+      <div className="vacancy-container">
+        <div className="vacancy-item">
+          <div>
+            <img src={salaryIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>SALARY</p>
+            <p>
+              <b>{vacancy.salary} CZK/month</b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={locationIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>LOCATION</p>
+            <p>
+              <b>{vacancy.location}</b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={contractTypeIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>CONTRACT TYPE</p>
+            <p>
+              <b>{vacancy.contract_type}</b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={workingHoursIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>WORKING HOURHS</p>
+            <p>
+              <b>
+                {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
+              </b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={workingHoursIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>Sector</p>
+            <p>
+              <b>{listSectors(vacancy.sector_name)}</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

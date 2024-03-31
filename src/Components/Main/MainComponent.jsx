@@ -7,6 +7,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { VacanciesComponent } from "./VacanciesComponent";
+import { VacancyComponent } from "./VacancyComponent";
 
 
 const Vacancies = () => {
@@ -19,8 +20,13 @@ const About = () => {
 
 
 export const MainComponent = (
-  <Route path="/" >
-    <Route path="vacancies" element={<VacanciesComponent />} key="vacanciesv1" />
+  <Route path="/">
+    <Route path="vacancies" element={<VacanciesComponent />} key="vacancies" />
+    <Route
+      path="vacancies/:vacancy_id"
+      element={<VacancyComponent />}
+      key="vacancy"
+    />
     <Route path="about" element={<About />} key="about" />
     <Route path="*" element={<p>Path not Found</p>} key="notFound" />
   </Route>

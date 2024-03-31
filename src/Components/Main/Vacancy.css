@@ -1,0 +1,14 @@
+.vacancy-container{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.vacancy-item {
+    display: flex;
+    border: 1px solid green;
+}
+
+.vacancy-item div {
+    padding: 5px
+}
+
