@@ -13,32 +13,31 @@ export const ApplicationFormComponent = () => {
             </div>
             
           <div className="application-form-inputs-container">
-            <label htmlFor="first-name-application-form">First name:</label>
-            <input
+            <input className="application-form-user-input"
               type="text"
               id="first-name-application-form"
-              placeholder="FirstName"
+              placeholder="First Name"
             />
-            <label htmlFor="last-name-application-form">Last name:</label>
             <input
+            className="application-form-user-input"
               type="text"
               id="last-name-application-form"
-              placeholder="LastName"
+              placeholder="Last Name"
             />
-            <label htmlFor="phone-application-form">Phone:</label>
             <input
+            className="application-form-user-input"
               type="text"
               id="phone-application-form"
-              placeholder="phone"
+              placeholder="Phone"
             />
-            <label htmlFor="email-application-form">Email:</label>
             <input
+            className="application-form-user-input"
               type="text"
               id="email-application-form"
-              placeholder="email"
+              placeholder="Email"
             />
-            <label htmlFor="CV-application-form">CV:</label>
-            <input type="file" id="cv-application-form" />
+            
+            <input type="file" className="cv-application-form" />
           </div>
 
           <div className="application-form-message-container">
@@ -51,7 +50,7 @@ export const ApplicationFormComponent = () => {
             ></textarea>
           </div>
           <div className="application-form-submit-block">
-            <input  type="submit" value="Apply" />
+            <input className="application-form-submit-button"  type="submit" value="Apply" />
           </div>
           
         </div>
