@@ -36,9 +36,7 @@ export const HeaderComponent = () => {
             <button className="header-button">User</button>
           </div>
         </div>
-        <h2> Routes</h2>
-        <h3 className="textCenter">Header</h3>
-        <hr />
+
       </header>
     );
 };

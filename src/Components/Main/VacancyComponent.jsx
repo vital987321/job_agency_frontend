@@ -7,10 +7,11 @@ import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
 import "./Vacancy.css";
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
+import { ApplicationFormComponent } from "./ApplicationFormComponent";
 
 function listSectors(sector_name) {
-    if (sector_name != undefined) {
-        if (sector_name.length == 0) {
+    if (sector_name !== undefined) {
+        if (sector_name.length === 0) {
             return "-";
         }
     if (sector_name.length >= 1) {
@@ -19,6 +20,44 @@ function listSectors(sector_name) {
         }
     }
 }
+
+function checkResidence(vacancy) {
+  if (vacancy.residence_type) {
+    return (
+      <div className="vacancy-item">
+        <div>
+          <img src={workingHoursIcon} alt="Logo" />
+        </div>
+        <div>
+          <p>MINIMAL RESIDENCE TYPE</p>
+          <p>
+            <b>{vacancy.residence_type}</b>
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+function checkVisaAssistance(vacancy) {
+  if (vacancy.visa_assistance != null) {
+    const message = vacancy.visa_assistance ? 'Yes' : 'No'
+    return (
+      <div className="vacancy-item">
+        <div>
+          <img src={workingHoursIcon} alt="Logo" />
+        </div>
+        <div>
+          <p>VISA ASSISTANCE</p>
+          <p>
+            <b>{message}</b>
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
 
 export const VacancyComponent = () => {
   const { vacancy_id } = useParams();
@@ -90,13 +129,57 @@ export const VacancyComponent = () => {
             <img src={workingHoursIcon} alt="Logo" />
           </div>
           <div>
-            <p>Sector</p>
+            <p>GENDER</p>
+            <p>
+              <b>{vacancy.gender}</b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={workingHoursIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>ACTUALIZATION</p>
+            <p>
+              <b>{stringToDateDMY(vacancy.created_at)}</b>
+            </p>
+          </div>
+        </div>
+
+        <div className="vacancy-item">
+          <div>
+            <img src={workingHoursIcon} alt="Logo" />
+          </div>
+          <div>
+            <p>SECTOR</p>
             <p>
               <b>{listSectors(vacancy.sector_name)}</b>
             </p>
           </div>
         </div>
+        {checkResidence(vacancy)}
+        {checkVisaAssistance(vacancy)}
       </div>
+
+      <div className="vacancy-container">
+        <div>
+          <h3>Description</h3>
+          <div>
+            <p>{vacancy.description}</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Requirements</h3>
+          <div>
+            <p>{vacancy.requirements}</p>
+          </div>
+        </div>
+      </div>
+      <button>Apply</button>
+      <ApplicationFormComponent/>
     </>
   );
 };

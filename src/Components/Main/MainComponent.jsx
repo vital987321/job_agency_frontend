@@ -6,7 +6,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import { VacanciesComponent } from "./VacanciesComponent";
+import { ListVacanciesComponent } from "./ListVacanciesComponent";
 import { VacancyComponent } from "./VacancyComponent";
 
 
@@ -21,7 +21,7 @@ const About = () => {
 
 export const MainComponent = (
   <Route path="/">
-    <Route path="vacancies" element={<VacanciesComponent />} key="vacancies" />
+    <Route path="vacancies" element={<ListVacanciesComponent />} key="vacancies" />
     <Route
       path="vacancies/:vacancy_id"
       element={<VacancyComponent />}

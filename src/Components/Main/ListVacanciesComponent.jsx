@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 import axios from 'axios'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 
-export const VacanciesComponent = () => {
+export const ListVacanciesComponent = () => {
   const [data, setData]=useState([])
   useEffect(() => {
     axios
@@ -30,7 +31,9 @@ export const VacanciesComponent = () => {
               </td>
               <td>{stringToDateDMY(vacancy.created_at)}</td>
               <td>
-                <button>Details</button>
+                <Link to={"/vacancies/"+vacancy.id} className="navLinks">
+                  Details
+                </Link>
               </td>
             </tr>
           );
