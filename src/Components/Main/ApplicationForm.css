@@ -1,4 +1,6 @@
 #application-form{
+    /* display: none; */
+    /* display: flex; */
     position: absolute;
     width:100%;
     height: 100%;
@@ -8,7 +10,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    display: flex;
+    
 }
 .application-form-container{
     border-radius: 20px;

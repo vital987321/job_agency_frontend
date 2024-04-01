@@ -60,6 +60,7 @@ function checkVisaAssistance(vacancy) {
 
 
 export const VacancyComponent = () => {
+  const [AppFormDisplayValue, setAppFormDisplayValue]=useState('none')
   const { vacancy_id } = useParams();
   const [vacancy, setVacancy] = useState({});
   const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
@@ -70,6 +71,11 @@ export const VacancyComponent = () => {
         // .then(() => console.log(vacancy))
       .catch((err) => console.log(err));
   }, []);
+
+  const applyButtonHandler=()=>{
+    setAppFormDisplayValue('flex')
+  }
+
   return (
     <>
       <h2 className="h2-main">{vacancy.name}</h2>
@@ -178,8 +184,8 @@ export const VacancyComponent = () => {
           </div>
         </div>
       </div>
-      <button>Apply</button>
-      <ApplicationFormComponent/>
+      <button onClick={applyButtonHandler}>Apply</button>
+      <ApplicationFormComponent AppFormDisplayValue={AppFormDisplayValue} vacancy={vacancy} setAppFormDisplayValue={setAppFormDisplayValue}/>
     </>
   );
 };

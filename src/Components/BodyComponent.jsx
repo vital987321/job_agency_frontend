@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { HeaderComponent } from "./Header/HeaderComponent";
 import { MainComponent } from "./Main/MainComponent";
+import TestComponent from "./Main/TestComponent";
 
 
 export const BodyComponent = () => {
