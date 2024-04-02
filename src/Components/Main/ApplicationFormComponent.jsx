@@ -21,28 +21,29 @@ export const ApplicationFormComponent = (props) => {
     const email=emailRef.current.value
     const phone=phoneRef.current.value
     const message=messageRef.current.value
-    const cvFile=cvFileRef.current.value
+    const cvFile=cvFileRef.current.files[0]
 
     let formData=new FormData()
-    formData.append("cv", cvFile)
+    
+    formData.append("vacancy",props.vacancy.id)
+    formData.append("first_name",firstName)
+    formData.append("last_name",lastName)
+    formData.append("email",email)
+    formData.append("phone",phone)
+    formData.append("message",message)
+    if (cvFile){
+        formData.append("cv", cvFile)
+       }
 
     axios
-        .post(applicationPostURL,
-            {
-                "vacancy":props.vacancy.id,
-                "first_name":firstName,
-                "last_name":lastName,
-                "email":email,
-                "phone":phone,
-                "message":message,
-            },
-            formData,
+        .post(applicationPostURL, formData,
             {headers:{"Content-Type": "multipart/form-data",}}
         )
         .then((response)=>console.log('response sratus: '+response.status))
         .then(()=>alert('Application sent succesfully'))
         .then(()=>props.setAppFormDisplayValue('none'))
-        .catch((err)=>console.log(err.code))
+        .catch((err)=>{console.log('Application error:')
+            console.log(err)})
   };
 
   return (
