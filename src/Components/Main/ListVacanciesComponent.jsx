@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios'
+import '../../css/main.css'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 
 export const ListVacanciesComponent = () => {
@@ -16,7 +17,7 @@ export const ListVacanciesComponent = () => {
   return (
     <div className="vacancies-container">
       <h2 className="h2-main-header">Vacancies</h2>
-      <table className="vacancy-table">
+      <table className="list-table">
         <tbody>
           {data.map(vacancy => {
           return (
@@ -31,8 +32,8 @@ export const ListVacanciesComponent = () => {
               </td>
               <td>{stringToDateDMY(vacancy.created_at)}</td>
               <td>
-                <Link to={"/vacancies/"+vacancy.id} className="navLinks">
-                  Details
+                <Link to={"/vacancies/"+vacancy.id} className="details-link">
+                  <button className="details-link-button">Details</button>
                 </Link>
               </td>
             </tr>

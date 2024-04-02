@@ -1,0 +1,79 @@
+.introductory-container{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/smilypeople.jpeg');
+    background-color: #2b2b2b; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+
+}
+
+.light-text{
+    color: white;
+}
+
+.background-picture{
+    width: 100%;
+    
+}
+.introduction-text{
+    margin-top: 30px;
+}
+
+.statistics-container{
+    background: #D9D9D9;
+    display: flex;
+    justify-content: space-evenly;
+    height: 150px;
+}
+
+.statistics-subcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.impressive-text{
+    font-size: large;
+    font-weight: bold;
+}
+
+.statistics-plain-text{
+    margin-top:20px;
+}
+
+.our-service-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.our-service-subcontainer{
+    background: #D9D9D9;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.our-service-subheader{
+    display: flex;
+    align-items: center;
+}
+
+.our-service-subheader-icon{
+    width: 50px;
+}
+.our-service-subheader-icon img{
+    width: 100%;
+}
+
+.our-service-subheader-text{
+    width: 100%;
+    text-align: center;
+}
+.our-service-subcontainer-text{
+    margin-top: 15px
+}

@@ -19,6 +19,9 @@
   padding: 0;
   list-style: none;
 }
+table{
+  border-spacing: 0;
+}
 
 #root{
   max-width: 1200px;
@@ -62,17 +65,6 @@
   text-align: center;
 }
 
-.vacancy-table{
-  margin: 0 auto;
-}
 
-.vacancy-table tr{
-  background-color: aqua;
-  
-}
-
-.vacancy-table tr td{
-  padding: 10px 10px;
-}
 
 

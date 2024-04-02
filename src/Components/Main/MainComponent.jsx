@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { ListVacanciesComponent } from "./ListVacanciesComponent";
 import { VacancyComponent } from "./VacancyComponent";
+import { ListApplicationsComponent } from "./ListApplicationsComponent";
+import { HomeComponent } from "./HomeComponent";
 
 
 const Vacancies = () => {
@@ -21,6 +23,7 @@ const About = () => {
 
 export const MainComponent = (
   <Route path="/">
+    <Route path="" element={<HomeComponent />} key="home" />
     <Route path="vacancies" element={<ListVacanciesComponent />} key="vacancies" />
     <Route
       path="vacancies/:vacancy_id"
@@ -28,6 +31,8 @@ export const MainComponent = (
       key="vacancy"
     />
     <Route path="about" element={<About />} key="about" />
+    <Route path="applications" element={<ListApplicationsComponent />} key="listApplication" />
+
     <Route path="*" element={<p>Path not Found</p>} key="notFound" />
   </Route>
 );
