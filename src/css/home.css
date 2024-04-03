@@ -1,3 +1,12 @@
+/* __________ Common styles __________ */
+.home-h2{
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* __________ individual styles __________*/
+
 .introductory-container{
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/smilypeople.jpeg');
     background-color: #2b2b2b; 
@@ -36,20 +45,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 30px;
+    
 }
 
-.impressive-text{
-    font-size: large;
+.statistics-impressive-text{
+    font-size: x-large;
     font-weight: bold;
 }
 
 .statistics-plain-text{
     margin-top:20px;
+    text-align: center;
 }
 
 .our-service-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+    margin-top:30px
 }
 
 .our-service-subcontainer{
@@ -76,4 +91,15 @@
 }
 .our-service-subcontainer-text{
     margin-top: 15px
+}
+
+
+.our-partners-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content:space-around;
+}
+
+.our-partners-subcontainer{
+    padding: 0 20px;
 }

@@ -8,6 +8,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { HeaderComponent } from "./Header/HeaderComponent";
+import { FooterComponent } from "./Footer/FooterComponent";
 import { MainComponent } from "./Main/MainComponent";
 import TestComponent from "./Main/TestComponent";
 
@@ -20,6 +21,7 @@ export const BodyComponent = () => {
         <Routes>
           {MainComponent}
         </Routes>
+        <FooterComponent/>
       </Router>
     </div>
   );

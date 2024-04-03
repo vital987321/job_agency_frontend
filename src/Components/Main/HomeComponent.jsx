@@ -1,6 +1,13 @@
 import commentsIcon from '../../svg/comments.svg'
 import targetIcon from '../../svg/target.svg'
 import teamSupportIcon from '../../svg/team_support.svg'
+import studyIcon from '../../svg/study.svg'
+import bagIcon from '../../svg/bag.svg'
+import phonemanIcon from '../../svg/phoneman.svg'
+import kofolaIcon from '../../svg/1200px-Kofola_logo 1.svg'
+import lidlIcon from '../../svg/Lidl_logo 1.svg'
+import kauflandIcon from '../../svg/KL_standard_pos_frei_S_sRGB 1.svg'
+import ceskaPostaIcon from '../../svg/cp-sponzoring-sirka-rgb 1.svg'
 import '../../css/home.css'
 
 export const HomeComponent=()=>{
@@ -14,25 +21,25 @@ export const HomeComponent=()=>{
 
         <section className="statistics-container">
             <div className="statistics-subcontainer">
-                <div className="impressive-text">124</div>
+                <div className="statistics-impressive-text">124</div>
                 <div className="statistics-plain-text">Companies in cooperation</div>
             </div>
             <div className="statistics-subcontainer">
-                <div className="impressive-text">3850</div>
+                <div className="statistics-impressive-text">3850</div>
                 <div className="statistics-plain-text">Successful employments</div>
             </div>
             <div className="statistics-subcontainer">
-                <div className="impressive-text">5000</div>
+                <div className="statistics-impressive-text">5000</div>
                 <div className="statistics-plain-text">Vacancies available for our clients</div>
             </div>
             <div className="statistics-subcontainer">
-                <div className="impressive-text">84%</div>
+                <div className="statistics-impressive-text">84%</div>
                 <div className="statistics-plain-text">Of our clients found a job within one week</div>
             </div>
         </section>
         
         <section className="our-service-section">
-            <h2>Our services</h2>
+            <h2 className='home-h2'>Our services</h2>
             <ul className="our-service-container">
                 <li className="our-service-subcontainer">
                     <div className='our-service-subheader'>
@@ -72,15 +79,75 @@ export const HomeComponent=()=>{
                         </div>
                     </div>
                     <div className="our-service-subcontainer-text">
-                    Our agency will handle all the process of getting working visa, including applying for the visa and all necessary consultations with our legal department.
+                        Our agency will handle all the process of getting working visa, including applying for the visa and all necessary consultations with our legal department.
+                    </div>
+                </li>
+
+                <li className="our-service-subcontainer">
+                    <div className='our-service-subheader'>
+                        <div className="our-service-subheader-icon">
+                            <img src={studyIcon} alt="icon" />
+                        </div>
+                        <div className="our-service-subheader-text">
+                            <h4>Interview Course</h4>
+                        </div>
+                    </div>
+                    <div className="our-service-subcontainer-text">
+                        We provide intensive training and interview simulations to help you perform confidently in front of employers and interview successfully.
+                    </div>
+                </li>
+
+                <li className="our-service-subcontainer">
+                    <div className='our-service-subheader'>
+                        <div className="our-service-subheader-icon">
+                            <img src={bagIcon} alt="icon" />
+                        </div>
+                        <div className="our-service-subheader-text">
+                            <h4>Employment process</h4>
+                        </div>
+                    </div>
+                    <div className="our-service-subcontainer-text">
+                    Our agency specializes in overseas employment and offers a wide range of vacancies in various countries around the world.
+                    </div>
+                </li>
+
+                <li className="our-service-subcontainer">
+                    <div className='our-service-subheader'>
+                        <div className="our-service-subheader-icon">
+                            <img src={phonemanIcon} alt="icon" />
+                        </div>
+                        <div className="our-service-subheader-text">
+                            <h4>SUpport on all employment stages</h4>
+                        </div>
+                    </div>
+                    <div className="our-service-subcontainer-text">
+                    We provide full support at all stages of employment, from job search to successful conclusion of the employment contract and adaptation to the new place of work.
                     </div>
                 </li>
             </ul>
 
         </section>
 
-        <section className="vacancies-list-container">
+        <section className="vacancies-list-section">
+            <h2 className='home-h2'>Vacancies</h2>
+        </section>
 
+        <section className="our-partners-section">
+            <h2 className='home-h2'>Our partners</h2>
+            <ul className='our-partners-container'>
+                <li className='our-partners-subcontainer'>
+                    <img src={kofolaIcon} alt="Logo" />
+                </li>
+                <li className='our-partners-subcontainer'>
+                    <img src={lidlIcon} alt="Logo" />
+                </li>
+                <li className='our-partners-subcontainer'>
+                    <img src={kauflandIcon} alt="Logo" />
+                </li>
+                <li className='our-partners-subcontainer'>
+                    <img src={ceskaPostaIcon} alt="Logo" />
+                </li>
+            </ul>
         </section>
     </>
 }
