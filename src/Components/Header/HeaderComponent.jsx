@@ -1,4 +1,4 @@
-import agency_logo from "../../img/CONTROL_Agency_logo.png"
+import agencyLogoIcon from '../../svg/agency_logo.svg'
 import {BrowserRouter as Router, Route, Routes, Link, Outlet} from "react-router-dom"
 
 const NavMenu = () => {
@@ -28,7 +28,7 @@ export const HeaderComponent = () => {
       <header>
         <div className="header">
           <div className="header-logo">
-            <img src={agency_logo} height={80} alt="logo" />
+            <img src={agencyLogoIcon} height={80} alt="logo" />
           </div>
           <NavMenu />
           <div className="header-controls">

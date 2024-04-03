@@ -8,6 +8,7 @@ import kofolaIcon from '../../svg/1200px-Kofola_logo 1.svg'
 import lidlIcon from '../../svg/Lidl_logo 1.svg'
 import kauflandIcon from '../../svg/KL_standard_pos_frei_S_sRGB 1.svg'
 import ceskaPostaIcon from '../../svg/cp-sponzoring-sirka-rgb 1.svg'
+
 import '../../css/home.css'
 
 export const HomeComponent=()=>{
