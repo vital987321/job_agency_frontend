@@ -5,7 +5,7 @@ import salaryIcon from "../../svg/salary.svg";
 import locationIcon from "../../svg/location.svg";
 import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
-import "./Vacancy.css";
+import "../../css/Vacancy.css";
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
 

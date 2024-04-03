@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-router-dom";
-import "./ApplicationForm.css";
+import "../../css/ApplicationForm.css";
 import axios from "axios";
 
 const firstNameRef=React.createRef();

@@ -17,7 +17,7 @@ export const HomeComponent=()=>{
             <h2 className="light-text">
                 We will find the best employment for you
             </h2>
-            <p className="light-text introduction-text">Employment agency of year 2023</p>
+            <p className="light-text introduction-text">Employment agency of the year 2023</p>
         </section>
 
         <section className="statistics-container">
