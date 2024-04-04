@@ -1,0 +1,96 @@
+.vacancy-filter-window{
+    border: 1px solid #000000;
+    border-radius: 0 15px 15px  0;
+    width: 400px;
+    max-width: 100%;
+    padding: 20px 20px 30px 100px
+}
+
+.vacancy-filter-close-container{
+    text-align: right;
+    box-sizing: border-box;
+    
+}
+
+.vacancy-filter-close-button{
+    height: 20px;
+    padding: 2px;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+.vacancy-filter-close-button:hover{
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+}
+
+
+.vacancy-filter-key-words-input,
+.vacancy-filter-salary-container,
+.vacancy-filter-residence-input,
+.vacancy-filter-location-input
+{
+    background: #D9D9D9;
+    border-radius: 0 12px 12px 0;
+    height: 40px;
+    width: 100%;
+    border: none;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    font-size: medium;
+}
+
+.vacancy-filter-salary-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vacancy-filter-salary-from-container,
+.vacancy-filter-salary-to-container{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+
+}
+.vacancy-filter-salary-from-label,
+.vacancy-filter-salary-to-label{
+    height: 24px;
+    background-color: white;
+    border-radius: 5px 0 0 5px;
+    padding-left: 5px;
+}
+#vacancy-filter-salary-from-input,
+#vacancy-filter-salary-to-input{
+    height: 24px;
+    width: 80px;
+    border:none;
+    background-color: white;
+    border-radius: 0 5px 5px 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: medium;
+}
+
+#vacancy-filter-salary-from-input:focus,
+#vacancy-filter-salary-to-input:focus
+{
+    outline: none;
+}
+
+.vacancy-filter-input-title:not(:first-child){
+   margin-top: 25px; 
+}
+
+.vacancy-filter-submit-button-container{
+    text-align: right;
+}
+.vacancy-filter-submit-button{
+    background: #656565;
+    color: white;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: medium;
+    margin-top: 50px;
+    
+}
