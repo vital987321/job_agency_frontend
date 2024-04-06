@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import axios from 'axios'
-import '../../css/main.css'
+import '../../css/listVacancies.css'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 
-export const ListVacanciesComponent = () => {
+export const ListVacanciesComponent = (props) => {
   const [data, setData]=useState([])
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/vacancy")
+      .get(props.listVacanciesRequestUrl)
       .then(res => setData(res.data))
       // .then(()=>console.log(data))
       .catch((err) => console.log(err));
-    },[]
+    },[props.listVacanciesRequestUrl]
   )
   return (
-    <div className="vacancies-container">
+    <div className="vacancies-list-container">
       <h2 className="h2-main-header">Vacancies</h2>
       <table className="list-table">
         <tbody>

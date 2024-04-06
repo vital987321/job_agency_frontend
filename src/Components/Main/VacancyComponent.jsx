@@ -6,6 +6,7 @@ import locationIcon from "../../svg/location.svg";
 import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
 import "../../css/Vacancy.css";
+import {RESIDENCE_TYPES} from '../../constants'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
 
@@ -31,7 +32,7 @@ function checkResidence(vacancy) {
         <div>
           <p>MINIMAL RESIDENCE TYPE</p>
           <p>
-            <b>{vacancy.residence_type}</b>
+            <b>{RESIDENCE_TYPES[vacancy.residence_type]}</b>
           </p>
         </div>
       </div>
@@ -63,6 +64,8 @@ export const VacancyComponent = () => {
   const [AppFormDisplayValue, setAppFormDisplayValue]=useState('none')
   const { vacancy_id } = useParams();
   const [vacancy, setVacancy] = useState({});
+  
+
   const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
   useEffect(() => {
     axios

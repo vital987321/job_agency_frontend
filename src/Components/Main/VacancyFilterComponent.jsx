@@ -1,28 +1,37 @@
 import closeIcon from '../../svg/X.svg'
 import '../../css/vacancyFilter.css'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import {SALARY_CEILING, FILTER_POINTER_SIZE, RESIDENCE_TYPES} from '../../constants'
 
-export const VacancyFilterComponent=()=>{
+
+const vacancyKeyWordsRef=React.createRef();
+const salaryMinRef=React.createRef();
+const salaryMaxRef=React.createRef();
+const vacancyResidenceRef=React.createRef();
+const vacancyLocationRef=React.createRef();
+
+
+export const VacancyFilterComponent=(props)=>{
     const closeButtonHandler=()=>{
+    props.setVacancyFilterDisplayValue('none')
     }
 
-    const pointerDiameter=20
-    const salaryCeiling=150000
+
     const [leftPointerPosition, setLeftPointerPosition]=useState(0)
     const [rightPointerPosition, setRightPointerPosition]=useState(0)
     const [pointerToDrag, setPointerToDrag]=useState(null);
     const [extreemLeftPointerX, setExtreemLeftPointerX]=useState()
     const [extreemRightPointerX, setExtreemRightPointerX]=useState()
     const [minSalaryValue, setMinSaleryValue]=useState(0)
-    const [maxSalaryValue, setMaxSaleryValue]=useState(salaryCeiling)
+    const [maxSalaryValue, setMaxSaleryValue]=useState(SALARY_CEILING)
     
     useEffect(()=>{
         const vacancyFilterSalaryBar=document.getElementById('vacancy-filter-salary-bar')
         setExtreemLeftPointerX(vacancyFilterSalaryBar.offsetLeft);
-        setExtreemRightPointerX(extreemLeftPointerX+vacancyFilterSalaryBar.offsetWidth-pointerDiameter);
+        setExtreemRightPointerX(extreemLeftPointerX+vacancyFilterSalaryBar.offsetWidth-FILTER_POINTER_SIZE);
         setLeftPointerPosition(extreemLeftPointerX)
         setRightPointerPosition(extreemRightPointerX)
-    },[extreemLeftPointerX, extreemRightPointerX])
+    },[extreemLeftPointerX, extreemRightPointerX, props.vacancyFilterDisplayValue])
 
     useEffect(()=>{
         const handleMouseUp=(event)=>{
@@ -37,27 +46,27 @@ export const VacancyFilterComponent=()=>{
 
     useEffect(() => {
         const handleMouseMove = (event) => {
-            if (pointerToDrag=='salaryLeftPointer') {
+            if (pointerToDrag==='salaryLeftPointer') {
                 let x = 0;
                 if (event.pageX < extreemLeftPointerX) x = extreemLeftPointerX;
                 else {
-                        if (event.pageX > rightPointerPosition-pointerDiameter) x = rightPointerPosition-pointerDiameter;
+                        if (event.pageX > rightPointerPosition-FILTER_POINTER_SIZE) x = rightPointerPosition-FILTER_POINTER_SIZE;
                         else x = event.pageX;
                     }
                 setLeftPointerPosition(x)
-                let calcSalaryInput=(x-extreemLeftPointerX)*salaryCeiling/(extreemRightPointerX-pointerDiameter-extreemLeftPointerX)
+                let calcSalaryInput=(x-extreemLeftPointerX)*SALARY_CEILING/(extreemRightPointerX-FILTER_POINTER_SIZE-extreemLeftPointerX)
                 calcSalaryInput=(Math.round(calcSalaryInput/1000))*1000
                 setMinSaleryValue(calcSalaryInput)
             }
-            if (pointerToDrag=='salaryRightPointer') {
+            if (pointerToDrag==='salaryRightPointer') {
                 let x = 0;
-                if (event.pageX < leftPointerPosition+pointerDiameter) x = leftPointerPosition+pointerDiameter;
+                if (event.pageX < leftPointerPosition+FILTER_POINTER_SIZE) x = leftPointerPosition+FILTER_POINTER_SIZE;
                 else {
                         if (event.pageX > extreemRightPointerX) x = extreemRightPointerX;
                         else x = event.pageX;
                     }
                 setRightPointerPosition(x)
-                let calcSalaryInput=(x-extreemLeftPointerX-pointerDiameter)*salaryCeiling/(extreemRightPointerX-extreemLeftPointerX-pointerDiameter)
+                let calcSalaryInput=(x-extreemLeftPointerX-FILTER_POINTER_SIZE)*SALARY_CEILING/(extreemRightPointerX-extreemLeftPointerX-FILTER_POINTER_SIZE)
                 calcSalaryInput=(Math.round(calcSalaryInput/1000))*1000
                 setMaxSaleryValue(calcSalaryInput)
             }
@@ -76,75 +85,131 @@ export const VacancyFilterComponent=()=>{
     const inputSalaryValueHandler=(e)=>{
         if (e.target.id==='vacancy-filter-salary-from-input'){
             setMinSaleryValue(e.target.value)
-            let calcPointerPosition=e.target.value*(extreemRightPointerX-extreemLeftPointerX-pointerDiameter)/salaryCeiling+extreemLeftPointerX
+            let calcPointerPosition=e.target.value*(extreemRightPointerX-extreemLeftPointerX-FILTER_POINTER_SIZE)/SALARY_CEILING+extreemLeftPointerX
             calcPointerPosition=Math.max(extreemLeftPointerX, calcPointerPosition)
-            calcPointerPosition=Math.min(extreemRightPointerX-pointerDiameter, calcPointerPosition)
+            calcPointerPosition=Math.min(rightPointerPosition-FILTER_POINTER_SIZE, calcPointerPosition)
             setLeftPointerPosition(calcPointerPosition)
         }
         else{
             setMaxSaleryValue(e.target.value)
-            let calcPointerPosition=e.target.value*(extreemRightPointerX-extreemLeftPointerX-pointerDiameter)/salaryCeiling+extreemLeftPointerX+pointerDiameter
-            calcPointerPosition=Math.max(extreemLeftPointerX+pointerDiameter, calcPointerPosition)
+            let calcPointerPosition=e.target.value*(extreemRightPointerX-extreemLeftPointerX-FILTER_POINTER_SIZE)/SALARY_CEILING+extreemLeftPointerX+FILTER_POINTER_SIZE
+            calcPointerPosition=Math.max(leftPointerPosition+FILTER_POINTER_SIZE, calcPointerPosition)
             calcPointerPosition=Math.min(extreemRightPointerX, calcPointerPosition)
             setRightPointerPosition(calcPointerPosition)
         }
     }
     
-    return <div className="vacancy-filter-window">
-        <form >
+    const submitVacancyFilterHandler=(e)=>{
+        e.preventDefault();
+        const vacancyKeyWords=vacancyKeyWordsRef.current.value;
+        const salaryMin=salaryMinRef.current.value;
+        const salaryMax=salaryMaxRef.current.value;
+        const vacancyResidence=vacancyResidenceRef.current.value;
+        const vacancyLocation=vacancyLocationRef.current.value;
+        
+        let queryParams=[]
+        if (vacancyKeyWords){
+            queryParams.push('key_search='+vacancyKeyWords)
+        }
+        if (salaryMin>0){
+            queryParams.push('salary_gte='+salaryMin)
+        }
+        if (salaryMax<SALARY_CEILING){
+            queryParams.push('salary_lte='+salaryMax)
+        }
+        if (vacancyLocation){
+            queryParams.push('location='+vacancyLocation)
+        }
+        if (vacancyResidence){
+            queryParams.push('residence_type='+vacancyResidence)
+        }
+        if (queryParams.length>0){
+            props.setListVacanciesRequestUrl(props.listVacanciesBaseUrl + "?" + queryParams.join('&'))
+        }
+        
+        props.setVacancyFilterDisplayValue('none')
+    }
+
+
+    return <div className='vacancy-filter-container'
+                style={{ display: props.vacancyFilterDisplayValue }}
+                >
+        <form className="vacancy-filter-form"
+            onSubmit={submitVacancyFilterHandler}
+            >
             <div className="vacancy-filter-close-container">
-                <img className='vacancy-filter-close-button' onClick={closeButtonHandler} src={closeIcon} alt="X" />
+                <img className='vacancy-filter-close-button' 
+                onClick={closeButtonHandler} src={closeIcon} 
+                alt="X" />
             </div>
             <p className='vacancy-filter-input-title'>Vacancy key words:</p>
-            <input type="text" className='vacancy-filter-key-words-input' id='vacancy-filter-key-words-input'/>
+            <input type="text" 
+                className='vacancy-filter-key-words-input' 
+                id='vacancy-filter-key-words-input'
+                ref={vacancyKeyWordsRef}
+                />
 
             <p className='vacancy-filter-input-title'>Salary level:</p>
             <div className='vacancy-filter-salary-container' >
                 <div className='vacancy-filter-salary-from-container'>
                     <label className='vacancy-filter-salary-from-label' htmlFor="vacancy-filter-salary-from-input">Min</label>
-                    <input type="text"
+                    <input type="number"
                         id='vacancy-filter-salary-from-input'
                         value={minSalaryValue}
                         onChange={inputSalaryValueHandler}
+                        ref={salaryMinRef}
                     />
                 </div>
                 <div className='vacancy-filter-salary-bar' id='vacancy-filter-salary-bar'>
                     <div className='vacancy-filter-salary-min-point'
-                        style={{'left':(leftPointerPosition-extreemLeftPointerX)+'px'}}
+                        style={{left:(leftPointerPosition-extreemLeftPointerX)+'px',
+                            width:FILTER_POINTER_SIZE+'px',
+                            height:FILTER_POINTER_SIZE+'px',
+                            top:-FILTER_POINTER_SIZE/2+'px'}
+                        }
                         id='salaryLeftPointer'
                         onMouseDown={mouseDownHandler}
                         >
                     </div>
                     <div className='vacancy-filter-salary-max-point'
                         id='salaryRightPointer'
-                        style={{'left':(rightPointerPosition-extreemLeftPointerX)+'px'}}
+                        style={{left:(rightPointerPosition-extreemLeftPointerX)+'px',
+                            width:FILTER_POINTER_SIZE+'px',
+                            height:FILTER_POINTER_SIZE+'px',
+                            top:-FILTER_POINTER_SIZE/2+'px'}
+                            }
                         onMouseDown={mouseDownHandler}
                         >
                     </div>
                     </div>
                 <div className='vacancy-filter-salary-to-container'>
                     <label className='vacancy-filter-salary-to-label'  htmlFor="vacancy-filter-salary-to-input">Max</label>
-                    <input type="text"
+                    <input type="number"
                         id='vacancy-filter-salary-to-input'
                         value={maxSalaryValue}
                         onChange={inputSalaryValueHandler}
+                        ref={salaryMaxRef}
                     />
                 </div>
             </div>
             <p className='vacancy-filter-input-title'>Residence type:</p>
-            <select className='vacancy-filter-residence-input' id='vacancy-filter-residence-type-input'>
-                <option value="1">EU citizenship</option>
-                <option value="2">Permanent rsidance</option>
-                <option value="3">Residance permit with free acces to job market</option>
-                <option value="4">Blue card</option>
-                <option value="5">Working card</option>
-                <option value="6">Working visa</option>
-                <option value="7">No visa</option>
-d
+            <select className='vacancy-filter-residence-input'
+                id='vacancy-filter-residence-type-input'
+                ref={vacancyResidenceRef}
+                >
+                <option value=""></option>
+                {Object.keys(RESIDENCE_TYPES).map((objectKey, index)=>{
+                    return(<option key={objectKey} value={objectKey}>{RESIDENCE_TYPES[objectKey]}</option>)
+                    })
+                }
             </select>
             
             <p className='vacancy-filter-input-title'>Location:</p>
-            <input className='vacancy-filter-location-input' type="text" id='vacancy-filter-location-input' />
+            <input 
+                className='vacancy-filter-location-input' 
+                type="text" id='vacancy-filter-location-input' 
+                ref={vacancyLocationRef}
+                />
             <div className='vacancy-filter-submit-button-container'>
                 <input className='vacancy-filter-submit-button' type="submit" value='Filter' />
             </div>
