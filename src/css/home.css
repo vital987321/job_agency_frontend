@@ -1,3 +1,5 @@
+@import './constants.css';
+
 /* __________ Common styles __________ */
 .home-h2{
     text-align: center;
@@ -34,6 +36,8 @@
 }
 
 .statistics-container{
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
     background: #D9D9D9;
     display: flex;
     justify-content: space-evenly;
@@ -57,6 +61,11 @@
 .statistics-plain-text{
     margin-top:20px;
     text-align: center;
+}
+
+.our-service-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
 }
 
 .our-service-container{
@@ -93,11 +102,15 @@
     margin-top: 15px
 }
 
+.our-partners-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
 
 .our-partners-container{
     margin-top: 30px;
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
 }
 
 .our-partners-subcontainer{

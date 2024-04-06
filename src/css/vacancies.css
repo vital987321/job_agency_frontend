@@ -1,4 +1,8 @@
+@import './constants.css';
+
 .vacancies-container{
     margin-top: 50px;
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
 }
 
