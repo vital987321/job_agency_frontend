@@ -10,16 +10,21 @@ import kauflandIcon from '../../svg/KL_standard_pos_frei_S_sRGB 1.svg'
 import ceskaPostaIcon from '../../svg/cp-sponzoring-sirka-rgb 1.svg'
 import { ListVacanciesComponent } from './ListVacanciesComponent'
 import {LIST_VACANCIES_BASE_URL} from '../../constants.js'
-import {Link} from "react-router-dom"
+import {Navigate, Link} from "react-router-dom"
 import '../../css/home.css'
+import React, { useState, useEffect } from 'react'
 
 export const HomeComponent=()=>{
 
     const listVacanciesRequestUrl=LIST_VACANCIES_BASE_URL+'?limit=8'
+    const [navigateToVacancies, setNavigateToVacancies]=useState(false)
+    if (navigateToVacancies) {
+        return <Navigate to='/vacancies?test=test'/>
+    }
 
     const quickSearchHandler=(e)=>{
         e.preventDefault();
-        
+        setNavigateToVacancies(true)
     }
 
     return <>
@@ -28,9 +33,10 @@ export const HomeComponent=()=>{
                 We will find the best employment for you
             </h2>
             <p className="light-text introduction-text">Employment agency of the year 2023</p>
-            {/* <form onSubmit={quickSearchHandler}>
+            <form onSubmit={quickSearchHandler}>
                 <input type="text" placeholder='Search' />
-            </form> */}
+                <input type="submit" />
+            </form>
         </section>
 
         <section className="statistics-container">
