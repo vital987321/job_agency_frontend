@@ -102,6 +102,20 @@
     margin-top: 15px
 }
 
+.vacancies-list-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+.vacancies-link-container{
+    margin-top: 30px;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.vacancies-link-icon{
+    padding-left: 20px;
+}
+
 .our-partners-section{
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);

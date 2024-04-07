@@ -4,22 +4,23 @@ import axios from 'axios'
 import '../../css/listVacancies.css'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 
+
 export const ListVacanciesComponent = (props) => {
-  const [data, setData]=useState([])
+  const [vacanciesList, setVacanciesList]=useState([])
   useEffect(() => {
     axios
       .get(props.listVacanciesRequestUrl)
-      .then(res => setData(res.data))
-      // .then(()=>console.log(data))
+      .then(response=>{setVacanciesList(response.data.results)
+        return response})
+      .then(response=> {if (props.setVacanciesResponseData) props.setVacanciesResponseData(response.data)})
       .catch((err) => console.log(err));
     },[props.listVacanciesRequestUrl]
   )
   return (
     <div className="vacancies-list-container">
-      <h2 className="h2-main-header">Vacancies</h2>
       <table className="list-table">
         <tbody>
-          {data.map(vacancy => {
+          {vacanciesList.map(vacancy => {
           return (
             <tr key={vacancy.id}>
               <td>{vacancy.name}</td>

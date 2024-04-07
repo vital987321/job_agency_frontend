@@ -29,13 +29,6 @@ footer li {
     margin-top: 10px;
 }
 
-footer a{
-    text-decoration: none;
-    color: black;
-}
-footer a:hover{
-    text-decoration: underline;
-}
 
 .footer-year{
     text-align: center;

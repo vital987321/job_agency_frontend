@@ -104,29 +104,16 @@ export const VacancyFilterComponent=(props)=>{
         const vacancyKeyWords=vacancyKeyWordsRef.current.value;
         const salaryMin=salaryMinRef.current.value;
         const salaryMax=salaryMaxRef.current.value;
-        const vacancyResidence=vacancyResidenceRef.current.value;
         const vacancyLocation=vacancyLocationRef.current.value;
-        
-        let queryParams=[]
-        if (vacancyKeyWords){
-            queryParams.push('key_search='+vacancyKeyWords)
-        }
-        if (salaryMin>0){
-            queryParams.push('salary_gte='+salaryMin)
-        }
-        if (salaryMax<SALARY_CEILING){
-            queryParams.push('salary_lte='+salaryMax)
-        }
-        if (vacancyLocation){
-            queryParams.push('location='+vacancyLocation)
-        }
-        if (vacancyResidence){
-            queryParams.push('residence_type='+vacancyResidence)
-        }
-        if (queryParams.length>0){
-            props.setListVacanciesRequestUrl(props.listVacanciesBaseUrl + "?" + queryParams.join('&'))
-        }
-        
+        const vacancyResidence=vacancyResidenceRef.current.value;
+
+        const requestURL=props.generateListVacanciesRequestURL({listVacanciesBaseUrl:props.listVacanciesBaseUrl, 
+                                                                key_search:vacancyKeyWords, 
+                                                                salary_gte:salaryMin,
+                                                                salary_lte:salaryMax,
+                                                                location:vacancyLocation,
+                                                                residence_type:vacancyResidence})
+        props.setListVacanciesRequestUrl(requestURL)
         props.setVacancyFilterDisplayValue('none')
     }
 

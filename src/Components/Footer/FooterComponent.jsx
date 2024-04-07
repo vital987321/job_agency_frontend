@@ -17,33 +17,33 @@ export const FooterComponent = () => {
             <section className='footer-section'>
                 <h4>FOR PARTNERS</h4>
                 <ul>
-                    <li><a href="">New registration</a></li>
-                    <li><a href="">Our conditions</a></li>
-                    <li><a href="">Career</a></li>
-                    <li><a href="">Cooperation agreements</a></li>
-                    <li><a href="">Time sheet</a></li>
+                    <li><a  className="navLinks" href="">New registration</a></li>
+                    <li><a className="navLinks" href="">Our conditions</a></li>
+                    <li><a className="navLinks" href="">Career</a></li>
+                    <li><a className="navLinks" href="">Cooperation agreements</a></li>
+                    <li><a className="navLinks" href="">Time sheet</a></li>
                 </ul>
             </section>
 
             <section className='footer-section'>
                 <h4>FOR COOPERATION</h4>
                 <ul>
-                    <li><a href="">New registration</a></li>
-                    <li><a href="">Our conditions</a></li>
-                    <li><a href="">Career</a></li>
-                    <li><a href="">Cooperation agreements</a></li>
-                    <li><a href="">Time sheet</a></li>
+                    <li><a className="navLinks" href="">New registration</a></li>
+                    <li><a className="navLinks" href="">Our conditions</a></li>
+                    <li><a className="navLinks" href="">Career</a></li>
+                    <li><a className="navLinks" href="">Cooperation agreements</a></li>
+                    <li><a className="navLinks" href="">Time sheet</a></li>
                 </ul>
             </section>
 
             <section className='footer-section'>
                 <h4>ABOUT US</h4>
                 <ul>
-                    <li><a href="">Who we are</a></li>
-                    <li><a href="">GDPR</a></li>
-                    <li><a href="">General conditions</a></li>
-                    <li><a href="">Links</a></li>
-                    <li><a href="">GDPR</a></li>
+                    <li><a className="navLinks" href="">Who we are</a></li>
+                    <li><a className="navLinks" href="">GDPR</a></li>
+                    <li><a className="navLinks" href="">General conditions</a></li>
+                    <li><a className="navLinks" href="">Links</a></li>
+                    <li><a className="navLinks" href="">GDPR</a></li>
                 </ul>
             </section>
         </div>

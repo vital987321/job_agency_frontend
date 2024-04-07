@@ -6,3 +6,12 @@
     border: none;
     font-size: medium;
 }
+
+.navLinks{
+    text-decoration: none;
+    color: black;
+  }
+
+.navLinks:hover{
+    text-decoration: underline;
+  }

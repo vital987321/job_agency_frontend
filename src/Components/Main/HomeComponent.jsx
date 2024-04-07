@@ -8,16 +8,29 @@ import kofolaIcon from '../../svg/1200px-Kofola_logo 1.svg'
 import lidlIcon from '../../svg/Lidl_logo 1.svg'
 import kauflandIcon from '../../svg/KL_standard_pos_frei_S_sRGB 1.svg'
 import ceskaPostaIcon from '../../svg/cp-sponzoring-sirka-rgb 1.svg'
-
+import { ListVacanciesComponent } from './ListVacanciesComponent'
+import {LIST_VACANCIES_BASE_URL} from '../../constants.js'
+import {Link} from "react-router-dom"
 import '../../css/home.css'
 
 export const HomeComponent=()=>{
+
+    const listVacanciesRequestUrl=LIST_VACANCIES_BASE_URL+'?limit=8'
+
+    const quickSearchHandler=(e)=>{
+        e.preventDefault();
+        
+    }
+
     return <>
         <section className="introductory-container">
             <h2 className="light-text">
                 We will find the best employment for you
             </h2>
             <p className="light-text introduction-text">Employment agency of the year 2023</p>
+            {/* <form onSubmit={quickSearchHandler}>
+                <input type="text" placeholder='Search' />
+            </form> */}
         </section>
 
         <section className="statistics-container">
@@ -131,6 +144,15 @@ export const HomeComponent=()=>{
 
         <section className="vacancies-list-section">
             <h2 className='home-h2'>Vacancies</h2>
+            <ListVacanciesComponent listVacanciesRequestUrl={listVacanciesRequestUrl}/>
+            <div className='vacancies-link-container'>
+                <Link to="/vacancies" className="navLinks ">
+                    More vacancies
+                    <span className='vacancies-link-icon'
+                    >{'>'}</span>
+                </Link>
+            </div>
+            
         </section>
 
         <section className="our-partners-section">
