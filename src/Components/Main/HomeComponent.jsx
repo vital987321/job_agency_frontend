@@ -10,32 +10,35 @@ import kauflandIcon from '../../svg/KL_standard_pos_frei_S_sRGB 1.svg'
 import ceskaPostaIcon from '../../svg/cp-sponzoring-sirka-rgb 1.svg'
 import { ListVacanciesComponent } from './ListVacanciesComponent'
 import {LIST_VACANCIES_BASE_URL} from '../../constants.js'
-import {Navigate, Link} from "react-router-dom"
+import {Navigate, useNavigate, Link} from "react-router-dom"
 import '../../css/home.css'
 import React, { useState, useEffect } from 'react'
+
+const quickSearchRef=React.createRef();
 
 export const HomeComponent=()=>{
 
     const listVacanciesRequestUrl=LIST_VACANCIES_BASE_URL+'?limit=8'
-    const [navigateToVacancies, setNavigateToVacancies]=useState(false)
-    if (navigateToVacancies) {
-        return <Navigate to='/vacancies?test=test'/>
-    }
+    const navigate = useNavigate();
+
 
     const quickSearchHandler=(e)=>{
         e.preventDefault();
-        setNavigateToVacancies(true)
+        if (quickSearchRef.current.value){
+            navigate('/vacancies?key_search=' + encodeURIComponent(quickSearchRef.current.value))
+        }
     }
 
     return <>
         <section className="introductory-container">
+
             <h2 className="light-text">
                 We will find the best employment for you
             </h2>
             <p className="light-text introduction-text">Employment agency of the year 2023</p>
             <form onSubmit={quickSearchHandler}>
-                <input type="text" placeholder='Search' />
-                <input type="submit" />
+                <input type="text" placeholder='Search' ref={quickSearchRef}/>
+                {/* <input type="submit" value='Search' /> */}
             </form>
         </section>
 
