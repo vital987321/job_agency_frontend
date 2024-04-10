@@ -63,12 +63,12 @@ export const VacanciesComponent=()=>{
     return (
       <div className="vacancies-container">
         <button
-          className="vacancies-filter-button common-button"
+          className="vacancies-filter-buttn button-common"
           onClick={filterButtonHandler}
         >
           Filter <img src={filterIcon} alt="" />
         </button>
-        <h2 className="h2-main-header">Vacancies</h2>
+        <h2 className="h2-main-header h2-common">Vacancies</h2>
         <ListVacanciesComponent
           listVacanciesRequestUrl={listVacanciesRequestUrl}
           setVacanciesResponseData={setVacanciesResponseData}

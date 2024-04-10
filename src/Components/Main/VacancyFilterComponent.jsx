@@ -226,7 +226,7 @@ export const VacancyFilterComponent=(props)=>{
                 ref={vacancyLocationRef}
                 />
             <div className='vacancy-filter-submit-button-container'>
-                <input className='vacancy-filter-submit-button' type="submit" value='Filter' />
+                <input className='vacancy-filter-submit-button button-common' type="submit" value='Filter' />
             </div>
         </form>
 

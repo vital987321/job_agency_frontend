@@ -35,8 +35,8 @@ export const HeaderComponent = () => {
           </div>
           <NavMenu />
           <div className="header-controls">
-            <button className="header-button">LogIn</button>
-            <button className="header-button">User</button>
+            <button className="header-button button-common">LogIn</button>
+            <button className="header-button button-common">User</button>
           </div>
         </div>
 

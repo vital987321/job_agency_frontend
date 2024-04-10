@@ -34,7 +34,7 @@ export const HomeComponent=()=>{
       <>
         <section className="introductory-section">
           <div className="introductory-text-container">
-            <h2 className="introductory-section-header">
+            <h2 className="introductory-section-header h2-common">
               We will find the best employment for you
             </h2>
             <p className="introductory-section-text">
@@ -81,7 +81,7 @@ export const HomeComponent=()=>{
         </section>
 
         <section className="our-service-section">
-          <h2 className="home-h2">Our services</h2>
+          <h2 className="home-h2 h2-common">Our services</h2>
           <ul className="our-service-container">
             <li className="our-service-subcontainer">
               <div className="our-service-subheader">
@@ -180,7 +180,7 @@ export const HomeComponent=()=>{
         </section>
 
         <section className="vacancies-list-section">
-          <h2 className="home-h2">Vacancies</h2>
+          <h2 className="home-h2 h2-common">Vacancies</h2>
           <ListVacanciesComponent
             listVacanciesRequestUrl={listVacanciesRequestUrl}
           />
@@ -193,7 +193,7 @@ export const HomeComponent=()=>{
         </section>
 
         <section className="our-partners-section">
-          <h2 className="home-h2">Our partners</h2>
+          <h2 className="home-h2 h2-common">Our partners</h2>
           <ul className="our-partners-container">
             <li className="our-partners-subcontainer">
               <img src={kofolaIcon} alt="Logo" />

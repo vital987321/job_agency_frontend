@@ -5,7 +5,7 @@ import salaryIcon from "../../svg/salary.svg";
 import locationIcon from "../../svg/location.svg";
 import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
-import "../../css/Vacancy.css";
+import "../../css/vacancy.css";
 import {RESIDENCE_TYPES} from '../../constants'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
@@ -31,8 +31,8 @@ function checkResidence(vacancy) {
         </div>
         <div>
           <p>MINIMAL RESIDENCE TYPE</p>
-          <p>
-            <b>{RESIDENCE_TYPES[vacancy.residence_type]}</b>
+          <p  className="vacancy-parameter-value">
+            {RESIDENCE_TYPES[vacancy.residence_type]}
           </p>
         </div>
       </div>
@@ -50,8 +50,8 @@ function checkVisaAssistance(vacancy) {
         </div>
         <div>
           <p>VISA ASSISTANCE</p>
-          <p>
-            <b>{message}</b>
+          <p  className="vacancy-parameter-value">
+            {message}
           </p>
         </div>
       </div>
@@ -81,7 +81,15 @@ export const VacancyComponent = () => {
 
   return (
     <>
-      <h2 className="h2-main">{vacancy.name}</h2>
+    <section className="vacancy-section">
+
+      <div className="published-date-container">
+        <p>Published: {stringToDateDMY(vacancy.created_at)}</p>
+      </div>
+
+
+      <h2 className="vacancy-header h2-common">{vacancy.name}</h2>          
+
       <div className="vacancy-container">
         <div className="vacancy-item">
           <div>
@@ -89,8 +97,8 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>SALARY</p>
-            <p>
-              <b>{vacancy.salary} CZK/month</b>
+            <p className="vacancy-parameter-value">
+              {vacancy.salary} CZK/month
             </p>
           </div>
         </div>
@@ -101,8 +109,8 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>LOCATION</p>
-            <p>
-              <b>{vacancy.location}</b>
+            <p className="vacancy-parameter-value">
+              {vacancy.location}
             </p>
           </div>
         </div>
@@ -113,8 +121,8 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>CONTRACT TYPE</p>
-            <p>
-              <b>{vacancy.contract_type}</b>
+            <p className="vacancy-parameter-value">
+              {vacancy.contract_type}
             </p>
           </div>
         </div>
@@ -125,10 +133,8 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>WORKING HOURHS</p>
-            <p>
-              <b>
+            <p className="vacancy-parameter-value">
                 {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
-              </b>
             </p>
           </div>
         </div>
@@ -139,20 +145,8 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>GENDER</p>
-            <p>
-              <b>{vacancy.gender}</b>
-            </p>
-          </div>
-        </div>
-
-        <div className="vacancy-item">
-          <div>
-            <img src={workingHoursIcon} alt="Logo" />
-          </div>
-          <div>
-            <p>ACTUALIZATION</p>
-            <p>
-              <b>{stringToDateDMY(vacancy.created_at)}</b>
+            <p className="vacancy-parameter-value">
+              {vacancy.gender}
             </p>
           </div>
         </div>
@@ -163,32 +157,38 @@ export const VacancyComponent = () => {
           </div>
           <div>
             <p>SECTOR</p>
-            <p>
-              <b>{listSectors(vacancy.sector_name)}</b>
+            <p className="vacancy-parameter-value">
+              {listSectors(vacancy.sector_name)}
             </p>
           </div>
         </div>
+
         {checkResidence(vacancy)}
         {checkVisaAssistance(vacancy)}
+
       </div>
 
       <div className="vacancy-container">
         <div>
-          <h3>Description</h3>
-          <div>
+          <h2>Description</h2>
+          <div className="discription-text-container">
             <p>{vacancy.description}</p>
           </div>
         </div>
 
         <div>
-          <h3>Requirements</h3>
-          <div>
+          <h2>Requirements</h2>
+          <div className="discription-text-container">
             <p>{vacancy.requirements}</p>
           </div>
         </div>
       </div>
-      <button onClick={applyButtonHandler}>Apply</button>
+      <div className="vacancy-apply-button-container">
+        <button className="vacancy-apply-button button-common" onClick={applyButtonHandler}>Apply</button>
+      </div >
+      </section>
+
       <ApplicationFormComponent AppFormDisplayValue={AppFormDisplayValue} vacancy={vacancy} setAppFormDisplayValue={setAppFormDisplayValue}/>
-    </>
+      </>
   );
 };
