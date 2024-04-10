@@ -9,6 +9,7 @@
 }
 
 .vacancies-pagination-section{
+    margin-top: 40px;
     display: flex;
     justify-content: end;
 }
@@ -20,7 +21,7 @@
 }
 
 .vacancies-paggination-button:hover{
-    font-weight: bold;
-    width: 100px;
+    text-decoration: underline;
+
 }
 
