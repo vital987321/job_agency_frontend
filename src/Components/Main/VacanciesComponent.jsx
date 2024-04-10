@@ -60,43 +60,59 @@ export const VacanciesComponent=()=>{
     }
 
 
-    return <div className="vacancies-container">
-        <button className="vacancies-filter-button common-button"
-            onClick={filterButtonHandler}
-            >
-            Filter <img src={filterIcon} alt="" />
+    return (
+      <div className="vacancies-container">
+        <button
+          className="vacancies-filter-button common-button"
+          onClick={filterButtonHandler}
+        >
+          Filter <img src={filterIcon} alt="" />
         </button>
         <h2 className="h2-main-header">Vacancies</h2>
-        <ListVacanciesComponent listVacanciesRequestUrl={listVacanciesRequestUrl}
-                                setVacanciesResponseData={setVacanciesResponseData}
+        <ListVacanciesComponent
+          listVacanciesRequestUrl={listVacanciesRequestUrl}
+          setVacanciesResponseData={setVacanciesResponseData}
         />
-        <section className="vacancies-pagination">
-            {
-                (()=>{
-                    if (vacanciesResponseData.previous !== null) return (
-                        <button id="previousVacanciesButton"
-                        onClick={paginationButtonHandler}>Previous</button>
-                    )
-                })()
-            }
-            {
-                (()=>{
-                    if (vacanciesResponseData.next !== null) return (
-                        <button id="nextVacanciesButton" onClick={paginationButtonHandler}>Next</button>
-                    )
-                })()
-            }
+        <section className="vacancies-pagination-section">
+          <div className="vacancies-pagination-previous-container">
+            {(() => {
+              if (vacanciesResponseData.previous !== null)
+                return (
+                  <button
+                    id="previousVacanciesButton"
+                    className="vacancies-paggination-button"
+                    onClick={paginationButtonHandler}
+                  >
+                   {'<'} Previous
+                  </button>
+                );
+            })()}
+          </div>
+        <div className="vacancies-pagination-previous-container">
+                    {(() => {
+            if (vacanciesResponseData.next !== null)
+              return (
+                <button
+                  className="vacancies-paggination-button"
+                  id="nextVacanciesButton"
+                  onClick={paginationButtonHandler}
+                >
+                  Next {'>'}
+                </button>
+              );
+          })()}</div>
+
+          
         </section>
-        <VacancyFilterComponent 
-            vacancyFilterDisplayValue={vacancyFilterDisplayValue} 
-            setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
-            listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
-            setListVacanciesRequestUrl={setListVacanciesRequestUrl}
-            generateListVacanciesRequestURL={generateListVacanciesRequestURL}
-            searchParams={searchParams}
-            
+        <VacancyFilterComponent
+          vacancyFilterDisplayValue={vacancyFilterDisplayValue}
+          setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
+          listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
+          setListVacanciesRequestUrl={setListVacanciesRequestUrl}
+          generateListVacanciesRequestURL={generateListVacanciesRequestURL}
+          searchParams={searchParams}
         />
-        
-    </div>
+      </div>
+    );
 }
 

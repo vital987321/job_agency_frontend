@@ -4,5 +4,23 @@
     margin-top: 50px;
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
+    
+
+}
+
+.vacancies-pagination-section{
+    display: flex;
+    justify-content: end;
+}
+
+.vacancies-paggination-button{
+    border: none;
+    background-color: transparent;
+    width: 100px;
+}
+
+.vacancies-paggination-button:hover{
+    font-weight: bold;
+    width: 100px;
 }
 
