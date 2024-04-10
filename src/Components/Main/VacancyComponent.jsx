@@ -188,7 +188,10 @@ export const VacancyComponent = () => {
       </div >
       </section>
 
-      <ApplicationFormComponent AppFormDisplayValue={AppFormDisplayValue} vacancy={vacancy} setAppFormDisplayValue={setAppFormDisplayValue}/>
+      <ApplicationFormComponent 
+          AppFormDisplayValue={AppFormDisplayValue} 
+          vacancy={vacancy} 
+          setAppFormDisplayValue={setAppFormDisplayValue}/>
       </>
   );
 };

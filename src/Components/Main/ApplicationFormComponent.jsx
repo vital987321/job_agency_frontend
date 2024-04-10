@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import closeIcon from '../../svg/X.svg'
 import { Form } from "react-router-dom";
 import "../../css/ApplicationForm.css";
 import axios from "axios";
@@ -46,14 +47,30 @@ export const ApplicationFormComponent = (props) => {
             console.log(err)})
   };
 
+  const closeButtonHandler=()=>{
+    props.setAppFormDisplayValue('none')
+  }
+
+  const onFormModalSpaceClick=(e)=>{
+    if (e.target.id == "application-form")
+      closeButtonHandler()
+  }
+
   return (
     <>
       <form
         id="application-form"
         onSubmit={appFormSubmitHandler}
         style={{ display: props.AppFormDisplayValue }}
+        onClick={onFormModalSpaceClick}
       >
+        
         <div className="application-form-container">
+          <div className="vacancy-filter-close-container">
+            <img className='vacancy-filter-close-button' 
+            onClick={closeButtonHandler} src={closeIcon} 
+            alt="X" />
+          </div>
           <div className="application-form-header">
             <h3>{props.vacancy.name}</h3>
             <p>Fill-in this application form and we will contact you ASAP</p>
@@ -104,7 +121,7 @@ export const ApplicationFormComponent = (props) => {
           </div>
           <div className="application-form-submit-block">
             <input
-              className="application-form-submit-button"
+              className="application-form-submit-button button-common"
               type="submit"
               value="Apply"
             />
