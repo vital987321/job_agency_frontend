@@ -10,6 +10,7 @@ import { VacanciesComponent } from "./VacanciesComponent";
 import { VacancyComponent } from "./VacancyComponent";
 import { ListApplicationsComponent } from "./ListApplicationsComponent";
 import { HomeComponent } from "./HomeComponent";
+import { AuthenticationComponent } from "./AuthenticationComponent";
 
 
 const Vacancies = () => {
@@ -24,6 +25,7 @@ const About = () => {
 export const MainComponent = (
   <Route path="/">
     <Route path="" element={<HomeComponent />} key="home" />
+    <Route path="auth" element={<AuthenticationComponent />} key="auth" />
     <Route path="vacancies" element={<VacanciesComponent />} key="vacancies" />
     <Route
       path="vacancies/:vacancy_id"
