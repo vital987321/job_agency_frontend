@@ -20,6 +20,9 @@ const NavMenu = () => {
       <Link to="/contacts" className="navLinks" key="contacts">
         Contacts
       </Link>
+      <Link to="/profile" className="navLinks" key="profile">
+        Profile
+      </Link>
     </div>
   )
 }
@@ -38,6 +41,7 @@ export const HeaderComponent = () => {
             <button className="header-button button-common">LogIn</button>
             <button className="header-button button-common">User</button>
           </div>
+
         </div>
 
       </header>

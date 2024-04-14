@@ -23,6 +23,12 @@
     align-items: center; */
 }
 
+.authentication-action-buttons-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
 .authentication-form{
     /* height: 100%;
     width: 50%; */
@@ -34,10 +40,7 @@
     align-items: center;
 }
 
-.authentication-action-buttons-container{
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .authentication-action-buttons{
     background-color: transparent;
@@ -66,7 +69,7 @@
 }
 
 .authentication-text-input{
-    margin-top: 30px;
+    margin-top: 15px;
     height: 30px;
     border: 1px solid black;
     border-radius: 8px;
@@ -83,4 +86,12 @@
 
 .password-repeat-space-holder{
     border: 1px solid transparent;
+    
+}
+
+.authentication-form-error-message{
+    height: 18px;
+    font-size:small;
+    font-weight: bold;
+    color: rgb(160, 0, 8);
 }
