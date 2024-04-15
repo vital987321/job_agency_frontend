@@ -97,9 +97,13 @@ export const AuthenticationComponent = () => {
             password: passwordRef.current.value
         })
         // .then((response)=> console.log(response))
-        .then((response) =>localStorage.setItem('token', response.data.token))
+        .then((response) =>{localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user_id', response.data.user_id);
+            localStorage.setItem('username', response.data.username);
+          }
+        )
         .catch((err) => {
-            // console.log("Login error:");
+            console.log('Error:')
             console.log(err);
         });
   };

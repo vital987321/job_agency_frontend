@@ -27,23 +27,49 @@ const NavMenu = () => {
   )
 }
 
+const HeaderControls =()=>{ 
+    const username = localStorage.getItem('username')
+  return (
+    <div className="header-controls">
+      {(()=>{
+
+        if (username){
+          return <>
+            <button className="button-common header-user-logo-button"
+              title={username}
+              >
+              {username[0].toUpperCase()}
+            </button>
+            <button className="button-common header-button ">LogOut</button>
+          </>
+        }
+        return(
+          <button className="header-button button-common">Log In</button>
+        )
+      })()}
+      
+      
+      <button className="language-button">En</button>
+    </div>
+  )
+}
+
 export const HeaderComponent = () => {
-    return (
-      <header>
-        <div className="header">
-          <div className="header-logo">
-            <Link to='/' className="navLinks" key="homepage">
-              <img src={agencyLogoIcon} height={80} alt="logo" />
-            </Link>
-          </div>
-          <NavMenu />
-          <div className="header-controls">
-            <button className="header-button button-common">LogIn</button>
-            <button className="header-button button-common">User</button>
-          </div>
+  const onLogOut=()=>{
+    
+  }
 
+  return (
+    <header>
+      <div className="header">
+        <div className="header-logo">
+          <Link to='/' className="navLinks" key="homepage">
+            <img src={agencyLogoIcon} height={80} alt="logo" />
+          </Link>
         </div>
-
-      </header>
-    );
+        <NavMenu />
+        <HeaderControls/>
+      </div>
+    </header>
+  );
 };
