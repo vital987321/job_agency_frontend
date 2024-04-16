@@ -1,6 +1,7 @@
 import agencyLogoIcon from '../../svg/agency_logo.svg'
-import {BrowserRouter as Router, Route, Routes, Link, Outlet} from "react-router-dom"
+import {BrowserRouter as Router, Route, Routes, useNavigate, Link, Outlet} from "react-router-dom"
 import '../../css/header.css'
+
 
 const NavMenu = () => {
   return(
@@ -20,31 +21,41 @@ const NavMenu = () => {
       <Link to="/contacts" className="navLinks" key="contacts">
         Contacts
       </Link>
-      <Link to="/profile" className="navLinks" key="profile">
-        Profile
-      </Link>
     </div>
   )
 }
 
 const HeaderControls =()=>{ 
     const username = localStorage.getItem('username')
+    const navigate = useNavigate();
+
+    const logOutButtonClick=()=>{
+      localStorage.removeItem('token')
+      localStorage.removeItem('user_id')
+      localStorage.removeItem('username')
+      navigate('/')
+    }
+
+    const logInButtonClick=()=>{
+      navigate('/auth')
+    }
+
   return (
     <div className="header-controls">
       {(()=>{
 
         if (username){
           return <>
-            <button className="button-common header-user-logo-button"
+            <button onClick={()=>{navigate('/profile')}} className="button-common header-user-logo-button"
               title={username}
               >
               {username[0].toUpperCase()}
             </button>
-            <button className="button-common header-button ">LogOut</button>
+            <button onClick={logOutButtonClick} className="button-common header-button ">LogOut</button>
           </>
         }
         return(
-          <button className="header-button button-common">Log In</button>
+          <button onClick={logInButtonClick} className="header-button button-common">Log In</button>
         )
       })()}
       

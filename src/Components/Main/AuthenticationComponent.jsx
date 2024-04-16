@@ -3,6 +3,7 @@ import closeIcon from "../../svg/X.svg";
 import { Form } from "react-router-dom";
 import "../../css/authentication.css";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 const emailRef = React.createRef();
 const passwordRef = React.createRef();
@@ -11,12 +12,12 @@ const confirmPasswordRef = React.createRef();
 export const AuthenticationComponent = () => {
   const [authenticationAction, setAuthenticationMethod] = useState("login"); // login signup
   const [errors, setErrors] = useState({});
-
+  const navigate = useNavigate();
 
   
 
   const closeButtonHandler = () => {
-    // props.setAppFormDisplayValue('none')
+    navigate('/')
   };
 
   const authenticationActionButtonHandler = (e) => {
@@ -100,6 +101,7 @@ export const AuthenticationComponent = () => {
         .then((response) =>{localStorage.setItem('token', response.data.token);
             localStorage.setItem('user_id', response.data.user_id);
             localStorage.setItem('username', response.data.username);
+            navigate('/')
           }
         )
         .catch((err) => {
