@@ -57,8 +57,8 @@ header{
   }
 
   .header-user-logo-button{
-    /* border: 1px solid red; */
-    background-color: #C0C0C0;
+
+    background-color: var(--avatar_default_background_color);
     width: 40px;
     height: 40px;
     border-radius: 50%;

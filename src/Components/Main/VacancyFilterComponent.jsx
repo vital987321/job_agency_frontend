@@ -71,7 +71,6 @@ export const VacancyFilterComponent = (props) => {
         vacancyFilterSalaryBar.offsetWidth -
         FILTER_POINTER_SIZE
     );
-    console.log(minSalaryValue);
     setLeftPointerPosition(extreemLeftPointerX);
     // setLeftPointerPosition(calculateLeftPointerPosition(minSalaryValue))
     // setRightPointerPosition(extreemRightPointerX)
