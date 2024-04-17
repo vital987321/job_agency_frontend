@@ -9,6 +9,9 @@ import "../../css/vacancy.css";
 import {RESIDENCE_TYPES} from '../../constants'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
+import api from "../api";
+
+const user_id = JSON.parse(localStorage.getItem("user_id"));
 
 function listSectors(sector_name) {
     if (sector_name !== undefined) {
@@ -64,6 +67,7 @@ export const VacancyComponent = () => {
   const [AppFormDisplayValue, setAppFormDisplayValue]=useState('none')
   const { vacancy_id } = useParams();
   const [vacancy, setVacancy] = useState({});
+  const [userData, setUserData]=useState({})
   
 
   const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
@@ -73,6 +77,21 @@ export const VacancyComponent = () => {
       .then((res) => setVacancy(res.data))
         // .then(() => console.log(vacancy))
       .catch((err) => console.log(err));
+    
+
+    if (user_id) {
+      const fetchUser = async () => {
+        try {
+          const response = await api.get("/user/" + user_id);
+          setUserData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+        };
+      fetchUser();
+    }
+    
+
   }, []);
 
   const applyButtonHandler=()=>{
@@ -191,7 +210,8 @@ export const VacancyComponent = () => {
       <ApplicationFormComponent 
           AppFormDisplayValue={AppFormDisplayValue} 
           vacancy={vacancy} 
-          setAppFormDisplayValue={setAppFormDisplayValue}/>
+          setAppFormDisplayValue={setAppFormDisplayValue}
+          userData={userData}/>
       </>
   );
 };
