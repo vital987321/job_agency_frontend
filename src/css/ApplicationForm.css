@@ -60,7 +60,6 @@
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-
 }
 
 .cv-application-form:hover::before {

@@ -61,3 +61,64 @@
     margin-top: 20px;
     width: 150px;
 }
+
+
+.user-profile-cv-input-upload,
+.user-profile-cv-input-replace{
+    padding-top: 4px;
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 4px;
+
+}
+
+.user-profile-cv-input-upload::-webkit-file-upload-button,
+.user-profile-cv-input-replace::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.user-profile-cv-input-upload::before,
+.user-profile-cv-input-replace::before{
+    display: inline-block;
+    background:#C0C0C0;
+  border-radius: 10px;
+  padding: 7px 20px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.user-profile-cv-input-upload:hover::before,
+.user-profile-cv-input-replace:hover::before {
+    /* text-decoration: underline; */
+    /* border-color: black; */
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
+    transform: translateY(-0.25em);
+
+  }
+  .user-profile-cv-input-upload:active::before,
+  .user-profile-cv-input-replace:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+  .user-profile-cv-input-upload::before{
+    content: 'Upload';
+  }
+  .user-profile-cv-input-replace::before{
+    content: 'Replace';
+  }
+
+  .profile-cv-input-container{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0 3rem 0 15px;
+    box-sizing: border-box;
+    font-size: medium;
+    margin-top: 20px;
+  }
+
+  .profile-my-cv-link-container{
+    margin-top: 10px;
+  }
