@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import api from "../api";
 import "../../css/userProfile.css";
 import editIcon from "../../svg/edit.svg";
+import {useNavigate} from "react-router-dom"
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
   const [userCurrentData, setUserCurrentData] = useState({});
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
+  const navigate=useNavigate()
 
   const user_id = JSON.parse(localStorage.getItem("user_id"));
+  const username = localStorage.getItem("username");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -37,6 +40,28 @@ export const UserProfileComponent = () => {
     setIsUserDataChanged(true);
   };
 
+  const SubmitUserProfileHandler=(e)=>{
+    e.preventDefault();
+    if (isUserDataChanged){
+      const updateProfile = async () => {
+        try {
+          const response = await api.patch("/user/" + user_id + '/',{
+            "first_name": userCurrentData.first_name,
+            "last_name": userCurrentData.last_name,
+            "phone": userCurrentData.phone
+          });
+          // console.log(response.status);
+          setIsUserDataChanged(false)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      updateProfile();
+    }
+
+  }
+
+
   const SubmitUserProfileChangesComponent = () => {
     if (isUserDataChanged) {
       return (
@@ -47,7 +72,6 @@ export const UserProfileComponent = () => {
     }
   };
 
-  const username = localStorage.getItem("username");
 
   if (!userData) {
     return <div>User not found</div>;
@@ -63,7 +87,7 @@ export const UserProfileComponent = () => {
             </p>
           </div>
         </div>
-        <form className="profile-user-data-form">
+        <form className="profile-user-data-form" onSubmit={SubmitUserProfileHandler}>
           <div className="profile-user-data-input-container">
             {/* <img
               className="profile-user-data-edit-icon"
