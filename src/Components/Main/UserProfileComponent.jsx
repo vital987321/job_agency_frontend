@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import api from "../api";
 import "../../css/userProfile.css";
 import editIcon from "../../svg/edit.svg";
+import closeIcon from "../../svg/X.svg";
 import {useNavigate} from "react-router-dom"
 
 const cvInputRef=React.createRef();
+
+
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
@@ -42,9 +45,16 @@ export const UserProfileComponent = () => {
     setIsUserDataChanged(true);
   };
 
-  const submitUserCvFormHandler=()=>{
-
-  }
+  const deleteCvButtonHandler=(e)=>{
+    e.preventDefault()
+    let updatedItem = {};
+    updatedItem['cv'] = null;
+    setUserCurrentData({
+      ...userCurrentData,
+      ...updatedItem,
+    });
+    setIsUserDataChanged(true);
+  };
 
   const submitUserProfileHandler=(e)=>{
     e.preventDefault();
@@ -76,7 +86,6 @@ export const UserProfileComponent = () => {
   }
 
 
-
   const SubmitUserProfileChangesComponent = () => {
     if (isUserDataChanged) {
       return (
@@ -87,33 +96,7 @@ export const UserProfileComponent = () => {
     }
   };
 
-
-
-  const ProfileCvInputComponent=()=>{
-
-    return <>
-      <div>
-            <div>
-              {(()=>{
-                if (userData.cv){
-                  return <a href={userData.cv}>My CV file</a>
-                }
-                return <p>No user CV file</p>
-              })()}
-            </div>
-
-            <input
-              type="file" 
-              id="user-profile-cv-input"
-              className={userData.cv ? "user-profile-cv-input-replace" : "user-profile-cv-input-upload"}
-              ref={cvInputRef} 
-              onChange={()=>setIsUserDataChanged(true)}
-            />
-          </div>
-    </>
-  }
-
-
+  
   if (!userData) {
     return <div>User not found</div>;
   }
@@ -198,19 +181,28 @@ export const UserProfileComponent = () => {
           
 
           <div className="profile-cv-input-container">
-            <div className="profile-my-cv-link-container">
-              {(()=>{
-                if (userData.cv){
-                  return <a className="navLinks" href={userData.cv}>My CV file</a>
-                }
-                return <p>No user CV file</p>
-              })()}
-            </div>
+              <div  className="profile-my-cv-link-container">
+                {(()=>{
+                  if (userCurrentData.cv){
+                    return<>
+                      <a className="navLinks" href={userData.cv}>My CV file</a>
+                      <button 
+                        className="profile-delete-cv-button" 
+                        title="Delete CV"
+                        onClick={deleteCvButtonHandler}
+                      >
+                        &#x2716;
+                      </button>
+                    </> 
+                  }
+                  return <p>No user CV file</p>
+                })()}
+              </div>
 
             <input
               type="file" 
               id="user-profile-cv-input"
-              className={userData.cv ? "user-profile-cv-input-replace" : "user-profile-cv-input-upload"}
+              className={userCurrentData.cv ? "user-profile-cv-input-replace" : "user-profile-cv-input-upload"}
               ref={cvInputRef} 
               onChange={()=>setIsUserDataChanged(true)}
             />

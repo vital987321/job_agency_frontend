@@ -113,7 +113,7 @@
     width: 100%;
     border: 1px solid black;
     border-radius: 8px;
-    padding: 0 3rem 0 15px;
+    padding: 0 15px 0 15px;
     box-sizing: border-box;
     font-size: medium;
     margin-top: 20px;
@@ -121,4 +121,17 @@
 
   .profile-my-cv-link-container{
     margin-top: 10px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile-delete-cv-button{
+    background-color: transparent;
+    border: none;
+    font-size: larger;
+  }
+  .profile-delete-cv-button:hover{
+    color: rgb(204, 0, 0);
+    font-weight: bold;
   }
