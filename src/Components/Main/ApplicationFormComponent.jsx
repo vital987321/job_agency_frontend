@@ -22,7 +22,12 @@ export const ApplicationFormComponent = (props) => {
     const email = emailRef.current.value;
     const phone = phoneRef.current.value;
     const message = messageRef.current.value;
-    const cvFile = cvFileRef.current.files[0];
+    let cvFile=null
+    if (props.userData.cv && usingProfileCV) {
+      cvFile=props.userData.cv
+    }
+    else cvFile = cvFileRef.current.files[0];
+    const user_id=localStorage.getItem('user_id')
 
     let formData = new FormData();
 
@@ -32,6 +37,7 @@ export const ApplicationFormComponent = (props) => {
     formData.append("email", email);
     formData.append("phone", phone);
     formData.append("message", message);
+    if (user_id) formData.append('user', user_id)
     if (cvFile) {
       formData.append("cv", cvFile);
     }
@@ -56,6 +62,7 @@ export const ApplicationFormComponent = (props) => {
   const onFormModalSpaceClick = (e) => {
     if (e.target.id == "application-form") closeButtonHandler();
   };
+
 
   const AttachCvCheckBoxComponent = () => {
     const checkBoxProfileCvHandler = (e) => {
