@@ -135,3 +135,11 @@
     color: rgb(204, 0, 0);
     font-weight: bold;
   }
+
+.profile-sent-applications-section{
+  margin-top: 80px;
+}
+
+.profile-sent-applications-header{
+  text-align: center;
+}

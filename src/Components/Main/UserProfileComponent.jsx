@@ -4,6 +4,8 @@ import "../../css/userProfile.css";
 import editIcon from "../../svg/edit.svg";
 import closeIcon from "../../svg/X.svg";
 import {useNavigate} from "react-router-dom"
+import {ListUserApplicationsComponent} from "./ListUserApplicationsComponent"
+import {ListApplicationsComponent} from "./ListApplicationsComponent"
 
 const cvInputRef=React.createRef();
 
@@ -211,7 +213,11 @@ export const UserProfileComponent = () => {
           <SubmitUserProfileChangesComponent />
         </form>
       </section>
-
+      
+      <section className="profile-sent-applications-section">
+        <h3 className="profile-sent-applications-header">Sent Applications</h3>
+        <ListApplicationsComponent/>        
+      </section>
     </>
   );
 };
