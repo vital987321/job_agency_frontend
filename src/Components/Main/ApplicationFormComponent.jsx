@@ -23,10 +23,11 @@ export const ApplicationFormComponent = (props) => {
     const phone = phoneRef.current.value;
     const message = messageRef.current.value;
     let cvFile=null
-    if (props.userData.cv && usingProfileCV) {
-      cvFile=props.userData.cv
+    try{
+      cvFile = cvFileRef.current.files[0];
     }
-    else cvFile = cvFileRef.current.files[0];
+    catch{}
+    
     const user_id=localStorage.getItem('user_id')
 
     let formData = new FormData();
@@ -37,7 +38,11 @@ export const ApplicationFormComponent = (props) => {
     formData.append("email", email);
     formData.append("phone", phone);
     formData.append("message", message);
+    if (usingProfileCV && props.userData.cv) {
+      formData.append('use_profile_cv', true)
+    }
     if (user_id) formData.append('user', user_id)
+    
     if (cvFile) {
       formData.append("cv", cvFile);
     }
