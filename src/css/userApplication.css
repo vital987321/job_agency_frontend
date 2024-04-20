@@ -1,0 +1,51 @@
+@import './constants.css';
+
+.user-application-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-bottom: 100px;
+}
+
+.sent-application-header{
+    margin-top: 50px;
+}
+
+.application-sent-date-container{
+    margin-top: 50px;
+}
+
+.application-data-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 20px 40px;
+}
+
+.application-data-item {
+    display: flex;
+    /* border: 1px solid green; */
+}
+
+.application-data-item img{
+    height: 30px;
+}
+
+.application-data-item div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px
+}
+
+.application-message-container{
+    margin-top:20px
+}
+
+.application-vacancy-details-link{
+    margin-top: 20px;
+    display: inline-block;
+    
+}
+.application-vacancy-details-link:hover{
+    text-decoration: none;
+}

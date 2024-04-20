@@ -65,10 +65,10 @@ function checkVisaAssistance(vacancy) {
 
 export const VacancyComponent = () => {
   const [AppFormDisplayValue, setAppFormDisplayValue]=useState('none')
-  const { vacancy_id } = useParams();
   const [vacancy, setVacancy] = useState({});
   const [userData, setUserData]=useState({})
-  
+  const { vacancy_id } = useParams();
+
 
   const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
   useEffect(() => {

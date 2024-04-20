@@ -12,6 +12,7 @@ import { ListApplicationsComponent } from "./ListApplicationsComponent";
 import { HomeComponent } from "./HomeComponent";
 import { AuthenticationComponent } from "./AuthenticationComponent";
 import { UserProfileComponent } from "./UserProfileComponent";
+import { UserApplicationComponent } from "./UserApplicationComponent";
 
 
 const Vacancies = () => {
@@ -35,8 +36,13 @@ export const MainComponent = (
     />
     <Route path="about" element={<About />} key="about" />
     <Route path="applications" element={<ListApplicationsComponent />} key="listApplication" />
-    <Route path="profile" element={<UserProfileComponent />} key="userProfile" />
 
+    <Route path="profile" element={<UserProfileComponent />} key="userProfile" />
+    <Route
+      path="applications/:application_id"
+      element={<UserApplicationComponent />}
+      key="Application"
+    />
     <Route path="*" element={<p>Path not Found</p>} key="notFound" />
   </Route>
 );

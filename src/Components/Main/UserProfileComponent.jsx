@@ -216,7 +216,7 @@ export const UserProfileComponent = () => {
       
       <section className="profile-sent-applications-section">
         <h3 className="profile-sent-applications-header">Sent Applications</h3>
-        <ListApplicationsComponent/>        
+        <ListUserApplicationsComponent/>        
       </section>
     </>
   );

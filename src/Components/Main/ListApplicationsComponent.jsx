@@ -9,7 +9,7 @@ export const ListApplicationsComponent = () => {
   useEffect(() => {
     axios
       .get("http://127.0.0.1:8000/application/")
-      .then(res => setData(res.data))
+      .then(response => setData(response.data.results))
       // .then(()=>console.log(data))
       .catch((err) => console.log(err));
     },[]
