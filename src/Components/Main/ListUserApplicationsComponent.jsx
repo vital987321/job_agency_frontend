@@ -42,6 +42,13 @@ const paginationButtonHandler=(e)=>{
   setApplicationListRequestUrl(applicationsResponseData[paginationDirection])
 }
 
+const StatusMarker=(props)=>{
+  if (props.status=='Rejected')
+    return <span className="status-marker-rejected">&nbsp; &#11044;</span>
+  if (props.status=='Approved')
+    return <span className="status-marker-approved">&#11044;</span>
+}
+ 
   return (
     <section className="list-applications-container">
       <table className="list-table">
@@ -52,7 +59,8 @@ const paginationButtonHandler=(e)=>{
               <td>{application.vacancy_details.name}</td>
               <td>{application.vacancy_details.salary} CZK</td>
               <td>{application.vacancy_details.location}</td>
-              <td>{application.status}</td>
+              <td>{application.status} <StatusMarker status={application.status}/> </td>
+              
               <td>{stringToDateDMY(application.created_at)}</td>
               <td>
                 <Link to={"/applications/"+application.id} className="details-link">

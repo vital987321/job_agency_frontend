@@ -7,6 +7,7 @@ import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import '../../css/userApplication.css'
+import api from "../api";
 
 
 
@@ -16,11 +17,18 @@ export const UserApplicationComponent = () => {
   const url = "http://127.0.0.1:8000/application/" + application_id;
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => setApplication(response.data))
+    const fetchApplication = async () => {
+      try{
+        const response = await api.get(url)
+        .then((response) => setApplication(response.data))
       .catch((err) => console.log(err));
-  }, []);
+      }
+      catch (error) {
+      console.log(error);}
+    };
+    fetchApplication()
+  },[])
+
 
   if (!application) {
     return <div>Loading data</div>

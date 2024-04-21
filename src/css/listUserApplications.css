@@ -14,3 +14,11 @@
 .applications-pagination-button:hover{
     text-decoration: underline;
 }
+
+.status-marker-approved{
+    color: #33D625;
+}
+
+.status-marker-rejected{
+    color: #d62b25;
+}
