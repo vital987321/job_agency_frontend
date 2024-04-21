@@ -46,13 +46,14 @@ const HeaderControls =()=>{
 
         if (username){
           return <>
-            <button 
-              onClick={()=>{navigate('/profile')}} 
-              className="button-common header-user-logo-button"
+            <Link 
+              to='/profile' 
+              className="button-common header-user-logo-button " 
+              key="profile"
               title={username}
               >
-              {username[0].toUpperCase()}
-            </button>
+              <p>{username[0].toUpperCase()}</p>  
+            </Link>
             <button onClick={logOutButtonClick} className="button-common header-button ">LogOut</button>
           </>
         }
