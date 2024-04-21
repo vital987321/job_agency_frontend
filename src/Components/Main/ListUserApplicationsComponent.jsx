@@ -4,15 +4,19 @@ import axios from 'axios'
 import '../../css/listUserApplications.css'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
 import {LIST_APPLICATIONS_BASE_URL} from '../../constants.js'
+import api from "../api";
 
 export const ListUserApplicationsComponent = () => {
   const [applicationsListData, setApplicationsListData]=useState([])
   const [applicationsResponseData, aetApplicationsResponseData]=useState({"count":"0", "next":null, "previous":null})
   const [applicationsListRequestUrl, setApplicationListRequestUrl]=useState(LIST_APPLICATIONS_BASE_URL)
+  
+  
   useEffect(() => {
-    axios
-      .get(applicationsListRequestUrl)
-      .then(response => {
+    const fetchListApplications = async () => {
+      try{
+        const response = await api.get(applicationsListRequestUrl)
+        .then(response => {
           setApplicationsListData(response.data.results)
           return response
         }
@@ -25,9 +29,13 @@ export const ListUserApplicationsComponent = () => {
         })}
       )
       .catch((err) => console.log(err));
-    },[applicationsListRequestUrl]
-  )
-
+      }
+      catch (error) {
+      console.log(error);}
+    };
+    fetchListApplications()
+  },[applicationsListRequestUrl])
+    
 
 const paginationButtonHandler=(e)=>{
   const paginationDirection= e.target.dataset.direction
