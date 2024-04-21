@@ -88,19 +88,20 @@ export const VacanciesComponent=()=>{
                 );
             })()}
           </div>
-        <div className="vacancies-pagination-previous-container">
-                    {(() => {
-            if (vacanciesResponseData.next !== null)
-              return (
-                <button
-                  className="vacancies-paggination-button"
-                  id="nextVacanciesButton"
-                  onClick={paginationButtonHandler}
-                >
-                  Next {'>'}
-                </button>
+          <div className="vacancies-pagination-previous-container">
+            {(() => {
+              if (vacanciesResponseData.next !== null)
+                return (
+                  <button
+                    className="vacancies-paggination-button"
+                    id="nextVacanciesButton"
+                    onClick={paginationButtonHandler}
+                  >
+                    Next {'>'}
+                  </button>
               );
-          })()}</div>
+            })()}
+          </div>
 
           
         </section>

@@ -3,9 +3,9 @@ import api from "../api";
 import "../../css/userProfile.css";
 import editIcon from "../../svg/edit.svg";
 import closeIcon from "../../svg/X.svg";
-import {useNavigate} from "react-router-dom"
 import {ListUserApplicationsComponent} from "./ListUserApplicationsComponent"
-import {ListApplicationsComponent} from "./ListApplicationsComponent"
+
+
 
 const cvInputRef=React.createRef();
 
@@ -15,10 +15,11 @@ export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
   const [userCurrentData, setUserCurrentData] = useState({});
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
-  const navigate=useNavigate()
+
 
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const username = localStorage.getItem("username");
+
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -218,6 +219,8 @@ export const UserProfileComponent = () => {
         <h3 className="profile-sent-applications-header">Sent Applications</h3>
         <ListUserApplicationsComponent/>        
       </section>
+
+
     </>
   );
 };

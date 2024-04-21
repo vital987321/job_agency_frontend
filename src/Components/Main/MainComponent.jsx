@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { VacanciesComponent } from "./VacanciesComponent";
 import { VacancyComponent } from "./VacancyComponent";
-import { ListApplicationsComponent } from "./ListApplicationsComponent";
+import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
 import { HomeComponent } from "./HomeComponent";
 import { AuthenticationComponent } from "./AuthenticationComponent";
 import { UserProfileComponent } from "./UserProfileComponent";
@@ -35,8 +35,7 @@ export const MainComponent = (
       key="vacancy"
     />
     <Route path="about" element={<About />} key="about" />
-    <Route path="applications" element={<ListApplicationsComponent />} key="listApplication" />
-
+    <Route path="applications" element={<ListUserApplicationsComponent />} key="listApplication" />
     <Route path="profile" element={<UserProfileComponent />} key="userProfile" />
     <Route
       path="applications/:application_id"

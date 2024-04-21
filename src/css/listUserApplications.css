@@ -1,0 +1,16 @@
+
+.applications-list-pagination-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+.applications-pagination-button{
+    border: none;
+    background-color: transparent;
+    width: 100px;
+}
+
+.applications-pagination-button:hover{
+    text-decoration: underline;
+}
