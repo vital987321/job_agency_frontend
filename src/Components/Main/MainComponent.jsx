@@ -13,15 +13,8 @@ import { HomeComponent } from "./HomeComponent";
 import { AuthenticationComponent } from "./AuthenticationComponent";
 import { UserProfileComponent } from "./UserProfileComponent";
 import { UserApplicationComponent } from "./UserApplicationComponent";
+import { AboutUsComponent } from "./InfoComponents/AboutUsComponent";
 
-
-const Vacancies = () => {
-    return <div>Vacancies Component</div>;
-}
-
-const About = () => {
-  return <div>About Component</div>;
-};
 
 
 export const MainComponent = (
@@ -34,7 +27,7 @@ export const MainComponent = (
       element={<VacancyComponent />}
       key="vacancy"
     />
-    <Route path="about" element={<About />} key="about" />
+    <Route path="about" element={<AboutUsComponent/>} key="about" />
     <Route path="applications" element={<ListUserApplicationsComponent />} key="listApplication" />
     <Route path="profile" element={<UserProfileComponent />} key="userProfile" />
     <Route
