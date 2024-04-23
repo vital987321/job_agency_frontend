@@ -8,7 +8,7 @@
 
 .about-us-header{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .about-us-text-container{
@@ -20,7 +20,7 @@
 }
 
 .why-us-header{
-    margin-top: 80px;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -28,9 +28,9 @@
     text-align: center;
     width: 700px;
     max-width: 80%;
-    margin: 0 auto;
+    margin: 50px auto 0;
     font-size: large;
-    margin-top:20px;
+    margin-top:30px;
 }
 
 .why-us-cards-container{
@@ -72,13 +72,27 @@
 
 
 .our-team-section-header{
-    margin-top: 80px;
+    margin-top: 100px;
     text-align: center;
 }
 
 .our-team-members-container{
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
+}
+
+.our-team-member-card-name{
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.our-yeam-member-card-position{
+    margin-top: 10px;
+}
+
+.our-team-member-card-photo{
+    width: 100%;
 }
