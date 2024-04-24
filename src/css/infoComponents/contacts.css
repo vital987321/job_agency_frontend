@@ -1,0 +1,47 @@
+@import '../constants.css';
+
+
+.contacts-component-body{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+
+.contacts-components-header{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.contacts-components-subheader{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.contacts-and-map-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.contacts-container{
+
+}
+
+.contacts-small-icon{
+    height: 1rem;
+}
+
+.contacts-single-item-container{
+    margin-top: 20px;
+    display: flex;
+}
+
+.contacts-single-item-text{
+    margin-left: 10px;
+}
+
+.contacts-components-subfooter{
+    margin-top: 50px;
+    text-align: center;
+}

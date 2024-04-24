@@ -15,7 +15,7 @@ import { UserProfileComponent } from "./UserProfileComponent";
 import { UserApplicationComponent } from "./UserApplicationComponent";
 import { AboutUsComponent } from "./InfoComponents/AboutUsComponent";
 import { CertificatesComponent } from "./InfoComponents/CertificatesComponent";
-
+import { ContactsComponent } from "./InfoComponents/ContactsComponent";
 
 
 export const MainComponent = (
@@ -30,6 +30,7 @@ export const MainComponent = (
     />
     <Route path="about" element={<AboutUsComponent/>} key="about" />
     <Route path="certificates" element={<CertificatesComponent/>} key="certificates" />
+    <Route path="contacts" element={<ContactsComponent/>} key="contacts" />
     <Route path="applications" element={<ListUserApplicationsComponent />} key="listApplication" />
     <Route path="profile" element={<UserProfileComponent />} key="userProfile" />
     <Route
