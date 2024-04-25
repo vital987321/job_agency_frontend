@@ -80,7 +80,7 @@
 .user-profile-cv-input-upload::before,
 .user-profile-cv-input-replace::before{
     display: inline-block;
-    background:#C0C0C0;
+    background: var(--button-general-background-color3);
   border-radius: 10px;
   padding: 7px 20px;
   outline: none;

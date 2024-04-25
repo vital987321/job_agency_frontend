@@ -93,7 +93,7 @@ export const UserProfileComponent = () => {
     if (isUserDataChanged) {
       return (
         <>
-          <input type="submit" className="button-common profile-form-submit-button" value="Save changes" />
+          <input type="submit" className="button-common profile-form-submit-button button-common-color1" value="Save changes" />
         </>
       );
     }

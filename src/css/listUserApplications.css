@@ -5,6 +5,25 @@
     justify-content: end;
 }
 
+.list-applications-table{
+    margin-top: 2px;
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+.applications-table-tr{
+    border-bottom: 1px solid grey;
+    
+}
+
+.applications-table-tr td{
+    padding: 10px 0;
+}
+
+.applications-table-tr td:first-child{
+    font-weight: bold;
+  }
+
 .applications-pagination-button{
     border: none;
     background-color: transparent;

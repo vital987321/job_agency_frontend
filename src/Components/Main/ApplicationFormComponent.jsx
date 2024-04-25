@@ -167,7 +167,7 @@ export const ApplicationFormComponent = (props) => {
               name=""
               id="message-application-form"
               cols="30"
-              rows="10"
+              rows="6"
               ref={messageRef}
             ></textarea>
           </div>

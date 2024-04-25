@@ -51,12 +51,12 @@ const StatusMarker=(props)=>{
  
   return (
     <section className="list-applications-container">
-      <table className="list-table">
+      <table className="list-applications-table">
         <tbody >
           {applicationsListData.map(application => {
           return (
-            <tr key={application.id}>
-              <td>{application.vacancy_details.name}</td>
+            <tr className="applications-table-tr" key={application.id}>
+              <td>{application.vacancy_details.name.length<30? application.vacancy_details.name: application.vacancy_details.name.slice(0, 25)+'...'}</td>
               <td>{application.vacancy_details.salary} CZK</td>
               <td>{application.vacancy_details.location}</td>
               <td>{application.status} <StatusMarker status={application.status}/> </td>
@@ -64,7 +64,7 @@ const StatusMarker=(props)=>{
               <td>{stringToDateDMY(application.created_at)}</td>
               <td>
                 <Link to={"/applications/"+application.id} className="details-link">
-                    <button className="details-link-button button-common">Details</button>
+                    <button className="details-link-button button-common button-common-color4">Details</button>
                 </Link>
               </td>
             </tr>
