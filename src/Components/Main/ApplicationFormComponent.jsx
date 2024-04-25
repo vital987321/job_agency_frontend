@@ -173,7 +173,7 @@ export const ApplicationFormComponent = (props) => {
           </div>
           <div className="application-form-submit-block">
             <input
-              className="application-form-submit-button button-common"
+              className="application-form-submit-button button-common button-common-color1"
               type="submit"
               value="Apply"
             />

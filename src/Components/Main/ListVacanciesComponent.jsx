@@ -18,12 +18,12 @@ export const ListVacanciesComponent = (props) => {
   )
   return (
     <div className="vacancies-list-container">
-      <table className="list-table">
+      <table className="list-vacancies-table">
         <tbody>
           {vacanciesList.map(vacancy => {
           return (
-            <tr key={vacancy.id}>
-              <td>{vacancy.name}</td>
+            <tr className="vacancy-list-tr" key={vacancy.id}>
+              <td>{vacancy.name.length<30? vacancy.name: vacancy.name.slice(0, 25)+'...'}</td>
               <td>{vacancy.location}</td>
               <td>{vacancy.gender}</td>
               <td>{vacancy.salary} CZK</td>
@@ -34,7 +34,7 @@ export const ListVacanciesComponent = (props) => {
               <td>{stringToDateDMY(vacancy.created_at)}</td>
               <td>
                 <Link to={"/vacancies/"+vacancy.id} className="details-link">
-                  <button className="details-link-button button-common">Details</button>
+                  <button className="details-link-button button-common button-common-color4 ">Details</button>
                 </Link>
               </td>
             </tr>

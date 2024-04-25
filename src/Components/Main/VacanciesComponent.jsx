@@ -63,7 +63,7 @@ export const VacanciesComponent=()=>{
     return (
       <div className="vacancies-container">
         <button
-          className="vacancies-filter-buttn button-common"
+          className="vacancies-filter-buttn button-common button-common-color3"
           onClick={filterButtonHandler}
         >
           Filter <img src={filterIcon} alt="" />

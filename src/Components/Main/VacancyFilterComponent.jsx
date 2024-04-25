@@ -295,7 +295,7 @@ export const VacancyFilterComponent = (props) => {
         />
         <div className="vacancy-filter-submit-button-container">
           <input
-            className="vacancy-filter-submit-button button-common"
+            className="vacancy-filter-submit-button button-common button-common-color2"
             type="submit"
             value="Filter"
           />

@@ -208,7 +208,7 @@ export const VacancyComponent = () => {
         </div>
       </div>
       <div className="vacancy-apply-button-container">
-        <button className="vacancy-apply-button button-common" onClick={applyButtonHandler}>Apply</button>
+        <button className="vacancy-apply-button button-common button-common-color1" onClick={applyButtonHandler}>Apply</button>
       </div >
       </section>
 

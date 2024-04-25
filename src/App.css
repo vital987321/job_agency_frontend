@@ -30,13 +30,13 @@ table{
 }
 
 /* Common properties */
-.h2-common{
+/* .h2-common{
   font-size: xx-large;
   text-align: center;
-}
+} */
 
 
-.button-common{
+/* .button-common{
   background: #C0C0C0;
   border: none;
   padding: 10px 25px;
@@ -47,5 +47,5 @@ table{
 .button-common:focus {
   box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
   transform: translateY(-0.25em);
-}
+} */
 

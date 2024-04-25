@@ -3,7 +3,7 @@
 /* __________ Common styles __________ */
 .home-h2{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 
@@ -86,7 +86,7 @@
 .statistics-container{
     padding-left: var(--global_margin_left_right);
     padding-right: var(--global_margin_left_right);
-    background: #D9D9D9;
+    background: var(--design-color2);
     display: flex;
     justify-content: space-evenly;
     height: 150px;
@@ -104,11 +104,13 @@
 .statistics-impressive-text{
     font-size: x-large;
     font-weight: bold;
+    color: white;
 }
 
 .statistics-plain-text{
     margin-top:20px;
     text-align: center;
+    color: white;
 }
 
 .our-service-section{
@@ -125,7 +127,8 @@
 }
 
 .our-service-subcontainer{
-    background: #D9D9D9;
+    /* background: #D9D9D9; */
+    box-shadow: 0 0 5px #888888;
     padding: 15px;
     border-radius: 12px;
 }

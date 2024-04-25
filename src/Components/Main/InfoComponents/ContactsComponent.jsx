@@ -52,6 +52,10 @@ export const ContactsComponent = () => {
                 <p>Mon-Fri: 9:00 - 17:00</p>
               </div>
             </div>
+            <p className="contacts-register-text">
+            Firma je zapsána v obchodním rejtříku vedeném u MS v Praze, vložka 67745, oddíl C.
+            </p>
+               
           </div>
 
          

@@ -9,20 +9,29 @@
     top: 0;
     background-Color: rgba(175, 175, 175, 1);
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center; 
 }
+
 
 .authentication-modal-window-container{
     background-color: white;
     border-radius: 20px;
     box-sizing: border-box;
-    padding: 20px 20px;
-    /* display: flex;
+    display: flex;
     justify-content:center;
-    align-items: center; */
+    align-items: center;
+    height: 450px;
 }
 
+.login-img{
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+}
+
+.authentication-input-main-container{
+    padding: 20px 20px;
+}
 .authentication-action-buttons-container{
     display: flex;
     justify-content: space-between;
@@ -65,7 +74,7 @@
 }
 
 #authentication-action-button-login{
-    background: #C9C9C9;
+    background: #F0D976;
 }
 
 .authentication-text-input{
