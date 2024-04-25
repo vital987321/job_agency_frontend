@@ -5,6 +5,11 @@ import salaryIcon from "../../svg/salary.svg";
 import locationIcon from "../../svg/location.svg";
 import contractTypeIcon from "../../svg/contract_type.svg";
 import workingHoursIcon from "../../svg/working_hours.svg";
+import passportIcon from "../../svg/open-passport-svgrepo-com.svg";
+import visaServiceIcon from "../../svg/visa-service.svg";
+import genderIcon from "../../svg/gender.svg";
+import factoryIcon from "../../svg/factory.svg";
+
 import "../../css/vacancy.css";
 import {RESIDENCE_TYPES} from '../../constants'
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
@@ -30,7 +35,7 @@ function checkResidence(vacancy) {
     return (
       <div className="vacancy-item">
         <div>
-          <img src={workingHoursIcon} alt="Logo" />
+          <img src={passportIcon} alt="Logo" />
         </div>
         <div>
           <p>MINIMAL RESIDENCE TYPE</p>
@@ -49,7 +54,7 @@ function checkVisaAssistance(vacancy) {
     return (
       <div className="vacancy-item">
         <div>
-          <img src={workingHoursIcon} alt="Logo" />
+          <img src={visaServiceIcon} alt="Logo" />
         </div>
         <div>
           <p>VISA ASSISTANCE</p>
@@ -160,7 +165,7 @@ export const VacancyComponent = () => {
 
         <div className="vacancy-item">
           <div>
-            <img src={workingHoursIcon} alt="Logo" />
+            <img src={genderIcon} alt="Logo" />
           </div>
           <div>
             <p>GENDER</p>
@@ -172,7 +177,7 @@ export const VacancyComponent = () => {
 
         <div className="vacancy-item">
           <div>
-            <img src={workingHoursIcon} alt="Logo" />
+            <img src={factoryIcon} alt="Logo" />
           </div>
           <div>
             <p>SECTOR</p>

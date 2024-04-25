@@ -22,11 +22,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 5px;
+    
 
 }
 
 .certificate-img{
+    border-radius: 10px;
     width: 100%;
+}
+.certificate-img:hover{
+
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
+  transform: translateY(-0.25em);
 }
 
 
@@ -39,4 +47,8 @@
     background-Color: rgba(175, 175, 175, 0.9);
     justify-content:center;
     align-items: center;
+}
+
+.certificate-full-size-image{
+    height: 95vh;
 }

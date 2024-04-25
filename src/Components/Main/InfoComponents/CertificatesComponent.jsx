@@ -19,6 +19,7 @@ const ShowCertificateComponent = (props) => {
     >
       <div>
         <img
+          className="certificate-full-size-image"
           src={props.currentCertificate}
           alt="certificate"
           
