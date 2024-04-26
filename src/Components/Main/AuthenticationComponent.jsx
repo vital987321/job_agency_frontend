@@ -72,36 +72,41 @@ export const AuthenticationComponent = () => {
 
   const authenticationFormSubmitHandler = (e) => {
     e.preventDefault();
-    if (authenticationAction === "signup") {
-      if (isValidForm()) {
-        const signupRequesrURL = "http://127.0.0.1:8000/user/";
-        axios
-          .post(signupRequesrURL, {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-          })
-          .then((response) =>
-            console.log("response sratus: " + response.status)
-          )
-          .catch((err) => {
-            console.log("Signup error:");
-            console.log(err);
-            return null;
-          });
-      } else {
-        console.log("form is not valid");
-        return null;
-      }
+    if (authenticationAction === "login") {
+      sendLoginRequest();
     }
+    if (authenticationAction === "signup") {
+        if (isValidForm()) {
+          const signupRequesrURL = "http://127.0.0.1:8000/user/";
+          axios
+            .post(signupRequesrURL, {
+              email: emailRef.current.value,
+              password: passwordRef.current.value,
+            })
+            .then((response) =>
+              console.log("response sratus: " + response.status)
+            )
+            .then(() => sendLoginRequest())
+            .catch((err) => {
+              console.log("Signup error:");
+              console.log(err);
+              return null;
+            });
+        } else {
+          console.log("form is not valid");
+          return null;
+        }
+      }
 
-    // login anyway
+  };
+
+  const sendLoginRequest = () => {
     const loginRequestURL = "http://127.0.0.1:8000/auth/";
     axios
       .post(loginRequestURL, {
         username: emailRef.current.value,
         password: passwordRef.current.value,
       })
-      // .then((response)=> console.log(response))
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user_id", response.data.user_id);
@@ -112,7 +117,7 @@ export const AuthenticationComponent = () => {
         console.log("Error:");
         console.log(err);
       });
-  };
+  }
 
   const PassworRepeatComponent = () => {
     if (authenticationAction == "signup") {
