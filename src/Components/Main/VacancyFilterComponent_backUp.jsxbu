@@ -43,15 +43,6 @@ export const VacancyFilterComponent = (props) => {
       rightPointerPosition - FILTER_POINTER_SIZE,
       calcPointerPosition
     );
-    console.log("");
-    console.log('salaryValue:', salaryValue);
-    console.log("extreemRightPointerX:", extreemRightPointerX);
-    console.log("extreemLeftPointerX:", extreemLeftPointerX);
-    console.log("FILTER_POINTER_SIZE:", FILTER_POINTER_SIZE);
-    console.log("SALARY_CEILING:", SALARY_CEILING);
-    console.log("calcPointerPosition:", calcPointerPosition);
-    console.log("SALARY_CEILING:", SALARY_CEILING);
-
     return calcPointerPosition;
   };
 
@@ -80,8 +71,8 @@ export const VacancyFilterComponent = (props) => {
         vacancyFilterSalaryBar.offsetWidth -
         FILTER_POINTER_SIZE
     );
-    // setLeftPointerPosition(extreemLeftPointerX);
-    setLeftPointerPosition(calculateLeftPointerPosition(minSalaryValue))
+    setLeftPointerPosition(extreemLeftPointerX);
+    // setLeftPointerPosition(calculateLeftPointerPosition(minSalaryValue))
     // setRightPointerPosition(extreemRightPointerX)
     setRightPointerPosition(calculateRightPointerPosition(maxSalaryValue));
   }, [
