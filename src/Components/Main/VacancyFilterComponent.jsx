@@ -40,18 +40,9 @@ export const VacancyFilterComponent = (props) => {
       extreemLeftPointerX;
     calcPointerPosition = Math.max(extreemLeftPointerX, calcPointerPosition);
     calcPointerPosition = Math.min(
-      rightPointerPosition - FILTER_POINTER_SIZE,
+      extreemRightPointerX - FILTER_POINTER_SIZE,
       calcPointerPosition
     );
-    console.log("");
-    console.log('salaryValue:', salaryValue);
-    console.log("extreemRightPointerX:", extreemRightPointerX);
-    console.log("extreemLeftPointerX:", extreemLeftPointerX);
-    console.log("FILTER_POINTER_SIZE:", FILTER_POINTER_SIZE);
-    console.log("SALARY_CEILING:", SALARY_CEILING);
-    console.log("calcPointerPosition:", calcPointerPosition);
-    console.log("SALARY_CEILING:", SALARY_CEILING);
-
     return calcPointerPosition;
   };
 
