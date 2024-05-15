@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../../css/commonElements.css'
 import '../../css/vacancies.css'
-import {LIST_VACANCIES_BASE_URL} from '../../constants.js'
+import {LIST_VACANCIES_BASE_URL, VACANCY_LIST_LIMIT} from '../../constants.js'
 import filterIcon from '../../svg/settings.svg'
 import { ListVacanciesComponent } from './ListVacanciesComponent'
 import { VacancyFilterComponent } from './VacancyFilterComponent'
@@ -21,16 +21,27 @@ export const VacanciesComponent=()=>{
     }
 
     const generateListVacanciesRequestURL=()=>{
-        let url=LIST_VACANCIES_BASE_URL+'?';
-        url+=searchParams.get('limit') ? 'limit=' + searchParams.get('limit') : 'limit=10'
-        url+=searchParams.get('offset') ? '&offset=' + searchParams.get('offset') : '&offset=0'
-        url+=searchParams.get('key_search') ? '&key_search=' + searchParams.get('key_search') : ''
-        url+=searchParams.get('salary_gte') ? '&salary_gte=' + searchParams.get('salary_gte') : ''
-        url+=searchParams.get('salary_lte') ? '&salary_lte=' + searchParams.get('salary_lte') : ''
-        url+=searchParams.get('location') ? '&location=' + searchParams.get('location') : ''
-        url+=searchParams.get('residence_type') ? '&residence_type=' + searchParams.get('residence_type') : ''
-        return url                                        
+      return LIST_VACANCIES_BASE_URL+ '?' + generateListVacanciesRequestQueryString()                                     
     }
+
+    const generateListVacanciesRequestQueryString=(offset)=>{
+      let qstr=''
+      qstr+=searchParams.get('limit') ? 'limit=' + searchParams.get('limit') : 'limit='+VACANCY_LIST_LIMIT
+      if (isNaN(offset)){
+        qstr+=searchParams.get('offset') ? '&offset=' + searchParams.get('offset') : '&offset=0'
+      }
+      else{
+        qstr+='&offset='+offset
+      }
+      qstr+=searchParams.get('key_search') ? '&key_search=' + searchParams.get('key_search') : ''
+      qstr+=searchParams.get('salary_gte') ? '&salary_gte=' + searchParams.get('salary_gte') : ''
+      qstr+=searchParams.get('salary_lte') ? '&salary_lte=' + searchParams.get('salary_lte') : ''
+      qstr+=searchParams.get('location') ? '&location=' + searchParams.get('location') : ''
+      qstr+=searchParams.get('residence_type') ? '&residence_type=' + searchParams.get('residence_type') : ''
+      return qstr
+    }
+
+    
 
 
     const updateListVacanciesRequestURL=()=>{
@@ -47,7 +58,7 @@ export const VacanciesComponent=()=>{
         if (urlString){
             const queryString=urlString.split('?')[1]
             if (queryString) {
-                console.log(queryString)
+                // console.log(queryString)
                 return queryString
             }
         }
@@ -56,7 +67,32 @@ export const VacanciesComponent=()=>{
 
     const paginationButtonHandler=(e)=>{
         const paginationDirection= e.target.id==="previousVacanciesButton" ? 'previous' : 'next';
-        navigate('?'+getQueryString(vacanciesResponseData[paginationDirection]))
+        navigate('?'+ getQueryString(vacanciesResponseData[paginationDirection]))
+    }
+
+    const PaginationNumberedLinks=()=>{
+      const vacanciesTotalNumber=vacanciesResponseData.count
+      if (vacanciesTotalNumber>VACANCY_LIST_LIMIT){
+        let paginationArray = new Array()
+        for (let i=0; i<vacanciesTotalNumber/VACANCY_LIST_LIMIT; i++) {
+          paginationArray.push(i)
+        }
+        return <>
+          {paginationArray.map(item=>{
+            return (
+              <a
+                key={item} 
+                className="vacancies-paggination-button"
+                href={'?'+generateListVacanciesRequestQueryString(item*VACANCY_LIST_LIMIT)}
+              >
+                {item}
+              </a>
+            )
+          })}
+        </>
+      }
+      return ''
+
     }
 
 
@@ -88,6 +124,9 @@ export const VacanciesComponent=()=>{
                 );
             })()}
           </div>
+          
+          <PaginationNumberedLinks/>
+          
           <div className="vacancies-pagination-previous-container">
             {(() => {
               if (vacanciesResponseData.next !== null)

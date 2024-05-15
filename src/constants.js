@@ -11,6 +11,8 @@ export const RESIDENCE_TYPES={
 export const SALARY_CEILING=150000
 export const FILTER_POINTER_SIZE=20
 
+export const VACANCY_LIST_LIMIT=10
+
 
 export const LIST_VACANCIES_BASE_URL ="http://127.0.0.1:8000/vacancy/"
 export const LIST_APPLICATIONS_BASE_URL ="http://127.0.0.1:8000/application/"
