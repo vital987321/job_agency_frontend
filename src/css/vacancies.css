@@ -14,14 +14,26 @@
     justify-content: end;
 }
 
-.vacancies-paggination-button{
+.vacancies-pagination-button{
     border: none;
     background-color: transparent;
     width: 100px;
 }
 
-.vacancies-paggination-button:hover{
+.vacancies-pagination-button:hover{
     text-decoration: underline;
 
 }
 
+.vacancies-pagination-link{
+    text-decoration: none;
+    border: solid 1px gray;
+    margin-left: 10px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: black;
+}
+
+.current-vacancy-pagination-link{
+    background-color: var(--button-general-background-color3);
+}

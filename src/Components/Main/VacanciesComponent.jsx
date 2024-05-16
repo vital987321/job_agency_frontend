@@ -58,7 +58,6 @@ export const VacanciesComponent=()=>{
         if (urlString){
             const queryString=urlString.split('?')[1]
             if (queryString) {
-                // console.log(queryString)
                 return queryString
             }
         }
@@ -74,7 +73,12 @@ export const VacanciesComponent=()=>{
       const vacanciesTotalNumber=vacanciesResponseData.count
       if (vacanciesTotalNumber>VACANCY_LIST_LIMIT){
         let paginationArray = new Array()
-        for (let i=0; i<vacanciesTotalNumber/VACANCY_LIST_LIMIT; i++) {
+        const currentOffset=searchParams.get('offset') ? searchParams.get('offset') : '0'
+        const currentPaginationNumber=Math.floor(currentOffset/VACANCY_LIST_LIMIT)+1
+        const minPaginationNumber=Math.max(1, currentPaginationNumber-3)
+        const maxPaginationNumber=Math.min(currentPaginationNumber+3, Math.ceil(vacanciesTotalNumber/VACANCY_LIST_LIMIT))
+
+        for (let i=minPaginationNumber; i<=maxPaginationNumber; i++) {
           paginationArray.push(i)
         }
         return <>
@@ -82,8 +86,8 @@ export const VacanciesComponent=()=>{
             return (
               <a
                 key={item} 
-                className="vacancies-paggination-button"
-                href={'?'+generateListVacanciesRequestQueryString(item*VACANCY_LIST_LIMIT)}
+                className={"vacancies-pagination-link" + (item==currentPaginationNumber ? ' current-vacancy-pagination-link' : '')}
+                href={'?'+generateListVacanciesRequestQueryString((item-1)*VACANCY_LIST_LIMIT)}
               >
                 {item}
               </a>
@@ -116,7 +120,7 @@ export const VacanciesComponent=()=>{
                 return (
                   <button
                     id="previousVacanciesButton"
-                    className="vacancies-paggination-button"
+                    className="vacancies-pagination-button"
                     onClick={paginationButtonHandler}
                   >
                    {'<'} Previous
@@ -132,7 +136,7 @@ export const VacanciesComponent=()=>{
               if (vacanciesResponseData.next !== null)
                 return (
                   <button
-                    className="vacancies-paggination-button"
+                    className="vacancies-pagination-button"
                     id="nextVacanciesButton"
                     onClick={paginationButtonHandler}
                   >
