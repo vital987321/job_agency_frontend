@@ -1,11 +1,11 @@
 import './App.css';
-import { BodyComponent } from './Components/BodyComponent';
+import { BrowserRouterComponent } from './Components/BrowserRouterComponent';
 
 
 function App() {
   return (
     <>
-      <BodyComponent />
+      <BrowserRouterComponent />
     </>
   );
 }

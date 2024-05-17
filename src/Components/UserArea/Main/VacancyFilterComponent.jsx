@@ -1,11 +1,11 @@
-import closeIcon from "../../svg/X.svg";
-import "../../css/vacancyFilter.css";
+import closeIcon from "../../../svg/X.svg";
+import "../../../css/vacancyFilter.css";
 import React, { useState, useEffect } from "react";
 import {
   SALARY_CEILING,
   FILTER_POINTER_SIZE,
   RESIDENCE_TYPES,
-} from "../../constants";
+} from "../../../constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 
 const vacancyKeyWordsRef = React.createRef();
@@ -72,7 +72,7 @@ export const VacancyFilterComponent = (props) => {
         FILTER_POINTER_SIZE
     );
     // setLeftPointerPosition(extreemLeftPointerX);
-    setLeftPointerPosition(calculateLeftPointerPosition(minSalaryValue))
+    setLeftPointerPosition(calculateLeftPointerPosition(minSalaryValue));
     // setRightPointerPosition(extreemRightPointerX)
     setRightPointerPosition(calculateRightPointerPosition(maxSalaryValue));
   }, [

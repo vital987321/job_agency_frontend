@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import salaryIcon from "../../svg/salary.svg";
-import locationIcon from "../../svg/location.svg";
-import contractTypeIcon from "../../svg/contract_type.svg";
-import workingHoursIcon from "../../svg/working_hours.svg";
+import salaryIcon from "../../../svg/salary.svg";
+import locationIcon from "../../../svg/location.svg";
+import contractTypeIcon from "../../../svg/contract_type.svg";
+import workingHoursIcon from "../../../svg/working_hours.svg";
 import "./Vacancy.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
+import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
 
 function listSectors(sector_name) {

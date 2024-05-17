@@ -1,7 +1,7 @@
-import agencyLogoIcon from '../../svg/agency_logo.svg'
+import agencyLogoIcon from '../../../svg/agency_logo.svg'
 import {BrowserRouter as Router, Route, Routes, useNavigate, Link, Outlet} from "react-router-dom"
-import '../../css/commonElements.css'
-import '../../css/header.css'
+import '../../../css/commonElements.css'
+import '../../../css/header.css'
 
 
 const NavMenu = () => {

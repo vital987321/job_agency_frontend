@@ -1,8 +1,8 @@
-import locationIcon from "../../../svg/locationIcon.svg";
-import callIcon from "../../../svg/call_icon.svg";
-import emailIcon from "../../../svg/email_icon.svg";
-import timeIcon from "../../../svg/time_icon.svg";
-import '../../../css/infoComponents/contacts.css'
+import locationIcon from "../../../../svg/locationIcon.svg";
+import callIcon from "../../../../svg/call_icon.svg";
+import emailIcon from "../../../../svg/email_icon.svg";
+import timeIcon from "../../../../svg/time_icon.svg";
+import '../../../../css/infoComponents/contacts.css'
 
 export const ContactsComponent = () => {
   return (
@@ -15,9 +15,9 @@ export const ContactsComponent = () => {
             width="600"
             height="450"
             style={{ border: 0 }}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
           <div className="contacts-container">
             <div className="contacts-single-item-container">

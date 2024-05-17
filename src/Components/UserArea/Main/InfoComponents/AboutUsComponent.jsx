@@ -1,15 +1,15 @@
-import icon_proff_experiens_52 from '../../../svg/icon-proff-experiens 52.svg'
-import icon_star_person_52 from '../../../svg/icon-star-person  52.svg'
-import icon_partners_52 from '../../../svg/icon-partners 52.svg'
-import icon_safe_52 from '../../../svg/icon-safe 52.svg'
-import icon_support_52 from '../../../svg/icon-support 52.svg'
-import smile_icon from '../../../svg/Smile_icon.svg'
-import man1 from '../../../img/man1.png'
-import man2 from '../../../img/man2.png'
-import man3 from '../../../img/man3.png'
-import man4 from '../../../img/man4.png'
+import icon_proff_experiens_52 from '../../../../svg/icon-proff-experiens 52.svg'
+import icon_star_person_52 from "../../../../svg/icon-star-person  52.svg";
+import icon_partners_52 from "../../../../svg/icon-partners 52.svg";
+import icon_safe_52 from "../../../../svg/icon-safe 52.svg";
+import icon_support_52 from "../../../../svg/icon-support 52.svg";
+import smile_icon from "../../../../svg/Smile_icon.svg";
+import man1 from "../../../../img/man1.png";
+import man2 from "../../../../img/man2.png";
+import man3 from "../../../../img/man3.png";
+import man4 from "../../../../img/man4.png";
 
-import "../../../css/infoComponents/aboutUs.css"
+import "../../../../css/infoComponents/aboutUs.css"
 export const AboutUsComponent=()=>{
     return<>
     <div className='about-us-component-main-container'>

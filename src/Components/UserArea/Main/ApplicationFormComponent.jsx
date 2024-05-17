@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import closeIcon from "../../svg/X.svg";
+import closeIcon from "../../../svg/X.svg";
 import { Form } from "react-router-dom";
-import "../../css/ApplicationForm.css";
+import "../../../css/ApplicationForm.css";
 import axios from "axios";
 
 const firstNameRef = React.createRef();

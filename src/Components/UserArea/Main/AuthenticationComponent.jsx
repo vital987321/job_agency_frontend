@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import closeIcon from "../../svg/X.svg";
+import closeIcon from "../../../svg/X.svg";
 import { Form } from "react-router-dom";
-import "../../css/authentication.css";
-import loginImage from "../../img/login_img.png";
+import "../../../css/authentication.css";
+import loginImage from "../../../img/login_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

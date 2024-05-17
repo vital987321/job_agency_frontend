@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
-import api from "../api";
-import "../../css/userProfile.css";
-import editIcon from "../../svg/edit.svg";
-import closeIcon from "../../svg/X.svg";
-import {ListUserApplicationsComponent} from "./ListUserApplicationsComponent"
+import api from "../../api";
+import "../../../css/userProfile.css";
+import editIcon from "../../../svg/edit.svg";
+import closeIcon from "../../../svg/X.svg";
+import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
 
-
-
-const cvInputRef=React.createRef();
-
-
+const cvInputRef = React.createRef();
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
   const [userCurrentData, setUserCurrentData] = useState({});
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
 
-
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const username = localStorage.getItem("username");
-
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -48,10 +42,10 @@ export const UserProfileComponent = () => {
     setIsUserDataChanged(true);
   };
 
-  const deleteCvButtonHandler=(e)=>{
-    e.preventDefault()
+  const deleteCvButtonHandler = (e) => {
+    e.preventDefault();
     let updatedItem = {};
-    updatedItem['cv'] = null;
+    updatedItem["cv"] = null;
     setUserCurrentData({
       ...userCurrentData,
       ...updatedItem,
@@ -59,47 +53,47 @@ export const UserProfileComponent = () => {
     setIsUserDataChanged(true);
   };
 
-  const submitUserProfileHandler=(e)=>{
+  const submitUserProfileHandler = (e) => {
     e.preventDefault();
-    if (isUserDataChanged){
-      let formData=new FormData()
-      formData.append("first_name",userCurrentData.first_name)
-      formData.append("last_name",userCurrentData.last_name)
-      formData.append("phone",userCurrentData.phone)
-      const cv=document.getElementById('user-profile-cv-input')
-      if (cvInputRef.current.files[0]){
-        formData.append("cv",cvInputRef.current.files[0])
+    if (isUserDataChanged) {
+      let formData = new FormData();
+      formData.append("first_name", userCurrentData.first_name);
+      formData.append("last_name", userCurrentData.last_name);
+      formData.append("phone", userCurrentData.phone);
+      const cv = document.getElementById("user-profile-cv-input");
+      if (cvInputRef.current.files[0]) {
+        formData.append("cv", cvInputRef.current.files[0]);
       }
 
       const updateProfile = async () => {
         try {
-          const response = await api.patch(
-            "/user/" + user_id + '/',
-            formData,
-            {headers:{"Content-Type": "multipart/form-data",}}
-          );
+          const response = await api.patch("/user/" + user_id + "/", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
 
-          setIsUserDataChanged(false)
+          setIsUserDataChanged(false);
         } catch (error) {
           console.log(error);
         }
       };
       updateProfile();
     }
-  }
-
+  };
 
   const SubmitUserProfileChangesComponent = () => {
     if (isUserDataChanged) {
       return (
         <>
-          <input type="submit" className="button-common profile-form-submit-button button-common-color1" value="Save changes" />
+          <input
+            type="submit"
+            className="button-common profile-form-submit-button button-common-color1"
+            value="Save changes"
+          />
         </>
       );
     }
   };
 
-  
   if (!userData) {
     return <div>User not found</div>;
   }
@@ -114,7 +108,10 @@ export const UserProfileComponent = () => {
             </p>
           </div>
         </div>
-        <form className="profile-user-data-form" onSubmit={submitUserProfileHandler}>
+        <form
+          className="profile-user-data-form"
+          onSubmit={submitUserProfileHandler}
+        >
           <div className="profile-user-data-input-container">
             <input
               className="profile-user-data-form-text-input"
@@ -181,46 +178,50 @@ export const UserProfileComponent = () => {
             />
           </div>
 
-          
-
           <div className="profile-cv-input-container">
-              <div  className="profile-my-cv-link-container">
-                {(()=>{
-                  if (userCurrentData.cv){
-                    return<>
-                      <a className="navLinks" href={userData.cv}>My CV file</a>
-                      <button 
-                        className="profile-delete-cv-button" 
+            <div className="profile-my-cv-link-container">
+              {(() => {
+                if (userCurrentData.cv) {
+                  return (
+                    <>
+                      <a className="navLinks" href={userData.cv}>
+                        My CV file
+                      </a>
+                      <button
+                        className="profile-delete-cv-button"
                         title="Delete CV"
                         onClick={deleteCvButtonHandler}
                       >
                         &#x2716;
                       </button>
-                    </> 
-                  }
-                  return <p>No user CV file</p>
-                })()}
-              </div>
+                    </>
+                  );
+                }
+                return <p>No user CV file</p>;
+              })()}
+            </div>
 
             <input
-              type="file" 
+              type="file"
               id="user-profile-cv-input"
-              className={userCurrentData.cv ? "user-profile-cv-input-replace" : "user-profile-cv-input-upload"}
-              ref={cvInputRef} 
-              onChange={()=>setIsUserDataChanged(true)}
+              className={
+                userCurrentData.cv
+                  ? "user-profile-cv-input-replace"
+                  : "user-profile-cv-input-upload"
+              }
+              ref={cvInputRef}
+              onChange={() => setIsUserDataChanged(true)}
             />
           </div>
-          
+
           <SubmitUserProfileChangesComponent />
         </form>
       </section>
-      
+
       <section className="profile-sent-applications-section">
         <h3 className="profile-sent-applications-header">Sent Applications</h3>
-        <ListUserApplicationsComponent/>        
+        <ListUserApplicationsComponent />
       </section>
-
-
     </>
   );
 };

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import salaryIcon from "../../svg/salary.svg";
-import locationIcon from "../../svg/location.svg";
-import contractTypeIcon from "../../svg/contract_type.svg";
-import callIcon from "../../svg/call_icon.svg";
-import emailIcon from "../../svg/email_icon.svg";
-import genderIcon from "../../svg/gender.svg";
-import editIcon from "../../svg/edit.svg";
+import salaryIcon from "../../../svg/salary.svg";
+import locationIcon from "../../../svg/location.svg";
+import contractTypeIcon from "../../../svg/contract_type.svg";
+import callIcon from "../../../svg/call_icon.svg";
+import emailIcon from "../../../svg/email_icon.svg";
+import genderIcon from "../../../svg/gender.svg";
+import editIcon from "../../../svg/edit.svg";
 
-
-import workingHoursIcon from "../../svg/working_hours.svg";
-import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
-import '../../css/userApplication.css'
-import api from "../api";
-
-
+import workingHoursIcon from "../../../svg/working_hours.svg";
+import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import "../../../css/userApplication.css";
+import api from "../../api";
 
 export const UserApplicationComponent = () => {
   const { application_id } = useParams();
@@ -24,20 +21,20 @@ export const UserApplicationComponent = () => {
 
   useEffect(() => {
     const fetchApplication = async () => {
-      try{
-        const response = await api.get(url)
-        .then((response) => setApplication(response.data))
-      .catch((err) => console.log(err));
+      try {
+        const response = await api
+          .get(url)
+          .then((response) => setApplication(response.data))
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.log(error);
       }
-      catch (error) {
-      console.log(error);}
     };
-    fetchApplication()
-  },[])
-
+    fetchApplication();
+  }, []);
 
   if (!application) {
-    return <div>Loading data</div>
+    return <div>Loading data</div>;
   }
 
   return (

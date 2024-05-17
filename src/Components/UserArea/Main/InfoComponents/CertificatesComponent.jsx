@@ -1,10 +1,10 @@
-import certificate1 from "../../../img/certificate1.png";
-import certificate1fullsize from "../../../img/certificate1fullsize.png";
-import certificate2fullsize from "../../../img/certificate2fullsize.png";
-import certificate3fullsize from "../../../img/certificate3fullsize.png";
-import certificate2 from "../../../img/certificate2.png";
-import certificate3 from "../../../img/certificate3.png";
-import "../../../css/infoComponents/certificates.css";
+import certificate1 from "../../../../img/certificate1.png";
+import certificate1fullsize from "../../../../img/certificate1fullsize.png";
+import certificate2fullsize from "../../../../img/certificate2fullsize.png";
+import certificate3fullsize from "../../../../img/certificate3fullsize.png";
+import certificate2 from "../../../../img/certificate2.png";
+import certificate3 from "../../../../img/certificate3.png";
+import "../../../../css/infoComponents/certificates.css";
 import { useState } from "react";
 
 const ShowCertificateComponent = (props) => {
