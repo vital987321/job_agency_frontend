@@ -1,13 +1,9 @@
 @import './constants.css';
 
-/* .common-button{
-
-    background: #ff0000;
-    padding: 10px 30px;
-    border-radius: 10px;
-    border: none;
-    font-size: medium;
-} */
+.body{
+  max-width: 1300px;
+  margin: 0 auto;
+}
 
 .button-common{
   border: none;

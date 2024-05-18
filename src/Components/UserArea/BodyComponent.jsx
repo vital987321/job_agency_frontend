@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export const BodyComponent = () => {
     return (
-      <div>
+      <div className="body">
         <HeaderComponent />
         <Outlet />
         <FooterComponent />

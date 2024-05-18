@@ -41,7 +41,8 @@ export const ListVacanciesComponent = (props) => {
                 <td>{stringToDateDMY(vacancy.created_at)}</td>
                 <td>
                   <Link
-                    to={"/vacancies/" + vacancy.id}
+                    // to={"/vacancies/" + vacancy.id}
+                    to={"" + vacancy.id}
                     className="details-link"
                   >
                     <button className="details-link-button button-common button-common-color4 ">

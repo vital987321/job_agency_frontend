@@ -24,28 +24,4 @@ table{
   border-spacing: 0;
 }
 
-#root{
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-/* Common properties */
-/* .h2-common{
-  font-size: xx-large;
-  text-align: center;
-} */
-
-
-/* .button-common{
-  background: #C0C0C0;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 8px;
-}
-
-.button-common:hover,
-.button-common:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
-  transform: translateY(-0.25em);
-} */
 

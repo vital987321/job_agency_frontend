@@ -1,19 +1,12 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-
-} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AdminSideBarComponent } from "./AdminSideBarComponent";
-import { AdmibRouterComponent } from "./AdminRouterComponent";
+import "../../css/adminArea/adminBody.css"
 
-export const BodyComponent = () => {
-  return (
-    <div className="admin-body-component">
-      <Router>
+export const AdminBodyComponent = () => {
+    return (
+      <div className="admin-body">
         <AdminSideBarComponent />
-        <Routes>{AdmibRouterComponent}</Routes>
-      </Router>
-    </div>
-  );
+        <Outlet />
+      </div>
+    );
 };
