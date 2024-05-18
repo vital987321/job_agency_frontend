@@ -28,7 +28,7 @@ export const AdminSideBarComponent = () => {
           <IconListIcon/>
           <p className="admin-side-bar-nav-link-text">Vacancies</p>
         </NavLink>
-        <NavLink to="" className={({ isActive }) => {
+        <NavLink to="applications" className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
@@ -38,7 +38,7 @@ export const AdminSideBarComponent = () => {
           
           <p className="admin-side-bar-nav-link-text">Applications</p>
         </NavLink>
-        <NavLink to="" className={({ isActive }) => {
+        <NavLink to="partners" className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
@@ -47,7 +47,7 @@ export const AdminSideBarComponent = () => {
           <PartnersIcon/>  
           <p className="admin-side-bar-nav-link-text">Partners</p>
         </NavLink>
-        <NavLink to="" className={({ isActive }) => {
+        <NavLink to="settings" className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
