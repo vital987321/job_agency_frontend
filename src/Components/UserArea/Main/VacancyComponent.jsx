@@ -65,7 +65,7 @@ function checkVisaAssistance(vacancy) {
   }
 }
 
-export const VacancyComponent = () => {
+export const VacancyComponent = (props) => {
   const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
   const [vacancy, setVacancy] = useState({});
   const [userData, setUserData] = useState({});
@@ -75,8 +75,10 @@ export const VacancyComponent = () => {
   useEffect(() => {
     axios
       .get(url)
-      .then((res) => setVacancy(res.data))
-      // .then(() => console.log(vacancy))
+      .then((res) => {
+        setVacancy(res.data)
+        if (props.setVacancyData) props.setVacancyData(res.data)
+      })
       .catch((err) => console.log(err));
 
     if (user_id) {
