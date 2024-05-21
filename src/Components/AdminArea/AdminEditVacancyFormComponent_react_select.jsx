@@ -3,24 +3,32 @@ import { CONTRACT_TYPE } from "../../constants";
 import { GENDER_LIST } from "../../constants";
 import { SECTOR_REQUEST_URL } from "../../constants";
 import api from "../api";
+import Select, { MultiValue } from "react-select";
+
+// This component uses react - selected library and its Select Component.
+// Problem: I cannot set a defaultValue correctly.
+//   defaultValue takes data from defaultSectors Sate.
+// Possible reason 1: async nature
+// Possible reason 2: React does not rerender the component on defaultSectors Sate change.
 
 export const AdminEditVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
-  const [defaultSectors, setDefaultSectors] = useState([]);
+  const [defaultSectors, setDefaultSectors] = useState(null);
   useEffect(() => {
     const fetchSectors = async () => {
       try {
         const response = await api
           .get(SECTOR_REQUEST_URL)
           .then((response) => {
-            setSectorSelectOptions(
-              response.data.results.map((item) => {
-                return {
-                  value: item.id,
-                  label: item.name,
-                };
-              })
-            );
+            const sectors = response.data.results.map((item) => {
+              return {
+                value: item.id,
+                label: item.name,
+              };
+            });
+            //   console.log(sectors)
+            setDefaultSectors(sectorSelectedItems(sectors));
+            setSectorSelectOptions(sectors);
           })
           .catch((error) => {
             console.log(error);
@@ -30,30 +38,24 @@ export const AdminEditVacancyFormComponent = (props) => {
       }
     };
     fetchSectors();
-  }, []);
 
-  useEffect(() => {
-    setDefaultSectors(sectorSelectedItems());
-  }, [sectorSelectOptions]);
+    // console.log(defaultSectors)
+  }, [props.vacancyData]);
 
-  const sectorSelectedItems = () => {
+  const sectorSelectedItems = (sectors) => {
     try {
-      return props.vacancyData.sector.map((sectorID) => {
-        for (const item of sectorSelectOptions) {
+      console.log("starts sectorSelectedItems function");
+      const preSelectedSectors = props.vacancyData.sector.map((sectorID) => {
+        for (const item of sectors) {
           if (item.value == sectorID) {
-            return item.value;
+            return item;
           }
         }
       });
+      console.log("preSelectedSectors:");
+      console.log(preSelectedSectors);
+      return preSelectedSectors;
     } catch {}
-  };
-
-  const changeSectorSelectionHandler = (e) => {
-    const changedSectorList = [];
-    for (const item of e.target.selectedOptions) {
-      changedSectorList.push(item.value);
-    }
-    setDefaultSectors(changedSectorList);
   };
 
   return (
@@ -141,23 +143,22 @@ export const AdminEditVacancyFormComponent = (props) => {
 
         <div>
           <label htmlFor="form-vacancy-sector-select">Sector</label>
-          <select
+          <Select
             id="form-vacancy-sector-select"
-            multiple
-            value={defaultSectors}
-            onChange={changeSectorSelectionHandler}
-          >
-            {sectorSelectOptions.map((item) => {
-              return (
-                <option
-                  key={item.value}
-                  value={item.value}
-                >
-                  {item.label}
-                </option>
-              );
-            })}
-          </select>
+            isMulti
+            options={sectorSelectOptions}
+            // defaultValue={defaultSectors}
+            defaultValue={(() => {
+              console.log("defaultSectors in component:");
+              console.log(defaultSectors);
+              return defaultSectors;
+            })()}
+            //   defaultValue={[{ value: 2, label: "Engineering" },{value:1, label:"Other"}]}
+            //   defaultValue={[
+            //     { value: 1, label: "Infofmation technologies" },
+            //     { value: 3, label: "Engineering" },
+            //   ]}
+          />
         </div>
       </div>
     </form>

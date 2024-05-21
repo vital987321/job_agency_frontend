@@ -3,11 +3,11 @@ import {CONTRACT_TYPE} from "../../constants"
 import {GENDER_LIST} from "../../constants"
 import {SECTOR_REQUEST_URL} from "../../constants"
 import api from '../api'
-import Select from "react-select";
 
-// Problem with this component is that is throws a warning
+
+// Problem with this component is that it is throws a warning:
 // Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
-
+// Component works fine. Shall I pay attantion to the worning?
 
 export const AdminEditVacancyFormComponent=(props)=>{
     const [sectorSelectOptions, setSectorSelectOptions] = useState([])
