@@ -101,14 +101,30 @@ export const AdminEditVacancyFormComponent = (props) => {
     });
   };
 
+  const submitFormHandler=(e)=>{
+    e.preventDefault();
+  }
+
   return (
-    <form className="admin-edit-vacancy-form">
+    <form
+      className="admin-edit-vacancy-form"
+      onSubmit={submitFormHandler}
+    >
+      <label htmlFor="admin-edit-vacancy-name-input">Vacancy name</label>
       <input
-        className="admin-edit-vacancy-input-name"
+        className="admin-edit-vacancy-name-input"
         type="text"
         placeholder="Vacancy name"
         defaultValue={props.vacancyData.name}
       />
+      <div>
+          <label htmlFor="form-vacancy-conpany-input">Company</label>
+          <input
+            id="form-vacancy-company-input"
+            type="text"
+            defaultValue={props.vacancyData.company}
+          />
+        </div>
 
       <div className="admin-form-vacancy-container">
         <div>
@@ -241,6 +257,32 @@ export const AdminEditVacancyFormComponent = (props) => {
           </select>
         </div>
       </div>
+
+      <div>
+        <label htmlFor="form-vacancy-description">Description</label>
+        <textarea 
+        id="form-vacancy-description"
+        cols="30"
+        rows="6"
+        defaultValue={props.vacancyData.description}
+        >
+        </textarea>
+      </div>
+      <div>
+        <label htmlFor="form-vacancy-requirements">Requirements</label>
+        <textarea 
+        id="form-vacancy-requirements"
+        cols="30"
+        rows="6"
+        defaultValue={props.vacancyData.requirements}
+        >
+        </textarea>
+      </div>
+      <input
+        type="submit"
+        value="Save"
+        className="button-common button-common-color1"
+        />
     </form>
   );
 };
