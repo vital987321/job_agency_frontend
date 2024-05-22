@@ -20,6 +20,7 @@ export const GENDER_LIST=[
     'Female'
 ]
 
+
 export const SALARY_CEILING=150000
 export const FILTER_POINTER_SIZE=20
 

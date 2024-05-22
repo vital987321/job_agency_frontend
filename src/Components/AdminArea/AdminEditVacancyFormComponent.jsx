@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { CONTRACT_TYPE } from "../../constants";
 import { GENDER_LIST } from "../../constants";
 import { SECTOR_REQUEST_URL } from "../../constants";
+import { RESIDENCE_TYPES } from "../../constants";
 import api from "../api";
 
 export const AdminEditVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
-  const [defaultSectors, setDefaultSectors] = useState([]);
+  const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
+    sectors: [],
+    residence_type: "",
+    gender: "",
+    contract_type: "",
+    visa_assistance:"",
+  });
   useEffect(() => {
+    // console.log(Object.keys(defaultSectors));
     const fetchSectors = async () => {
       try {
         const response = await api
@@ -33,27 +41,64 @@ export const AdminEditVacancyFormComponent = (props) => {
   }, []);
 
   useEffect(() => {
-    setDefaultSectors(sectorSelectedItems());
-  }, [sectorSelectOptions]);
-
-  const sectorSelectedItems = () => {
     try {
-      return props.vacancyData.sector.map((sectorID) => {
-        for (const item of sectorSelectOptions) {
-          if (item.value == sectorID) {
-            return item.value;
-          }
-        }
+      setVacancyCurrentValues({
+        sectors: sectorDbItems(),
+        residence_type: props.vacancyData.residence_type,
+        gender: props.vacancyData.gender,
+        contract_type: props.vacancyData.contract_type,
+        visa_assistance: props.vacancyData.visa_assistance,
       });
     } catch {}
+  }, [sectorSelectOptions]);
+
+  const sectorDbItems = () => {
+    return props.vacancyData.sector.map((sectorID) => {
+      for (const item of sectorSelectOptions) {
+        if (item.value == sectorID) {
+          return item.value;
+        }
+      }
+    });
   };
 
-  const changeSectorSelectionHandler = (e) => {
+  const changeSectorsHandler = (e) => {
     const changedSectorList = [];
     for (const item of e.target.selectedOptions) {
       changedSectorList.push(item.value);
     }
-    setDefaultSectors(changedSectorList);
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      sectors: changedSectorList,
+    });
+  };
+
+  const changeResidenceTypeHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      residence_type: e.target.value,
+    });
+  };
+
+  const changeGenderHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      gender: e.target.value,
+    });
+  };
+
+  const changeContractTypeHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      contract_type: e.target.value,
+    });
+  };
+
+  const changeVisaAssistanceHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      visa_assistance: e.target.value,
+    });
   };
 
   return (
@@ -89,7 +134,8 @@ export const AdminEditVacancyFormComponent = (props) => {
           </label>
           <select
             id="form-vacancy-contract-type-select"
-            value={props.vacancyData.contract_type}
+            value={vacancyCurrentValues.contract_type}
+            onChange={changeContractTypeHandler}
           >
             <option value=""></option>
             {CONTRACT_TYPE.map((item) => {
@@ -127,7 +173,8 @@ export const AdminEditVacancyFormComponent = (props) => {
           <label htmlFor="form-vacancy-gender-select">Gender</label>
           <select
             id="form-vacancy-gender-select"
-            value={props.vacancyData.gender}
+            value={vacancyCurrentValues.gender}
+            onChange={changeGenderHandler}
           >
             {GENDER_LIST.map((item) => {
               return (
@@ -144,19 +191,53 @@ export const AdminEditVacancyFormComponent = (props) => {
           <select
             id="form-vacancy-sector-select"
             multiple
-            value={defaultSectors}
-            onChange={changeSectorSelectionHandler}
+            value={vacancyCurrentValues.sectors}
+            onChange={changeSectorsHandler}
           >
             {sectorSelectOptions.map((item) => {
               return (
-                <option
-                  key={item.value}
-                  value={item.value}
-                >
+                <option key={item.value} value={item.value}>
                   {item.label}
                 </option>
               );
             })}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="form-vacancy-residence-select">Residence</label>
+          <select
+            id="form-vacancy-residence-select"
+            value={vacancyCurrentValues.residence_type}
+            onChange={changeResidenceTypeHandler}
+          >
+            {Object.keys(RESIDENCE_TYPES).map((item_key) => {
+              return (
+                <option
+                  key={item_key}
+                  value={item_key}
+                  // selected={props.vacancyData.residence_type == item_key}
+                >
+                  {RESIDENCE_TYPES[item_key]}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="form-vacancy-visa-assistance-select">
+            Visa assistance
+          </label>
+          <select
+            id="form-vacancy-visa-assistance-select"
+            value={vacancyCurrentValues.visa_assistance}
+            onChange={changeVisaAssistanceHandler}
+          >
+            <option value="">Unknown</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+
           </select>
         </div>
       </div>
