@@ -12,10 +12,10 @@ export const AdminEditVacancyFormComponent = (props) => {
     residence_type: "",
     gender: "",
     contract_type: "",
-    visa_assistance:"",
+    visa_assistance: "",
   });
   useEffect(() => {
-    // console.log(Object.keys(defaultSectors));
+    
     const fetchSectors = async () => {
       try {
         const response = await api
@@ -47,7 +47,7 @@ export const AdminEditVacancyFormComponent = (props) => {
         residence_type: props.vacancyData.residence_type,
         gender: props.vacancyData.gender,
         contract_type: props.vacancyData.contract_type,
-        visa_assistance: props.vacancyData.visa_assistance,
+        visa_assistance: props.vacancyData.visa_assistance ? props.vacancyData.visa_assistance : ""
       });
     } catch {}
   }, [sectorSelectOptions]);
@@ -159,7 +159,6 @@ export const AdminEditVacancyFormComponent = (props) => {
                 <option
                   key={item}
                   value={item}
-                  // selected={item==props.vacancyData.contract_type}
                 >
                   {item}
                 </option>
@@ -232,7 +231,6 @@ export const AdminEditVacancyFormComponent = (props) => {
                 <option
                   key={item_key}
                   value={item_key}
-                  // selected={props.vacancyData.residence_type == item_key}
                 >
                   {RESIDENCE_TYPES[item_key]}
                 </option>
@@ -250,7 +248,7 @@ export const AdminEditVacancyFormComponent = (props) => {
             value={vacancyCurrentValues.visa_assistance}
             onChange={changeVisaAssistanceHandler}
           >
-            <option value="">Unknown</option>
+            <option value={""}>Unknown</option>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
 
