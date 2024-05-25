@@ -6,7 +6,6 @@ import { RESIDENCE_TYPES } from "../../constants";
 import { LIST_VACANCIES_BASE_URL } from "../../constants";
 import api from "../api";
 
-
 export const AdminEditVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
@@ -17,14 +16,13 @@ export const AdminEditVacancyFormComponent = (props) => {
     visa_assistance: "",
   });
   const vacancyNameRef = React.createRef();
-  const companyRef=React.createRef();
-  const locationRef=React.createRef()
-  const salaryRef=React.createRef();
-  const hoursFromRef=React.createRef()
-  const hoursToRef=React.createRef()
-  const descriptionRef=React.createRef()
-  const requirementsRef=React.createRef()
-
+  const companyRef = React.createRef();
+  const locationRef = React.createRef();
+  const salaryRef = React.createRef();
+  const hoursFromRef = React.createRef();
+  const hoursToRef = React.createRef();
+  const descriptionRef = React.createRef();
+  const requirementsRef = React.createRef();
 
   useEffect(() => {
     const fetchSectors = async () => {
@@ -118,38 +116,38 @@ export const AdminEditVacancyFormComponent = (props) => {
     e.preventDefault();
     const requestUrl = LIST_VACANCIES_BASE_URL + props.vacancyData.id + "/";
 
-    let formData = new FormData();
-    formData.append("name", vacancyNameRef.current.value);
-    formData.append("company", companyRef.current.value);
-    formData.append("salary", parseInt(salaryRef.current.value));
-    formData.append("location", locationRef.current.value);
-    formData.append("contract_type", vacancyCurrentValues.contract_type);
-    // formData.append("hours_from", hoursFromRef.current.value);
-    // formData.append("hours_to", hoursToRef.current.value);
-    formData.append("gender", vacancyCurrentValues.gender);
-    formData.append("description", descriptionRef.current.value);
-    formData.append("requirements", requirementsRef.current.value);
-    formData.append("residence_type", vacancyCurrentValues.residence_type);
-    formData.append("visa_assistance", vacancyCurrentValues.visa_assistance);
-    // formData.append("sector",);
+    const requestData={
+      "name": vacancyNameRef.current.value,
+      "company": companyRef.current.value,
+      "salary": parseInt(salaryRef.current.value),
+      "location": locationRef.current.value,
+      "contract_type": vacancyCurrentValues.contract_type,
+      "hours_from": hoursFromRef.current.value,
+      "hours_to": hoursToRef.current.value,
+      "gender": vacancyCurrentValues.gender,
+      "description": descriptionRef.current.value,
+      "requirements": requirementsRef.current.value,
+      "residence_type": vacancyCurrentValues.residence_type,
+      "visa_assistance": vacancyCurrentValues.visa_assistance,
+      "sector": vacancyCurrentValues.sectors,
+    }
 
-    const headers={headers:{ "Content-Type": "multipart/form-data" }}
-    // console.log(formData)
-    // console.log(vacancyNameRef)
+    // const headers = { headers: { "Content-Type": "multipart/form-data" } };
+
     const sendRequest = async ()=>{
-      
       try {
-      const response = await api
-      .patch(requestUrl, formData, headers)
-      .then((response)=>console.log(response))
-      .catch((error)=>console.log(error))
-    } catch (error) {
-      console.log(error);
-    }
-    }
-    
-    sendRequest()
+        console.log(requestData.sector)
+        const response = await api
+          .patch(requestUrl, requestData)
+          .then((response)=>console.log(response))
+          .then(console.log("Vacancy updated"))
+          .catch((error) => console.log(error))
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
+    sendRequest();
   };
 
   return (

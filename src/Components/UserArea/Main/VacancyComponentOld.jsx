@@ -65,10 +65,10 @@ function checkVisaAssistance(vacancy) {
   }
 }
 
-export const VacancyDataComponent = (props) => {
-  // const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
+export const VacancyComponent = (props) => {
+  const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
   const [vacancy, setVacancy] = useState({});
-  // const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({});
   const { vacancy_id } = useParams();
 
   const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
@@ -80,11 +80,23 @@ export const VacancyDataComponent = (props) => {
         if (props.setVacancyData) props.setVacancyData(res.data)
       })
       .catch((err) => console.log(err));
+
+    if (user_id) {
+      const fetchUser = async () => {
+        try {
+          const response = await api.get("/user/" + user_id);
+          setUserData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchUser();
+    }
   }, []);
 
-  // const applyButtonHandler = () => {
-  //   setAppFormDisplayValue("flex");
-  // };
+  const applyButtonHandler = () => {
+    setAppFormDisplayValue("flex");
+  };
 
   return (
     <>
@@ -181,68 +193,22 @@ export const VacancyDataComponent = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="vacancy-apply-button-container">
+        <div className="vacancy-apply-button-container">
           <button
             className="vacancy-apply-button button-common button-common-color1"
             onClick={applyButtonHandler}
           >
             Apply
           </button>
-        </div> */}
+        </div>
       </section>
 
-      {/* <ApplicationFormComponent
+      <ApplicationFormComponent
         AppFormDisplayValue={AppFormDisplayValue}
         vacancy={vacancy}
         setAppFormDisplayValue={setAppFormDisplayValue}
         userData={userData}
-      /> */}
+      />
     </>
   );
 };
-
-
-
-export const VacancyComponent=(props)=>{
-  const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
-  const [userData, setUserData] = useState({})
-  const [vacancyData, setVacancyData]=useState({})
-  const applyButtonHandler = () => {
-    setAppFormDisplayValue("flex");
-  };
-  
-  useEffect(() => {
-    
-    if (user_id) {
-      const fetchUser = async () => {
-        try {
-          const response = await api.get("/user/" + user_id);
-          setUserData(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchUser();
-    }
-  }, []);
-
-  return<>
-    <VacancyDataComponent 
-      setVacancyData={setVacancyData} 
-    />
-    <div className="vacancy-apply-button-container">
-      <button
-        className="vacancy-apply-button button-common button-common-color1"
-        onClick={applyButtonHandler}
-      >
-        Apply
-      </button>
-    </div>
-    <ApplicationFormComponent
-        AppFormDisplayValue={AppFormDisplayValue}
-        vacancy={vacancyData}
-        setAppFormDisplayValue={setAppFormDisplayValue}
-        userData={userData}
-      />
-  </>
-}

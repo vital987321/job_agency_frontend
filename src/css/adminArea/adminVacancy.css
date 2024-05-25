@@ -1,4 +1,16 @@
+@import '../constants.css';
 .admin-vacancy-edit-button-container{
     display: flex;
     justify-content: center;
+}
+
+.admin-vacancy-company-container{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top:20px;
+}
+
+.admin-vacancy-company-name{
+    font-weight: bold;
+    font-size: large;
 }
