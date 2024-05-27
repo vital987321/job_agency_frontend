@@ -1,0 +1,1 @@
+1. Edit vacancy and new vacancy form to modal window 
