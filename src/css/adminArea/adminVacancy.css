@@ -1,7 +1,7 @@
 @import '../constants.css';
-.admin-vacancy-edit-button-container{
-    display: flex;
-    justify-content: center;
+
+.admin-vacancy-container{
+    position: relative;
 }
 
 .admin-vacancy-company-container{
@@ -9,8 +9,11 @@
     margin-right: var(--global_margin_left_right);
     margin-top:20px;
 }
-
 .admin-vacancy-company-name{
     font-weight: bold;
     font-size: large;
+}
+.admin-vacancy-edit-button-container{
+    display: flex;
+    justify-content: center;
 }

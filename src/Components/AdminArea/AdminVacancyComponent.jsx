@@ -1,5 +1,5 @@
 import {VacancyDataComponent} from "../UserArea/Main/VacancyComponent"
-import {AdminEditVacancyFormComponent} from "./AdminEditVacancyFormComponent"
+import {AdminVacancyFormComponent} from "./AdminVacancyFormComponent"
 import "../../css/adminArea/adminVacancy.css"
 import { useState } from "react"
 export const AdminVacancyComponent =()=>{
@@ -18,7 +18,7 @@ export const AdminVacancyComponent =()=>{
                     Edit
                 </button>
             </div>
-            <AdminEditVacancyFormComponent vacancyData={vacancyData}/>
+            <AdminVacancyFormComponent vacancyData={vacancyData}/>
         </div>
     )
 }

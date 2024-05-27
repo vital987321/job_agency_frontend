@@ -5,8 +5,9 @@ import { SECTOR_REQUEST_URL } from "../../constants";
 import { RESIDENCE_TYPES } from "../../constants";
 import { LIST_VACANCIES_BASE_URL } from "../../constants";
 import api from "../api";
+import "../../css/adminArea/adminVacancyForm.css";
 
-export const AdminEditVacancyFormComponent = (props) => {
+export const AdminVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
     sectors: [],
@@ -116,32 +117,32 @@ export const AdminEditVacancyFormComponent = (props) => {
     e.preventDefault();
     const requestUrl = LIST_VACANCIES_BASE_URL + props.vacancyData.id + "/";
 
-    const requestData={
-      "name": vacancyNameRef.current.value,
-      "company": companyRef.current.value,
-      "salary": parseInt(salaryRef.current.value),
-      "location": locationRef.current.value,
-      "contract_type": vacancyCurrentValues.contract_type,
-      "hours_from": hoursFromRef.current.value,
-      "hours_to": hoursToRef.current.value,
-      "gender": vacancyCurrentValues.gender,
-      "description": descriptionRef.current.value,
-      "requirements": requirementsRef.current.value,
-      "residence_type": vacancyCurrentValues.residence_type,
-      "visa_assistance": vacancyCurrentValues.visa_assistance,
-      "sector": vacancyCurrentValues.sectors,
-    }
+    const requestData = {
+      name: vacancyNameRef.current.value,
+      company: companyRef.current.value,
+      salary: parseInt(salaryRef.current.value),
+      location: locationRef.current.value,
+      contract_type: vacancyCurrentValues.contract_type,
+      hours_from: hoursFromRef.current.value,
+      hours_to: hoursToRef.current.value,
+      gender: vacancyCurrentValues.gender,
+      description: descriptionRef.current.value,
+      requirements: requirementsRef.current.value,
+      residence_type: vacancyCurrentValues.residence_type,
+      visa_assistance: vacancyCurrentValues.visa_assistance,
+      sector: vacancyCurrentValues.sectors,
+    };
 
     // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const sendRequest = async ()=>{
+    const sendRequest = async () => {
       try {
-        console.log(requestData.sector)
+        console.log(requestData.sector);
         const response = await api
           .patch(requestUrl, requestData)
-          .then((response)=>console.log(response))
+          .then((response) => console.log(response))
           .then(console.log("Vacancy updated"))
-          .catch((error) => console.log(error))
+          .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
       }
@@ -151,26 +152,30 @@ export const AdminEditVacancyFormComponent = (props) => {
   };
 
   return (
-    <form className="admin-edit-vacancy-form" onSubmit={submitFormHandler}>
-      <label htmlFor="admin-edit-vacancy-name-input">Vacancy name</label>
-      <input
-        className="admin-edit-vacancy-name-input"
-        type="text"
-        placeholder="Vacancy name"
-        defaultValue={props.vacancyData.name}
-        ref={vacancyNameRef}
-      />
-      <div>
-        <label htmlFor="form-vacancy-conpany-input">Company</label>
-        <input
-          id="form-vacancy-company-input"
-          type="text"
-          defaultValue={props.vacancyData.company}
-          ref={companyRef}
-        />
+    <form className="admin-vacancy-form" onSubmit={submitFormHandler}>
+      <div className="admin-vacancy-form-header-container">
+        <div className="admin-vacancy-form-name-container">
+          <label htmlFor="admin-edit-vacancy-name-input">Vacancy name</label>
+          <input
+            className="admin-edit-vacancy-name-input"
+            type="text"
+            placeholder="Vacancy name"
+            defaultValue={props.vacancyData.name}
+            ref={vacancyNameRef}
+          />
+        </div>
+        <div className="admin-vacancy-form-company-container">
+          <label htmlFor="form-vacancy-conpany-input">Company</label>
+          <input
+            id="form-vacancy-company-input"
+            type="text"
+            defaultValue={props.vacancyData.company}
+            ref={companyRef}
+          />
+        </div>
       </div>
 
-      <div className="admin-form-vacancy-container">
+      <div className="admin-form-vacancy-items-container">
         <div>
           <label htmlFor="form-vacancy-salary-input">Salary</label>
           <input
@@ -297,25 +302,27 @@ export const AdminEditVacancyFormComponent = (props) => {
         </div>
       </div>
 
-      <div>
-        <label htmlFor="form-vacancy-description">Description</label>
-        <textarea
-          id="form-vacancy-description"
-          cols="30"
-          rows="6"
-          defaultValue={props.vacancyData.description}
-          ref={descriptionRef}
-        ></textarea>
-      </div>
-      <div>
-        <label htmlFor="form-vacancy-requirements">Requirements</label>
-        <textarea
-          id="form-vacancy-requirements"
-          cols="30"
-          rows="6"
-          defaultValue={props.vacancyData.requirements}
-          ref={requirementsRef}
-        ></textarea>
+      <div className="admin-vacancy-form-description-requirements-container">
+        <div className="admin-vacancy-form-description-block">
+          <label htmlFor="form-vacancy-description">Description</label>
+          <textarea
+            id="form-vacancy-description"
+            cols="30"
+            rows="6"
+            defaultValue={props.vacancyData.description}
+            ref={descriptionRef}
+          ></textarea>
+        </div>
+        <div className="admin-vacancy-form-requirements-block">
+          <label htmlFor="form-vacancy-requirements">Requirements</label>
+          <textarea
+            id="form-vacancy-requirements"
+            cols="30"
+            rows="6"
+            defaultValue={props.vacancyData.requirements}
+            ref={requirementsRef}
+          ></textarea>
+        </div>
       </div>
       <input
         type="submit"
