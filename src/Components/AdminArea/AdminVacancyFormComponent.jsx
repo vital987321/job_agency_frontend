@@ -4,6 +4,7 @@ import { GENDER_LIST } from "../../constants";
 import { SECTOR_REQUEST_URL } from "../../constants";
 import { RESIDENCE_TYPES } from "../../constants";
 import { LIST_VACANCIES_BASE_URL } from "../../constants";
+import closeIcon from "../../svg/X.svg";
 import api from "../api";
 import "../../css/adminArea/adminVacancyForm.css";
 
@@ -153,182 +154,200 @@ export const AdminVacancyFormComponent = (props) => {
 
   return (
     <form className="admin-vacancy-form" onSubmit={submitFormHandler}>
-      <div className="admin-vacancy-form-header-container">
-        <div className="admin-vacancy-form-name-container">
-          <label htmlFor="admin-edit-vacancy-name-input">Vacancy name</label>
-          <input
-            className="admin-edit-vacancy-name-input"
-            type="text"
-            placeholder="Vacancy name"
-            defaultValue={props.vacancyData.name}
-            ref={vacancyNameRef}
-          />
-        </div>
-        <div className="admin-vacancy-form-company-container">
-          <label htmlFor="form-vacancy-conpany-input">Company</label>
-          <input
-            id="form-vacancy-company-input"
-            type="text"
-            defaultValue={props.vacancyData.company}
-            ref={companyRef}
-          />
-        </div>
+      <div className="admin-vacancy-form-close-button-container">
+        <button className="admin-vacancy-form-close-button">
+          <img src={closeIcon} alt="" />
+        </button>
       </div>
-
-      <div className="admin-form-vacancy-items-container">
-        <div>
-          <label htmlFor="form-vacancy-salary-input">Salary</label>
-          <input
-            id="form-vacancy-salary-input"
-            type="text"
-            defaultValue={props.vacancyData.salary}
-            ref={salaryRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="form-vacancy-location-input">Location</label>
-          <input
-            id="form-vacancy-location-input"
-            type="text"
-            defaultValue={props.vacancyData.location}
-            ref={locationRef}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="form-vacancy-contract-type-select">
-            Contract type
-          </label>
-          <select
-            id="form-vacancy-contract-type-select"
-            value={vacancyCurrentValues.contract_type}
-            onChange={changeContractTypeHandler}
-          >
-            <option value=""></option>
-            {CONTRACT_TYPE.map((item) => {
-              return (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
+      <div className="admin-vacancy-form-main-container">
+        <div className="admin-vacancy-form-header-container">
+          <div className="admin-vacancy-form-name-container">
+            <label htmlFor="admin-edit-vacancy-name-input">Vacancy name</label>
+            <input
+              className="admin-vacancy-name-input admin-vacancy-form-input"
+              type="text"
+              placeholder="Vacancy name"
+              defaultValue={props.vacancyData.name}
+              ref={vacancyNameRef}
+            />
+          </div>
+          <div className="admin-vacancy-form-company-container">
+            <label htmlFor="form-vacancy-conpany-input">Company</label>
+            <input
+              className="admin-vacancy-form-input"
+              id="form-vacancy-company-input"
+              type="text"
+              defaultValue={props.vacancyData.company}
+              ref={companyRef}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="form-vacancy-hours-from-input">Work hours from</label>
-          <input
-            id="form-vacancy-hours-from-input"
-            type="text"
-            defaultValue={props.vacancyData.hours_from}
-            ref={hoursFromRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="form-vacancy-hours-to-input">Work hours to</label>
-          <input
-            id="form-vacancy-hours-to-input"
-            type="text"
-            defaultValue={props.vacancyData.hours_to}
-            ref={hoursToRef}
-          />
+        <div className="admin-form-vacancy-items-container">
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-salary-input">Salary</label>
+            <input
+              className="admin-vacancy-form-input"
+              id="form-vacancy-salary-input"
+              type="text"
+              defaultValue={props.vacancyData.salary}
+              ref={salaryRef}
+            />
+          </div>
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-location-input">Location</label>
+            <input
+              className="admin-vacancy-form-input"
+              id="form-vacancy-location-input"
+              type="text"
+              defaultValue={props.vacancyData.location}
+              ref={locationRef}
+            />
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-contract-type-select">
+              Contract type
+            </label>
+            <select
+              className="admin-vacancy-form-input"
+              id="form-vacancy-contract-type-select"
+              value={vacancyCurrentValues.contract_type}
+              onChange={changeContractTypeHandler}
+            >
+              <option value=""></option>
+              {CONTRACT_TYPE.map((item) => {
+                return (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-hours-from-input">
+              Work hours from
+            </label>
+            <input
+              className="admin-vacancy-form-input"
+              id="form-vacancy-hours-from-input"
+              type="text"
+              defaultValue={props.vacancyData.hours_from}
+              ref={hoursFromRef}
+            />
+          </div>
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-hours-to-input">Work hours to</label>
+            <input
+              className="admin-vacancy-form-input"
+              id="form-vacancy-hours-to-input"
+              type="text"
+              defaultValue={props.vacancyData.hours_to}
+              ref={hoursToRef}
+            />
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-gender-select">Gender</label>
+            <select
+              className="admin-vacancy-form-input"
+              id="form-vacancy-gender-select"
+              value={vacancyCurrentValues.gender}
+              onChange={changeGenderHandler}
+            >
+              {GENDER_LIST.map((item) => {
+                return (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-residence-select">Residence</label>
+            <select
+              className="admin-vacancy-form-input"
+              id="form-vacancy-residence-select"
+              value={vacancyCurrentValues.residence_type}
+              onChange={changeResidenceTypeHandler}
+            >
+              {Object.keys(RESIDENCE_TYPES).map((item_key) => {
+                return (
+                  <option key={item_key} value={item_key}>
+                    {RESIDENCE_TYPES[item_key]}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-visa-assistance-select">
+              Visa assistance
+            </label>
+            <select
+              className="admin-vacancy-form-input"
+              id="form-vacancy-visa-assistance-select"
+              value={vacancyCurrentValues.visa_assistance}
+              onChange={changeVisaAssistanceHandler}
+            >
+              <option value={""}>Unknown</option>
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
+          </div>
+
+          <div className="admin-form-vacancy-items">
+            <label htmlFor="form-vacancy-sector-select">Sector</label>
+            <select
+              id="form-vacancy-sector-select"
+              multiple
+              value={vacancyCurrentValues.sectors}
+              onChange={changeSectorsHandler}
+            >
+              {sectorSelectOptions.map((item) => {
+                return (
+                  <option key={item.value} value={item.value}>
+                    {item.label}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="form-vacancy-gender-select">Gender</label>
-          <select
-            id="form-vacancy-gender-select"
-            value={vacancyCurrentValues.gender}
-            onChange={changeGenderHandler}
-          >
-            {GENDER_LIST.map((item) => {
-              return (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
+        <div className="admin-vacancy-form-description-requirements-container">
+          <div className="admin-vacancy-form-description-block">
+            <label htmlFor="form-vacancy-description">Description</label>
+            <textarea
+              id="form-vacancy-description"
+              cols="30"
+              rows="6"
+              defaultValue={props.vacancyData.description}
+              ref={descriptionRef}
+            ></textarea>
+          </div>
+          <div className="admin-vacancy-form-requirements-block">
+            <label htmlFor="form-vacancy-requirements">Requirements</label>
+            <textarea
+              id="form-vacancy-requirements"
+              cols="30"
+              rows="6"
+              defaultValue={props.vacancyData.requirements}
+              ref={requirementsRef}
+            ></textarea>
+          </div>
         </div>
-
-        <div>
-          <label htmlFor="form-vacancy-sector-select">Sector</label>
-          <select
-            id="form-vacancy-sector-select"
-            multiple
-            value={vacancyCurrentValues.sectors}
-            onChange={changeSectorsHandler}
-          >
-            {sectorSelectOptions.map((item) => {
-              return (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="form-vacancy-residence-select">Residence</label>
-          <select
-            id="form-vacancy-residence-select"
-            value={vacancyCurrentValues.residence_type}
-            onChange={changeResidenceTypeHandler}
-          >
-            {Object.keys(RESIDENCE_TYPES).map((item_key) => {
-              return (
-                <option key={item_key} value={item_key}>
-                  {RESIDENCE_TYPES[item_key]}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="form-vacancy-visa-assistance-select">
-            Visa assistance
-          </label>
-          <select
-            id="form-vacancy-visa-assistance-select"
-            value={vacancyCurrentValues.visa_assistance}
-            onChange={changeVisaAssistanceHandler}
-          >
-            <option value={""}>Unknown</option>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </div>
+        <input
+          type="submit"
+          value="Save"
+          className="button-common button-common-color1"
+        />
       </div>
-
-      <div className="admin-vacancy-form-description-requirements-container">
-        <div className="admin-vacancy-form-description-block">
-          <label htmlFor="form-vacancy-description">Description</label>
-          <textarea
-            id="form-vacancy-description"
-            cols="30"
-            rows="6"
-            defaultValue={props.vacancyData.description}
-            ref={descriptionRef}
-          ></textarea>
-        </div>
-        <div className="admin-vacancy-form-requirements-block">
-          <label htmlFor="form-vacancy-requirements">Requirements</label>
-          <textarea
-            id="form-vacancy-requirements"
-            cols="30"
-            rows="6"
-            defaultValue={props.vacancyData.requirements}
-            ref={requirementsRef}
-          ></textarea>
-        </div>
-      </div>
-      <input
-        type="submit"
-        value="Save"
-        className="button-common button-common-color1"
-      />
     </form>
   );
 };
