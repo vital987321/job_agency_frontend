@@ -150,12 +150,27 @@ export const AdminVacancyFormComponent = (props) => {
     };
 
     sendRequest();
+    props.setVacancyFormDisplayValue('none')
   };
 
+  const cancelButtonHandler=()=>{
+    props.setVacancyFormDisplayValue('none')
+  }
+
   return (
-    <form className="admin-vacancy-form" onSubmit={submitFormHandler}>
+    <div className="admin-vacancy-form-modal-window-enviroment"
+    style={{"display": props.vacancyFormDisplayValue}}
+    >
+
+    <form 
+    className="admin-vacancy-form" 
+    onSubmit={submitFormHandler}
+    
+    >
       <div className="admin-vacancy-form-close-button-container">
-        <button className="admin-vacancy-form-close-button">
+        <button 
+        onClick={cancelButtonHandler}
+        className="admin-vacancy-form-close-button">
           <img src={closeIcon} alt="" />
         </button>
       </div>
@@ -324,6 +339,7 @@ export const AdminVacancyFormComponent = (props) => {
           <div className="admin-vacancy-form-description-block">
             <label htmlFor="form-vacancy-description">Description</label>
             <textarea
+              className="admin-vacancy-form-input"
               id="form-vacancy-description"
               cols="30"
               rows="6"
@@ -334,6 +350,7 @@ export const AdminVacancyFormComponent = (props) => {
           <div className="admin-vacancy-form-requirements-block">
             <label htmlFor="form-vacancy-requirements">Requirements</label>
             <textarea
+              className="admin-vacancy-form-input"
               id="form-vacancy-requirements"
               cols="30"
               rows="6"
@@ -342,12 +359,16 @@ export const AdminVacancyFormComponent = (props) => {
             ></textarea>
           </div>
         </div>
-        <input
-          type="submit"
-          value="Save"
-          className="button-common button-common-color1"
-        />
+
+        <div className="admin-vacancy-form-submit-container">
+          <input
+            type="submit"
+            value="Save"
+            className="button-common button-common-color1"
+          />
+        </div>
       </div>
     </form>
+    </div>
   );
 };

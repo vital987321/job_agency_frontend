@@ -1,3 +1,4 @@
+@import './constants.css';
 
 #application-form{
     /* display: none; */
@@ -8,7 +9,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    background-Color: rgba(175, 175, 175, 0.9);
+    background-Color: var(--modal-window-background_color);
     justify-content: center;
     flex-direction: column;
     align-items: center; 

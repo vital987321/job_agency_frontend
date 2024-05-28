@@ -6,7 +6,9 @@ export const AdminBodyComponent = () => {
     return (
       <div className="admin-body">
         <AdminSideBarComponent />
-        <Outlet />
+        <div className="admin-body-main-container">
+          <Outlet />
+        </div>
       </div>
     );
 };

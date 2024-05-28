@@ -1,7 +1,10 @@
 @import '../constants.css';
 
 .admin-vacancy-container{
-    position: relative;
+    /* position: relative; */
+    padding-bottom: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .admin-vacancy-company-container{
@@ -16,4 +19,6 @@
 .admin-vacancy-edit-button-container{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
+    
 }

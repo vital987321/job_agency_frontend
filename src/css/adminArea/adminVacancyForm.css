@@ -1,19 +1,30 @@
-.admin-vacancy-form{
-    background-color:rgb(247, 247, 247);
+@import '../constants.css';
+
+.admin-vacancy-form-modal-window-enviroment{
+    background-color: var(--modal-window-background_color);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    /* height: 1 rem;
-    width: 1 rem; */
+    padding-bottom: 30px;
+}
+
+.admin-vacancy-form{
+    background-color:white;
+    max-width: 1000px;
+    margin: 10px auto 0;
+    border-radius: 20px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    /* display: block; */
 }
 
 .admin-vacancy-form-close-button-container{
     display: flex;
     justify-content: end;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-right: 30px;
 }
 
@@ -84,6 +95,9 @@
 
 }
 
+#form-vacancy-sector-select{
+    height: 7rem;
+}
 
 
 .admin-vacancy-form-description-requirements-container{
@@ -97,4 +111,18 @@
 .admin-vacancy-form-requirements-block{
     display: flex;
     flex-direction: column;
+}
+
+#form-vacancy-description, 
+#form-vacancy-requirements{
+    margin-top: 10px;
+    height: 12rem;
+    resize: none;
+}
+
+.admin-vacancy-form-submit-container{
+    margin-top: 30px;
+    
+    display: flex;
+    justify-content: center;
 }
