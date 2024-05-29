@@ -32,6 +32,7 @@ export const AdminVacancyComponent = () => {
         vacancyData={vacancyData}
         setVacancyFormDisplayValue={setVacancyFormDisplayValue}
         vacancyFormDisplayValue={vacancyFormDisplayValue}
+        newVacancy={false}
       />
     </div>
   );

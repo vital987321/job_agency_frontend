@@ -1,11 +1,14 @@
 import { VacanciesComponent } from "../UserArea/Main/VacanciesComponent";
+import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
 import searchIcon from "../../svg/search.svg";
 import "../../css/adminArea/adminVacancies.css";
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 export const AdminVacanciesComponent = () => {
-
+    const [vacancyFormDisplayValue, setVacancyFormDisplayValue] = useState("none");
     const quickSearchRef = React.createRef();
     const navigate = useNavigate();
 
@@ -17,7 +20,11 @@ export const AdminVacanciesComponent = () => {
             encodeURIComponent(quickSearchRef.current.value)
         );
       }
-    };
+  };
+  
+  const newVacancyButtonHandler = () => {
+    setVacancyFormDisplayValue('block')
+  }
 
   return (
     <div className="admin-vacancies-container">
@@ -34,11 +41,20 @@ export const AdminVacanciesComponent = () => {
             ref={quickSearchRef}
           />
         </form>
-        <button className="button-common button-common-color1 add-new-vacancy-button">
+        <button
+          className="button-common button-common-color1 add-new-vacancy-button"
+          onClick={newVacancyButtonHandler}
+        >
           Add new vacancy
         </button>
       </div>
       <VacanciesComponent />
+      <AdminVacancyFormComponent
+        vacancyData=""
+        setVacancyFormDisplayValue={setVacancyFormDisplayValue}
+        vacancyFormDisplayValue={vacancyFormDisplayValue}
+        newVacancy={true}
+      />
     </div>
   );
 };
