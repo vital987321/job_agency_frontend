@@ -1,7 +1,7 @@
 import { VacancyDataComponent } from "../UserArea/Main/VacancyComponent";
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
 import "../../css/adminArea/adminVacancy.css";
-import { useState } from "react";
+import { useState} from "react";
 import api from "../api";
 import { LIST_VACANCIES_BASE_URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,8 @@ export const AdminVacancyComponent = () => {
   const [vacancyData, setVacancyData] = useState({});
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  
 
   const editButtonHandler = () => {
     setVacancyFormDisplayValue("block");
@@ -52,12 +53,17 @@ export const AdminVacancyComponent = () => {
           {vacancyData.company}
         </span>
       </div>
-      <VacancyDataComponent setVacancyData={setVacancyData} />
+      <VacancyDataComponent
+        vacancyData={vacancyData}
+        setVacancyData={setVacancyData} />
       <AdminVacancyFormComponent
         vacancyData={vacancyData}
+        setVacancyData={setVacancyData}
         setVacancyFormDisplayValue={setVacancyFormDisplayValue}
         vacancyFormDisplayValue={vacancyFormDisplayValue}
         newVacancy={false}
+        
+
       />
     </div>
   );

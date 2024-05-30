@@ -30,8 +30,8 @@ function listSectors(sector_name) {
   }
 }
 
-function checkResidence(vacancy) {
-  if (vacancy.residence_type) {
+function checkResidence(vacancyData) {
+  if (vacancyData.residence_type) {
     return (
       <div className="vacancy-item">
         <div>
@@ -40,7 +40,7 @@ function checkResidence(vacancy) {
         <div>
           <p>MINIMAL RESIDENCE TYPE</p>
           <p className="vacancy-parameter-value">
-            {RESIDENCE_TYPES[vacancy.residence_type]}
+            {RESIDENCE_TYPES[vacancyData.residence_type]}
           </p>
         </div>
       </div>
@@ -48,9 +48,9 @@ function checkResidence(vacancy) {
   }
 }
 
-function checkVisaAssistance(vacancy) {
-  if (vacancy.visa_assistance != null) {
-    const message = vacancy.visa_assistance ? "Yes" : "No";
+function checkVisaAssistance(vacancyData) {
+  if (vacancyData.visa_assistance != null) {
+    const message = vacancyData.visa_assistance ? "Yes" : "No";
     return (
       <div className="vacancy-item">
         <div>
@@ -66,34 +66,29 @@ function checkVisaAssistance(vacancy) {
 }
 
 export const VacancyDataComponent = (props) => {
-  // const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
-  const [vacancy, setVacancy] = useState({});
-  // const [userData, setUserData] = useState({});
+
   const { vacancy_id } = useParams();
 
-  const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
+  
   useEffect(() => {
-    axios
+    if (Object.keys(props.vacancyData).length === 0) {
+      const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
+      axios
       .get(url)
-      .then((res) => {
-        setVacancy(res.data)
-        if (props.setVacancyData) props.setVacancyData(res.data)
-      })
+      .then((response) => props.setVacancyData(response.data))
       .catch((err) => console.log(err));
-  }, []);
-
-  // const applyButtonHandler = () => {
-  //   setAppFormDisplayValue("flex");
-  // };
+  }
+    }
+    , []);
 
   return (
     <>
       <section className="vacancy-section">
         <div className="published-date-container">
-          <p>Published: {stringToDateDMY(vacancy.created_at)}</p>
+          <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
         </div>
 
-        <h2 className="vacancy-header h2-common">{vacancy.name}</h2>
+        <h2 className="vacancy-header h2-common">{props.vacancyData.name}</h2>
 
         <div className="vacancy-container">
           <div className="vacancy-item">
@@ -103,7 +98,7 @@ export const VacancyDataComponent = (props) => {
             <div>
               <p>SALARY</p>
               <p className="vacancy-parameter-value">
-                {vacancy.salary} CZK/month
+                {props.vacancyData.salary} CZK/month
               </p>
             </div>
           </div>
@@ -114,7 +109,9 @@ export const VacancyDataComponent = (props) => {
             </div>
             <div>
               <p>LOCATION</p>
-              <p className="vacancy-parameter-value">{vacancy.location}</p>
+              <p className="vacancy-parameter-value">
+                {props.vacancyData.location}
+              </p>
             </div>
           </div>
 
@@ -124,7 +121,9 @@ export const VacancyDataComponent = (props) => {
             </div>
             <div>
               <p>CONTRACT TYPE</p>
-              <p className="vacancy-parameter-value">{vacancy.contract_type}</p>
+              <p className="vacancy-parameter-value">
+                {props.vacancyData.contract_type}
+              </p>
             </div>
           </div>
 
@@ -135,7 +134,10 @@ export const VacancyDataComponent = (props) => {
             <div>
               <p>WORKING HOURHS</p>
               <p className="vacancy-parameter-value">
-                {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
+                {identifyWorkingHours(
+                  props.vacancyData.hours_from,
+                  props.vacancyData.hours_to
+                )}
               </p>
             </div>
           </div>
@@ -146,7 +148,9 @@ export const VacancyDataComponent = (props) => {
             </div>
             <div>
               <p>GENDER</p>
-              <p className="vacancy-parameter-value">{vacancy.gender}</p>
+              <p className="vacancy-parameter-value">
+                {props.vacancyData.gender}
+              </p>
             </div>
           </div>
 
@@ -157,46 +161,31 @@ export const VacancyDataComponent = (props) => {
             <div>
               <p>SECTOR</p>
               <p className="vacancy-parameter-value">
-                {listSectors(vacancy.sector_name)}
+                {listSectors(props.vacancyData.sector_name)}
               </p>
             </div>
           </div>
 
-          {checkResidence(vacancy)}
-          {checkVisaAssistance(vacancy)}
+          {checkResidence(props.vacancyData)}
+          {checkVisaAssistance(props.vacancyData)}
         </div>
 
         <div className="vacancy-container">
           <div>
             <h2>Description</h2>
             <div className="discription-text-container">
-              <p>{vacancy.description}</p>
+              <p>{props.vacancyData.description}</p>
             </div>
           </div>
 
           <div>
             <h2>Requirements</h2>
             <div className="discription-text-container">
-              <p>{vacancy.requirements}</p>
+              <p>{props.vacancyData.requirements}</p>
             </div>
           </div>
         </div>
-        {/* <div className="vacancy-apply-button-container">
-          <button
-            className="vacancy-apply-button button-common button-common-color1"
-            onClick={applyButtonHandler}
-          >
-            Apply
-          </button>
-        </div> */}
       </section>
-
-      {/* <ApplicationFormComponent
-        AppFormDisplayValue={AppFormDisplayValue}
-        vacancy={vacancy}
-        setAppFormDisplayValue={setAppFormDisplayValue}
-        userData={userData}
-      /> */}
     </>
   );
 };
@@ -226,23 +215,26 @@ export const VacancyComponent=(props)=>{
     }
   }, []);
 
-  return<>
-    <VacancyDataComponent 
-      setVacancyData={setVacancyData} 
-    />
-    <div className="vacancy-apply-button-container">
-      <button
-        className="vacancy-apply-button button-common button-common-color1"
-        onClick={applyButtonHandler}
-      >
-        Apply
-      </button>
-    </div>
-    <ApplicationFormComponent
+  return (
+    <>
+      <VacancyDataComponent
+        vacancyData={vacancyData}
+        setVacancyData={setVacancyData}
+      />
+      <div className="vacancy-apply-button-container">
+        <button
+          className="vacancy-apply-button button-common button-common-color1"
+          onClick={applyButtonHandler}
+        >
+          Apply
+        </button>
+      </div>
+      <ApplicationFormComponent
         AppFormDisplayValue={AppFormDisplayValue}
         vacancy={vacancyData}
         setAppFormDisplayValue={setAppFormDisplayValue}
         userData={userData}
       />
-  </>
+    </>
+  );
 }

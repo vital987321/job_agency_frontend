@@ -17,6 +17,8 @@ export const AdminVacancyFormComponent = (props) => {
     contract_type: CONTRACT_TYPE[0],
     visa_assistance: "",
   });
+
+
   const vacancyNameRef = React.createRef();
   const companyRef = React.createRef();
   const locationRef = React.createRef();
@@ -119,6 +121,7 @@ export const AdminVacancyFormComponent = (props) => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
+    console.log('submitting...')
 
     const requestData = {
       name: vacancyNameRef.current.value,
@@ -143,8 +146,8 @@ export const AdminVacancyFormComponent = (props) => {
       try {
         const response = await api
           .patch(requestUrl, requestData)
-          .then((response) => console.log(response))
-          .then(console.log("Vacancy updated"))
+          .then((response) => props.setVacancyData(response.data))
+          .then((result) => props.setVacancyFormDisplayValue("none"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
@@ -156,8 +159,9 @@ export const AdminVacancyFormComponent = (props) => {
       try {
         const response = await api
           .post(requestUrl, requestData)
-          .then((response) => console.log(response))
+          // .then((response) => console.log(response))
           .then(console.log("Vacancy created"))
+          
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
@@ -167,10 +171,11 @@ export const AdminVacancyFormComponent = (props) => {
     if (props.newVacancy) sendPostRequest();
     else sendPatchRequest();
 
-    props.setVacancyFormDisplayValue("none");
+    // props.setVacancyFormDisplayValue("none");
   };
 
-  const cancelButtonHandler = () => {
+  const cancelButtonHandler = (e) => {
+    e.preventDefault(); //form to be submited without e.preventDefault()
     props.setVacancyFormDisplayValue("none");
   };
 
