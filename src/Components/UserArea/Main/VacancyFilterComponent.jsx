@@ -157,8 +157,9 @@ export const VacancyFilterComponent = (props) => {
       queryStringArray.push(
         "key_search=" + encodeURIComponent(vacancyKeyWords)
       );
-    if (salaryMin) queryStringArray.push("salary_gte=" + salaryMin);
-    if (salaryMax) queryStringArray.push("salary_lte=" + salaryMax);
+    if (salaryMin>0) queryStringArray.push("salary_gte=" + salaryMin);
+    if (salaryMax < SALARY_CEILING)
+      queryStringArray.push("salary_lte=" + salaryMax);
     if (vacancyLocation)
       queryStringArray.push("location=" + encodeURIComponent(vacancyLocation));
     if (vacancyResidence)
