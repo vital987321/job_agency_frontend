@@ -8,7 +8,8 @@ import { useState } from "react";
 
 
 export const AdminVacanciesComponent = () => {
-    const [vacancyFormDisplayValue, setVacancyFormDisplayValue] = useState("none");
+  const [vacancyFormDisplayValue, setVacancyFormDisplayValue] = useState("none");
+  const [vacancyListChangedState, setVacancyListChangedState]=useState({})
     const quickSearchRef = React.createRef();
     const navigate = useNavigate();
 
@@ -48,12 +49,13 @@ export const AdminVacanciesComponent = () => {
           Add new vacancy
         </button>
       </div>
-      <VacanciesComponent />
+      <VacanciesComponent vacancyListChangedState={vacancyListChangedState} />
       <AdminVacancyFormComponent
         vacancyData=""
         setVacancyFormDisplayValue={setVacancyFormDisplayValue}
         vacancyFormDisplayValue={vacancyFormDisplayValue}
         newVacancy={true}
+        setVacancyListChangedState={setVacancyListChangedState}
       />
     </div>
   );

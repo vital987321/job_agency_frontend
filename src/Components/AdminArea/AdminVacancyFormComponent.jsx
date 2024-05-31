@@ -121,7 +121,6 @@ export const AdminVacancyFormComponent = (props) => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log('submitting...')
 
     const requestData = {
       name: vacancyNameRef.current.value,
@@ -159,9 +158,9 @@ export const AdminVacancyFormComponent = (props) => {
       try {
         const response = await api
           .post(requestUrl, requestData)
-          // .then((response) => console.log(response))
-          .then(console.log("Vacancy created"))
-          
+          .then((result) => props.setVacancyListChangedState({}))
+          .then((result) => props.setVacancyFormDisplayValue("none"))
+          .then((result)=>console.log("Vacancy created"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);

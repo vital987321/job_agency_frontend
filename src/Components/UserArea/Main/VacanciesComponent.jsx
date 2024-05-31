@@ -10,7 +10,7 @@ import { ListVacanciesComponent } from "./ListVacanciesComponent.jsx";
 import { VacancyFilterComponent } from "./VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 
-export const VacanciesComponent = () => {
+export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
     useState("none");
   const [listVacanciesRequestUrl, setListVacanciesRequestUrl] = useState(
@@ -144,6 +144,7 @@ export const VacanciesComponent = () => {
       <ListVacanciesComponent
         listVacanciesRequestUrl={listVacanciesRequestUrl}
         setVacanciesResponseData={setVacanciesResponseData}
+        vacancyListChangedState={props.vacancyListChangedState}
       />
       <section className="vacancies-pagination-section">
         <div className="vacancies-pagination-previous-container">

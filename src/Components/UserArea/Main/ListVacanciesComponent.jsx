@@ -18,7 +18,7 @@ export const ListVacanciesComponent = (props) => {
           props.setVacanciesResponseData(response.data);
       })
       .catch((err) => console.log(err));
-  }, [props.listVacanciesRequestUrl]);
+  }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
   return (
     <div className="vacancies-list-container">
       <table className="list-vacancies-table">
