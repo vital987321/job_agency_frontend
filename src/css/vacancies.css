@@ -37,3 +37,11 @@
 .current-vacancy-pagination-link{
     background-color: var(--button-general-background-color3);
 }
+
+.vacancy-filter-button-general img{
+    margin-left:1rem;
+}
+.cancel-filter-button{
+    margin-left: 50px;
+}
+

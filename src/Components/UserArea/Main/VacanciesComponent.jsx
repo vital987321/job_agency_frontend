@@ -9,6 +9,7 @@ import filterIcon from "../../../svg/settings.svg";
 import { ListVacanciesComponent } from "./ListVacanciesComponent.jsx";
 import { VacancyFilterComponent } from "./VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import closeIcon from "../../../svg/X.svg";
 
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
@@ -132,14 +133,34 @@ export const VacanciesComponent = (props) => {
     return "";
   };
 
+  const resetFiltersHandler = () => {
+    navigate('');
+  }
+
+  const ResetFiltersComponent = () => {
+    if (searchParams.size > 0) {
+      return (
+        <button
+          className="vacancy-filter-button-general cancel-filter-button button-common button-common-color3"
+          onClick={resetFiltersHandler}
+        >
+          Reset Filters
+          <img src={closeIcon} alt="" height="14px" />
+        </button>
+      );
+      
+    }
+  }
+
   return (
     <div className="vacancies-container">
       <button
-        className="vacancies-filter-buttn button-common button-common-color3"
+        className="vacancy-filter-button-general vacancies-filter-button button-common button-common-color1"
         onClick={filterButtonHandler}
       >
-        Filter <img src={filterIcon} alt="" />
+        Filter <img src={filterIcon} alt="" height="14px" />
       </button>
+      <ResetFiltersComponent />
       <h2 className="h2-main-header h2-common">Vacancies</h2>
       <ListVacanciesComponent
         listVacanciesRequestUrl={listVacanciesRequestUrl}
