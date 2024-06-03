@@ -4,6 +4,7 @@ import { GENDER_LIST } from "../../constants";
 import { SECTOR_REQUEST_URL } from "../../constants";
 import { RESIDENCE_TYPES } from "../../constants";
 import { LIST_VACANCIES_BASE_URL } from "../../constants";
+import { WORKING_HOURS } from "../../constants";
 import closeIcon from "../../svg/X.svg";
 import api from "../api";
 import "../../css/adminArea/adminVacancyForm.css";
@@ -17,6 +18,9 @@ export const AdminVacancyFormComponent = (props) => {
     gender: GENDER_LIST[0],
     contract_type: CONTRACT_TYPE[0],
     visa_assistance: "",
+    hoursFrom:"",
+    hoursTo:"",
+
   });
 
 
@@ -56,7 +60,7 @@ export const AdminVacancyFormComponent = (props) => {
 
   useEffect(() => {
     if (!props.newVacancy) {
-      // existing vacancy
+      // changing existing vacancy
       try {
         setVacancyCurrentValues({
           sectors: sectorDbItems(),
@@ -119,6 +123,22 @@ export const AdminVacancyFormComponent = (props) => {
       visa_assistance: e.target.value,
     });
   };
+
+  
+  const changeHoursFromHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      hoursFrom: e.target.value,
+    });
+  };
+
+  const changeHoursToHandler = (e) => {
+    setVacancyCurrentValues({
+      ...vacancyCurrentValues,
+      hoursTo: e.target.value,
+    });
+  };
+
 
   const formValidation = (data) => {
     let validation = true
@@ -311,23 +331,53 @@ export const AdminVacancyFormComponent = (props) => {
               <label htmlFor="form-vacancy-hours-from-input">
                 Work hours from
               </label>
-              <input
+              <select
+                className="admin-vacancy-form-input"
+                id="form-vacancy-hours-from-select"
+                value={vacancyCurrentValues.hoursFrom}
+                onChange={changeHoursFromHandler}
+              >
+                <option value={''}>{''}</option>
+                {WORKING_HOURS.map((item) => {
+                  return (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+              {/* <input
                 className="admin-vacancy-form-input"
                 id="form-vacancy-hours-from-input"
                 type="text"
                 defaultValue={props.vacancyData.hours_from}
                 ref={hoursFromRef}
-              />
+              /> */}
             </div>
             <div className="admin-form-vacancy-items">
               <label htmlFor="form-vacancy-hours-to-input">Work hours to</label>
-              <input
+              <select
+                className="admin-vacancy-form-input"
+                id="form-vacancy-hours-to-select"
+                value={vacancyCurrentValues.hoursTo}
+                onChange={changeHoursToHandler}
+              >
+                <option value={''}>{''}</option>
+                {WORKING_HOURS.map((item) => {
+                  return (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+              {/* <input
                 className="admin-vacancy-form-input"
                 id="form-vacancy-hours-to-input"
                 type="text"
                 defaultValue={props.vacancyData.hours_to}
                 ref={hoursToRef}
-              />
+              /> */}
             </div>
 
             <div className="admin-form-vacancy-items">
