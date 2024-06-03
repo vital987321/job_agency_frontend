@@ -10,6 +10,7 @@ import "../../css/adminArea/adminVacancyForm.css";
 
 export const AdminVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
+  const [validationErrors, setValidationErrors]=useState({})
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
     sectors: [],
     residence_type: "1",
@@ -119,13 +120,40 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
+  const formValidation = (data) => {
+    let validation = true
+    const newValidationErrors={}
+    if (data.name === '') {
+      newValidationErrors.name = "Vacancy name cannot be empty";
+      validation=false
+    }
+    if (data.salary && isNaN(data.salary)){
+      newValidationErrors.salary = 'Salary must be a number'
+      validation=false
+    }
+    if (data.salary && !isNaN(data.salary) && data.salary<0){
+      newValidationErrors.salary = 'Sallary cannot be negative'
+      validation=false
+    }
+
+    if (data.location && !data.location.match(/.*[a-zA-Z].*/)) {
+      newValidationErrors.location = "Not valid location";
+      validation = false;
+    }
+
+
+
+    setValidationErrors(newValidationErrors);
+    return validation
+  }
+
   const submitFormHandler = (e) => {
     e.preventDefault();
 
     const requestData = {
       name: vacancyNameRef.current.value,
       company: companyRef.current.value,
-      salary: parseInt(salaryRef.current.value),
+      salary: salaryRef.current.value,
       location: locationRef.current.value,
       contract_type: vacancyCurrentValues.contract_type,
       hours_from: hoursFromRef.current.value? hoursFromRef.current.value : null,
@@ -138,6 +166,7 @@ export const AdminVacancyFormComponent = (props) => {
       sector: vacancyCurrentValues.sectors,
     };
 
+    
     // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
     const sendPatchRequest = async () => {
@@ -167,8 +196,12 @@ export const AdminVacancyFormComponent = (props) => {
       }
     };
 
-    if (props.newVacancy) sendPostRequest();
+
+    if (formValidation(requestData)) {
+      if (props.newVacancy) sendPostRequest();
     else sendPatchRequest();
+    }
+    
 
     // props.setVacancyFormDisplayValue("none");
   };
@@ -205,6 +238,10 @@ export const AdminVacancyFormComponent = (props) => {
                 ref={vacancyNameRef}
               />
             </div>
+            <div className="admin-form-validation-message">
+              {validationErrors.name}
+            </div>
+
             <div className="admin-vacancy-form-company-container">
               <label htmlFor="form-vacancy-conpany-input">Company</label>
               <input
@@ -218,25 +255,36 @@ export const AdminVacancyFormComponent = (props) => {
           </div>
 
           <div className="admin-form-vacancy-items-container">
-            <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-salary-input">Salary</label>
-              <input
-                className="admin-vacancy-form-input"
-                id="form-vacancy-salary-input"
-                type="text"
-                defaultValue={props.vacancyData.salary}
-                ref={salaryRef}
-              />
+            <div>
+              <div className="admin-form-vacancy-items">
+                <label htmlFor="form-vacancy-salary-input">Salary</label>
+                <input
+                  className="admin-vacancy-form-input"
+                  id="form-vacancy-salary-input"
+                  type="text"
+                  defaultValue={props.vacancyData.salary}
+                  ref={salaryRef}
+                />
+              </div>
+              <div className="admin-form-validation-message">
+                {validationErrors.salary}
+              </div>
             </div>
-            <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-location-input">Location</label>
-              <input
-                className="admin-vacancy-form-input"
-                id="form-vacancy-location-input"
-                type="text"
-                defaultValue={props.vacancyData.location}
-                ref={locationRef}
-              />
+
+            <div>
+              <div className="admin-form-vacancy-items">
+                <label htmlFor="form-vacancy-location-input">Location</label>
+                <input
+                  className="admin-vacancy-form-input"
+                  id="form-vacancy-location-input"
+                  type="text"
+                  defaultValue={props.vacancyData.location}
+                  ref={locationRef}
+                />
+              </div>
+              <div className="admin-form-validation-message">
+                {validationErrors.location}
+              </div>
             </div>
 
             <div className="admin-form-vacancy-items">
