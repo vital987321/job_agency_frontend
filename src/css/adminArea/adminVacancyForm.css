@@ -148,3 +148,19 @@
 .form-vacancy-hours-from-container input{
     width: 50px;
 }
+
+.form-vacancy-hours-input-block{
+    display: flex;
+    align-items:center;
+}
+
+
+.form-vacancy-minutes-input-block{
+    display: flex;
+    align-items:center;
+    margin-left: 20px;
+}
+
+.admin-vacancy-form-hours-minutes-label{
+    margin-left: 5px;
+}

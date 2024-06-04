@@ -18,8 +18,6 @@ export const AdminVacancyFormComponent = (props) => {
     gender: GENDER_LIST[0],
     contract_type: CONTRACT_TYPE[0],
     visa_assistance: "",
-    hoursFrom: "",
-    hoursTo: "",
   });
 
   const vacancyNameRef = React.createRef();
@@ -27,7 +25,9 @@ export const AdminVacancyFormComponent = (props) => {
   const locationRef = React.createRef();
   const salaryRef = React.createRef();
   const hoursFromRef = React.createRef();
+  const minutesFromRef = React.createRef();
   const hoursToRef = React.createRef();
+  const minutesToRef = React.createRef();
   const descriptionRef = React.createRef();
   const requirementsRef = React.createRef();
 
@@ -122,19 +122,6 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
-  const changeHoursFromHandler = (e) => {
-    setVacancyCurrentValues({
-      ...vacancyCurrentValues,
-      hoursFrom: e.target.value,
-    });
-  };
-
-  const changeHoursToHandler = (e) => {
-    setVacancyCurrentValues({
-      ...vacancyCurrentValues,
-      hoursTo: e.target.value,
-    });
-  };
 
   const formValidation = (data) => {
     let validation = true;
@@ -161,6 +148,11 @@ export const AdminVacancyFormComponent = (props) => {
     return validation;
   };
 
+  const workingHoursToRequestFormst=(hours, minutes)=>{
+    if (!hours) return null
+    return `${hours}:${minutes? minutes : '00'}`
+  }
+
   const submitFormHandler = (e) => {
     e.preventDefault();
 
@@ -170,10 +162,8 @@ export const AdminVacancyFormComponent = (props) => {
       salary: salaryRef.current.value,
       location: locationRef.current.value,
       contract_type: vacancyCurrentValues.contract_type,
-      hours_from: hoursFromRef.current.value
-        ? hoursFromRef.current.value
-        : null,
-      hours_to: hoursToRef.current.value ? hoursToRef.current.value : null,
+      hours_from: workingHoursToRequestFormst( hoursFromRef.current.value,  minutesFromRef.current.value),
+      hours_to: workingHoursToRequestFormst( hoursToRef.current.value,  minutesToRef.current.value),
       gender: vacancyCurrentValues.gender,
       description: descriptionRef.current.value,
       requirements: requirementsRef.current.value,
@@ -182,6 +172,7 @@ export const AdminVacancyFormComponent = (props) => {
       sector: vacancyCurrentValues.sectors,
     };
 
+    console.log(requestData)
     // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
     const sendPatchRequest = async () => {
@@ -343,7 +334,7 @@ export const AdminVacancyFormComponent = (props) => {
                 Work hours from
               </label>
               <div className="form-vacancy-hours-from-container">
-                <div>
+                <div className="form-vacancy-hours-input-block">
                   <input
                     className="admin-vacancy-form-input"
                     id="form-vacancy-hours-from-input"
@@ -351,18 +342,18 @@ export const AdminVacancyFormComponent = (props) => {
                     defaultValue={props.vacancyData.hours_from}
                     ref={hoursFromRef}
                   />
-                  <p>h</p>
+                  <p className="admin-vacancy-form-hours-minutes-label">h</p>
                 </div>
 
-                <div>
+                <div className="form-vacancy-minutes-input-block">
                   <input
                     className="admin-vacancy-form-input"
                     id="form-vacancy-minutes-from-input"
                     type="text"
                     defaultValue={props.vacancyData.hours_from}
-                    ref={hoursFromRef}
+                    ref={minutesFromRef}
                   />
-                  <p>min</p>
+                  <p className="admin-vacancy-form-hours-minutes-label">min</p>
                 </div>
               </div>
 
@@ -391,7 +382,31 @@ export const AdminVacancyFormComponent = (props) => {
             </div>
             <div className="admin-form-vacancy-items">
               <label htmlFor="form-vacancy-hours-to-input">Work hours to</label>
-              <select
+              <div className="form-vacancy-hours-from-container">
+                <div className="form-vacancy-hours-input-block">
+                  <input
+                    className="admin-vacancy-form-input"
+                    id="form-vacancy-hours-to-input"
+                    type="text"
+                    defaultValue={props.vacancyData.hours_from}
+                    ref={hoursToRef}
+                  />
+                  <p className="admin-vacancy-form-hours-minutes-label">h</p>
+                </div>
+
+                <div className="form-vacancy-minutes-input-block">
+                  <input
+                    className="admin-vacancy-form-input"
+                    id="form-vacancy-minutes-to-input"
+                    type="text"
+                    defaultValue={props.vacancyData.hours_from}
+                    ref={minutesToRef}
+                  />
+                  <p className="admin-vacancy-form-hours-minutes-label">min</p>
+                </div>
+              </div>
+
+              {/* <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-hours-to-select"
                 value={vacancyCurrentValues.hoursTo}
@@ -405,7 +420,7 @@ export const AdminVacancyFormComponent = (props) => {
                     </option>
                   );
                 })}
-              </select>
+              </select> */}
               {/* <input
                 className="admin-vacancy-form-input"
                 id="form-vacancy-hours-to-input"
