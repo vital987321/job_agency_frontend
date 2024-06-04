@@ -11,18 +11,16 @@ import "../../css/adminArea/adminVacancyForm.css";
 
 export const AdminVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
-  const [validationErrors, setValidationErrors]=useState({})
+  const [validationErrors, setValidationErrors] = useState({});
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
     sectors: [],
     residence_type: "1",
     gender: GENDER_LIST[0],
     contract_type: CONTRACT_TYPE[0],
     visa_assistance: "",
-    hoursFrom:"",
-    hoursTo:"",
-
+    hoursFrom: "",
+    hoursTo: "",
   });
-
 
   const vacancyNameRef = React.createRef();
   const companyRef = React.createRef();
@@ -124,7 +122,6 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
-  
   const changeHoursFromHandler = (e) => {
     setVacancyCurrentValues({
       ...vacancyCurrentValues,
@@ -139,21 +136,20 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
-
   const formValidation = (data) => {
-    let validation = true
-    const newValidationErrors={}
-    if (data.name === '') {
+    let validation = true;
+    const newValidationErrors = {};
+    if (data.name === "") {
       newValidationErrors.name = "Vacancy name cannot be empty";
-      validation=false
+      validation = false;
     }
-    if (data.salary && isNaN(data.salary)){
-      newValidationErrors.salary = 'Salary must be a number'
-      validation=false
+    if (data.salary && isNaN(data.salary)) {
+      newValidationErrors.salary = "Salary must be a number";
+      validation = false;
     }
-    if (data.salary && !isNaN(data.salary) && data.salary<0){
-      newValidationErrors.salary = 'Sallary cannot be negative'
-      validation=false
+    if (data.salary && !isNaN(data.salary) && data.salary < 0) {
+      newValidationErrors.salary = "Sallary cannot be negative";
+      validation = false;
     }
 
     if (data.location && !data.location.match(/.*[a-zA-Z].*/)) {
@@ -161,11 +157,9 @@ export const AdminVacancyFormComponent = (props) => {
       validation = false;
     }
 
-
-
     setValidationErrors(newValidationErrors);
-    return validation
-  }
+    return validation;
+  };
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -176,8 +170,10 @@ export const AdminVacancyFormComponent = (props) => {
       salary: salaryRef.current.value,
       location: locationRef.current.value,
       contract_type: vacancyCurrentValues.contract_type,
-      hours_from: hoursFromRef.current.value? hoursFromRef.current.value : null,
-      hours_to: hoursToRef.current.value? hoursToRef.current.value : null,
+      hours_from: hoursFromRef.current.value
+        ? hoursFromRef.current.value
+        : null,
+      hours_to: hoursToRef.current.value ? hoursToRef.current.value : null,
       gender: vacancyCurrentValues.gender,
       description: descriptionRef.current.value,
       requirements: requirementsRef.current.value,
@@ -186,7 +182,6 @@ export const AdminVacancyFormComponent = (props) => {
       sector: vacancyCurrentValues.sectors,
     };
 
-    
     // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
     const sendPatchRequest = async () => {
@@ -209,19 +204,17 @@ export const AdminVacancyFormComponent = (props) => {
           .post(requestUrl, requestData)
           .then((result) => props.setVacancyListChangedState({}))
           .then((result) => props.setVacancyFormDisplayValue("none"))
-          .then((result)=>console.log("Vacancy created"))
+          .then((result) => console.log("Vacancy created"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
       }
     };
 
-
     if (formValidation(requestData)) {
       if (props.newVacancy) sendPostRequest();
-    else sendPatchRequest();
+      else sendPatchRequest();
     }
-    
 
     // props.setVacancyFormDisplayValue("none");
   };
@@ -328,17 +321,14 @@ export const AdminVacancyFormComponent = (props) => {
             </div>
 
             <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-hours-from-input">
-                Work hours from
-              </label>
+              <label htmlFor="form-vacancy-gender-select">Gender</label>
               <select
                 className="admin-vacancy-form-input"
-                id="form-vacancy-hours-from-select"
-                value={vacancyCurrentValues.hoursFrom}
-                onChange={changeHoursFromHandler}
+                id="form-vacancy-gender-select"
+                value={vacancyCurrentValues.gender}
+                onChange={changeGenderHandler}
               >
-                <option value={''}>{''}</option>
-                {WORKING_HOURS.map((item) => {
+                {GENDER_LIST.map((item) => {
                   return (
                     <option key={item} value={item}>
                       {item}
@@ -346,6 +336,51 @@ export const AdminVacancyFormComponent = (props) => {
                   );
                 })}
               </select>
+            </div>
+
+            <div className="admin-form-vacancy-items">
+              <label htmlFor="form-vacancy-hours-from-input">
+                Work hours from
+              </label>
+              <div className="form-vacancy-hours-from-container">
+                <div>
+                  <input
+                    className="admin-vacancy-form-input"
+                    id="form-vacancy-hours-from-input"
+                    type="text"
+                    defaultValue={props.vacancyData.hours_from}
+                    ref={hoursFromRef}
+                  />
+                  <p>h</p>
+                </div>
+
+                <div>
+                  <input
+                    className="admin-vacancy-form-input"
+                    id="form-vacancy-minutes-from-input"
+                    type="text"
+                    defaultValue={props.vacancyData.hours_from}
+                    ref={hoursFromRef}
+                  />
+                  <p>min</p>
+                </div>
+              </div>
+
+              {/* <select
+                className="admin-vacancy-form-input"
+                id="form-vacancy-hours-from-select"
+                value={vacancyCurrentValues.hoursFrom}
+                onChange={changeHoursFromHandler}
+              >
+                <option value={""}>{""}</option>
+                {WORKING_HOURS.map((item) => {
+                  return (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select> */}
               {/* <input
                 className="admin-vacancy-form-input"
                 id="form-vacancy-hours-from-input"
@@ -362,7 +397,7 @@ export const AdminVacancyFormComponent = (props) => {
                 value={vacancyCurrentValues.hoursTo}
                 onChange={changeHoursToHandler}
               >
-                <option value={''}>{''}</option>
+                <option value={""}>{""}</option>
                 {WORKING_HOURS.map((item) => {
                   return (
                     <option key={item} value={item}>
@@ -378,24 +413,6 @@ export const AdminVacancyFormComponent = (props) => {
                 defaultValue={props.vacancyData.hours_to}
                 ref={hoursToRef}
               /> */}
-            </div>
-
-            <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-gender-select">Gender</label>
-              <select
-                className="admin-vacancy-form-input"
-                id="form-vacancy-gender-select"
-                value={vacancyCurrentValues.gender}
-                onChange={changeGenderHandler}
-              >
-                {GENDER_LIST.map((item) => {
-                  return (
-                    <option key={item} value={item}>
-                      {item}
-                    </option>
-                  );
-                })}
-              </select>
             </div>
 
             <div className="admin-form-vacancy-items">

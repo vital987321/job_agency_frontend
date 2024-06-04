@@ -139,3 +139,12 @@
     margin-top: -2px;
     margin-bottom: -16px;
 }
+
+.form-vacancy-hours-from-container{
+    display: flex;
+    align-items: center;
+}
+
+.form-vacancy-hours-from-container input{
+    width: 50px;
+}
