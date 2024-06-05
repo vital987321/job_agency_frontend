@@ -122,7 +122,6 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
-
   const formValidation = (data) => {
     let validation = true;
     const newValidationErrors = {};
@@ -144,14 +143,69 @@ export const AdminVacancyFormComponent = (props) => {
       validation = false;
     }
 
+    const hoursFromValidation = validateWorkingHours(data.hours_from);
+
+    if (!hoursFromValidation.validation) {
+      newValidationErrors.hours_from = hoursFromValidation.errorMessage;
+      validation = false;
+    }
+
+    const hoursToValidation = validateWorkingHours(data.hours_to);
+    if (!hoursToValidation.validation) {
+      newValidationErrors.hours_to = hoursToValidation.errorMessage;
+      validation = false;
+    }
+
     setValidationErrors(newValidationErrors);
     return validation;
   };
 
-  const workingHoursToRequestFormst=(hours, minutes)=>{
-    if (!hours) return null
-    return `${hours}:${minutes? minutes : '00'}`
-  }
+  const validateWorkingHours = (workingHoursString) => {
+    if (!workingHoursString) {
+      return {
+        validation: true,
+        errorMessage: "",
+      };
+    }
+    const hours = workingHoursString.split(":")[0];
+    const minutes = workingHoursString.split(":")[1];
+ 
+    if (isNaN(hours) || isNaN(minutes)) {
+      return {
+        validation: false,
+        errorMessage: "Values must be numeric",
+      };
+    }
+    if (hours % 1 > 0 || minutes % 1 > 0) {
+      return {
+        validation: false,
+        errorMessage: "Values must integers",
+      };
+    }
+    if (hours < 0 || hours > 23) {
+      return {
+        validation: false,
+        errorMessage: "Hours range: 0-23",
+      };
+    }
+    if (minutes < 0 || minutes > 59) {
+      return {
+        validation: false,
+        errorMessage: "Minutes range: 0-59",
+      };
+    }
+
+    return {
+      validation: true,
+      errorMessage: "",
+    };
+
+  };
+
+  const workingHoursToRequestFormst = (hours, minutes) => {
+    if (!hours) return null;
+    return `${hours}:${minutes ? minutes : "00"}`;
+  };
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -162,8 +216,14 @@ export const AdminVacancyFormComponent = (props) => {
       salary: salaryRef.current.value,
       location: locationRef.current.value,
       contract_type: vacancyCurrentValues.contract_type,
-      hours_from: workingHoursToRequestFormst( hoursFromRef.current.value,  minutesFromRef.current.value),
-      hours_to: workingHoursToRequestFormst( hoursToRef.current.value,  minutesToRef.current.value),
+      hours_from: workingHoursToRequestFormst(
+        hoursFromRef.current.value,
+        minutesFromRef.current.value
+      ),
+      hours_to: workingHoursToRequestFormst(
+        hoursToRef.current.value,
+        minutesToRef.current.value
+      ),
       gender: vacancyCurrentValues.gender,
       description: descriptionRef.current.value,
       requirements: requirementsRef.current.value,
@@ -172,7 +232,6 @@ export const AdminVacancyFormComponent = (props) => {
       sector: vacancyCurrentValues.sectors,
     };
 
-    console.log(requestData)
     // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
     const sendPatchRequest = async () => {
@@ -329,105 +388,93 @@ export const AdminVacancyFormComponent = (props) => {
               </select>
             </div>
 
-            <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-hours-from-input">
-                Work hours from
-              </label>
-              <div className="form-vacancy-hours-from-container">
-                <div className="form-vacancy-hours-input-block">
-                  <input
-                    className="admin-vacancy-form-input"
-                    id="form-vacancy-hours-from-input"
-                    type="text"
-                    defaultValue={props.vacancyData.hours_from}
-                    ref={hoursFromRef}
-                  />
-                  <p className="admin-vacancy-form-hours-minutes-label">h</p>
-                </div>
+            <div>
+              <div className="admin-form-vacancy-items">
+                <label htmlFor="form-vacancy-hours-from-input">
+                  Work hours from
+                </label>
+                <div className="form-vacancy-hours-from-container">
+                  <div className="form-vacancy-hours-input-block">
+                    <input
+                      className="admin-vacancy-form-input"
+                      id="form-vacancy-hours-from-input"
+                      type="text"
+                      defaultValue={
+                        props.vacancyData.hours_from
+                          ? props.vacancyData.hours_from.split(":")[0]
+                          : ""
+                      }
+                      // defaultValue={props.vacancyData.hours_from.getHours()}
+                      ref={hoursFromRef}
+                    />
+                    <p className="admin-vacancy-form-hours-minutes-label">h</p>
+                  </div>
 
-                <div className="form-vacancy-minutes-input-block">
-                  <input
-                    className="admin-vacancy-form-input"
-                    id="form-vacancy-minutes-from-input"
-                    type="text"
-                    defaultValue={props.vacancyData.hours_from}
-                    ref={minutesFromRef}
-                  />
-                  <p className="admin-vacancy-form-hours-minutes-label">min</p>
+                  <div className="form-vacancy-minutes-input-block">
+                    <input
+                      className="admin-vacancy-form-input"
+                      id="form-vacancy-minutes-from-input"
+                      type="text"
+                      defaultValue={
+                        props.vacancyData.hours_from
+                          ? props.vacancyData.hours_from.split(":")[1]
+                          : ""
+                      }
+                      ref={minutesFromRef}
+                    />
+                    <p className="admin-vacancy-form-hours-minutes-label">
+                      min
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              {/* <select
-                className="admin-vacancy-form-input"
-                id="form-vacancy-hours-from-select"
-                value={vacancyCurrentValues.hoursFrom}
-                onChange={changeHoursFromHandler}
-              >
-                <option value={""}>{""}</option>
-                {WORKING_HOURS.map((item) => {
-                  return (
-                    <option key={item} value={item}>
-                      {item}
-                    </option>
-                  );
-                })}
-              </select> */}
-              {/* <input
-                className="admin-vacancy-form-input"
-                id="form-vacancy-hours-from-input"
-                type="text"
-                defaultValue={props.vacancyData.hours_from}
-                ref={hoursFromRef}
-              /> */}
+              <div className="admin-form-validation-message">
+                {validationErrors.hours_from}
+              </div>
             </div>
-            <div className="admin-form-vacancy-items">
-              <label htmlFor="form-vacancy-hours-to-input">Work hours to</label>
-              <div className="form-vacancy-hours-from-container">
-                <div className="form-vacancy-hours-input-block">
-                  <input
-                    className="admin-vacancy-form-input"
-                    id="form-vacancy-hours-to-input"
-                    type="text"
-                    defaultValue={props.vacancyData.hours_from}
-                    ref={hoursToRef}
-                  />
-                  <p className="admin-vacancy-form-hours-minutes-label">h</p>
-                </div>
 
-                <div className="form-vacancy-minutes-input-block">
-                  <input
-                    className="admin-vacancy-form-input"
-                    id="form-vacancy-minutes-to-input"
-                    type="text"
-                    defaultValue={props.vacancyData.hours_from}
-                    ref={minutesToRef}
-                  />
-                  <p className="admin-vacancy-form-hours-minutes-label">min</p>
+            <div>
+              <div className="admin-form-vacancy-items">
+                <label htmlFor="form-vacancy-hours-to-input">
+                  Work hours to
+                </label>
+                <div className="form-vacancy-hours-from-container">
+                  <div className="form-vacancy-hours-input-block">
+                    <input
+                      className="admin-vacancy-form-input"
+                      id="form-vacancy-hours-to-input"
+                      type="text"
+                      defaultValue={
+                        props.vacancyData.hours_to
+                          ? props.vacancyData.hours_to.split(":")[0]
+                          : ""
+                      }
+                      ref={hoursToRef}
+                    />
+                    <p className="admin-vacancy-form-hours-minutes-label">h</p>
+                  </div>
+
+                  <div className="form-vacancy-minutes-input-block">
+                    <input
+                      className="admin-vacancy-form-input"
+                      id="form-vacancy-minutes-to-input"
+                      type="text"
+                      defaultValue={
+                        props.vacancyData.hours_to
+                          ? props.vacancyData.hours_to.split(":")[1]
+                          : ""
+                      }
+                      ref={minutesToRef}
+                    />
+                    <p className="admin-vacancy-form-hours-minutes-label">
+                      min
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              {/* <select
-                className="admin-vacancy-form-input"
-                id="form-vacancy-hours-to-select"
-                value={vacancyCurrentValues.hoursTo}
-                onChange={changeHoursToHandler}
-              >
-                <option value={""}>{""}</option>
-                {WORKING_HOURS.map((item) => {
-                  return (
-                    <option key={item} value={item}>
-                      {item}
-                    </option>
-                  );
-                })}
-              </select> */}
-              {/* <input
-                className="admin-vacancy-form-input"
-                id="form-vacancy-hours-to-input"
-                type="text"
-                defaultValue={props.vacancyData.hours_to}
-                ref={hoursToRef}
-              /> */}
+              <div className="admin-form-validation-message">
+                {validationErrors.hours_to}
+              </div>
             </div>
 
             <div className="admin-form-vacancy-items">
