@@ -1,0 +1,24 @@
+@import '../constants.css';
+
+.admin-applications-container{
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
+}
+
+.admin-applications-tools-section{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top:30px
+}
+
+.admin-applications-list-container{
+    margin-top: 50px;
+}
+
+.applications-filter-button-general img {
+    margin-left: 1rem;
+}
+
+.cancel-application-filters-button {
+    margin-left: 50px;
+}
