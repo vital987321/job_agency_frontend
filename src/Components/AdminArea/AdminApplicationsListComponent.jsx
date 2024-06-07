@@ -51,7 +51,7 @@ export const AdminApplicationsListComponent = () => {
 
   const StatusMarker = (props) => {
     if (props.status == "Rejected")
-      return <span className="admin-status-marker-rejected">&nbsp; &#11044;</span>;
+      return <span className="admin-status-marker-rejected">&#11044;</span>;
     if (props.status == "Approved")
           return <span className="admin-status-marker-approved">&#11044;</span>;
     return <span className="admin-status-marker-pending">&#11044;</span>;
@@ -75,7 +75,7 @@ export const AdminApplicationsListComponent = () => {
           {applicationsListData.map((application) => {
             return (
               <tr className="admin-applications-table-tr" key={application.id}>
-                <td>{application.vacancy} </td>
+                <td>{application.id} </td>
                 <td>
                   {application.vacancy_details.name.length < 30
                     ? application.vacancy_details.name
@@ -86,7 +86,8 @@ export const AdminApplicationsListComponent = () => {
                 <td>{application.first_name + " " + application.last_name}</td>
                 <td>{stringToDateDMY(application.created_at)}</td>
                 <td>
-                  {application.status}
+                  <span className="admin-application-status">{application.status}</span>
+                  
                   <StatusMarker status={application.status} />
                 </td>
 

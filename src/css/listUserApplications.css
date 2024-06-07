@@ -34,6 +34,11 @@
     text-decoration: underline;
 }
 
+.application-status{
+    display: inline-block;
+    width: 4rem;
+}
+
 .status-marker-approved{
     color: #33D625;
     margin-left: 10px;

@@ -51,7 +51,7 @@ export const ListUserApplicationsComponent = () => {
 
   const StatusMarker = (props) => {
     if (props.status == "Rejected")
-      return <span className="status-marker-rejected">&nbsp; &#11044;</span>;
+      return <span className="status-marker-rejected">&#11044;</span>;
     if (props.status == "Approved")
       return <span className="status-marker-approved">&#11044;</span>;
     return <span className="status-marker-pending">&#11044;</span>;
@@ -72,8 +72,8 @@ export const ListUserApplicationsComponent = () => {
                 <td>{application.vacancy_details.salary} CZK</td>
                 <td>{application.vacancy_details.location}</td>
                 <td>
-                  {application.status}{" "}
-                  <StatusMarker status={application.status} />{" "}
+                  <span className="application-status">{application.status}</span>
+                  <StatusMarker status={application.status} />
                 </td>
 
                 <td>{stringToDateDMY(application.created_at)}</td>
