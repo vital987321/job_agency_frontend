@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../../css/listUserApplications.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs.js";
-import { LIST_APPLICATIONS_BASE_URL } from "../../../constants.js";
-import api from "../../api.jsx";
+import "../../css/adminArea/adminApplicationsList.css";
+import { stringToDateDMY, identifyWorkingHours } from "../../funcs.js";
+import { LIST_APPLICATIONS_BASE_URL } from "../../constants.js";
+import api from "../api.jsx";
 
-export const ListUserApplicationsComponent = () => {
+export const AdminApplicationsListComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
   const [applicationsResponseData, aetApplicationsResponseData] = useState({
     count: "0",
@@ -51,32 +51,45 @@ export const ListUserApplicationsComponent = () => {
 
   const StatusMarker = (props) => {
     if (props.status == "Rejected")
-      return <span className="status-marker-rejected">&nbsp; &#11044;</span>;
+      return <span className="admin-status-marker-rejected">&nbsp; &#11044;</span>;
     if (props.status == "Approved")
-      return <span className="status-marker-approved">&#11044;</span>;
-    return <span className="status-marker-pending">&#11044;</span>;
+          return <span className="admin-status-marker-approved">&#11044;</span>;
+    return <span className="admin-status-marker-pending">&#11044;</span>;
   };
 
   return (
-    <section className="list-applications-container">
-      <table className="list-applications-table">
+    <section className="admin-list-applications-container">
+      <table className="admin-list-applications-table">
         <tbody>
+          <tr>
+            <th className="admin-list-applications-first-header">ID</th>
+            <th>Vacancy Name</th>
+            <th>Vac. ID</th>
+            <th>Company</th>
+            <th>User Name</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>Details</th>
+          </tr>
+
           {applicationsListData.map((application) => {
             return (
-              <tr className="applications-table-tr" key={application.id}>
+              <tr className="admin-applications-table-tr" key={application.id}>
+                <td>{application.vacancy} </td>
                 <td>
                   {application.vacancy_details.name.length < 30
                     ? application.vacancy_details.name
                     : application.vacancy_details.name.slice(0, 25) + "..."}
                 </td>
-                <td>{application.vacancy_details.salary} CZK</td>
-                <td>{application.vacancy_details.location}</td>
+                <td>{application.vacancy_details.id}</td>
+                <td>{application.vacancy_details.company}</td>
+                <td>{application.first_name + " " + application.last_name}</td>
+                <td>{stringToDateDMY(application.created_at)}</td>
                 <td>
-                  {application.status}{" "}
-                  <StatusMarker status={application.status} />{" "}
+                  {application.status}
+                  <StatusMarker status={application.status} />
                 </td>
 
-                <td>{stringToDateDMY(application.created_at)}</td>
                 <td>
                   <Link
                     to={"/applications/" + application.id}
@@ -92,7 +105,7 @@ export const ListUserApplicationsComponent = () => {
           })}
         </tbody>
       </table>
-      <div className="applications-list-pagination-container">
+      <div className="admin-applications-list-pagination-container">
         {applicationsResponseData.previous ? (
           <button
             onClick={paginationButtonHandler}

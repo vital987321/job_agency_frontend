@@ -36,8 +36,15 @@
 
 .status-marker-approved{
     color: #33D625;
+    margin-left: 10px;
 }
 
 .status-marker-rejected{
     color: #d62b25;
+    margin-left: 10px;
+}
+
+.status-marker-pending {
+    color: lightgray;
+    margin-left: 10px;
 }

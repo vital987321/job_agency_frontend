@@ -1,4 +1,4 @@
-import { ListUserApplicationsComponent } from "../UserArea/Main/ListUserApplicationsComponent";
+import { AdminApplicationsListComponent } from "./AdminApplicationsListComponent";
 import "../../css/adminArea/adminApplications.css";
 import filterIcon from "../../svg/settings.svg";
 import closeIcon from "../../svg/X.svg";
@@ -53,7 +53,7 @@ export const AdminApplicationsComponent = () => {
       <AdminApplicationsToolsComponent />
       <div className="admin-applications-list-container">
         <h2 className="h2-common">Applications</h2>
-        <ListUserApplicationsComponent />
+        <AdminApplicationsListComponent />
       </div>
     </div>
   );
