@@ -51,7 +51,7 @@ export const UserApplicationComponent = () => {
           <div>
             <p>VACANCY</p>
             <p>
-              <b>{application.vacancy_details.name} CZK/month</b>
+              <b>{application.vacancy_details.name}</b>
             </p>
           </div>
         </div>

@@ -1,19 +1,26 @@
 Admin Applications list:
-    user Name
+    Application ID
+
     Vacancy name
-    Salary  ?
+    vacancy ID (details button)
+
+    created_at
+    Company
+
+    user Name
+    user ID (check profile button)
+
     email
     phone
-    message
-    status
-    location    ?
-    cv
-    created_at
 
-    Company
-    vacancy ID
-    Application ID
-    user ID (link to profile)
+    cv
+    status
+
+    message
+    3 status buttons
+
+
+
 
 
 Short list in a table:

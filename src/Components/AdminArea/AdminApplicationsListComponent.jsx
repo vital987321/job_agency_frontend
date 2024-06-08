@@ -93,7 +93,7 @@ export const AdminApplicationsListComponent = () => {
 
                 <td>
                   <Link
-                    to={"/applications/" + application.id}
+                    to={"/admin/applications/" + application.id}
                     className="details-link"
                   >
                     <button className="details-link-button button-common button-common-color4">

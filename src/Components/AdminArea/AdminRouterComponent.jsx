@@ -3,7 +3,7 @@ import { AdminSideBarComponent } from "./AdminSideBarComponent";
 import { AdminVacanciesComponent } from "./AdminVacanciesComponent";
 import { AdminBodyComponent } from "./AdminBodyComponent";
 import { AdminVacancyComponent } from "./AdminVacancyComponent";
-import { UserApplicationComponent } from "../UserArea/Main/UserApplicationComponent";
+import { AdminApplicationComponent } from "../AdminArea/AdminApplicationComponent";
 import { AdminApplicationsComponent } from "./AdminApplicationsComponent";
 
 
@@ -14,7 +14,7 @@ export const AdminRouterComponent = (
     <Route path="applications" element={<AdminApplicationsComponent />} />
     <Route
       path="applications/:application_id"
-      element={<UserApplicationComponent />}
+      element={<AdminApplicationComponent />}
     />
   </Route>
 );

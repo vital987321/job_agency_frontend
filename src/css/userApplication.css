@@ -1,51 +1,69 @@
 @import './constants.css';
 
-.user-application-section{
+.admin-application-section{
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
     margin-bottom: 100px;
 }
 
-.sent-application-header{
+.admin-application-header{
     margin-top: 50px;
 }
 
-.application-sent-date-container{
+.admin-application-id-container{
     margin-top: 50px;
+
 }
 
-.application-data-container{
-    margin-top: 20px;
+.admin-application-data-container{
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 2fr 2fr;
-    grid-gap: 20px 40px;
+    grid-gap: 30px 40px;
 }
 
-.application-data-item {
+.admin-application-data-item {
     display: flex;
+    align-items:start;
     /* border: 1px solid green; */
 }
 
-.application-data-item img{
+.admin-application-data-item img{
     height: 30px;
 }
 
-.application-data-item div {
+.admin-application-data-item-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5px
+    /* padding: 5px; */
+    margin-left:15px;
 }
 
-.application-message-container{
+.admin-application-message-container{
     margin-top:20px
 }
 
-.application-vacancy-details-link{
+.admin-application-vacancy-details-link{
     margin-top: 20px;
     display: inline-block;
     
 }
-.application-vacancy-details-link:hover{
+.admin-application-vacancy-details-link:hover{
     text-decoration: none;
+}
+
+.admin-application-vacancy-id-container{
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* border: solid 1px; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: left;
+    align-items: start;
+}
+
+.admin-application-vacancy-details-link{
+ margin-top: 0;
+ margin-left: 20px;
 }
