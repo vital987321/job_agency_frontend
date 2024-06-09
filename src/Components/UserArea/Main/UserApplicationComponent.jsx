@@ -8,10 +8,12 @@ import callIcon from "../../../svg/call_icon.svg";
 import emailIcon from "../../../svg/email_icon.svg";
 import genderIcon from "../../../svg/gender.svg";
 import editIcon from "../../../svg/edit.svg";
+// import "../../../css/userApplication.css";
+import '../../../css/userApplication.css';
 
 import workingHoursIcon from "../../../svg/working_hours.svg";
 import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
-import "../../../css/userApplication.css";
+
 import api from "../../api";
 
 export const UserApplicationComponent = () => {

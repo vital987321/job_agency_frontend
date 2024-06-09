@@ -5,6 +5,7 @@ import "../../../css/listUserApplications.css";
 import { stringToDateDMY, identifyWorkingHours } from "../../../funcs.js";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../constants.js";
 import api from "../../api.jsx";
+import { ApplicationStatusMarker} from "../../CommonToolsComponents.jsx";
 
 export const ListUserApplicationsComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
@@ -49,14 +50,6 @@ export const ListUserApplicationsComponent = () => {
     setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
   };
 
-  const StatusMarker = (props) => {
-    if (props.status == "Rejected")
-      return <span className="status-marker-rejected">&#11044;</span>;
-    if (props.status == "Approved")
-      return <span className="status-marker-approved">&#11044;</span>;
-    return <span className="status-marker-pending">&#11044;</span>;
-  };
-
   return (
     <section className="list-applications-container">
       <table className="list-applications-table">
@@ -73,7 +66,7 @@ export const ListUserApplicationsComponent = () => {
                 <td>{application.vacancy_details.location}</td>
                 <td>
                   <span className="application-status">{application.status}</span>
-                  <StatusMarker status={application.status} />
+                  <ApplicationStatusMarker status={application.status} />
                 </td>
 
                 <td>{stringToDateDMY(application.created_at)}</td>

@@ -9,6 +9,8 @@ import passportIcon from "../../../svg/open-passport-svgrepo-com.svg";
 import visaServiceIcon from "../../../svg/visa-service.svg";
 import genderIcon from "../../../svg/gender.svg";
 import factoryIcon from "../../../svg/factory.svg";
+import idIcon from "../../../svg/id_item.svg";
+
 
 import "../../../css/vacancy.css";
 import { RESIDENCE_TYPES } from "../../../constants";
@@ -91,6 +93,18 @@ export const VacancyDataComponent = (props) => {
         <h2 className="vacancy-header h2-common">{props.vacancyData.name}</h2>
 
         <div className="vacancy-container">
+        <div className="vacancy-item">
+            <div>
+              <img src={idIcon} alt="Logo" />
+            </div>
+            <div>
+              <p>VACANCY ID</p>
+              <p className="vacancy-parameter-value">
+                {props.vacancyData.id}
+              </p>
+            </div>
+          </div>
+
           <div className="vacancy-item">
             <div>
               <img src={salaryIcon} alt="Logo" />

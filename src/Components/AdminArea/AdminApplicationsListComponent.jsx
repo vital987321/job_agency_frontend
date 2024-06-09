@@ -5,6 +5,7 @@ import "../../css/adminArea/adminApplicationsList.css";
 import { stringToDateDMY, identifyWorkingHours } from "../../funcs.js";
 import { LIST_APPLICATIONS_BASE_URL } from "../../constants.js";
 import api from "../api.jsx";
+import { ApplicationStatusMarker } from "../CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
@@ -49,14 +50,6 @@ export const AdminApplicationsListComponent = () => {
     setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
   };
 
-  const StatusMarker = (props) => {
-    if (props.status == "Rejected")
-      return <span className="admin-status-marker-rejected">&#11044;</span>;
-    if (props.status == "Approved")
-          return <span className="admin-status-marker-approved">&#11044;</span>;
-    return <span className="admin-status-marker-pending">&#11044;</span>;
-  };
-
   return (
     <section className="admin-list-applications-container">
       <table className="admin-list-applications-table">
@@ -88,7 +81,7 @@ export const AdminApplicationsListComponent = () => {
                 <td>
                   <span className="admin-application-status">{application.status}</span>
                   
-                  <StatusMarker status={application.status} />
+                  <ApplicationStatusMarker status={application.status} />
                 </td>
 
                 <td>
