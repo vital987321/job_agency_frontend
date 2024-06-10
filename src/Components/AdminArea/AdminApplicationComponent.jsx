@@ -199,12 +199,11 @@ export const AdminApplicationComponent = () => {
             <p>STATUS</p>
             <p>
               <b>{application.status}</b>
-              <ApplicationStatusMarker status={application.status}/>
+              <ApplicationStatusMarker status={application.status} />
             </p>
           </div>
         </div>
       </div>
-
 
       <div className="admin-application-message-block">
         <h3>Message</h3>
@@ -214,21 +213,21 @@ export const AdminApplicationComponent = () => {
       </div>
       <div className="admin-application-status-buttons-container">
         <button
-          className="button-common button-common-color1"
+          className="button-common button-common-color1 admin-application-status-button"
           onClick={changeApplicationStatusRequest}
           data-status="Approved"
         >
           Approve
         </button>
         <button
-          className="button-common button-common-color1"
+          className="button-common button-common-color1 admin-application-status-button"
           onClick={changeApplicationStatusRequest}
           data-status="Rejected"
         >
           Reject
         </button>
         <button
-          className="button-common button-common-color1"
+          className="button-common button-common-color1 admin-application-status-button"
           onClick={changeApplicationStatusRequest}
           data-status="Pending"
         >

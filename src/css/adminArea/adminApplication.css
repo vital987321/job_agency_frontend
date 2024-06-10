@@ -1,0 +1,85 @@
+@import '../constants.css';
+
+
+.admin-application-section {
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-bottom: 100px;
+}
+
+.admin-application-header {
+    margin-top: 50px;
+}
+
+.admin-application-id-container {
+    margin-top: 50px;
+
+}
+
+.admin-application-data-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 30px 40px;
+}
+
+.admin-application-data-item {
+    display: flex;
+    align-items: start;
+    /* border: 1px solid green; */
+}
+
+.admin-application-data-item img {
+    height: 30px;
+}
+
+.admin-application-data-item-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 5px; */
+    margin-left: 15px;
+}
+
+.admin-application-message-container {
+    margin-top: 20px
+}
+
+.admin-application-vacancy-details-link {
+    margin-top: 20px;
+    display: inline-block;
+
+}
+
+.admin-application-vacancy-details-link:hover {
+    text-decoration: none;
+}
+
+.admin-application-vacancy-id-container {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* border: solid 1px; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: left;
+    align-items: start;
+}
+
+.admin-application-vacancy-details-link {
+    margin-top: 0;
+    margin-left: 20px;
+}
+
+.admin-application-message-block {
+    margin-top: 30px;
+}
+
+.admin-application-status-buttons-container {
+    margin-top: 40px;
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.admin-application-status-button{
+    margin-left: 2rem;
+}

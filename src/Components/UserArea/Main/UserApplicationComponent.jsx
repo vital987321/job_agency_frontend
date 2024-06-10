@@ -8,8 +8,8 @@ import callIcon from "../../../svg/call_icon.svg";
 import emailIcon from "../../../svg/email_icon.svg";
 import genderIcon from "../../../svg/gender.svg";
 import editIcon from "../../../svg/edit.svg";
-// import "../../../css/userApplication.css";
-import '../../../css/userApplication.css';
+import "../../../css/userApplication.css";
+import "../../../css/test.css";
 
 import workingHoursIcon from "../../../svg/working_hours.svg";
 import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
@@ -41,12 +41,12 @@ export const UserApplicationComponent = () => {
 
   return (
     <section className="user-application-section">
-      <h2 className="sent-application-header">Sent application</h2>
+      <h2 className="user-application-header">Sent application</h2>
       <div className="application-sent-date-container">
         <p>sent on: {stringToDateDMY(application.created_at)}</p>
       </div>
-      <div className="application-data-container">
-        <div className="application-data-item">
+      <div className="user-application-data-container">
+        <div className="user-application-data-item">
           <div>
             <img src={contractTypeIcon} alt="Logo" />
           </div>
@@ -58,7 +58,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={workingHoursIcon} alt="Logo" />
           </div>
@@ -70,7 +70,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={salaryIcon} alt="Logo" />
           </div>
@@ -82,7 +82,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={locationIcon} alt="Logo" />
           </div>
@@ -94,7 +94,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={emailIcon} alt="Logo" />
           </div>
@@ -106,7 +106,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={genderIcon} alt="Logo" />
           </div>
@@ -122,7 +122,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={callIcon} alt="Logo" />
           </div>
@@ -134,7 +134,7 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
 
-        <div className="application-data-item">
+        <div className="user-application-data-item">
           <div>
             <img src={editIcon} alt="Logo" />
           </div>
@@ -151,17 +151,17 @@ export const UserApplicationComponent = () => {
         </div>
       </div>
 
-      <div className="application-data-container">
+      <div className="user-application-data-container">
         <div>
           <h3>Message</h3>
-          <div className="application-message-container">
+          <div className="user-application-message-container">
             <p>{application.message ? application.message : "-"}</p>
           </div>
         </div>
         <div>
           <Link
             to={"/vacancies/" + application.vacancy}
-            className="navLinks button-common button-common-color1 application-vacancy-details-link"
+            className="navLinks button-common button-common-color1 user-application-vacancy-details-link"
             key="contacts"
           >
             See Vacancy details
