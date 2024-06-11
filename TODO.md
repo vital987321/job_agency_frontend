@@ -13,7 +13,7 @@ Frontend:
     user. Write a a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
-    User application Delete button
+    
     
 
 Think about:
