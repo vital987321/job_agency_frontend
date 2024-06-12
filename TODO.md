@@ -2,6 +2,7 @@ in backend side:
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
+    phone in Application and User model shall be Charfield with numbers or + symbol only. Without formatting. 
 
 Frontend:
     Admin applications component:
@@ -33,14 +34,16 @@ Think about:
 
 
 Admin Application Filter:
-    application id
-    vacancy name
-    Vacancy id
-    company
-    uerName
-    userEmail
-    userPhone
-    status
+    +   application id
+    +   vacancy name
+    +   Vacancy id
+    +   company
+    +   user_id
+    +   first_name
+    +   last_name
+    +   userEmail
+    +   userPhone
+    +   status
 
 
 
