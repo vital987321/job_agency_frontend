@@ -2,7 +2,7 @@ in backend side:
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
-    phone in Application and User model shall be Charfield with numbers or + symbol only. Without formatting. 
+    
 
 Frontend:
     Admin applications component:
@@ -14,6 +14,7 @@ Frontend:
     user. Write a a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
+    Add frontend phone validation (User profile and Application)
     
     
 
