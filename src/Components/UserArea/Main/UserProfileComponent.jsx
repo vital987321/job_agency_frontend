@@ -11,6 +11,7 @@ export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
   const [userCurrentData, setUserCurrentData] = useState({});
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
 
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const username = localStorage.getItem("username");
@@ -53,6 +54,34 @@ export const UserProfileComponent = () => {
     setIsUserDataChanged(true);
   };
 
+  const formValidation = (formData) => {
+    let newValidationErrors = {};
+    let validation = true;
+    let phone = formData.get("phone");
+    let newPhone = "";
+    for (let symbol of phone) {
+      if ("+0123456789".includes(symbol)) newPhone += symbol;
+    }
+    phone = newPhone;
+    newPhone = phone.slice(0, 1).toString();
+
+    for (let symbol of phone.slice(1)) {
+      if ("0123456789".includes(symbol)) {
+        newPhone += symbol;
+      }
+    }
+    formData.set("phone", newPhone);
+    if (newPhone.length > 25) {
+      newValidationErrors.phone = "Too long number";
+      validation = false;
+    }
+
+    setValidationErrors(newValidationErrors);
+    
+
+    return [formData, validation];
+  };
+
   const submitUserProfileHandler = (e) => {
     e.preventDefault();
     if (isUserDataChanged) {
@@ -67,16 +96,22 @@ export const UserProfileComponent = () => {
 
       const updateProfile = async () => {
         try {
-          const response = await api.patch("/user/" + user_id + "/", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          });
+          const response = await api
+            .patch("/user/" + user_id + "/", formData, {
+              headers: { "Content-Type": "multipart/form-data" },
+            })
+            .then((response) => setUserCurrentData(response.data));
 
           setIsUserDataChanged(false);
         } catch (error) {
           console.log(error);
         }
       };
-      updateProfile();
+      let validation;
+      [formData, validation] = formValidation(formData);
+      if (validation) {
+        updateProfile();
+      }
     }
   };
 
@@ -161,21 +196,27 @@ export const UserProfileComponent = () => {
             />
           </div>
 
-          <div className="profile-user-data-input-container">
-            <img
-              className="profile-user-data-edit-icon"
-              src={editIcon}
-              alt=""
-            />
-            <input
-              className="profile-user-data-form-text-input"
-              id="user-profile-phone-input"
-              data-key="phone"
-              type="text"
-              placeholder="Phone number"
-              onChange={inputChangeHandler}
-              value={userCurrentData.phone ? userCurrentData.phone : ""}
-            />
+          <div className="profile-user-data-form-item-contaimer">
+            <div className="profile-user-data-input-container">
+              <img
+                className="profile-user-data-edit-icon"
+                src={editIcon}
+                alt=""
+              />
+              <input
+                className="profile-user-data-form-text-input"
+                id="user-profile-phone-input"
+                data-key="phone"
+                type="text"
+                placeholder="Phone number"
+                onChange={inputChangeHandler}
+                value={userCurrentData.phone ? userCurrentData.phone : ""}
+              />
+            </div>
+
+            <div className="profile-user-data-form-validation-item">
+              {validationErrors.phone}
+            </div>
           </div>
 
           <div className="profile-cv-input-container">

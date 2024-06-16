@@ -14,7 +14,7 @@ Frontend:
     user. Write a a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
-    Add frontend phone validation (User profile and Application)
+    Add frontend phone validation (User profile(DONE) and Application)
     
     
 

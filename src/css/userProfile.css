@@ -35,7 +35,17 @@
     position: relative;
     /* border: solid 1px red; */
     width: 400px;
-    margin-top: 20px;
+    margin-top: 25px;
+}
+
+.profile-user-data-form-validation-item{
+  height: 18px;
+  font-size: small;
+  font-weight: bold;
+  color: rgb(160, 0, 8);
+  /* border:solid 1px green; */
+  margin-top: -2px;
+  /* margin-bottom: -18px; */
 }
 
 .profile-user-data-form-text-input{
