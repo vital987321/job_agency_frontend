@@ -33,6 +33,7 @@
     grid-template-columns: auto;
     grid-column-gap:10px;
     row-gap: 20px;
+    box-sizing: border-box;
 }
 
 
@@ -41,6 +42,19 @@
     border: 1px solid grey;
     border-radius: 5px;
     padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.application-form-validation-message-container {
+    height: 18px;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(160, 0, 8);
+    /* border:solid 1px green; */
+    text-align: center;
+    margin-top: -2px;
+    margin-bottom: -16px;
 }
 
 .cv-application-form{

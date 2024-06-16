@@ -13,6 +13,38 @@ const cvFileRef = React.createRef();
 
 export const ApplicationFormComponent = (props) => {
   const [usingProfileCV, setUsingProfileCV] = useState(true);
+  const [formValidationErrors, setFormValidationErrors] = useState({});
+
+  const formValidation = (formData) => {
+    let validation = true;
+    let newValidationErrors = {};
+    const first_name = formData.get("first_name");
+    if (!first_name) {
+      validation = false;
+      newValidationErrors.first_name = "Enter first name";
+    }
+    if (first_name.length > 30) {
+      validation = false;
+      newValidationErrors.first_name = "Too long name";
+    }
+
+    const last_name = formData.get("last_name");
+    if (!last_name) {
+      validation = false;
+      newValidationErrors.last_name = "Enter last name";
+    }
+    if (last_name.length > 30) {
+      validation = false;
+      newValidationErrors.last_name = "Too long name";
+    }
+
+    const phone = formData.get("phone");
+    // Should I use a phone and email validator imported from tools?
+
+
+    setFormValidationErrors(newValidationErrors);
+    return validation;
+  };
 
   const appFormSubmitHandler = (event) => {
     event.preventDefault();
@@ -22,13 +54,12 @@ export const ApplicationFormComponent = (props) => {
     const email = emailRef.current.value;
     const phone = phoneRef.current.value;
     const message = messageRef.current.value;
-    let cvFile=null
-    try{
+    let cvFile = null;
+    try {
       cvFile = cvFileRef.current.files[0];
-    }
-    catch{}
-    
-    const user_id=localStorage.getItem('user_id')
+    } catch {}
+
+    const user_id = localStorage.getItem("user_id");
 
     let formData = new FormData();
 
@@ -39,25 +70,31 @@ export const ApplicationFormComponent = (props) => {
     formData.append("phone", phone);
     formData.append("message", message);
     if (usingProfileCV && props.userData.cv) {
-      formData.append('use_profile_cv', true)
+      formData.append("use_profile_cv", true);
     }
-    if (user_id) formData.append('user', user_id)
-    
+    if (user_id) formData.append("user", user_id);
+
     if (cvFile) {
       formData.append("cv", cvFile);
     }
 
-    axios
-      .post(applicationPostURL, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((response) => console.log("response sratus: " + response.status))
-      .then(() => alert("Application sent succesfully"))
-      .then(() => props.setAppFormDisplayValue("none"))
-      .catch((err) => {
-        console.log("Application error:");
-        console.log(err);
-      });
+    const sendApplicationRequest = () => {
+      axios
+        .post(applicationPostURL, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((response) => console.log("response sratus: " + response.status))
+        .then(() => alert("Application sent succesfully"))
+        .then(() => props.setAppFormDisplayValue("none"))
+        .catch((err) => {
+          console.log("Application error:");
+          console.log(err);
+        });
+    };
+
+    if (formValidation(formData)) {
+      sendApplicationRequest();
+    }
   };
 
   const closeButtonHandler = () => {
@@ -67,7 +104,6 @@ export const ApplicationFormComponent = (props) => {
   const onFormModalSpaceClick = (e) => {
     if (e.target.id == "application-form") closeButtonHandler();
   };
-
 
   const AttachCvCheckBoxComponent = () => {
     const checkBoxProfileCvHandler = (e) => {
@@ -125,38 +161,62 @@ export const ApplicationFormComponent = (props) => {
           </div>
 
           <div className="application-form-inputs-container">
-            <input
-              className="application-form-user-input"
-              type="text"
-              id="first-name-application-form"
-              placeholder="First Name"
-              defaultValue={props.userData.first_name}
-              ref={firstNameRef}
-            />
-            <input
-              className="application-form-user-input"
-              type="text"
-              id="last-name-application-form"
-              placeholder="Last Name"
-              defaultValue={props.userData.last_name}
-              ref={lastNameRef}
-            />
-            <input
-              className="application-form-user-input"
-              type="text"
-              id="phone-application-form"
-              placeholder="Phone"
-              defaultValue={props.userData.phone}
-              ref={phoneRef}
-            />
-            <input
-              className="application-form-user-input"
-              type="text"
-              id="email-application-form"
-              placeholder="Email"
-              defaultValue={props.userData.email}
-              ref={emailRef}
-            />
+            <div>
+              <input
+                className="application-form-user-input"
+                type="text"
+                id="first-name-application-form"
+                placeholder="First Name"
+                defaultValue={props.userData.first_name}
+                ref={firstNameRef}
+              />
+              <div className="application-form-validation-message-container">
+                {formValidationErrors.first_name}
+              </div>
+            </div>
+
+            <div>
+              <input
+                className="application-form-user-input"
+                type="text"
+                id="last-name-application-form"
+                placeholder="Last Name"
+                defaultValue={props.userData.last_name}
+                ref={lastNameRef}
+              />
+              <div className="application-form-validation-message-container">
+                {formValidationErrors.last_name}
+              </div>
+            </div>
+
+            <div>
+              <input
+                className="application-form-user-input"
+                type="text"
+                id="phone-application-form"
+                placeholder="Phone"
+                defaultValue={props.userData.phone}
+                ref={phoneRef}
+              />
+              <div className="application-form-validation-message-container">
+                {formValidationErrors.phone}
+              </div>
+            </div>
+
+            <div>
+              <input
+                className="application-form-user-input"
+                type="text"
+                id="email-application-form"
+                placeholder="Email"
+                defaultValue={props.userData.email}
+                ref={emailRef}
+              />
+              <div className="application-form-validation-message-container">
+                {formValidationErrors.email}
+              </div>
+            </div>
+
             <AttachCvCheckBoxComponent />
             <UploadCvButtonComponent />
           </div>
