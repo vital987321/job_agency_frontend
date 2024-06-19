@@ -14,7 +14,7 @@ Frontend:
     user. Write a a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
-    Login: Add form messages: Sush user already exists, user not found, incorect email
+    
     
     
 

@@ -76,28 +76,37 @@ export const AuthenticationComponent = () => {
       sendLoginRequest();
     }
     if (authenticationAction === "signup") {
-        if (isValidForm()) {
-          const signupRequesrURL = "http://127.0.0.1:8000/user/";
-          axios
-            .post(signupRequesrURL, {
-              email: emailRef.current.value,
-              password: passwordRef.current.value,
-            })
-            .then((response) =>
-              console.log("response sratus: " + response.status)
-            )
-            .then(() => sendLoginRequest())
-            .catch((err) => {
-              console.log("Signup error:");
-              console.log(err);
-              return null;
-            });
-        } else {
-          console.log("form is not valid");
-          return null;
-        }
+      if (isValidForm()) {
+        const signupRequesrURL = "http://127.0.0.1:8000/user/";
+        axios
+          .post(signupRequesrURL, {
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+          })
+          .then((response) =>
+            console.log("response sratus: " + response.status)
+          )
+          .then(() => sendLoginRequest())
+          .catch((error) => {
+            if (error.request.response) {
+              if (
+                error.request.response ==
+                '{"email":["User with such email already exists."]}'
+              )
+                setErrors({ email: "User with such email already exists." });
+              else {
+                console.log(error);
+              }
+            } else {
+              console.log(error);
+            }
+            return null;
+          });
+      } else {
+        console.log("form is not valid");
+        return null;
       }
-
+    }
   };
 
   const sendLoginRequest = () => {
@@ -113,11 +122,22 @@ export const AuthenticationComponent = () => {
         localStorage.setItem("username", response.data.username);
         navigate("/");
       })
-      .catch((err) => {
-        console.log("Error:");
-        console.log(err);
+      .catch((error) => {
+        if (error.request.response) {
+          console.log(error.request.response);
+          if (
+            error.request.response ==
+            '{"non_field_errors":["Unable to log in with provided credentials."]}'
+          ) {
+            setErrors({ password: "Wrong login or password" });
+          } else {
+            console.log(error);
+          }
+        } else {
+          console.log(error);
+        }
       });
-  }
+  };
 
   const PassworRepeatComponent = () => {
     if (authenticationAction == "signup") {
@@ -147,9 +167,8 @@ export const AuthenticationComponent = () => {
   return (
     <section className="authentication-modal-window">
       <div className="authentication-modal-window-container">
-        
-          <img className="login-img" src={loginImage} alt="" />
-        
+        <img className="login-img" src={loginImage} alt="" />
+
         <div className="authentication-input-main-container">
           <div className="vacancy-filter-close-container">
             <img
