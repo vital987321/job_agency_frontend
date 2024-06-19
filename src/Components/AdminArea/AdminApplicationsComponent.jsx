@@ -3,6 +3,7 @@ import "../../css/adminArea/adminApplications.css";
 import filterIcon from "../../svg/settings.svg";
 import closeIcon from "../../svg/X.svg";
 import {useSearchParams} from "react-router-dom"
+import { AdminApplicatiosFilterComponent } from "./AdminApplicationsFilterComponet";
 
 
 
@@ -10,6 +11,8 @@ export const AdminApplicationsComponent = () => {
   
     const [searchParams, setSearchParams] = useSearchParams()
     
+
+
     const ResetFiltersComponent = () => {
       if (searchParams.size > 0) {
         return (
@@ -50,6 +53,7 @@ export const AdminApplicationsComponent = () => {
     
   return (
     <div className="admin-applications-container">
+      <AdminApplicatiosFilterComponent/>
       <AdminApplicationsToolsComponent />
       <div className="admin-applications-list-container">
         <h2 className="h2-common">Applications</h2>
