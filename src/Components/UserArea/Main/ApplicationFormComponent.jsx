@@ -3,6 +3,8 @@ import closeIcon from "../../../svg/X.svg";
 import { Form } from "react-router-dom";
 import "../../../css/ApplicationForm.css";
 import axios from "axios";
+import { phoneValidation } from "../../CommonToolsComponents";
+import { emailValidation } from "../../CommonToolsComponents";
 
 const firstNameRef = React.createRef();
 const lastNameRef = React.createRef();
@@ -16,34 +18,54 @@ export const ApplicationFormComponent = (props) => {
   const [formValidationErrors, setFormValidationErrors] = useState({});
 
   const formValidation = (formData) => {
-    let validation = true;
+    let isFormValid = true;
     let newValidationErrors = {};
+
     const first_name = formData.get("first_name");
     if (!first_name) {
-      validation = false;
+      isFormValid = false;
       newValidationErrors.first_name = "Enter first name";
     }
     if (first_name.length > 30) {
-      validation = false;
+      isFormValid = false;
       newValidationErrors.first_name = "Too long name";
     }
 
     const last_name = formData.get("last_name");
     if (!last_name) {
-      validation = false;
+      isFormValid = false;
       newValidationErrors.last_name = "Enter last name";
     }
     if (last_name.length > 30) {
-      validation = false;
+      isFormValid = false;
       newValidationErrors.last_name = "Too long name";
     }
 
     const phone = formData.get("phone");
-    // Should I use a phone and email validator imported from tools?
+    const phoneValidationObject=phoneValidation(phone)
+    if (phoneValidationObject.phoneIsValid){
+      formData.set("phone", phoneValidationObject.validatedPhone)
+    }
+    else{
+      isFormValid=false
+      newValidationErrors.phone=phoneValidationObject.phoneValidationErrors
+    }
+
+    const email=formData.get("email")
+    const emailValidationObject=emailValidation(email)
+    if (!emailValidationObject.isValid){
+      isFormValid=false
+      newValidationErrors.email=emailValidationObject.validationErrors
+    }
+
+    return(
+      {isFormValid: isFormValid,
+        formData: formData,
+        formValidationErrors: newValidationErrors
+      }
+    )
 
 
-    setFormValidationErrors(newValidationErrors);
-    return validation;
   };
 
   const appFormSubmitHandler = (event) => {
@@ -78,7 +100,7 @@ export const ApplicationFormComponent = (props) => {
       formData.append("cv", cvFile);
     }
 
-    const sendApplicationRequest = () => {
+    const sendApplicationRequest = (formData) => {
       axios
         .post(applicationPostURL, formData, {
           headers: { "Content-Type": "multipart/form-data" },
@@ -92,9 +114,13 @@ export const ApplicationFormComponent = (props) => {
         });
     };
 
-    if (formValidation(formData)) {
-      sendApplicationRequest();
+    const validatedForm=formValidation(formData)
+    setFormValidationErrors(validatedForm.formValidationErrors)
+    if (validatedForm.isFormValid) {
+      const validatedFormData=validatedForm.formData
+      sendApplicationRequest(validatedFormData);
     }
+
   };
 
   const closeButtonHandler = () => {
@@ -157,7 +183,7 @@ export const ApplicationFormComponent = (props) => {
           </div>
           <div className="application-form-header">
             <h3>{props.vacancy.name}</h3>
-            <p>Fill-in this application form and we will contact you ASAP</p>
+            <p>Fill-in this application form</p>
           </div>
 
           <div className="application-form-inputs-container">

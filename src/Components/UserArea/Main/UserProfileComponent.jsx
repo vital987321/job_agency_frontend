@@ -4,6 +4,7 @@ import "../../../css/userProfile.css";
 import editIcon from "../../../svg/edit.svg";
 import closeIcon from "../../../svg/X.svg";
 import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
+import { phoneValidation } from "../../CommonToolsComponents";
 
 const cvInputRef = React.createRef();
 
@@ -55,31 +56,22 @@ export const UserProfileComponent = () => {
   };
 
   const formValidation = (formData) => {
-    let newValidationErrors = {};
-    let validation = true;
-    let phone = formData.get("phone");
-    let newPhone = "";
-    for (let symbol of phone) {
-      if ("+0123456789".includes(symbol)) newPhone += symbol;
-    }
-    phone = newPhone;
-    newPhone = phone.slice(0, 1).toString();
-
-    for (let symbol of phone.slice(1)) {
-      if ("0123456789".includes(symbol)) {
-        newPhone += symbol;
-      }
-    }
-    formData.set("phone", newPhone);
-    if (newPhone.length > 25) {
-      newValidationErrors.phone = "Too long number";
-      validation = false;
+    let validationObject={
+      isValid:true,
+      formData:formData,
+      validationErrors:{}
     }
 
-    setValidationErrors(newValidationErrors);
-    
-
-    return [formData, validation];
+    const phone = formData.get("phone");
+    const phoneValidationObject=phoneValidation(phone)
+    if (phoneValidationObject.phoneIsValid){
+      validationObject.formData.set("phone", phoneValidationObject.validatedPhone)
+    }
+    else{
+      validationObject.isValid=false
+      validationObject.validationErrors.phone=phoneValidationObject.phoneValidationErrors
+    }
+    return validationObject
   };
 
   const submitUserProfileHandler = (e) => {
@@ -94,7 +86,7 @@ export const UserProfileComponent = () => {
         formData.append("cv", cvInputRef.current.files[0]);
       }
 
-      const updateProfile = async () => {
+      const updateProfile = async (formData) => {
         try {
           const response = await api
             .patch("/user/" + user_id + "/", formData, {
@@ -107,11 +99,13 @@ export const UserProfileComponent = () => {
           console.log(error);
         }
       };
-      let validation;
-      [formData, validation] = formValidation(formData);
-      if (validation) {
-        updateProfile();
+
+      const formValidationObject=formValidation(formData)
+      setValidationErrors(formValidationObject.validationErrors);
+      if (formValidationObject.isValid){
+        updateProfile(formValidationObject.formData)
       }
+
     }
   };
 
