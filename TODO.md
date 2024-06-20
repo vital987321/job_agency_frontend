@@ -36,8 +36,8 @@ Think about:
 
 Admin Application Filter:
     +   application id
-    +   vacancy name
     +   Vacancy id
+    +   vacancy name
     +   company
     +   user_id
     +   first_name

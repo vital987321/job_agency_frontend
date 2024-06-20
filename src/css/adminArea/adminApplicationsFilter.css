@@ -2,4 +2,21 @@
 
 .admin-application-filter-section{
     background-color: lightgrey;
+    margin-left: calc(-1*var(--global_margin_left_right));
+    margin-right: calc(-1*var(--global_margin_left_right));
+    padding: 10px 0;
+}
+.admin-application-filter-main-container{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+
+.admin-application-filter-form-inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.application-filter-input-container{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
 }
