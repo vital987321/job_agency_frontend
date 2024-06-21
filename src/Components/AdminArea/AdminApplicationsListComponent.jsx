@@ -7,22 +7,22 @@ import { LIST_APPLICATIONS_BASE_URL } from "../../constants.js";
 import api from "../api.jsx";
 import { ApplicationStatusMarker } from "../CommonToolsComponents.jsx";
 
-export const AdminApplicationsListComponent = () => {
+export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);
   const [applicationsResponseData, aetApplicationsResponseData] = useState({
     count: "0",
     next: null,
     previous: null,
   });
-  const [applicationsListRequestUrl, setApplicationListRequestUrl] = useState(
-    LIST_APPLICATIONS_BASE_URL
-  );
+  // const [applicationsListRequestUrl, setApplicationListRequestUrl] = useState(
+  //   LIST_APPLICATIONS_BASE_URL
+  // );
 
   useEffect(() => {
     const fetchListApplications = async () => {
       try {
         const response = await api
-          .get(applicationsListRequestUrl)
+          .get(props.adminApplicationListRequestUrl)
           .then((response) => {
             setApplicationsListData(response.data.results);
             return response;
@@ -43,12 +43,12 @@ export const AdminApplicationsListComponent = () => {
       }
     };
     fetchListApplications();
-  }, [applicationsListRequestUrl]);
+  }, [props.adminApplicationListRequestUrl]);
 
-  const paginationButtonHandler = (e) => {
-    const paginationDirection = e.target.dataset.direction;
-    setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
-  };
+  // const paginationButtonHandler = (e) => {
+  //   const paginationDirection = e.target.dataset.direction;
+  //   setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
+  // };
 
   return (
     <section className="admin-list-applications-container">
@@ -99,7 +99,7 @@ export const AdminApplicationsListComponent = () => {
           })}
         </tbody>
       </table>
-      <div className="admin-applications-list-pagination-container">
+      {/* <div className="admin-applications-list-pagination-container">
         {applicationsResponseData.previous ? (
           <button
             onClick={paginationButtonHandler}
@@ -120,7 +120,7 @@ export const AdminApplicationsListComponent = () => {
             Next {">"}
           </button>
         ) : null}
-      </div>
+      </div> */}
     </section>
   );
 };

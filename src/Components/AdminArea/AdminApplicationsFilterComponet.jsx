@@ -2,6 +2,7 @@ import "../../css/adminArea/adminApplicationsFilter.css";
 import filterIcon from "../../svg/settings.svg";
 
 export const AdminApplicatiosFilterComponent = () => {
+
   return (
     <section className="admin-application-filter-section">
       <div className="admin-application-filter-main-container">
@@ -67,8 +68,8 @@ export const AdminApplicatiosFilterComponent = () => {
               Filter <img src={filterIcon} alt="" height="14px" />
             </button>
             <div>
-            <p>on Page: 10</p>
-          </div>
+              <p>on Page: 10</p>
+            </div>
           </div>
         </form>
       </div>
