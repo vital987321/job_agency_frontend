@@ -25,34 +25,40 @@ export const AdminApplicationsComponent = () => {
 
   const generateAdminListApplicationsRequestQueryString = (offset) => {
     let qstr = "";
-    qstr += searchParams.get('id')
-      ? "id=" + searchParams.get('id')
-      : "";
-    // qstr += searchParams.get("limit")
-    //   ? "limit=" + searchParams.get("limit")
-    //   : "limit=" + VACANCY_LIST_LIMIT;
-    // if (isNaN(offset)) {
-    //   qstr += searchParams.get("offset")
-    //     ? "&offset=" + searchParams.get("offset")
-    //     : "&offset=0";
-    // } else {
-    //   qstr += "&offset=" + offset;
-    // }
-    // qstr += searchParams.get("key_search")
-    //   ? "&key_search=" + searchParams.get("key_search")
+    // qstr += searchParams.get('id')
+    //   ? "id=" + searchParams.get('id')
     //   : "";
-    // qstr += searchParams.get("salary_gte")
-    //   ? "&salary_gte=" + searchParams.get("salary_gte")
-    //   : "";
-    // qstr += searchParams.get("salary_lte")
-    //   ? "&salary_lte=" + searchParams.get("salary_lte")
-    //   : "";
-    // qstr += searchParams.get("location")
-    //   ? "&location=" + searchParams.get("location")
-    //   : "";
-    // qstr += searchParams.get("residence_type")
-    //   ? "&residence_type=" + searchParams.get("residence_type")
-    //   : "";
+    
+    let idParam=searchParams.get("id") 
+    qstr+= idParam? "id="+ idParam : ""
+    
+    let vacancyIdParam=searchParams.get('vacancy_id')
+    qstr+= vacancyIdParam ? "vacancy_id="+vacancyIdParam : ""
+    
+    let emailParam=searchParams.get("email")
+    qstr+=emailParam ? "email="+ vacancyIdParam : ""
+
+    let statusParam=searchParams.get('status')
+    qstr+= statusParam ? "ststus="+ statusParam : ""
+
+    let vacancyNameParam=searchParams.get("vacancy_name")
+    qstr+= vacancyNameParam ? "vacancy_name="+vacancyNameParam : ""
+
+    let companyParam=searchParams.get('company')
+    qstr+=companyParam? "company="+companyParam :""
+
+    let userIdParam=searchParams.get('user_id')
+    qstr+= userIdParam ? "user_id="+ userIdParam : ""
+    
+    let firstNameParam=searchParams.get('first_name')
+    qstr+= firstNameParam ? "first_name=" + firstNameParam : ""
+
+    let lastNameParam=searchParams.get('last_name')
+    qstr+= lastNameParam ? "last_name="+lastNameParam : ""
+
+    let phoneParam=searchParams.get('phone')
+    qstr+= phoneParam ? "phone="+phoneParam : ""
+
     return qstr;
   };
 
