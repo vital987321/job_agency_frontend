@@ -1,7 +1,7 @@
 @import '../constants.css';
 
 .admin-application-filter-section{
-    background-color: lightgrey;
+    background-color: var(--design-text-color2);
     margin-left: calc(-1*var(--global_margin_left_right));
     margin-right: calc(-1*var(--global_margin_left_right));
     padding: 10px 0;
@@ -14,9 +14,30 @@
 .admin-application-filter-form-inputs{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px 25px;
 }
 
 .application-filter-input-container{
     display: grid;
     grid-template-columns: 2fr 3fr;
+    
+}
+
+.application-filter-input{
+    height: 1.5rem;
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+.admin-applications-form-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#applicaption-filter-on-page-input{
+    margin-left: 5px;
 }

@@ -4,7 +4,7 @@ import filterIcon from "../../svg/settings.svg";
 import closeIcon from "../../svg/X.svg";
 import {useSearchParams} from "react-router-dom"
 import { AdminApplicatiosFilterComponent } from "./AdminApplicationsFilterComponet";
-import { LIST_APPLICATIONS_BASE_URL } from "../../constants.js";
+import { LIST_APPLICATIONS_BASE_URL, ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../constants.js";
 import { useState } from "react";
 
 
@@ -25,39 +25,49 @@ export const AdminApplicationsComponent = () => {
 
   const generateAdminListApplicationsRequestQueryString = (offset) => {
     let qstr = "";
-    // qstr += searchParams.get('id')
-    //   ? "id=" + searchParams.get('id')
-    //   : "";
-    
+
+    const ApplicationsOnPage=localStorage.getItem('ApplicationsOnPage')
+    qstr += searchParams.get("limit")
+      ? "limit=" + searchParams.get("limit")
+      : "limit=" + (ApplicationsOnPage ? ApplicationsOnPage : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT);
+    if (isNaN(offset)) {
+      qstr += searchParams.get("offset")
+        ? "&offset=" + searchParams.get("offset")
+        : "&offset=0";
+    } else {
+      qstr += "&offset=" + offset;
+    }
+
+
     let idParam=searchParams.get("id") 
-    qstr+= idParam? "id="+ idParam : ""
+    qstr+= idParam? "&id="+ idParam : ""
     
     let vacancyIdParam=searchParams.get('vacancy_id')
-    qstr+= vacancyIdParam ? "vacancy_id="+vacancyIdParam : ""
+    qstr+= vacancyIdParam ? "&vacancy_id="+vacancyIdParam : ""
     
     let emailParam=searchParams.get("email")
-    qstr+=emailParam ? "email="+ vacancyIdParam : ""
+    qstr+=emailParam ? "&email="+ emailParam : ""
 
     let statusParam=searchParams.get('status')
-    qstr+= statusParam ? "ststus="+ statusParam : ""
+    qstr+= statusParam ? "&status="+ statusParam : ""
 
     let vacancyNameParam=searchParams.get("vacancy_name")
-    qstr+= vacancyNameParam ? "vacancy_name="+vacancyNameParam : ""
+    qstr+= vacancyNameParam ? "&vacancy_name="+vacancyNameParam : ""
 
     let companyParam=searchParams.get('company')
-    qstr+=companyParam? "company="+companyParam :""
+    qstr+=companyParam? "&company="+companyParam :""
 
     let userIdParam=searchParams.get('user_id')
-    qstr+= userIdParam ? "user_id="+ userIdParam : ""
+    qstr+= userIdParam ? "&user_id="+ userIdParam : ""
     
     let firstNameParam=searchParams.get('first_name')
-    qstr+= firstNameParam ? "first_name=" + firstNameParam : ""
+    qstr+= firstNameParam ? "&first_name=" + firstNameParam : ""
 
     let lastNameParam=searchParams.get('last_name')
-    qstr+= lastNameParam ? "last_name="+lastNameParam : ""
+    qstr+= lastNameParam ? "&last_name="+lastNameParam : ""
 
     let phoneParam=searchParams.get('phone')
-    qstr+= phoneParam ? "phone="+phoneParam : ""
+    qstr+= phoneParam ? "&phone="+phoneParam : ""
 
     return qstr;
   };

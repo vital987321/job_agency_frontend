@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import React from "react"
+import { useState } from "react";
 import "../../css/adminArea/adminApplicationsFilter.css";
 import filterIcon from "../../svg/settings.svg";
+import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../constants";
 
 const idRef=React.createRef()
 const vacancyIdRef=React.createRef()
@@ -14,9 +16,22 @@ const firstNameRef=React.createRef()
 const lastNameRef=React.createRef()
 const phoneRef=React.createRef()
 
-export const AdminApplicatiosFilterComponent = () => {
 
+export const AdminApplicatiosFilterComponent = () => {
+  let ApplicationsOnPage=localStorage.getItem('ApplicationsOnPage')
+  const [onPageApplications, setOnPageApplications]=useState(
+    ApplicationsOnPage
+    ? ApplicationsOnPage 
+    : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT
+  )
+  
   const navigate = useNavigate();
+
+
+  const changeOpPageApplicationsLimit=(e)=>{
+    localStorage.setItem('ApplicationsOnPage', e.target.value)
+    setOnPageApplications(e.target.value)
+  }
 
   const buildFIlterQueryString = () => {
     const id=idRef.current.value
@@ -33,6 +48,7 @@ export const AdminApplicatiosFilterComponent = () => {
     let queryStringArray = [];
     let queryString = "";
 
+    if (onPageApplications) queryStringArray.push('limit='+onPageApplications)
     if (id) queryStringArray.push('id='+id)
     if (vacancyId) queryStringArray.push('vacancy_id='+vacancyId)
     if (email) queryStringArray.push('email='+email)
@@ -65,51 +81,51 @@ export const AdminApplicatiosFilterComponent = () => {
               <label htmlFor="application-filter-application-id-input">
                 Application ID
               </label>
-              <input id="application-filter-application-id-input" type="text" ref={idRef}/>
+              <input className="application-filter-input" id="application-filter-application-id-input" type="text" ref={idRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-vacancy-id-input">
                 Vacancy ID
               </label>
-              <input id="application-filter-vacancy-id-input" type="text" ref={vacancyIdRef}/>
+              <input className="application-filter-input" id="application-filter-vacancy-id-input" type="text" ref={vacancyIdRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-vacancy-name-input">
-                Vacancy nane
+                Vacancy name
               </label>
-              <input id="application-filter-vacancy-name-input" type="text" ref={vacancyIdRef}/>
+              <input className="application-filter-input" id="application-filter-vacancy-name-input" type="text" ref={vacancyNameRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-company-input">Company</label>
-              <input id="application-filter-company-input" type="text" ref={companyRef}/>
+              <input className="application-filter-input" id="application-filter-company-input" type="text" ref={companyRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-user-id-input">User ID</label>
-              <input id="application-filter-user-id-input" type="text" ref={userIdRef}/>
+              <input className="application-filter-input" id="application-filter-user-id-input" type="text" ref={userIdRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-first-name-input">
                 First Name
               </label>
-              <input id="application-filter-first-name-input" type="text" ref={firstNameRef}/>
+              <input className="application-filter-input" id="application-filter-first-name-input" type="text" ref={firstNameRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-last-name-input">
                 Last Name
               </label>
-              <input id="application-filter-last-name-input" type="text" ref={lastNameRef}/>
+              <input className="application-filter-input" id="application-filter-last-name-input" type="text" ref={lastNameRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-phone-input">Phone</label>
-              <input id="application-filter-phone-input" type="text" ref={phoneRef}/>
+              <input className="application-filter-input" id="application-filter-phone-input" type="text" ref={phoneRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-email-input">Email</label>
-              <input id="application-filter-email-input" type="text" ref={emailRef}/>
+              <input className="application-filter-input" id="application-filter-email-input" type="text" ref={emailRef}/>
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-status-input">Status</label>
-              <input id="application-filter-status-input" type="text" ref={statusRef}/>
+              <input className="application-filter-input" id="application-filter-status-input" type="text" ref={statusRef}/>
             </div>
           </div>
 
@@ -120,8 +136,17 @@ export const AdminApplicatiosFilterComponent = () => {
             >
               Filter <img src={filterIcon} alt="" height="14px" />
             </button>
-            <div>
-              <p>on Page: 10</p>
+            <div className="application-filter-input-container">
+              <label htmlFor="application-filter-status-input">on Page</label>
+              <select className="application-filter-input" id="applicaption-filter-on-page-input"
+              value={onPageApplications}
+              onChange={changeOpPageApplicationsLimit}>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
             </div>
           </div>
         </form>

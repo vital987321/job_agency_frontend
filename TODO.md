@@ -6,9 +6,10 @@ in backend side:
 
 Frontend:
     Admin applications component:
-        - FIlter
+        - Filter
         - on page
-        - quick search
+        reset filters button
+        - pagination
     user profile foto
     Admin application check user button
     user. Write a a review
