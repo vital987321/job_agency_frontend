@@ -11,8 +11,7 @@
   border-radius: 8px;
 }
 
-.button-common:hover,
-.button-common:focus {
+.button-common:hover /*, .button-common:focus*/ {
   box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
   transform: translateY(-0.25em);
 }

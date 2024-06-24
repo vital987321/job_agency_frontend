@@ -38,7 +38,7 @@ export const AdminApplicatiosFilterComponent = () => {
     else {
       setResetFiltersButtonDisplayValue("none");
     }
-  }, searchParams);
+  }, [searchParams]);
 
   const changeOpPageApplicationsLimit=(e)=>{
     localStorage.setItem('ApplicationsOnPage', e.target.value)
@@ -80,14 +80,27 @@ export const AdminApplicatiosFilterComponent = () => {
     return queryString;
   };
 
-  const filterButtonHandler = (e) => {
-    e.preventDefault();
+  const filterButtonHandler = () => {
     navigate("" + buildFIlterQueryString());
-    // props.setVacancyFilterDisplayValue("none");
   };
+
+  const filterFormSubmitHandler=(e)=>{
+    e.preventDefault();
+    filterButtonHandler()
+  }
 
   const resetFiltersHandler = (e) => {
      e.preventDefault();
+     idRef.current.value=''
+     vacancyIdRef.current.value=''
+     emailRef.current.value=''
+     statusRef.current.value=''
+     vacancyNameRef.current.value=''
+     companyRef.current.value=''
+     userIdRef.current.value=''
+     firstNameRef.current.value=''
+     lastNameRef.current.value=''
+     phoneRef.current.value=''
      navigate("");
    };
 
@@ -96,7 +109,7 @@ export const AdminApplicatiosFilterComponent = () => {
       <div className="admin-application-filter-main-container">
         <form
           className="admin-application-filter-form"
-          onSubmit={filterButtonHandler}
+          onSubmit={filterFormSubmitHandler}
         >
           <div className="admin-application-filter-form-inputs">
             <div className="application-filter-input-container">
