@@ -8,11 +8,11 @@ Frontend:
     Admin applications component:
         - Filter
         - on page
-        reset filters button
+        - reset filters button
         - pagination
     user profile foto
     Admin application check user button
-    user. Write a a review
+    user. Write a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
     

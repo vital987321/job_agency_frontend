@@ -19,7 +19,7 @@
 
 .application-filter-input-container{
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 2fr 4fr;
     
 }
 
@@ -40,4 +40,12 @@
 
 #applicaption-filter-on-page-input{
     margin-left: 5px;
+}
+
+#applicaption-filter-on-page-input{
+    text-align: center;
+}
+
+#admin-applications-reset-filters-button{
+    margin-left: 20px;
 }
