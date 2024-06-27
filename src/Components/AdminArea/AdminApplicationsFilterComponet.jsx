@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "../../css/adminArea/adminApplicationsFilter.css";
 import filterIcon from "../../svg/settings.svg";
@@ -7,72 +7,79 @@ import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../constants";
 import closeIcon from "../../svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 
-const idRef=React.createRef()
-const vacancyIdRef=React.createRef()
-const emailRef=React.createRef()
-const statusRef=React.createRef()
-const vacancyNameRef=React.createRef()
-const companyRef=React.createRef()
-const userIdRef=React.createRef()
-const firstNameRef=React.createRef()
-const lastNameRef=React.createRef()
-const phoneRef=React.createRef()
-
+const idRef = React.createRef();
+const vacancyIdRef = React.createRef();
+const emailRef = React.createRef();
+const statusRef = React.createRef();
+const vacancyNameRef = React.createRef();
+const companyRef = React.createRef();
+const userIdRef = React.createRef();
+const firstNameRef = React.createRef();
+const lastNameRef = React.createRef();
+const phoneRef = React.createRef();
 
 export const AdminApplicatiosFilterComponent = () => {
-  let ApplicationsOnPage=localStorage.getItem('ApplicationsOnPage')
-  const [onPageApplications, setOnPageApplications]=useState(
+  let ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage");
+  const [onPageApplications, setOnPageApplications] = useState(
     ApplicationsOnPage
-    ? ApplicationsOnPage 
-    : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT
-  )
+      ? ApplicationsOnPage
+      : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT
+  );
   const [searchParams, setSearchParams] = useSearchParams();
-  const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] = useState('none')
-  
+  const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
+    useState("none");
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    let showCancelFilterButton = false;
     if (searchParams.size > 0) {
+      for (let paramKey of searchParams.keys()) {
+        if (paramKey !== "limit" && paramKey !== "offset") {
+          showCancelFilterButton = true;
+          break;
+        }
+      }
+    }
+    if (showCancelFilterButton)
       setResetFiltersButtonDisplayValue("inline-block");
-    }
-    else {
-      setResetFiltersButtonDisplayValue("none");
-    }
+    else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  const changeOpPageApplicationsLimit=(e)=>{
-    localStorage.setItem('ApplicationsOnPage', e.target.value)
-    setOnPageApplications(e.target.value)
-  }
+  const changeOpPageApplicationsLimit = (e) => {
+    localStorage.setItem("ApplicationsOnPage", e.target.value);
+    setOnPageApplications(e.target.value);
+  };
 
-  console.log()
+  console.log();
 
   const buildFIlterQueryString = () => {
-    const id=idRef.current.value
-    const vacancyId=vacancyIdRef.current.value
-    const email=emailRef.current.value
-    const status=statusRef.current.value
-    const vacancyName=vacancyNameRef.current.value
-    const company=companyRef.current.value
-    const userId=userIdRef.current.value
-    const firstName=firstNameRef.current.value
-    const lastName=lastNameRef.current.value
-    const phone=phoneRef.current.value
+    const id = idRef.current.value;
+    const vacancyId = vacancyIdRef.current.value;
+    const email = emailRef.current.value;
+    const status = statusRef.current.value;
+    const vacancyName = vacancyNameRef.current.value;
+    const company = companyRef.current.value;
+    const userId = userIdRef.current.value;
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const phone = phoneRef.current.value;
 
     let queryStringArray = [];
     let queryString = "";
 
-    if (onPageApplications) queryStringArray.push('limit='+onPageApplications)
-    if (id) queryStringArray.push('id='+id)
-    if (vacancyId) queryStringArray.push('vacancy_id='+vacancyId)
-    if (email) queryStringArray.push('email='+email)
-    if (status) queryStringArray.push('status='+status)
-    if (vacancyName) queryStringArray.push('vacancy_name='+vacancyName)
-    if (company) queryStringArray.push('company='+company)
-    if (userId) queryStringArray.push('user_id='+userId)
-    if (firstName) queryStringArray.push('first_name='+firstName)
-    if (lastName) queryStringArray.push('last_name='+lastName)
-    if (phone) queryStringArray.push('phone='+phone)
+    if (onPageApplications)
+      queryStringArray.push("limit=" + onPageApplications);
+    if (id) queryStringArray.push("id=" + id);
+    if (vacancyId) queryStringArray.push("vacancy_id=" + vacancyId);
+    if (email) queryStringArray.push("email=" + email);
+    if (status) queryStringArray.push("status=" + status);
+    if (vacancyName) queryStringArray.push("vacancy_name=" + vacancyName);
+    if (company) queryStringArray.push("company=" + company);
+    if (userId) queryStringArray.push("user_id=" + userId);
+    if (firstName) queryStringArray.push("first_name=" + firstName);
+    if (lastName) queryStringArray.push("last_name=" + lastName);
+    if (phone) queryStringArray.push("phone=" + phone);
 
     if (queryStringArray.length > 0) {
       queryString = "?" + queryStringArray.join("&");
@@ -84,25 +91,25 @@ export const AdminApplicatiosFilterComponent = () => {
     navigate("" + buildFIlterQueryString());
   };
 
-  const filterFormSubmitHandler=(e)=>{
+  const filterFormSubmitHandler = (e) => {
     e.preventDefault();
-    filterButtonHandler()
-  }
+    filterButtonHandler();
+  };
 
   const resetFiltersHandler = (e) => {
-     e.preventDefault();
-     idRef.current.value=''
-     vacancyIdRef.current.value=''
-     emailRef.current.value=''
-     statusRef.current.value=''
-     vacancyNameRef.current.value=''
-     companyRef.current.value=''
-     userIdRef.current.value=''
-     firstNameRef.current.value=''
-     lastNameRef.current.value=''
-     phoneRef.current.value=''
-     navigate("");
-   };
+    e.preventDefault();
+    idRef.current.value = "";
+    vacancyIdRef.current.value = "";
+    emailRef.current.value = "";
+    statusRef.current.value = "";
+    vacancyNameRef.current.value = "";
+    companyRef.current.value = "";
+    userIdRef.current.value = "";
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    phoneRef.current.value = "";
+    navigate("");
+  };
 
   return (
     <section className="admin-application-filter-section">
@@ -227,7 +234,7 @@ export const AdminApplicatiosFilterComponent = () => {
                 className="applications-filter-button-general button-common button-common-color2"
                 id="admin-applications-reset-filters-button"
                 onClick={resetFiltersHandler}
-                style={{'display':resetFiltersButtonDisplayValue}}
+                style={{ display: resetFiltersButtonDisplayValue }}
               >
                 Reset Filters <img src={closeIcon} alt="" height="14px" />
               </button>

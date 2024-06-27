@@ -9,7 +9,7 @@ Frontend:
         - Filter (complete)
         - on page (complete)
         - reset filters button (complete)
-        - pagination
+        - pagination (complete)
     user profile foto
     Admin application check user button
     user. Write a review

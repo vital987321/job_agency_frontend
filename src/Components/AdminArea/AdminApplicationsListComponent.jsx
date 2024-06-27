@@ -9,7 +9,7 @@ import { ApplicationStatusMarker } from "../CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);
-  const [applicationsResponseData, aetApplicationsResponseData] = useState({
+  const [applicationsResponseData, setApplicationsResponseData] = useState({
     count: "0",
     next: null,
     previous: null,
@@ -27,16 +27,20 @@ export const AdminApplicationsListComponent = (props) => {
             setApplicationsListData(response.data.results);
             return response;
           })
-          .then((response) => {
-            aetApplicationsResponseData({
-              ...applicationsResponseData,
-              ...{
-                count: response.data.count,
-                next: response.data.next,
-                previous: response.data.previous,
-              },
-            });
+          .then((response)=>{
+            props.setApplicationsResponseData(response.data)
+            return response
           })
+          // .then((response) => {
+          //   setApplicationsResponseData({
+          //     ...applicationsResponseData,
+          //     ...{
+          //       count: response.data.count,
+          //       next: response.data.next,
+          //       previous: response.data.previous,
+          //     },
+          //   });
+          // })
           .catch((err) => console.log(err));
       } catch (error) {
         console.log(error);
@@ -45,10 +49,6 @@ export const AdminApplicationsListComponent = (props) => {
     fetchListApplications();
   }, [props.adminApplicationListRequestUrl]);
 
-  // const paginationButtonHandler = (e) => {
-  //   const paginationDirection = e.target.dataset.direction;
-  //   setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
-  // };
 
   return (
     <section className="admin-list-applications-container">
@@ -99,28 +99,6 @@ export const AdminApplicationsListComponent = (props) => {
           })}
         </tbody>
       </table>
-      {/* <div className="admin-applications-list-pagination-container">
-        {applicationsResponseData.previous ? (
-          <button
-            onClick={paginationButtonHandler}
-            data-direction="previous"
-            id="previousApplicationsButton"
-            className="applications-pagination-button"
-          >
-            {"<"} Previous
-          </button>
-        ) : null}
-        {applicationsResponseData.next ? (
-          <button
-            onClick={paginationButtonHandler}
-            data-direction="next"
-            id="nextApplicationsButton"
-            className="applications-pagination-button"
-          >
-            Next {">"}
-          </button>
-        ) : null}
-      </div> */}
     </section>
   );
 };
