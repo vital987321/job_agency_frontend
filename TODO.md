@@ -21,7 +21,7 @@ Frontend:
 
 Think about:
     Adding Partners Model to DB.
-        Admin can select compan7 only from awailabe list of partners
+        Admin can select company only from awailabe list of partners
     In admin area in side bar add a number of new applications. New applications in the list sall be bold.
     Add a checkbox for each item in admin application list. Add tools panel for Action for checked applications:
         - Mark as read
@@ -46,6 +46,30 @@ Admin Application Filter:
     +   userEmail
     +   userPhone
     +   status
+
+
+DEACTEVATED VACANCY
+beckend environment:
+1. Add to model "active" field. Default=true blank=false null=false
+
+User environment:
+1. User requests shall return only active vacancies to the list
+2. User can see deactivated vacancy only though his own applications. Additional record appears showing that vacancy is deactivated.
+
+Admin Environment:
+1. Admin's request returns active vacancies by default, unless filtered Diactivated
+2. Admin vacancy component has 1 button "activate/deactivate"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
