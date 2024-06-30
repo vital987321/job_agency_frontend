@@ -3,21 +3,31 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../../css/listVacancies.css";
 import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import api from "../../api";
 
 export const ListVacanciesComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
+
   useEffect(() => {
-    axios
-      .get(props.listVacanciesRequestUrl)
-      .then((response) => {
-        setVacanciesList(response.data.results);
-        return response;
-      })
-      .then((response) => {
-        if (props.setVacanciesResponseData)
-          props.setVacanciesResponseData(response.data);
-      })
-      .catch((err) => console.log(err));
+    const fetchVacancyList = async () => {
+      try {
+        const response = await api
+          .get(props.listVacanciesRequestUrl)
+          .then((response) => {
+            setVacanciesList(response.data.results);
+            return response;
+          })
+          .then((response) => {
+            if (props.setVacanciesResponseData)
+              props.setVacanciesResponseData(response.data);
+          })
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVacancyList();
+
   }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
   return (
     <div className="vacancies-list-container">

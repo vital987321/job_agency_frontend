@@ -58,6 +58,9 @@ export const VacanciesComponent = (props) => {
     qstr += searchParams.get("residence_type")
       ? "&residence_type=" + searchParams.get("residence_type")
       : "";
+    qstr += searchParams.get("active")
+      ? "&active=" + searchParams.get("active")
+      : "";
     return qstr;
   };
 
