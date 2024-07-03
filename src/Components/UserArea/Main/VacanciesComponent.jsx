@@ -137,8 +137,8 @@ export const VacanciesComponent = (props) => {
   };
 
   const resetFiltersHandler = () => {
-    navigate('');
-  }
+    navigate("");
+  };
 
   const ResetFiltersComponent = () => {
     if (searchParams.size > 0) {
@@ -151,9 +151,8 @@ export const VacanciesComponent = (props) => {
           <img src={closeIcon} alt="" height="14px" />
         </button>
       );
-      
     }
-  }
+  };
 
   return (
     <div className="vacancies-container">
