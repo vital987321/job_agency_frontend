@@ -2,6 +2,7 @@
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
 import { AdminVacancyFilterComponent } from "./AdminVacancyFilterComponent";
 import { AdminListVacanciesComponent } from "./AdminListVacanciesComponent";
+import { AdminVacanciesFilterComponent } from "./AdminVacanciesFilterComponentNew";
 import searchIcon from "../../svg/search.svg";
 import closeIcon from "../../svg/X.svg";
 import filterIcon from "../../svg/settings.svg";
@@ -161,6 +162,16 @@ const PaginationNumberedLinks = () => {
   return (
     <div className="admin-vacancies-container">
       <section className="admin-vacancies-tools-section">
+        <AdminVacancyFilterComponent
+          vacancyFilterDisplayValue={vacancyFilterDisplayValue}
+          setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
+          listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
+          setListVacanciesRequestUrl={setListVacanciesRequestUrl}
+          generateListVacanciesRequestURL={generateListVacanciesRequestURL}
+          searchParams={searchParams}
+        />
+        <AdminVacanciesFilterComponent/>
+
         <div className="new-vacancy-button-container">
           <button
             className="button-common button-common-color1 add-new-vacancy-button"
@@ -218,14 +229,6 @@ const PaginationNumberedLinks = () => {
             })()}
           </div>
         </section>
-        <AdminVacancyFilterComponent
-          vacancyFilterDisplayValue={vacancyFilterDisplayValue}
-          setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
-          listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
-          setListVacanciesRequestUrl={setListVacanciesRequestUrl}
-          generateListVacanciesRequestURL={generateListVacanciesRequestURL}
-          searchParams={searchParams}
-        />
       </section>
 
       {/* <VacanciesComponent vacancyListChangedState={vacancyListChangedState} /> */}

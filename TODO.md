@@ -62,6 +62,16 @@ Admin Environment:
 
 
 
+Admin Vacancy Filter:
+Vacancy ID
+Vacancy name
+salary min
+salary max
+company
+sector
+residance type
+location
+Active
 
 
 
