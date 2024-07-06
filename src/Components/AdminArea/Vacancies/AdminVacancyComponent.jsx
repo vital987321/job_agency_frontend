@@ -1,9 +1,9 @@
-import { VacancyDataComponent } from "../UserArea/Main/VacancyComponent";
+import { VacancyDataComponent } from "../../UserArea/Main/VacancyComponent";
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
-import "../../css/adminArea/adminVacancy.css";
+import "../../../css/adminArea/adminVacancy.css";
 import { useState} from "react";
-import api from "../api";
-import { LIST_VACANCIES_BASE_URL } from "../../constants";
+import api from "../../api";
+import { LIST_VACANCIES_BASE_URL } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 
 export const AdminVacancyComponent = () => {

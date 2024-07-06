@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../css/listVacancies.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../funcs";
-import api from "../api";
+import "../../../css/listVacancies.css";
+import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import api from "../../api";
 
-export const AdminListVacanciesComponent = (props) => {
+export const AdminVacanciesListComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
 
   useEffect(() => {
     const fetchVacancyList = async () => {
       try {
         const response = await api
-          .get(props.listVacanciesRequestUrl)
+          .get(props.adminListVacanciesRequestUrl)
           .then((response) => {
             setVacanciesList(response.data.results);
             return response;
@@ -27,7 +27,8 @@ export const AdminListVacanciesComponent = (props) => {
       }
     };
     fetchVacancyList();
-  }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
+  }, [props.adminListVacanciesRequestUrl, props.vacancyListChangedState]);
+
   return (
     <div className="vacancies-list-container">
       <table className="list-vacancies-table">

@@ -1,4 +1,4 @@
-import { VacanciesComponent } from "../UserArea/Main/VacanciesComponent";
+import { VacanciesComponent } from "../../UserArea/Main/VacanciesComponent";
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
 import searchIcon from "../../svg/search.svg";
 import "../../css/adminArea/adminVacancies.css";

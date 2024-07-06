@@ -5,7 +5,7 @@ import {
   SALARY_CEILING,
   FILTER_POINTER_SIZE,
   RESIDENCE_TYPES,
-} from "../../constants";
+} from "../../../constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 
 const vacancyKeyWordsRef = React.createRef();

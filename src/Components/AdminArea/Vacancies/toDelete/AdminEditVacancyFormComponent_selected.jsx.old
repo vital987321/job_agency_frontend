@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import {CONTRACT_TYPE} from "../../constants"
-import {GENDER_LIST} from "../../constants"
-import {SECTOR_REQUEST_URL} from "../../constants"
-import api from '../api'
+import {CONTRACT_TYPE} from "../../../constants"
+import {GENDER_LIST} from "../../../constants"
+import {SECTOR_REQUEST_URL} from "../../../constants"
+import api from '../../api'
 
 
 // Problem with this component is that it is throws a warning:

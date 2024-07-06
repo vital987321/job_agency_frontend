@@ -1,10 +1,10 @@
 import { Route } from "react-router-dom";
 import { AdminSideBarComponent } from "./AdminSideBarComponent";
-import { AdminVacanciesComponent } from "./AdminVacanciesComponent";
+import { AdminVacanciesComponent } from "./Vacancies/AdminVacanciesComponent";
 import { AdminBodyComponent } from "./AdminBodyComponent";
-import { AdminVacancyComponent } from "./AdminVacancyComponent";
-import { AdminApplicationComponent } from "../AdminArea/AdminApplicationComponent";
-import { AdminApplicationsComponent } from "./AdminApplicationsComponent";
+import { AdminVacancyComponent } from "./Vacancies/AdminVacancyComponent";
+import { AdminApplicationComponent } from "../AdminArea/Applications/AdminApplicationComponent";
+import { AdminApplicationsComponent } from "./Applications/AdminApplicationsComponent";
 
 
 export const AdminRouterComponent = (

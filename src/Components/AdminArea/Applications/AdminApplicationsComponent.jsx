@@ -1,13 +1,13 @@
 import { AdminApplicationsListComponent } from "./AdminApplicationsListComponent";
-import "../../css/adminArea/adminApplications.css";
-import filterIcon from "../../svg/settings.svg";
-import closeIcon from "../../svg/X.svg";
+import "../../../css/adminArea/adminApplications.css";
+import filterIcon from "../../../svg/settings.svg";
+import closeIcon from "../../../svg/X.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AdminApplicatiosFilterComponent } from "./AdminApplicationsFilterComponet";
 import {
   LIST_APPLICATIONS_BASE_URL,
   ADMIN_APPLICATION_LIST_LIMIT_DEFAULT,
-} from "../../constants.js";
+} from "../../../constants.js";
 import { useState } from "react";
 
 export const AdminApplicationsComponent = () => {

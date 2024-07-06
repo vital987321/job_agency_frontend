@@ -1,23 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../../css/adminArea/adminApplicationsFilter.css";
-import filterIcon from "../../svg/settings.svg";
-import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../constants";
-import closeIcon from "../../svg/X.svg";
+import "../../../css/adminArea/adminApplicationsFilter.css";
+import filterIcon from "../../../svg/settings.svg";
+import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../../constants";
+import closeIcon from "../../../svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 
+const idRef = React.createRef();
 const vacancyIdRef = React.createRef();
-const locationRef = React.createRef();
-const activeRef = React.createRef();
+const emailRef = React.createRef();
+const statusRef = React.createRef();
 const vacancyNameRef = React.createRef();
 const companyRef = React.createRef();
-const salaryMinRef = React.createRef();
-const salaryMaxRef = React.createRef();
-const sectorRef = React.createRef();
-const residanceTypeRef = React.createRef();
+const userIdRef = React.createRef();
+const firstNameRef = React.createRef();
+const lastNameRef = React.createRef();
+const phoneRef = React.createRef();
 
-export const AdminVacanciesFilterComponent = () => {
+export const AdminApplicatiosFilterComponent = () => {
   let ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage");
   const [onPageApplications, setOnPageApplications] = useState(
     ApplicationsOnPage
@@ -50,34 +51,34 @@ export const AdminVacanciesFilterComponent = () => {
     setOnPageApplications(e.target.value);
   };
 
-  console.log();
 
   const buildFIlterQueryString = () => {
+    const id = idRef.current.value;
     const vacancyId = vacancyIdRef.current.value;
-    const location = locationRef.current.value;
-    const active = active.current.value;
+    const email = emailRef.current.value;
+    const status = statusRef.current.value;
     const vacancyName = vacancyNameRef.current.value;
     const company = companyRef.current.value;
-    const salaryMin = salaryMinRef.current.value;
-    const salaryMax = salaryMaxRef.current.value;
-    const sector = sectorRef.current.value;
-    const residanceType = residanceTypeRef.current.value;
+    const userId = userIdRef.current.value;
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const phone = phoneRef.current.value;
 
-      
     let queryStringArray = [];
     let queryString = "";
 
     if (onPageApplications)
       queryStringArray.push("limit=" + onPageApplications);
-    if (location) queryStringArray.push("location=" + location);
-    if (active) queryStringArray.push("active=" + active);
-    if (vacancyId) queryStringArray.push("vacancyId=" + vacancyId);
+    if (id) queryStringArray.push("id=" + id);
+    if (vacancyId) queryStringArray.push("vacancy_id=" + vacancyId);
+    if (email) queryStringArray.push("email=" + email);
+    if (status) queryStringArray.push("status=" + status);
     if (vacancyName) queryStringArray.push("vacancy_name=" + vacancyName);
     if (company) queryStringArray.push("company=" + company);
-    if (salaryMin) queryStringArray.push("salaryMin=" + salaryMin);
-    if (salaryMax) queryStringArray.push("salaryMax=" + salaryMax);
-    if (sector) queryStringArray.push("sector=" + sector);
-    if (residanceType) queryStringArray.push("residanceType=" + residanceType);
+    if (userId) queryStringArray.push("user_id=" + userId);
+    if (firstName) queryStringArray.push("first_name=" + firstName);
+    if (lastName) queryStringArray.push("last_name=" + lastName);
+    if (phone) queryStringArray.push("phone=" + phone);
 
     if (queryStringArray.length > 0) {
       queryString = "?" + queryStringArray.join("&");
@@ -96,27 +97,18 @@ export const AdminVacanciesFilterComponent = () => {
 
   const resetFiltersHandler = (e) => {
     e.preventDefault();
+    idRef.current.value = "";
     vacancyIdRef.current.value = "";
-    locationRef.current.value = "";
-    activeRef.current.value = "";
+    emailRef.current.value = "";
+    statusRef.current.value = "";
     vacancyNameRef.current.value = "";
     companyRef.current.value = "";
-    salaryMinRef.current.value = "";
-    salaryMaxRef.current.value = "";
-    sectorRef.current.value = "";
-    residanceTypeRef.current.value = "";
+    userIdRef.current.value = "";
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    phoneRef.current.value = "";
     navigate("");
-    };
-    
-    const vacancyIdRef = React.createRef();
-    const locationRef = React.createRef();
-    const activeRef = React.createRef();
-    const vacancyNameRef = React.createRef();
-    const companyRef = React.createRef();
-    const salaryMinRef = React.createRef();
-    const salaryMaxRef = React.createRef();
-    const sectorRef = React.createRef();
-    const residanceTypeRef = React.createRef();
+  };
 
   return (
     <section className="admin-application-filter-section">
@@ -126,6 +118,17 @@ export const AdminVacanciesFilterComponent = () => {
           onSubmit={filterFormSubmitHandler}
         >
           <div className="admin-application-filter-form-inputs">
+            <div className="application-filter-input-container">
+              <label htmlFor="application-filter-application-id-input">
+                Application ID
+              </label>
+              <input
+                className="application-filter-input"
+                id="application-filter-application-id-input"
+                type="text"
+                ref={idRef}
+              />
+            </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-vacancy-id-input">
                 Vacancy ID
@@ -149,70 +152,70 @@ export const AdminVacanciesFilterComponent = () => {
               />
             </div>
             <div className="application-filter-input-container">
-              <label htmlFor="application-filter-salary-min-input">Salary min</label>
+              <label htmlFor="application-filter-company-input">Company</label>
               <input
                 className="application-filter-input"
-                id="application-filter-salary-min-input"
-                type="text"
-                ref={salaryMinRef}
-              />
-            </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-salary-max-input">Salary max</label>
-              <input
-                className="application-filter-input"
-                id="application-filter-salary-max-input"
-                type="text"
-                ref={salaryMaxRef}
-              />
-            </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-first-company-input">
-                Company
-              </label>
-              <input
-                className="application-filter-input"
-                id="application-filter-first-company-input"
+                id="application-filter-company-input"
                 type="text"
                 ref={companyRef}
               />
             </div>
             <div className="application-filter-input-container">
-              <label htmlFor="application-filter-sector-input">
-                Sector
+              <label htmlFor="application-filter-user-id-input">User ID</label>
+              <input
+                className="application-filter-input"
+                id="application-filter-user-id-input"
+                type="text"
+                ref={userIdRef}
+              />
+            </div>
+            <div className="application-filter-input-container">
+              <label htmlFor="application-filter-first-name-input">
+                First Name
               </label>
               <input
                 className="application-filter-input"
-                id="application-filter-sector-input"
+                id="application-filter-first-name-input"
                 type="text"
-                ref={sectorRef}
+                ref={firstNameRef}
               />
             </div>
             <div className="application-filter-input-container">
-              <label htmlFor="application-filter-residence-type-input">Residence</label>
+              <label htmlFor="application-filter-last-name-input">
+                Last Name
+              </label>
               <input
                 className="application-filter-input"
-                id="application-filter-residence-type-input"
+                id="application-filter-last-name-input"
                 type="text"
-                ref={residanceTypeRef}
+                ref={lastNameRef}
               />
             </div>
             <div className="application-filter-input-container">
-              <label htmlFor="application-filter-location-input">Location</label>
+              <label htmlFor="application-filter-phone-input">Phone</label>
               <input
                 className="application-filter-input"
-                id="application-filter-location-input"
+                id="application-filter-phone-input"
                 type="text"
-                ref={locationRef}
+                ref={phoneRef}
               />
             </div>
             <div className="application-filter-input-container">
-              <label htmlFor="application-filter-active-input">Active</label>
+              <label htmlFor="application-filter-email-input">Email</label>
               <input
                 className="application-filter-input"
-                id="application-filter-active-input"
+                id="application-filter-email-input"
                 type="text"
-                ref={activeRef}
+                ref={emailRef}
+              />
+            </div>
+            <div className="application-filter-input-container">
+              <label htmlFor="application-filter-status-input">Status</label>
+              <input
+                className="application-filter-input"
+                id="application-filter-status-input"
+                type="text"
+                ref={statusRef}
               />
             </div>
           </div>

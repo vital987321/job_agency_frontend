@@ -1,17 +1,17 @@
 
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
-import { AdminVacancyFilterComponent } from "./AdminVacancyFilterComponent";
-import { AdminListVacanciesComponent } from "./AdminListVacanciesComponent";
+// import { AdminVacancyFilterComponent } from "./AdminVacancyFilterComponent";
+import { AdminVacanciesListComponent } from "./AdminVacanciesListComponent.jsx";
 import { AdminVacanciesFilterComponent } from "./AdminVacanciesFilterComponentNew";
-import searchIcon from "../../svg/search.svg";
-import closeIcon from "../../svg/X.svg";
-import filterIcon from "../../svg/settings.svg";
-import "../../css/adminArea/adminVacancies.css";
+import searchIcon from "../../../svg/search.svg";
+import closeIcon from "../../../svg/X.svg";
+import filterIcon from "../../../svg/settings.svg";
+import "../../../css/adminArea/adminVacancies.css";
 import React from "react";
 import {
   LIST_VACANCIES_BASE_URL,
   VACANCY_LIST_LIMIT,
-} from "../../constants.js";
+} from "../../../constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ export const AdminVacanciesComponent = (props) => {
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
     useState("none");
-  const [listVacanciesRequestUrl, setListVacanciesRequestUrl] = useState(
+  const [adminListVacanciesRequestUrl, setAdminListVacanciesRequestUrl] = useState(
     LIST_VACANCIES_BASE_URL
   );
   const [vacancyListChangedState, setVacancyListChangedState] = useState({});
@@ -70,27 +70,48 @@ const paginationButtonHandler = (e) => {
     } else {
       qstr += "&offset=" + offset;
     }
-    qstr += searchParams.get("key_search")
-      ? "&key_search=" + searchParams.get("key_search")
+    qstr += searchParams.get("vacancyId")
+      ? "&vacancyId=" + searchParams.get("vacancyId")
       : "";
-    qstr += searchParams.get("salary_gte")
-      ? "&salary_gte=" + searchParams.get("salary_gte")
+    qstr += searchParams.get("vacancy_name")
+      ? "&vacancy_name=" + searchParams.get("vacancy_name")
       : "";
-    qstr += searchParams.get("salary_lte")
-      ? "&salary_lte=" + searchParams.get("salary_lte")
+    // qstr += searchParams.get("salary_lte")
+    //   ? "&salary_lte=" + searchParams.get("salary_lte")
+    //   : "";
+    qstr += searchParams.get("salaryMin")
+      ? "&salaryMin=" + searchParams.get("salaryMin")
       : "";
-    qstr += searchParams.get("location")
+    qstr += searchParams.get("salaryMax")
+      ? "&salaryMax=" + searchParams.get("salaryMax")
+      : "";
+    qstr += searchParams.get("company")
+      ? "&company=" + searchParams.get("company")
+      : "";
+    qstr += searchParams.get("sector")
+      ? "&sector=" + searchParams.get("sector")
+      : "";
+      qstr += searchParams.get("residanceType")
+      ? "&residanceType=" + searchParams.get("residanceType")
+      : "";
+      qstr += searchParams.get("location")
       ? "&location=" + searchParams.get("location")
       : "";
-    qstr += searchParams.get("residence_type")
-      ? "&residence_type=" + searchParams.get("residence_type")
-      : "";
-    qstr += searchParams.get("active")
+      qstr += searchParams.get("active")
       ? "&active=" + searchParams.get("active")
       : "";
+
     return qstr;
   };
 
+  const updateAdminListVacanciesRequestURL = () => {
+    const updatedURL = generateListVacanciesRequestURL();
+    if (updatedURL !== adminListVacanciesRequestUrl) {
+      setAdminListVacanciesRequestUrl(updatedURL);
+    }
+  };
+
+  updateAdminListVacanciesRequestURL();
 
 const PaginationNumberedLinks = () => {
   const vacanciesTotalNumber = vacanciesResponseData.count;
@@ -162,15 +183,17 @@ const PaginationNumberedLinks = () => {
   return (
     <div className="admin-vacancies-container">
       <section className="admin-vacancies-tools-section">
-        <AdminVacancyFilterComponent
+        {/* <AdminVacancyFilterComponent
           vacancyFilterDisplayValue={vacancyFilterDisplayValue}
           setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
           listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
           setListVacanciesRequestUrl={setListVacanciesRequestUrl}
           generateListVacanciesRequestURL={generateListVacanciesRequestURL}
           searchParams={searchParams}
+        /> */}
+        <AdminVacanciesFilterComponent
+          // setListVacanciesRequestUrl={setListVacanciesRequestUrl}
         />
-        <AdminVacanciesFilterComponent/>
 
         <div className="new-vacancy-button-container">
           <button
@@ -191,8 +214,8 @@ const PaginationNumberedLinks = () => {
         </button>
         <ResetFiltersComponent />
         <h2 className="h2-main-header h2-common">Vacancies</h2>
-        <AdminListVacanciesComponent
-          listVacanciesRequestUrl={listVacanciesRequestUrl}
+        <AdminVacanciesListComponent
+          adminListVacanciesRequestUrl={adminListVacanciesRequestUrl}
           setVacanciesResponseData={setVacanciesResponseData}
           vacancyListChangedState={props.vacancyListChangedState}
         />

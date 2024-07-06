@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../css/adminArea/adminApplicationsList.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../funcs.js";
-import { LIST_APPLICATIONS_BASE_URL } from "../../constants.js";
-import api from "../api.jsx";
-import { ApplicationStatusMarker } from "../CommonToolsComponents.jsx";
+import "../../../css/adminArea/adminApplicationsList.css";
+import { stringToDateDMY, identifyWorkingHours } from "../../../funcs.js";
+import { LIST_APPLICATIONS_BASE_URL } from "../../../constants.js";
+import api from "../../api.jsx";
+import { ApplicationStatusMarker } from "../../CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);

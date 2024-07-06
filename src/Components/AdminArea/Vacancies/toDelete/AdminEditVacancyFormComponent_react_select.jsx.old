@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CONTRACT_TYPE } from "../../constants";
-import { GENDER_LIST } from "../../constants";
-import { SECTOR_REQUEST_URL } from "../../constants";
-import api from "../api";
+import { CONTRACT_TYPE } from "../../../constants";
+import { GENDER_LIST } from "../../../constants";
+import { SECTOR_REQUEST_URL } from "../../../constants";
+import api from "../../api";
 import Select, { MultiValue } from "react-select";
 
 // This component uses react - selected library and its Select Component.

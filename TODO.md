@@ -1,4 +1,8 @@
+NEXT STEP:
+    Expand Vacancy Filter for Staff in backend
+
 in backend side:
+    Expand Vacancy Filter for Staff
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
