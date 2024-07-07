@@ -6,18 +6,21 @@ import filterIcon from "../../../svg/settings.svg";
 import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../../constants";
 import closeIcon from "../../../svg/X.svg";
 import { useSearchParams } from "react-router-dom";
+import { RESIDENCE_TYPES } from "../../../constants";
 
-const vacancyIdRef = React.createRef();
-const locationRef = React.createRef();
-const activeRef = React.createRef();
-const vacancyNameRef = React.createRef();
-const companyRef = React.createRef();
-const salaryMinRef = React.createRef();
-const salaryMaxRef = React.createRef();
-const sectorRef = React.createRef();
-const residanceTypeRef = React.createRef();
+
 
 export const AdminVacanciesFilterComponent = () => {
+  const vacancyIdRef = React.createRef();
+  const locationRef = React.createRef();
+  const activeRef = React.createRef();
+  const vacancyNameRef = React.createRef();
+  const companyRef = React.createRef();
+  const salaryMinRef = React.createRef();
+  const salaryMaxRef = React.createRef();
+  const sectorRef = React.createRef();
+  const residanceTypeRef = React.createRef();
+
   let ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage");
   const [onPageApplications, setOnPageApplications] = useState(
     ApplicationsOnPage
@@ -27,6 +30,7 @@ export const AdminVacanciesFilterComponent = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
     useState("none");
+  const [activeSelection, setActiveSelection] = useState("");
 
   const navigate = useNavigate();
 
@@ -51,15 +55,16 @@ export const AdminVacanciesFilterComponent = () => {
   };
 
   const buildFilterQueryString = () => {
-    const vacancyId = vacancyIdRef.current.value;
+    const id = vacancyIdRef.current.value;
     const location = locationRef.current.value;
-    const active = activeRef.current.value;
-    const vacancyName = vacancyNameRef.current.value;
+    const name = vacancyNameRef.current.value;
     const company = companyRef.current.value;
-    const salaryMin = salaryMinRef.current.value;
-    const salaryMax = salaryMaxRef.current.value;
+    const salary_gte = salaryMinRef.current.value;
+    const salary_lte = salaryMaxRef.current.value;
     const sector = sectorRef.current.value;
-    const residanceType = residanceTypeRef.current.value;
+    const residence_type = residanceTypeRef.current.value;
+    const active = activeRef.current.value;
+
 
     let queryStringArray = [];
     let queryString = "";
@@ -68,13 +73,14 @@ export const AdminVacanciesFilterComponent = () => {
       queryStringArray.push("limit=" + onPageApplications);
     if (location) queryStringArray.push("location=" + location);
     if (active) queryStringArray.push("active=" + active);
-    if (vacancyId) queryStringArray.push("vacancyId=" + vacancyId);
-    if (vacancyName) queryStringArray.push("vacancy_name=" + vacancyName);
+    if (id) queryStringArray.push("id=" + id);
+    if (name) queryStringArray.push("name=" + name);
     if (company) queryStringArray.push("company=" + company);
-    if (salaryMin) queryStringArray.push("salaryMin=" + salaryMin);
-    if (salaryMax) queryStringArray.push("salaryMax=" + salaryMax);
+    if (salary_gte) queryStringArray.push("salary_gte=" + salary_gte);
+    if (salary_lte) queryStringArray.push("salary_lte=" + salary_lte);
     if (sector) queryStringArray.push("sector=" + sector);
-    if (residanceType) queryStringArray.push("residanceType=" + residanceType);
+    if (residence_type)
+      queryStringArray.push("residence_type=" + residence_type);
 
     if (queryStringArray.length > 0) {
       queryString = "?" + queryStringArray.join("&");
@@ -105,15 +111,7 @@ export const AdminVacanciesFilterComponent = () => {
     navigate("");
   };
 
-  const vacancyIdRef = React.createRef();
-  const locationRef = React.createRef();
-  const activeRef = React.createRef();
-  const vacancyNameRef = React.createRef();
-  const companyRef = React.createRef();
-  const salaryMinRef = React.createRef();
-  const salaryMaxRef = React.createRef();
-  const sectorRef = React.createRef();
-  const residanceTypeRef = React.createRef();
+
 
   return (
     <section className="admin-application-filter-section">
@@ -191,12 +189,22 @@ export const AdminVacanciesFilterComponent = () => {
               <label htmlFor="application-filter-residence-type-input">
                 Residence
               </label>
-              <input
+              <select
                 className="application-filter-input"
                 id="application-filter-residence-type-input"
-                type="text"
+                // defaultValue={props.searchParams.get("residence_type")}
                 ref={residanceTypeRef}
-              />
+              >
+                <option value=""></option>
+                {Object.keys(RESIDENCE_TYPES).map((objectKey, index) => {
+                  return (
+                    <option key={objectKey} value={objectKey}>
+                      {RESIDENCE_TYPES[objectKey]}
+                    </option>
+                  );
+                })}
+              </select>
+
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-location-input">
@@ -211,12 +219,16 @@ export const AdminVacanciesFilterComponent = () => {
             </div>
             <div className="application-filter-input-container">
               <label htmlFor="application-filter-active-input">Active</label>
-              <input
+              <select
                 className="application-filter-input"
                 id="application-filter-active-input"
-                type="text"
                 ref={activeRef}
-              />
+              >
+                <option value=""></option>
+                <option value="active">Active</option>
+                <option value="deactivated">Deactivated</option>
+                <option value="all">All</option>
+              </select>
             </div>
           </div>
 

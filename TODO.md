@@ -1,8 +1,8 @@
 NEXT STEP:
-    Expand Vacancy Filter for Staff in backend
+ Admin Vacancies. Filter layout (css)
 
 in backend side:
-    Expand Vacancy Filter for Staff
+    Expand Vacancy Filter for Staff (complete)
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
@@ -19,6 +19,12 @@ Frontend:
     user. Write a review
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
+    Admin Vacancy. Show information if deactevated.
+    Admin Vacancies. Filter layout (css)
+    Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
+    Admin Vacancy on_page shall be the same as for applications.
+    Add number of Applications/Vacancies found (after the filter)
+
     
     
     

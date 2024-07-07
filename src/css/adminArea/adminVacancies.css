@@ -4,7 +4,7 @@
 
 .new-vacancy-button-container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding-top: 30px;
 }
 

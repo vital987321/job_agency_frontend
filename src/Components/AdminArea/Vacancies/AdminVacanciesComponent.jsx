@@ -19,8 +19,8 @@ export const AdminVacanciesComponent = (props) => {
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
-  const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
-    useState("none");
+  // const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
+  //   useState("none");
   const [adminListVacanciesRequestUrl, setAdminListVacanciesRequestUrl] = useState(
     LIST_VACANCIES_BASE_URL
   );
@@ -32,9 +32,9 @@ export const AdminVacanciesComponent = (props) => {
     setVacancyFormDisplayValue("block");
   };
 
-  const filterButtonHandler = () => {
-    setVacancyFilterDisplayValue("flex");
-  };
+  // const filterButtonHandler = () => {
+  //   setVacancyFilterDisplayValue("flex");
+  // };
 
 const paginationButtonHandler = (e) => {
   const paginationDirection =
@@ -70,20 +70,20 @@ const paginationButtonHandler = (e) => {
     } else {
       qstr += "&offset=" + offset;
     }
-    qstr += searchParams.get("vacancyId")
-      ? "&vacancyId=" + searchParams.get("vacancyId")
+    qstr += searchParams.get("id")
+      ? "&id=" + searchParams.get("id")
       : "";
-    qstr += searchParams.get("vacancy_name")
-      ? "&vacancy_name=" + searchParams.get("vacancy_name")
+    qstr += searchParams.get("name")
+      ? "&name=" + searchParams.get("name")
       : "";
     // qstr += searchParams.get("salary_lte")
     //   ? "&salary_lte=" + searchParams.get("salary_lte")
     //   : "";
-    qstr += searchParams.get("salaryMin")
-      ? "&salaryMin=" + searchParams.get("salaryMin")
+    qstr += searchParams.get("salary_gte")
+      ? "&salary_gte=" + searchParams.get("salary_gte")
       : "";
-    qstr += searchParams.get("salaryMax")
-      ? "&salaryMax=" + searchParams.get("salaryMax")
+    qstr += searchParams.get("salary_lte")
+      ? "&salary_lte=" + searchParams.get("salary_lte")
       : "";
     qstr += searchParams.get("company")
       ? "&company=" + searchParams.get("company")
@@ -91,8 +91,8 @@ const paginationButtonHandler = (e) => {
     qstr += searchParams.get("sector")
       ? "&sector=" + searchParams.get("sector")
       : "";
-      qstr += searchParams.get("residanceType")
-      ? "&residanceType=" + searchParams.get("residanceType")
+      qstr += searchParams.get("residence_type")
+      ? "&residence_type=" + searchParams.get("residence_type")
       : "";
       qstr += searchParams.get("location")
       ? "&location=" + searchParams.get("location")
@@ -160,23 +160,23 @@ const PaginationNumberedLinks = () => {
   return "";
 };
 
-  const resetFiltersHandler = () => {
-    navigate("");
-  };
+  // const resetFiltersHandler = () => {
+  //   navigate("");
+  // };
 
-  const ResetFiltersComponent = () => {
-    if (searchParams.size > 0) {
-      return (
-        <button
-          className="vacancy-filter-button-general cancel-filter-button button-common button-common-color3"
-          onClick={resetFiltersHandler}
-        >
-          Reset Filters
-          <img src={closeIcon} alt="" height="14px" />
-        </button>
-      );
-    }
-  };
+  // const ResetFiltersComponent = () => {
+  //   if (searchParams.size > 0) {
+  //     return (
+  //       <button
+  //         className="vacancy-filter-button-general cancel-filter-button button-common button-common-color3"
+  //         onClick={resetFiltersHandler}
+  //       >
+  //         Reset Filters
+  //         <img src={closeIcon} alt="" height="14px" />
+  //       </button>
+  //     );
+  //   }
+  // };
 
 
 
@@ -196,6 +196,7 @@ const PaginationNumberedLinks = () => {
         />
 
         <div className="new-vacancy-button-container">
+          <div>Found: {vacanciesResponseData.count} </div>
           <button
             className="button-common button-common-color1 add-new-vacancy-button"
             onClick={newVacancyButtonHandler}
@@ -206,13 +207,13 @@ const PaginationNumberedLinks = () => {
       </section>
 
       <section className="admin-vacancies-main-section">
-        <button
+        {/* <button
           className="vacancy-filter-button-general vacancies-filter-button button-common button-common-color1"
           onClick={filterButtonHandler}
         >
           Filter <img src={filterIcon} alt="" height="14px" />
         </button>
-        <ResetFiltersComponent />
+        <ResetFiltersComponent /> */}
         <h2 className="h2-main-header h2-common">Vacancies</h2>
         <AdminVacanciesListComponent
           adminListVacanciesRequestUrl={adminListVacanciesRequestUrl}
