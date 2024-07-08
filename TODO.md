@@ -1,5 +1,5 @@
 NEXT STEP:
- Admin Vacancies. Filter layout (css)
+Admin Vacancy on_page shall be the same as for applications.
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
@@ -20,10 +20,10 @@ Frontend:
     Admin. Approve or reject review
     Admin Vacancy. Add deactivate button. Think of the consequences.
     Admin Vacancy. Show information if deactevated.
-    Admin Vacancies. Filter layout (css)
+    Admin Vacancies. Filter layout (css) (complete)
     Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
     Admin Vacancy on_page shall be the same as for applications.
-    Add number of Applications/Vacancies found (after the filter)
+    Add number of Applications/Vacancies found (after the filter) (complete)
 
     
     
