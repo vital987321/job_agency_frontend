@@ -14,10 +14,7 @@
     background: #FDFAEB;
     padding-top: 20px;
     padding-bottom: 20px;
-}
-
-.admin-list-applications-first-header{
-    padding-left: 10px;
+    padding: 20px 5px;
 }
 
 .admin-applications-table-tr {
@@ -26,12 +23,12 @@
 }
 
 .admin-applications-table-tr td {
-    padding: 10px 0;
+    padding: 10px 5px;
 }
 
 .admin-applications-table-tr td:first-child {
     font-weight: bold;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 
 .admin-applications-pagination-button {

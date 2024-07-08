@@ -1,6 +1,5 @@
 import { AdminApplicationsListComponent } from "./AdminApplicationsListComponent";
 import "../../../css/adminArea/adminApplications.css";
-import filterIcon from "../../../svg/settings.svg";
 import closeIcon from "../../../svg/X.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AdminApplicatiosFilterComponent } from "./AdminApplicationsFilterComponet";
@@ -84,43 +83,6 @@ export const AdminApplicationsComponent = () => {
 
   updateAdminListApplicationsRequestURL();
 
-  const ResetFiltersComponent = () => {
-    if (searchParams.size > 0) {
-      return (
-        <button
-          className="applications-filter-button-general cancel-application-filters-button button-common button-common-color3"
-          // onClick={resetFiltersHandler}
-        >
-          Reset Filters
-          <img src={closeIcon} alt="" height="14px" />
-        </button>
-      );
-    }
-  };
-
-  // const AdminApplicationsToolsComponent = () => {
-  //   return (
-  //     <section className="admin-applications-tools-section">
-  //       <div className="admin-applications-filter-buttons-container">
-  //         <button
-  //           className="applications-filter-button-general button-common button-common-color1"
-  //           //   onClick={filterButtonHandler}
-  //         >
-  //           Filter <img src={filterIcon} alt="" height="14px" />
-  //               </button>
-  //            <ResetFiltersComponent />
-  //       </div>
-
-  //       <div>
-  //         <p>on Page: 10</p>
-  //       </div>
-  //       <div className="admin-applications-quick-search-container">
-  //         <input type="text" placeholder="Quick Search" />
-  //       </div>
-  //     </section>
-  //   );
-  // };
-
   const PaginationNumberedLinks = () => {
     const applivationsTotalNumber = applicationsResponseData.count;
     const applicationsOnPage = localStorage.getItem("ApplicationsOnPage")
@@ -191,8 +153,8 @@ export const AdminApplicationsComponent = () => {
   return (
     <div className="admin-applications-container">
       <AdminApplicatiosFilterComponent />
-      {/* <AdminApplicationsToolsComponent /> */}
       <div className="admin-applications-list-container">
+        <div>Found: {applicationsResponseData.count} </div>
         <h2 className="h2-common">Applications</h2>
         <AdminApplicationsListComponent
           adminApplicationListRequestUrl={adminApplicationListRequestUrl}

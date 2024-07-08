@@ -1,11 +1,6 @@
-
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
-// import { AdminVacancyFilterComponent } from "./AdminVacancyFilterComponent";
 import { AdminVacanciesListComponent } from "./AdminVacanciesListComponent.jsx";
-import { AdminVacanciesFilterComponent } from "./AdminVacanciesFilterComponentNew";
-import searchIcon from "../../../svg/search.svg";
-import closeIcon from "../../../svg/X.svg";
-import filterIcon from "../../../svg/settings.svg";
+import { AdminVacanciesFilterComponent } from "./AdminVacanciesFilterComponent.jsx";
 import "../../../css/adminArea/adminVacancies.css";
 import React from "react";
 import {
@@ -19,11 +14,8 @@ export const AdminVacanciesComponent = (props) => {
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
-  // const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
-  //   useState("none");
-  const [adminListVacanciesRequestUrl, setAdminListVacanciesRequestUrl] = useState(
-    LIST_VACANCIES_BASE_URL
-  );
+  const [adminListVacanciesRequestUrl, setAdminListVacanciesRequestUrl] =
+    useState(LIST_VACANCIES_BASE_URL);
   const [vacancyListChangedState, setVacancyListChangedState] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -32,15 +24,11 @@ export const AdminVacanciesComponent = (props) => {
     setVacancyFormDisplayValue("block");
   };
 
-  // const filterButtonHandler = () => {
-  //   setVacancyFilterDisplayValue("flex");
-  // };
-
-const paginationButtonHandler = (e) => {
-  const paginationDirection =
-    e.target.id === "previousVacanciesButton" ? "previous" : "next";
-  navigate("?" + getQueryString(vacanciesResponseData[paginationDirection]));
-};
+  const paginationButtonHandler = (e) => {
+    const paginationDirection =
+      e.target.id === "previousVacanciesButton" ? "previous" : "next";
+    navigate("?" + getQueryString(vacanciesResponseData[paginationDirection]));
+  };
 
   const getQueryString = (urlString) => {
     if (urlString) {
@@ -70,12 +58,8 @@ const paginationButtonHandler = (e) => {
     } else {
       qstr += "&offset=" + offset;
     }
-    qstr += searchParams.get("id")
-      ? "&id=" + searchParams.get("id")
-      : "";
-    qstr += searchParams.get("name")
-      ? "&name=" + searchParams.get("name")
-      : "";
+    qstr += searchParams.get("id") ? "&id=" + searchParams.get("id") : "";
+    qstr += searchParams.get("name") ? "&name=" + searchParams.get("name") : "";
     // qstr += searchParams.get("salary_lte")
     //   ? "&salary_lte=" + searchParams.get("salary_lte")
     //   : "";
@@ -91,13 +75,13 @@ const paginationButtonHandler = (e) => {
     qstr += searchParams.get("sector")
       ? "&sector=" + searchParams.get("sector")
       : "";
-      qstr += searchParams.get("residence_type")
+    qstr += searchParams.get("residence_type")
       ? "&residence_type=" + searchParams.get("residence_type")
       : "";
-      qstr += searchParams.get("location")
+    qstr += searchParams.get("location")
       ? "&location=" + searchParams.get("location")
       : "";
-      qstr += searchParams.get("active")
+    qstr += searchParams.get("active")
       ? "&active=" + searchParams.get("active")
       : "";
 
@@ -113,87 +97,57 @@ const paginationButtonHandler = (e) => {
 
   updateAdminListVacanciesRequestURL();
 
-const PaginationNumberedLinks = () => {
-  const vacanciesTotalNumber = vacanciesResponseData.count;
-  if (vacanciesTotalNumber > VACANCY_LIST_LIMIT) {
-    let paginationArray = new Array();
-    const currentOffset = searchParams.get("offset")
-      ? searchParams.get("offset")
-      : "0";
-    const currentPaginationNumber =
-      Math.floor(currentOffset / VACANCY_LIST_LIMIT) + 1;
-    const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-    const maxPaginationNumber = Math.min(
-      currentPaginationNumber + 3,
-      Math.ceil(vacanciesTotalNumber / VACANCY_LIST_LIMIT)
-    );
+  const PaginationNumberedLinks = () => {
+    const vacanciesTotalNumber = vacanciesResponseData.count;
+    if (vacanciesTotalNumber > VACANCY_LIST_LIMIT) {
+      let paginationArray = new Array();
+      const currentOffset = searchParams.get("offset")
+        ? searchParams.get("offset")
+        : "0";
+      const currentPaginationNumber =
+        Math.floor(currentOffset / VACANCY_LIST_LIMIT) + 1;
+      const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
+      const maxPaginationNumber = Math.min(
+        currentPaginationNumber + 3,
+        Math.ceil(vacanciesTotalNumber / VACANCY_LIST_LIMIT)
+      );
 
-    for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-      paginationArray.push(i);
+      for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
+        paginationArray.push(i);
+      }
+      return (
+        <>
+          {paginationArray.map((item) => {
+            return (
+              <a
+                key={item}
+                className={
+                  "vacancies-pagination-link" +
+                  (item == currentPaginationNumber
+                    ? " current-vacancy-pagination-link"
+                    : "")
+                }
+                href={
+                  "?" +
+                  generateListVacanciesRequestQueryString(
+                    (item - 1) * VACANCY_LIST_LIMIT
+                  )
+                }
+              >
+                {item}
+              </a>
+            );
+          })}
+        </>
+      );
     }
-    return (
-      <>
-        {paginationArray.map((item) => {
-          return (
-            <a
-              key={item}
-              className={
-                "vacancies-pagination-link" +
-                (item == currentPaginationNumber
-                  ? " current-vacancy-pagination-link"
-                  : "")
-              }
-              href={
-                "?" +
-                generateListVacanciesRequestQueryString(
-                  (item - 1) * VACANCY_LIST_LIMIT
-                )
-              }
-            >
-              {item}
-            </a>
-          );
-        })}
-      </>
-    );
-  }
-  return "";
-};
-
-  // const resetFiltersHandler = () => {
-  //   navigate("");
-  // };
-
-  // const ResetFiltersComponent = () => {
-  //   if (searchParams.size > 0) {
-  //     return (
-  //       <button
-  //         className="vacancy-filter-button-general cancel-filter-button button-common button-common-color3"
-  //         onClick={resetFiltersHandler}
-  //       >
-  //         Reset Filters
-  //         <img src={closeIcon} alt="" height="14px" />
-  //       </button>
-  //     );
-  //   }
-  // };
-
-
+    return "";
+  };
 
   return (
     <div className="admin-vacancies-container">
       <section className="admin-vacancies-tools-section">
-        {/* <AdminVacancyFilterComponent
-          vacancyFilterDisplayValue={vacancyFilterDisplayValue}
-          setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}
-          listVacanciesBaseUrl={LIST_VACANCIES_BASE_URL}
-          setListVacanciesRequestUrl={setListVacanciesRequestUrl}
-          generateListVacanciesRequestURL={generateListVacanciesRequestURL}
-          searchParams={searchParams}
-        /> */}
-        <AdminVacanciesFilterComponent
-          // setListVacanciesRequestUrl={setListVacanciesRequestUrl}
-        />
+        <AdminVacanciesFilterComponent />
 
         <div className="new-vacancy-button-container">
           <div>Found: {vacanciesResponseData.count} </div>
@@ -207,13 +161,6 @@ const PaginationNumberedLinks = () => {
       </section>
 
       <section className="admin-vacancies-main-section">
-        {/* <button
-          className="vacancy-filter-button-general vacancies-filter-button button-common button-common-color1"
-          onClick={filterButtonHandler}
-        >
-          Filter <img src={filterIcon} alt="" height="14px" />
-        </button>
-        <ResetFiltersComponent /> */}
         <h2 className="h2-main-header h2-common">Vacancies</h2>
         <AdminVacanciesListComponent
           adminListVacanciesRequestUrl={adminListVacanciesRequestUrl}
@@ -255,7 +202,6 @@ const PaginationNumberedLinks = () => {
         </section>
       </section>
 
-      {/* <VacanciesComponent vacancyListChangedState={vacancyListChangedState} /> */}
       <AdminVacancyFormComponent
         vacancyData=""
         setVacancyFormDisplayValue={setVacancyFormDisplayValue}

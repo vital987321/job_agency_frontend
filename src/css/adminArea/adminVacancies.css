@@ -1,5 +1,7 @@
 .admin-vacancies-container{
     position: relative;
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
 }
 
 .new-vacancy-button-container{
@@ -9,7 +11,7 @@
 }
 
 .add-new-vacancy-button{
-    font-size: large;
+    font-size: 1.1rem;
 }
 
 .admin-vacancies-quick-search-form {

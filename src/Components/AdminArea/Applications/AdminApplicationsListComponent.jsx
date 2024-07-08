@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "../../../css/adminArea/adminApplicationsList.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs.js";
-import { LIST_APPLICATIONS_BASE_URL } from "../../../constants.js";
+import { stringToDateDMY,} from "../../../funcs.js";
 import api from "../../api.jsx";
 import { ApplicationStatusMarker } from "../../CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);
-  const [applicationsResponseData, setApplicationsResponseData] = useState({
-    count: "0",
-    next: null,
-    previous: null,
-  });
-  // const [applicationsListRequestUrl, setApplicationListRequestUrl] = useState(
-  //   LIST_APPLICATIONS_BASE_URL
-  // );
+  // const [applicationsResponseData, setApplicationsResponseData] = useState({
+  //   count: "0",
+  //   next: null,
+  //   previous: null,
+  // });
 
   useEffect(() => {
     const fetchListApplications = async () => {
@@ -31,16 +26,6 @@ export const AdminApplicationsListComponent = (props) => {
             props.setApplicationsResponseData(response.data)
             return response
           })
-          // .then((response) => {
-          //   setApplicationsResponseData({
-          //     ...applicationsResponseData,
-          //     ...{
-          //       count: response.data.count,
-          //       next: response.data.next,
-          //       previous: response.data.previous,
-          //     },
-          //   });
-          // })
           .catch((err) => console.log(err));
       } catch (error) {
         console.log(error);
