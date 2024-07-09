@@ -6,6 +6,7 @@ import React from "react";
 import {
   LIST_VACANCIES_BASE_URL,
   VACANCY_LIST_LIMIT,
+  ADMIN_LIST_ITEMS_LIMIT_DEFAULT
 } from "../../../constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -48,9 +49,12 @@ export const AdminVacanciesComponent = (props) => {
 
   const generateListVacanciesRequestQueryString = (offset) => {
     let qstr = "";
+    const vacanciesOnPage = localStorage.getItem("AdminListItemsOnPage")
+      ? localStorage.getItem("AdminListItemsOnPage")
+      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
     qstr += searchParams.get("limit")
       ? "limit=" + searchParams.get("limit")
-      : "limit=" + VACANCY_LIST_LIMIT;
+      : "limit=" + vacanciesOnPage;
     if (isNaN(offset)) {
       qstr += searchParams.get("offset")
         ? "&offset=" + searchParams.get("offset")

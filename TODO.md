@@ -1,5 +1,5 @@
 NEXT STEP:
-Admin Vacancy on_page shall be the same as for applications.
+Active value is not displayed in admin vacancies. 
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
@@ -22,8 +22,9 @@ Frontend:
     Admin Vacancy. Show information if deactevated.
     Admin Vacancies. Filter layout (css) (complete)
     Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
-    Admin Vacancy on_page shall be the same as for applications.
+    Admin Vacancy on_page shall be the same as for applications. (complete)
     Add number of Applications/Vacancies found (after the filter) (complete)
+    Active value is not displayed in admin vacancies. 
 
     
     

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../../../css/adminArea/adminApplicationsFilter.css";
+import "../../../css/adminArea/adminListItemsFilter.css";
 import filterIcon from "../../../svg/settings.svg";
-import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../../constants";
+import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../constants";
 import closeIcon from "../../../svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 import { RESIDENCE_TYPES } from "../../../constants";
@@ -21,11 +21,11 @@ export const AdminVacanciesFilterComponent = () => {
   const sectorRef = React.createRef();
   const residanceTypeRef = React.createRef();
 
-  let ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage");
-  const [onPageApplications, setOnPageApplications] = useState(
-    ApplicationsOnPage
-      ? ApplicationsOnPage
-      : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT
+  let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
+  const [onPageListItems, setOnPageListItems] = useState(
+    listItemsOnPage
+      ? listItemsOnPage
+      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
@@ -49,9 +49,9 @@ export const AdminVacanciesFilterComponent = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  const changeOpPageApplicationsLimit = (e) => {
-    localStorage.setItem("ApplicationsOnPage", e.target.value);
-    setOnPageApplications(e.target.value);
+  const changeOpPageListItemsLimit = (e) => {
+    localStorage.setItem("AdminListItemsOnPage", e.target.value);
+    setOnPageListItems(e.target.value);
   };
 
   const buildFilterQueryString = () => {
@@ -69,8 +69,8 @@ export const AdminVacanciesFilterComponent = () => {
     let queryStringArray = [];
     let queryString = "";
 
-    if (onPageApplications)
-      queryStringArray.push("limit=" + onPageApplications);
+    if (onPageListItems)
+      queryStringArray.push("limit=" + onPageListItems);
     if (location) queryStringArray.push("location=" + location);
     if (active) queryStringArray.push("active=" + active);
     if (id) queryStringArray.push("id=" + id);
@@ -114,84 +114,84 @@ export const AdminVacanciesFilterComponent = () => {
 
 
   return (
-    <section className="admin-application-filter-section">
-      <div className="admin-application-filter-main-container">
+    <section className="admin-list-items-filter-section">
+      <div className="admin-list-items-filter-main-container">
         <form
-          className="admin-application-filter-form"
+          className="admin-list-items-filter-form"
           onSubmit={filterFormSubmitHandler}
         >
-          <div className="admin-application-filter-form-inputs">
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-vacancy-id-input">
+          <div className="admin-list-items-filter-form-inputs">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-vacancy-id-input">
                 Vacancy ID
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-vacancy-id-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-vacancy-id-input"
                 type="text"
                 ref={vacancyIdRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-vacancy-name-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-vacancy-name-input">
                 Vacancy name
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-vacancy-name-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-vacancy-name-input"
                 type="text"
                 ref={vacancyNameRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-salary-min-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-salary-min-input">
                 Salary min
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-salary-min-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-salary-min-input"
                 type="text"
                 ref={salaryMinRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-salary-max-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-salary-max-input">
                 Salary max
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-salary-max-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-salary-max-input"
                 type="text"
                 ref={salaryMaxRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-first-company-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-first-company-input">
                 Company
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-first-company-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-first-company-input"
                 type="text"
                 ref={companyRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-sector-input">Sector</label>
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-sector-input">Sector</label>
               <input
-                className="application-filter-input"
-                id="application-filter-sector-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-sector-input"
                 type="text"
                 ref={sectorRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-residence-type-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-residence-type-input">
                 Residence
               </label>
               <select
-                className="application-filter-input"
-                id="application-filter-residence-type-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-residence-type-input"
                 // defaultValue={props.searchParams.get("residence_type")}
                 ref={residanceTypeRef}
               >
@@ -206,22 +206,22 @@ export const AdminVacanciesFilterComponent = () => {
               </select>
 
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-location-input">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-location-input">
                 Location
               </label>
               <input
-                className="application-filter-input"
-                id="application-filter-location-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-location-input"
                 type="text"
                 ref={locationRef}
               />
             </div>
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-active-input">Active</label>
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="vacancies-filter-active-input">Active</label>
               <select
-                className="application-filter-input"
-                id="application-filter-active-input"
+                className="admin-list-items-filter-input"
+                id="vacancies-filter-active-input"
                 ref={activeRef}
               >
                 <option value=""></option>
@@ -232,18 +232,18 @@ export const AdminVacanciesFilterComponent = () => {
             </div>
           </div>
 
-          <div className="admin-applications-form-controls">
-            <div className="admin-applications-form-buttons-container">
+          <div className="admin-list-items-form-controls">
+            <div className="admin-list-items-form-buttons-container">
               <button
-                className="applications-filter-button-general button-common button-common-color1"
+                className="button-common button-common-color1"
                 onClick={filterButtonHandler}
               >
                 Filter <img src={filterIcon} alt="" height="14px" />
               </button>
 
               <button
-                className="applications-filter-button-general button-common button-common-color2"
-                id="admin-applications-reset-filters-button"
+                className="vacancies-filter-button-general button-common button-common-color2 reset-filters-button"
+                id="admin-vacancies-reset-filters-button"
                 onClick={resetFiltersHandler}
                 style={{ display: resetFiltersButtonDisplayValue }}
               >
@@ -251,13 +251,13 @@ export const AdminVacanciesFilterComponent = () => {
               </button>
             </div>
 
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-status-input">on Page</label>
+            <div>
+              <label htmlFor="vacancies-filter-status-input">on Page</label>
               <select
-                className="application-filter-input"
-                id="applicaption-filter-on-page-input"
-                value={onPageApplications}
-                onChange={changeOpPageApplicationsLimit}
+                className="admin-list-items-filter-input admin-list-items-filter-on-page-input"
+                id="vacancies-filter-on-page-input"
+                value={onPageListItems}
+                onChange={changeOpPageListItemsLimit}
               >
                 <option value="5">5</option>
                 <option value="10">10</option>

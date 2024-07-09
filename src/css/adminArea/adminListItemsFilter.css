@@ -1,29 +1,28 @@
 @import '../constants.css';
 
-.admin-application-filter-section{
+.admin-list-items-filter-section{
     background-color: var(--design-text-color2);
     margin-left: calc(-1*var(--global_margin_left_right));
     margin-right: calc(-1*var(--global_margin_left_right));
     padding: 10px 0;
 }
-.admin-application-filter-main-container{
+.admin-list-items-filter-main-container{
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
 }
 
-.admin-application-filter-form-inputs{
+.admin-list-items-filter-form-inputs{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px 25px;
 }
 
-.application-filter-input-container{
+.admin-list-items-filter-input-container{
     display: grid;
-    grid-template-columns: 2fr 4fr;
-    
+    grid-template-columns: 33% 67%;
 }
 
-.application-filter-input{
+.admin-list-items-filter-input{
     height: 1.5rem;
     border: solid 1px grey;
     border-radius: 10px;
@@ -32,21 +31,19 @@
 }
 
 
-.admin-applications-form-controls{
+.admin-list-items-form-controls{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
 }
 
-#applicaption-filter-on-page-input{
+.admin-list-items-filter-on-page-input{
     margin-left: 5px;
-}
-
-#applicaption-filter-on-page-input{
     text-align: center;
 }
 
-#admin-applications-reset-filters-button{
+
+.reset-filters-button{
     margin-left: 20px;
 }

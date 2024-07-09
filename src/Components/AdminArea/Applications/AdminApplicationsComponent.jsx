@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { AdminApplicatiosFilterComponent } from "./AdminApplicationsFilterComponet";
 import {
   LIST_APPLICATIONS_BASE_URL,
-  ADMIN_APPLICATION_LIST_LIMIT_DEFAULT,
+  ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
 } from "../../../constants.js";
 import { useState } from "react";
 
@@ -27,9 +27,9 @@ export const AdminApplicationsComponent = () => {
   const generateAdminListApplicationsRequestQueryString = (offset) => {
     let qstr = "";
 
-    const ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage")
-      ? localStorage.getItem("ApplicationsOnPage")
-      : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT;
+    const ApplicationsOnPage = localStorage.getItem("AdminListItemsOnPage")
+      ? localStorage.getItem("AdminListItemsOnPage")
+      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
     qstr += searchParams.get("limit")
       ? "limit=" + searchParams.get("limit")
       : "limit=" + ApplicationsOnPage;
@@ -87,7 +87,7 @@ export const AdminApplicationsComponent = () => {
     const applivationsTotalNumber = applicationsResponseData.count;
     const applicationsOnPage = localStorage.getItem("ApplicationsOnPage")
       ? localStorage.getItem("ApplicationsOnPage")
-      : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT;
+      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
     if (applivationsTotalNumber > applicationsOnPage) {
       let paginationArray = new Array();
       const currentOffset = searchParams.get("offset")

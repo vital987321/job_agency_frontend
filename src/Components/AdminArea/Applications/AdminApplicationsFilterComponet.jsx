@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "../../../css/adminArea/adminApplicationsFilter.css";
+import "../../../css/adminArea/adminListItemsFilter.css";
 import filterIcon from "../../../svg/settings.svg";
-import { ADMIN_APPLICATION_LIST_LIMIT_DEFAULT } from "../../../constants";
+import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT} from "../../../constants";
 import closeIcon from "../../../svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 
@@ -19,11 +19,11 @@ const lastNameRef = React.createRef();
 const phoneRef = React.createRef();
 
 export const AdminApplicatiosFilterComponent = () => {
-  let ApplicationsOnPage = localStorage.getItem("ApplicationsOnPage");
-  const [onPageApplications, setOnPageApplications] = useState(
-    ApplicationsOnPage
-      ? ApplicationsOnPage
-      : ADMIN_APPLICATION_LIST_LIMIT_DEFAULT
+  let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
+  const [onPageListItems, setOnPageListItems] = useState(
+    listItemsOnPage
+      ? listItemsOnPage
+      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
@@ -46,9 +46,9 @@ export const AdminApplicatiosFilterComponent = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  const changeOpPageApplicationsLimit = (e) => {
-    localStorage.setItem("ApplicationsOnPage", e.target.value);
-    setOnPageApplications(e.target.value);
+  const changeOnPageListItemsLimit = (e) => {
+    localStorage.setItem("AdminListItemsOnPage", e.target.value);
+    setOnPageListItems(e.target.value);
   };
 
 
@@ -67,8 +67,8 @@ export const AdminApplicatiosFilterComponent = () => {
     let queryStringArray = [];
     let queryString = "";
 
-    if (onPageApplications)
-      queryStringArray.push("limit=" + onPageApplications);
+    if (onPageListItems)
+      queryStringArray.push("limit=" + onPageListItems);
     if (id) queryStringArray.push("id=" + id);
     if (vacancyId) queryStringArray.push("vacancy_id=" + vacancyId);
     if (email) queryStringArray.push("email=" + email);
@@ -83,6 +83,7 @@ export const AdminApplicatiosFilterComponent = () => {
     if (queryStringArray.length > 0) {
       queryString = "?" + queryStringArray.join("&");
     }
+    // console.log('queryString:', queryString)
     return queryString;
   };
 
@@ -111,108 +112,108 @@ export const AdminApplicatiosFilterComponent = () => {
   };
 
   return (
-    <section className="admin-application-filter-section">
-      <div className="admin-application-filter-main-container">
+    <section className="admin-list-items-filter-section">
+      <div className="admin-list-items-filter-main-container">
         <form
-          className="admin-application-filter-form"
+          className="admin-list-items-filter-form"
           onSubmit={filterFormSubmitHandler}
         >
-          <div className="admin-application-filter-form-inputs">
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-application-id-input">
+          <div className="admin-list-items-filter-form-inputs">
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="admin-list-items-filter-application-id-input">
                 Application ID
               </label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-application-id-input"
                 type="text"
                 ref={idRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-vacancy-id-input">
                 Vacancy ID
               </label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-vacancy-id-input"
                 type="text"
                 ref={vacancyIdRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-vacancy-name-input">
                 Vacancy name
               </label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-vacancy-name-input"
                 type="text"
                 ref={vacancyNameRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-company-input">Company</label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-company-input"
                 type="text"
                 ref={companyRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-user-id-input">User ID</label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-user-id-input"
                 type="text"
                 ref={userIdRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-first-name-input">
                 First Name
               </label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-first-name-input"
                 type="text"
                 ref={firstNameRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-last-name-input">
                 Last Name
               </label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-last-name-input"
                 type="text"
                 ref={lastNameRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-phone-input">Phone</label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-phone-input"
                 type="text"
                 ref={phoneRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-email-input">Email</label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-email-input"
                 type="text"
                 ref={emailRef}
               />
             </div>
-            <div className="application-filter-input-container">
+            <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-status-input">Status</label>
               <input
-                className="application-filter-input"
+                className="admin-list-items-filter-input"
                 id="application-filter-status-input"
                 type="text"
                 ref={statusRef}
@@ -220,8 +221,8 @@ export const AdminApplicatiosFilterComponent = () => {
             </div>
           </div>
 
-          <div className="admin-applications-form-controls">
-            <div className="admin-applications-form-buttons-container">
+          <div className="admin-list-items-form-controls">
+            <div className="admin-list-items-form-buttons-container">
               <button
                 className="applications-filter-button-general button-common button-common-color1"
                 onClick={filterButtonHandler}
@@ -230,7 +231,7 @@ export const AdminApplicatiosFilterComponent = () => {
               </button>
 
               <button
-                className="applications-filter-button-general button-common button-common-color2"
+                className="button-common button-common-color2 reset-filters-button"
                 id="admin-applications-reset-filters-button"
                 onClick={resetFiltersHandler}
                 style={{ display: resetFiltersButtonDisplayValue }}
@@ -239,13 +240,13 @@ export const AdminApplicatiosFilterComponent = () => {
               </button>
             </div>
 
-            <div className="application-filter-input-container">
-              <label htmlFor="application-filter-status-input">on Page</label>
+            <div >
+              <label htmlFor="applicaption-filter-on-page-input">on Page</label>
               <select
-                className="application-filter-input"
+                className="admin-list-items-filter-input admin-list-items-filter-on-page-input"
                 id="applicaption-filter-on-page-input"
-                value={onPageApplications}
-                onChange={changeOpPageApplicationsLimit}
+                value={onPageListItems}
+                onChange={changeOnPageListItemsLimit}
               >
                 <option value="5">5</option>
                 <option value="10">10</option>
