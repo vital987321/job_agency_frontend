@@ -1,5 +1,5 @@
 NEXT STEP:
-Active value is not displayed in admin vacancies. 
+
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
@@ -24,7 +24,7 @@ Frontend:
     Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
     Admin Vacancy on_page shall be the same as for applications. (complete)
     Add number of Applications/Vacancies found (after the filter) (complete)
-    Active value is not displayed in admin vacancies. 
+    Active value is not displayed in admin vacancies. (Complete)
 
     
     

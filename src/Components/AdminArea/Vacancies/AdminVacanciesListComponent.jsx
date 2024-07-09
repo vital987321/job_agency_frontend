@@ -56,7 +56,7 @@ export const AdminVacanciesListComponent = (props) => {
                 <td>{vacancy.location}</td>
                 <td>{vacancy.salary} CZK</td>
                 <td>{stringToDateDMY(vacancy.created_at)}</td>
-                <td>{vacancy.active}</td>
+                <td>{vacancy.active? 'Active' : "Deactivated"}</td>
                 <td>
                   <Link
                     // to={"/vacancies/" + vacancy.id}
