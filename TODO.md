@@ -1,11 +1,13 @@
 NEXT STEP:
-
+    Check VacancyListDjangoFilterBackend
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
+    Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
+        probably similar isue for user area. Check VacancyListDjangoFilterBackend
     
 
 Frontend:
