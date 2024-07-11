@@ -1,12 +1,13 @@
 NEXT STEP:
-    Check VacancyListDjangoFilterBackend
+    In Admin Vacancies filter default value shall be Active.
+    I staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam.
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
     permitions to admin environment
     Admin can see only his own applications. Fix it.
     For Vacancy model add Add active and inactive status.
-    Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
+    Vacancy component does not show deactivated vacancy (single vacancy) in admin area. (completed)
         probably similar isue for user area. Check VacancyListDjangoFilterBackend
     
 
@@ -27,6 +28,11 @@ Frontend:
     Admin Vacancy on_page shall be the same as for applications. (complete)
     Add number of Applications/Vacancies found (after the filter) (complete)
     Active value is not displayed in admin vacancies. (Complete)
+    In Admin Vacancies filter default value shall be Active.
+    I staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam.
+    Check that registered user can see deactevated vacancy he applied to.
+    If vacancy is deactevated add div block to vacancy component.
+    Admin settings. Posibble things to move: Active, onPage.
 
     
     

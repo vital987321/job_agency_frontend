@@ -55,6 +55,9 @@ export const AdminVacanciesComponent = (props) => {
     qstr += searchParams.get("limit")
       ? "limit=" + searchParams.get("limit")
       : "limit=" + vacanciesOnPage;
+    qstr += searchParams.get("active")
+      ? "active=" + searchParams.get("active")
+      : "limit=all";
     if (isNaN(offset)) {
       qstr += searchParams.get("offset")
         ? "&offset=" + searchParams.get("offset")

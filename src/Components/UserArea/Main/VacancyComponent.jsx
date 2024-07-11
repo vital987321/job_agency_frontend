@@ -72,13 +72,21 @@ export const VacancyDataComponent = (props) => {
   const { vacancy_id } = useParams();
 
   
+
   useEffect(() => {
     if (Object.keys(props.vacancyData).length === 0) {
       const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
-      axios
-      .get(url)
-      .then((response) => props.setVacancyData(response.data))
-      .catch((err) => console.log(err));
+      
+      const fetchVacancyData = async () => {
+        try {
+          const resp = await api.
+            get(url)
+            .then((response) => props.setVacancyData(response.data))
+            .catch((error) => { console.log(error) })
+          }catch(error){console.log(error)}
+      }
+      fetchVacancyData();
+
   }
     }
     , []);
