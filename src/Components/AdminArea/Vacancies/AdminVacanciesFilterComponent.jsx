@@ -66,13 +66,15 @@ export const AdminVacanciesFilterComponent = () => {
     const active = activeRef.current.value;
 
 
+
+
     let queryStringArray = [];
     let queryString = "";
 
     if (onPageListItems)
       queryStringArray.push("limit=" + onPageListItems);
     if (location) queryStringArray.push("location=" + location);
-    if (active) queryStringArray.push("active=" + active);
+    if (['all', 'deactivated'].includes(active)) queryStringArray.push("active=" + active);
     if (id) queryStringArray.push("id=" + id);
     if (name) queryStringArray.push("name=" + name);
     if (company) queryStringArray.push("company=" + company);
@@ -224,7 +226,7 @@ export const AdminVacanciesFilterComponent = () => {
                 id="vacancies-filter-active-input"
                 ref={activeRef}
               >
-                <option value=""></option>
+                {/*<option value=""></option>*/}
                 <option value="active">Active</option>
                 <option value="deactivated">Deactivated</option>
                 <option value="all">All</option>

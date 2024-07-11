@@ -1,6 +1,7 @@
 NEXT STEP:
-    In Admin Vacancies filter default value shall be Active.
-    I staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam.
+    Check that registered user can see deactevated vacancy he applied to.
+    If vacancy is deactevated add div block to vacancy component.
+
 
 in backend side:
     Expand Vacancy Filter for Staff (complete)
@@ -28,8 +29,8 @@ Frontend:
     Admin Vacancy on_page shall be the same as for applications. (complete)
     Add number of Applications/Vacancies found (after the filter) (complete)
     Active value is not displayed in admin vacancies. (Complete)
-    In Admin Vacancies filter default value shall be Active.
-    I staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam.
+    In Admin Vacancies filter default value shall be Active. (Complete)
+    I staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. (Complete)
     Check that registered user can see deactevated vacancy he applied to.
     If vacancy is deactevated add div block to vacancy component.
     Admin settings. Posibble things to move: Active, onPage.

@@ -43,6 +43,7 @@ export const VacanciesComponent = (props) => {
     } else {
       qstr += "&offset=" + offset;
     }
+    qstr += "&active=active"
     qstr += searchParams.get("key_search")
       ? "&key_search=" + searchParams.get("key_search")
       : "";
