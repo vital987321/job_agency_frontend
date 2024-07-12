@@ -97,6 +97,15 @@ export const VacancyDataComponent = (props) => {
         <div className="published-date-container">
           <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
         </div>
+        {(() => {
+          if (props.vacancyData.active == false) {
+            return (
+              <div>
+                Vacancy <b>Diactivated</b>
+              </div>
+            );
+          }
+        })()}
 
         <h2 className="vacancy-header h2-common">{props.vacancyData.name}</h2>
 
