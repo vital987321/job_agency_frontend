@@ -21,7 +21,6 @@ import api from "../../api";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
-
 function listSectors(sector_name) {
   if (sector_name !== undefined) {
     if (sector_name.length === 0) {
@@ -70,7 +69,7 @@ function checkVisaAssistance(vacancyData) {
 }
 
 export const VacancyDataComponent = (props) => {
-  const [favouriteIcon, setFavouriteIcon]=useState(iconHeartEmpty)
+  const [favouriteIcon, setFavouriteIcon] = useState(iconHeartEmpty);
   const { vacancy_id } = useParams();
 
   useEffect(() => {
@@ -93,16 +92,40 @@ export const VacancyDataComponent = (props) => {
     }
   }, []);
 
+  // useEffect(()=>{
+  //   if (user_id) {
+  //     if (props.userData.favourites) {
+  //       if (props.userData.favourites.includes(props.vacancyData.id)) {
+  //         setFavouriteIcon(iconHeartFull);
+  //       }
+  //     }}
+  // },[])
+
+  const FavouriteComponent = (props) => {
+    if (user_id) {
+      if (props.userData.favourites) {
+        if (props.userData.favourites.includes(props.vacancyData.id)) {
+          props.setFavouriteIcon(iconHeartFull);
+        }
+      }
+      return (
+        <button className="vacancy-favorite-button" title="Add to Favourite">
+          <img src={favouriteIcon} className="heart-filter" alt="Favorite" />
+        </button>
+      );
+    }
+  };
+
   return (
     <>
       <section className="vacancy-section">
         <div className="vacancy-pre-header-container">
           <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
-          {(() => {
-              if (user_id) {
-                return <button className="vacancy-favorite-button"><img src={favouriteIcon} className="heart-filter" alt="Favorite" /></button>;
-              }
-            })()}
+          <FavouriteComponent
+            userData={props.userData}
+            vacancyData={props.vacancyData}
+            setFavouriteIcon={setFavouriteIcon}
+          />
         </div>
 
         {(() => {
@@ -254,6 +277,7 @@ export const VacancyComponent = (props) => {
       <VacancyDataComponent
         vacancyData={vacancyData}
         setVacancyData={setVacancyData}
+        userData={userData}
       />
       <div className="vacancy-apply-button-container">
         <button

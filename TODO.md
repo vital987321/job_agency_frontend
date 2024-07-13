@@ -1,5 +1,7 @@
 NEXT TODO STEP:
     [ ] for user add the possibility to add Vacancy to favorite list
+    [ ] Warning: Cannot update a component (`VacancyDataComponent`) while rendering a different component  
+        (`FavouriteComponent`)
 
 
 
