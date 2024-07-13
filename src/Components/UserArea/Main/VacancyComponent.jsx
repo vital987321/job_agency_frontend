@@ -10,7 +10,8 @@ import visaServiceIcon from "../../../svg/visa-service.svg";
 import genderIcon from "../../../svg/gender.svg";
 import factoryIcon from "../../../svg/factory.svg";
 import idIcon from "../../../svg/id_item.svg";
-
+import iconHeartFull from "../../../svg/heart_full.svg";
+import iconHeartEmpty from "../../../svg/heart_empty.svg";
 
 import "../../../css/vacancy.css";
 import { RESIDENCE_TYPES } from "../../../constants";
@@ -19,6 +20,7 @@ import { ApplicationFormComponent } from "./ApplicationFormComponent";
 import api from "../../api";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
+
 
 function listSectors(sector_name) {
   if (sector_name !== undefined) {
@@ -68,35 +70,41 @@ function checkVisaAssistance(vacancyData) {
 }
 
 export const VacancyDataComponent = (props) => {
-
+  const [favouriteIcon, setFavouriteIcon]=useState(iconHeartEmpty)
   const { vacancy_id } = useParams();
-
-  
 
   useEffect(() => {
     if (Object.keys(props.vacancyData).length === 0) {
       const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
-      
+
       const fetchVacancyData = async () => {
         try {
-          const resp = await api.
-            get(url)
+          const resp = await api
+            .get(url)
             .then((response) => props.setVacancyData(response.data))
-            .catch((error) => { console.log(error) })
-          }catch(error){console.log(error)}
-      }
+            .catch((error) => {
+              console.log(error);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      };
       fetchVacancyData();
-
-  }
     }
-    , []);
+  }, []);
 
   return (
     <>
       <section className="vacancy-section">
-        <div className="published-date-container">
+        <div className="vacancy-pre-header-container">
           <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
+          {(() => {
+              if (user_id) {
+                return <button className="vacancy-favorite-button"><img src={favouriteIcon} className="heart-filter" alt="Favorite" /></button>;
+              }
+            })()}
         </div>
+
         {(() => {
           if (props.vacancyData.active == false) {
             return (
@@ -110,15 +118,13 @@ export const VacancyDataComponent = (props) => {
         <h2 className="vacancy-header h2-common">{props.vacancyData.name}</h2>
 
         <div className="vacancy-container">
-        <div className="vacancy-item">
+          <div className="vacancy-item">
             <div>
               <img src={idIcon} alt="Logo" />
             </div>
             <div>
               <p>VACANCY ID</p>
-              <p className="vacancy-parameter-value">
-                {props.vacancyData.id}
-              </p>
+              <p className="vacancy-parameter-value">{props.vacancyData.id}</p>
             </div>
           </div>
 
@@ -221,18 +227,15 @@ export const VacancyDataComponent = (props) => {
   );
 };
 
-
-
-export const VacancyComponent=(props)=>{
+export const VacancyComponent = (props) => {
   const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
-  const [userData, setUserData] = useState({})
-  const [vacancyData, setVacancyData]=useState({})
+  const [userData, setUserData] = useState({});
+  const [vacancyData, setVacancyData] = useState({});
   const applyButtonHandler = () => {
     setAppFormDisplayValue("flex");
   };
-  
+
   useEffect(() => {
-    
     if (user_id) {
       const fetchUser = async () => {
         try {
@@ -268,4 +271,4 @@ export const VacancyComponent=(props)=>{
       />
     </>
   );
-}
+};

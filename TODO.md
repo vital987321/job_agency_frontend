@@ -1,5 +1,5 @@
 NEXT TODO STEP:
- 
+    [ ] for user add the possibility to add Vacancy to favorite list
 
 
 
@@ -39,7 +39,7 @@ FRONTEND:
         [x] Check that registered user can see deactevated vacancy he applied to. 
         [x] If vacancy is deactevated add div block to vacancy component. 
     [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
-    [ ] Think of sorting order (default and setup).
+    [x] Think of default sorting order
     [x] think of todo handling
     [ ] for user add the possibility to add Vacancy to favorite list
     
