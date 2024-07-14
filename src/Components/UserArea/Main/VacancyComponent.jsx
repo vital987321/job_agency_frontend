@@ -92,28 +92,25 @@ export const VacancyDataComponent = (props) => {
     }
   }, []);
 
-  // useEffect(()=>{
-  //   if (user_id) {
-  //     if (props.userData.favourites) {
-  //       if (props.userData.favourites.includes(props.vacancyData.id)) {
-  //         setFavouriteIcon(iconHeartFull);
-  //       }
-  //     }}
-  // },[])
-
-  const FavouriteComponent = (props) => {
+  useEffect(() => {
     if (user_id) {
       if (props.userData.favourites) {
         if (props.userData.favourites.includes(props.vacancyData.id)) {
-          props.setFavouriteIcon(iconHeartFull);
+          setFavouriteIcon(iconHeartFull);
         }
       }
+    }
+  }, [props.userData.favourites]);
+
+  const FavouriteComponent = (props) => {
+    if (user_id) {
       return (
         <button className="vacancy-favorite-button" title="Add to Favourite">
           <img src={favouriteIcon} className="heart-filter" alt="Favorite" />
         </button>
       );
     }
+    return "";
   };
 
   return (

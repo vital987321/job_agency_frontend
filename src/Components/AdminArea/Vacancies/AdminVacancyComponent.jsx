@@ -6,8 +6,11 @@ import api from "../../api";
 import { LIST_VACANCIES_BASE_URL } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 
+const user_id = JSON.parse(localStorage.getItem("user_id"));
+
 export const AdminVacancyComponent = () => {
   const [vacancyData, setVacancyData] = useState({});
+  const [userData, setUserData] = useState({});
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
   const navigate = useNavigate();
@@ -15,6 +18,20 @@ export const AdminVacancyComponent = () => {
   const editButtonHandler = () => {
     setVacancyFormDisplayValue("block");
   };
+
+  useEffect(() => {
+    if (user_id) {
+      const fetchUser = async () => {
+        try {
+          const response = await api.get("/user/" + user_id);
+          setUserData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchUser();
+    }
+  }, []);
 
   const deleteButtonHandler = () => {
     const deleteVacancy = async () => {
@@ -89,6 +106,7 @@ export const AdminVacancyComponent = () => {
       <VacancyDataComponent
         vacancyData={vacancyData}
         setVacancyData={setVacancyData}
+        userData={userData}
       />
       <AdminVacancyFormComponent
         vacancyData={vacancyData}
