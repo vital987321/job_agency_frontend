@@ -1,7 +1,5 @@
 NEXT TODO STEP:
-    [ ] for user add the possibility to add Vacancy to favorite list
-    [ ] Warning: Cannot update a component (`VacancyDataComponent`) while rendering a different component  
-        (`FavouriteComponent`)
+
 
 
 
@@ -43,7 +41,7 @@ FRONTEND:
     [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
     [x] Think of default sorting order
     [x] think of todo handling
-    [ ] for user add the possibility to add Vacancy to favorite list
+    [x] for user add the possibility to add Vacancy to favorite list
     
     
     
