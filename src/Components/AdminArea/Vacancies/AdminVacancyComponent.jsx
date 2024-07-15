@@ -107,6 +107,7 @@ export const AdminVacancyComponent = () => {
         vacancyData={vacancyData}
         setVacancyData={setVacancyData}
         userData={userData}
+        setUserData={setUserData}
       />
       <AdminVacancyFormComponent
         vacancyData={vacancyData}

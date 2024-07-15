@@ -69,7 +69,7 @@ function checkVisaAssistance(vacancyData) {
 }
 
 export const VacancyDataComponent = (props) => {
-  const [favouriteIcon, setFavouriteIcon] = useState(iconHeartEmpty);
+  const [isFavouriteVacancy, setIsFavouriteVacancy] = useState(false);
   const { vacancy_id } = useParams();
 
   useEffect(() => {
@@ -96,17 +96,61 @@ export const VacancyDataComponent = (props) => {
     if (user_id) {
       if (props.userData.favourites) {
         if (props.userData.favourites.includes(props.vacancyData.id)) {
-          setFavouriteIcon(iconHeartFull);
+          setIsFavouriteVacancy(true);
         }
       }
     }
   }, [props.userData.favourites]);
 
+
   const FavouriteComponent = (props) => {
+    const favouriteButtonHandler = () => {
+      const updateUserFavouritesRequest = async (favouritesArray) => {
+        try {
+          const requestUrl = "http://127.0.0.1:8000/user/" + user_id + "/";
+          const requestData = { favourites: favouritesArray };
+          const request = await api
+            .patch(requestUrl, requestData)
+            .then((response) => {
+              props.setUserData(response.data);
+            })
+            .then((res) => {
+              props.setIsFavouriteVacancy(!isFavouriteVacancy);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      const favouritesArray = props.userData.favourites;
+      
+      
+      if (props.isFavouriteVacancy) {
+        const vacancyIndex = favouritesArray.indexOf(props.vacancyData.id);
+        favouritesArray.splice(vacancyIndex, 1);
+        updateUserFavouritesRequest(favouritesArray);
+      }
+      else if (props.isFavouriteVacancy === false) {
+        favouritesArray.push(props.vacancyData.id);
+        updateUserFavouritesRequest(favouritesArray);
+      }
+    };
+
+
     if (user_id) {
       return (
-        <button className="vacancy-favorite-button" title="Add to Favourite">
-          <img src={favouriteIcon} className="heart-filter" alt="Favorite" />
+        <button
+          onClick={favouriteButtonHandler}
+          className="vacancy-favorite-button"
+          title={
+            isFavouriteVacancy ? "Remove from Favourites" : "Add to Favourites"
+          }
+        >
+          <img
+            src={isFavouriteVacancy ? iconHeartFull : iconHeartEmpty}
+            className="heart-filter"
+            alt="Favorite"
+          />
         </button>
       );
     }
@@ -120,8 +164,10 @@ export const VacancyDataComponent = (props) => {
           <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
           <FavouriteComponent
             userData={props.userData}
+            setUserData={props.setUserData}
             vacancyData={props.vacancyData}
-            setFavouriteIcon={setFavouriteIcon}
+            isFavouriteVacancy={isFavouriteVacancy}
+            setIsFavouriteVacancy={setIsFavouriteVacancy}
           />
         </div>
 
@@ -275,6 +321,7 @@ export const VacancyComponent = (props) => {
         vacancyData={vacancyData}
         setVacancyData={setVacancyData}
         userData={userData}
+        setUserData={setUserData}
       />
       <div className="vacancy-apply-button-container">
         <button
