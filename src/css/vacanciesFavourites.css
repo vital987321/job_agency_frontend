@@ -1,0 +1,17 @@
+@import './constants.css';
+
+
+.vacancies-favourite-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top: 100px;
+}
+
+.vacancies-favourite-section-header {
+    text-align: center;
+}
+
+.vacancies-favourite-pagination-container{
+    display: flex;
+    justify-content: right;
+}

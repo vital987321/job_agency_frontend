@@ -4,6 +4,7 @@ import "../../../css/userProfile.css";
 import editIcon from "../../../svg/edit.svg";
 import closeIcon from "../../../svg/X.svg";
 import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
+import { VacanciesFavouritesComponent } from "./VacanciesFavouritesComponent";
 import { phoneValidation } from "../../CommonToolsComponents";
 
 const cvInputRef = React.createRef();
@@ -56,22 +57,25 @@ export const UserProfileComponent = () => {
   };
 
   const formValidation = (formData) => {
-    let validationObject={
-      isValid:true,
-      formData:formData,
-      validationErrors:{}
-    }
+    let validationObject = {
+      isValid: true,
+      formData: formData,
+      validationErrors: {},
+    };
 
     const phone = formData.get("phone");
-    const phoneValidationObject=phoneValidation(phone)
-    if (phoneValidationObject.phoneIsValid){
-      validationObject.formData.set("phone", phoneValidationObject.validatedPhone)
+    const phoneValidationObject = phoneValidation(phone);
+    if (phoneValidationObject.phoneIsValid) {
+      validationObject.formData.set(
+        "phone",
+        phoneValidationObject.validatedPhone
+      );
+    } else {
+      validationObject.isValid = false;
+      validationObject.validationErrors.phone =
+        phoneValidationObject.phoneValidationErrors;
     }
-    else{
-      validationObject.isValid=false
-      validationObject.validationErrors.phone=phoneValidationObject.phoneValidationErrors
-    }
-    return validationObject
+    return validationObject;
   };
 
   const submitUserProfileHandler = (e) => {
@@ -100,12 +104,11 @@ export const UserProfileComponent = () => {
         }
       };
 
-      const formValidationObject=formValidation(formData)
+      const formValidationObject = formValidation(formData);
       setValidationErrors(formValidationObject.validationErrors);
-      if (formValidationObject.isValid){
-        updateProfile(formValidationObject.formData)
+      if (formValidationObject.isValid) {
+        updateProfile(formValidationObject.formData);
       }
-
     }
   };
 
@@ -252,7 +255,7 @@ export const UserProfileComponent = () => {
           <SubmitUserProfileChangesComponent />
         </form>
       </section>
-
+      <VacanciesFavouritesComponent />
       <section className="profile-sent-applications-section">
         <h3 className="profile-sent-applications-header">Sent Applications</h3>
         <ListUserApplicationsComponent />

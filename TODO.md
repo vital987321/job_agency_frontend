@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] fixed bug. Homepage Vacancy Details button leads to incorrect URL.
+    [x] list of favourite vacancies in user profile page.
 
 
 
@@ -42,7 +42,8 @@ FRONTEND:
     [x] Think of default sorting order
     [x] think of todo handling
     [x] for user add the possibility to add Vacancy to favorite list
-    [ ] bug on the homepage. Vacancy Details button leads to incorrect url.
+    [x] list of favourite vacancies in user profile page.
+    [x] bug on the homepage. Vacancy Details button leads to incorrect url.
     
     
     
