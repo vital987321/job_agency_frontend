@@ -1,6 +1,5 @@
 NEXT TODO STEP:
-    [x] list of favourite vacancies in user profile page.
-
+    [ ] user profile foto
 
 
 BACKEND:
@@ -19,31 +18,38 @@ BACKEND:
     
 
 FRONTEND:
-    [x] Admin applications component:
-        - [x]  Filter 
-        - [x]  on page 
-        - [x]  reset filters button 
-        - [x]  pagination 
-    [ ] user profile foto
-    [ ] Admin application check user button
-    [ ] Reviews. User writes a review, admin Approves or rejects the review.
-    [x] Admin Vacancies environment
-        [x] Admin Vacancy. Add deactivate button. Think of the consequences.
-        [x] Admin Vacancies. Filter layout (css) 
-        [x] Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
-        [x] Admin Vacancy on_page shall be the same as for applications. 
-        [x] Add number of Applications/Vacancies found (after the filter) 
-        [x] Active value is not displayed in admin vacancies. 
-        [x] In Admin Vacancies filter default value shall be Active. 
-        [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
-        [x] Check that registered user can see deactevated vacancy he applied to. 
-        [x] If vacancy is deactevated add div block to vacancy component. 
-    [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
-    [x] Think of default sorting order
-    [x] think of todo handling
-    [x] for user add the possibility to add Vacancy to favorite list
-    [x] list of favourite vacancies in user profile page.
-    [x] bug on the homepage. Vacancy Details button leads to incorrect url.
+    Admin Environment
+        [x] Admin applications component:
+            - [x]  Filter 
+            - [x]  on page 
+            - [x]  reset filters button 
+            - [x]  pagination
+        [ ] Admin application check user button
+        [x] Admin Vacancies environment
+            [x] Admin Vacancy. Add deactivate button. Think of the consequences.
+            [x] Admin Vacancies. Filter layout (css) 
+            [x] Admin Vacancies filter. Change some inputs to select (active, residence, sector) (complete but sector).
+            [x] Admin Vacancy on_page shall be the same as for applications. 
+            [x] Add number of Applications/Vacancies found (after the filter) 
+            [x] Active value is not displayed in admin vacancies. 
+            [x] In Admin Vacancies filter default value shall be Active. 
+            [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
+            [x] Check that registered user can see deactevated vacancy he applied to. 
+            [x] If vacancy is deactevated add div block to vacancy component.
+        [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.      
+    User Environment
+        [ ] user profile foto
+        [x] for user add the possibility to add Vacancy to favorite list
+        [x] list of favourite vacancies in user profile page.
+        [x] bug on the homepage. Vacancy Details button leads to incorrect url.
+    Common Environment
+        [ ] Reviews. User writes a review, admin Approves or rejects the review.
+        [x] Think of default sorting order
+        [x] think of todo handling
+    
+    
+    
+
     
     
     
@@ -59,6 +65,7 @@ TO CONSIDER:
     [ ] Add checkbox for Admin Vacancies list:
         - deactevate
         - delete (concequances)
+    [ ] sending email to admin about new application or to user about application status change.
         
 
 
