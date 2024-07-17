@@ -17,7 +17,7 @@ export const VacanciesFavouritesComponent = (props) => {
 
   return (
     <section className="vacancies-favourite-section">
-      <h3 className="vacancies-favourite-section-header">Favourite Vacancies</h3>
+      <h3 className="vacancies-favourite-section-header">My Favourite Vacancies</h3>
       <ListVacanciesComponent
         listVacanciesRequestUrl={listVacanciesRequestUrl}
         setVacanciesResponseData={setVacanciesResponseData}

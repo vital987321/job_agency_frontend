@@ -1,5 +1,8 @@
 NEXT TODO STEP:
-    [ ] user profile foto
+    [ ] user profile photo
+        [ ] Add userAvatarUrl to CustomObtainAuthToken backend
+        [ ] Handle UTF-8 Error
+        [ ] Write avatarUrl from localStorage
 
 
 BACKEND:

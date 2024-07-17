@@ -257,7 +257,7 @@ export const UserProfileComponent = () => {
       </section>
       <VacanciesFavouritesComponent />
       <section className="profile-sent-applications-section">
-        <h3 className="profile-sent-applications-header">Sent Applications</h3>
+        <h3 className="profile-sent-applications-header">My Applications</h3>
         <ListUserApplicationsComponent />
       </section>
     </>
