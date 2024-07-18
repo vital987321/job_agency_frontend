@@ -1,8 +1,11 @@
 NEXT TODO STEP:
     [ ] user profile photo
-        [ ] Add userAvatarUrl to CustomObtainAuthToken backend
-        [ ] Handle UTF-8 Error
-        [ ] Write avatarUrl from localStorage
+        [x] Add userAvatarUrl to CustomObtainAuthToken backend
+        [x] Handle UTF-8 Error
+        [x] Read avatarUrl from localStorage
+        [x] pass functionality from old Header Avatar to new AvatarComponent
+        [ ] Add Avatar component to User profile
+        [ ] Add CRUD for Avatar image in User profile
 
 
 BACKEND:

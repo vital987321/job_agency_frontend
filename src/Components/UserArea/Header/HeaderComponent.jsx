@@ -56,9 +56,6 @@ const HeaderControls = () => {
     navigate("/auth");
   };
 
-  const clickTest = () => {
-    console.log("Click!");
-  };
 
   return (
     <div className="header-controls">
@@ -66,21 +63,18 @@ const HeaderControls = () => {
         if (username) {
           return (
             <>
-              <div onClick={clickTest}>
-                <AvatarComponent
-                  userAvatarUrl={userAvatarUrl}
-                  username={username}
-                />
-              </div>
-
               <Link
                 to="/profile"
                 className="button-common header-user-logo-button "
                 key="profile"
                 title={username}
               >
-                <p>{username[0].toUpperCase()}</p>
+                <AvatarComponent
+                  userAvatarUrl={userAvatarUrl}
+                  username={username}
+                />
               </Link>
+              
               <button
                 onClick={logOutButtonClick}
                 className="button-common button-common-color2 header-button "
