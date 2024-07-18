@@ -5,6 +5,7 @@ import "../../../css/authentication.css";
 import loginImage from "../../../img/login_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 const emailRef = React.createRef();
 const passwordRef = React.createRef();
@@ -120,12 +121,20 @@ export const AuthenticationComponent = () => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user_id", response.data.user_id);
         localStorage.setItem("username", response.data.username);
-        localStorage.setItem("userAvatarUrl", response.data.avatar);
-        console.log(response.data);
-        console.log(response.data.avatar);
-        console.log(localStorage.getItem("userAvatarUrl"));
-        navigate("/");
+        return response;
       })
+      .then((response) => {
+        api
+          .get("/user/" + response.data.user_id)
+          .then((response) => {
+            localStorage.setItem("userAvatarUrl", response.data.avatar);
+          })
+          .then((resp) => {
+            navigate("/");
+          })
+          .catch((error)=>{console.log(error)})
+      })
+
       .catch((error) => {
         if (error.request.response) {
           console.log(error.request.response);

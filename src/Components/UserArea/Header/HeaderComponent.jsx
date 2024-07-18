@@ -1,12 +1,19 @@
-import agencyLogoIcon from '../../../svg/agency_logo.svg'
-import {BrowserRouter as Router, Route, Routes, useNavigate, Link, Outlet} from "react-router-dom"
-import '../../../css/commonElements.css'
-import '../../../css/header.css'
-import { AvatarComponent } from '../../AvatarComponent'
-
+import agencyLogoIcon from "../../../svg/agency_logo.svg";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+  Link,
+  Outlet,
+} from "react-router-dom";
+import "../../../css/commonElements.css";
+import "../../../css/header.css";
+import { AvatarComponent } from "../../AvatarComponent";
+import {useEffect, useState } from "react";
 
 const NavMenu = () => {
-  return(
+  return (
     <nav className="header-menu">
       <Link to="/vacancies" className="navLinks" key="vacancies">
         Vacancies
@@ -24,36 +31,39 @@ const NavMenu = () => {
         Contacts
       </Link>
     </nav>
-  )
-}
+  );
+};
 
-const HeaderControls =()=>{ 
-  const username = localStorage.getItem('username')
-  const userAvatarUrl = localStorage.getItem("userAvatarUrl");
-  // const userAvatarUrl = "http://127.0.0.1:8000/media/media/avatars/avatar1.jpg";
-    const navigate = useNavigate();
+const HeaderControls = () => {
+  const [userAvatarUrl, setUserAvatarUrl] = useState('');
+  const navigate = useNavigate();
+  const username = localStorage.getItem("username");
 
-    const logOutButtonClick=()=>{
-      localStorage.removeItem('token')
-      localStorage.removeItem('user_id')
-      localStorage.removeItem('username')
-      localStorage.removeItem("userAvatarUrl");
-      navigate('/')
-    }
+  useEffect(() => {
+    setUserAvatarUrl(localStorage.getItem("userAvatarUrl"));
+  }, [localStorage.getItem("userAvatarUrl")]);
 
-    const logInButtonClick=()=>{
-      navigate('/auth')
-  }
-  
+  const logOutButtonClick = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userAvatarUrl");
+    setUserAvatarUrl('');
+    navigate("/");
+  };
+
+  const logInButtonClick = () => {
+    navigate("/auth");
+  };
+
   const clickTest = () => {
-    console.log('Click!')
-  }
+    console.log("Click!");
+  };
 
   return (
     <div className="header-controls">
-      {(()=>{
-
-        if (username){
+      {(() => {
+        if (username) {
           return (
             <>
               <div onClick={clickTest}>
@@ -80,32 +90,39 @@ const HeaderControls =()=>{
             </>
           );
         }
-        return(
-          <button onClick={logInButtonClick} className="header-button button-common-color2 button-common">Log In</button>
-        )
+        return (
+          <button
+            onClick={logInButtonClick}
+            className="header-button button-common-color2 button-common"
+          >
+            Log In
+          </button>
+        );
       })()}
-      
-      
+
       <button className="language-button">En</button>
     </div>
-  )
-}
+  );
+};
 
 export const HeaderComponent = () => {
-  const onLogOut=()=>{
-    
-  }
+  const onLogOut = () => {};
 
   return (
     <header>
       <div className="header">
         <div className="header-logo">
-          <Link to='/' className="navLinks header-logo-link" key="homepage">
-            <img className='header-logo-img' src={agencyLogoIcon} height={80} alt="logo" />
+          <Link to="/" className="navLinks header-logo-link" key="homepage">
+            <img
+              className="header-logo-img"
+              src={agencyLogoIcon}
+              height={80}
+              alt="logo"
+            />
           </Link>
         </div>
         <NavMenu />
-        <HeaderControls/>
+        <HeaderControls />
       </div>
     </header>
   );
