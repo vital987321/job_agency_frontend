@@ -135,13 +135,13 @@ export const UserProfileComponent = () => {
       <h2 className="home-h2">User profile</h2>
       <section className="profile-user-data-section">
         <div>
-          <AvatarComponent userAvatarUrl={userAvatarUrl} username={username} />
+          <AvatarComponent userAvatarUrl={userAvatarUrl} iconSymbol={username[0].toUpperCase()}  size={250}/>
 
-          <div className="profile-user-avatar-set">
+          {/* <div className="profile-user-avatar-set">
             <p className="profile-avatar-capital-letter">
               {username[0].toUpperCase()}
             </p>
-          </div>
+          </div> */}
         </div>
         <form
           className="profile-user-data-form"

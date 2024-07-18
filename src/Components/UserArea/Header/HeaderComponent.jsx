@@ -71,7 +71,8 @@ const HeaderControls = () => {
               >
                 <AvatarComponent
                   userAvatarUrl={userAvatarUrl}
-                  username={username}
+                  title={username}
+                  iconSymbol={username[0].toUpperCase()}
                 />
               </Link>
               
