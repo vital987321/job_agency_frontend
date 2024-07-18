@@ -5,6 +5,8 @@ NEXT TODO STEP:
         [x] Read avatarUrl from localStorage
         [x] pass functionality from old Header Avatar to new AvatarComponent
         [ ] Add Avatar component to User profile
+        [ ] Adjust size of Avatar in User profile
+        [ ] Avatar component title shall be optional
         [ ] Add CRUD for Avatar image in User profile
 
 

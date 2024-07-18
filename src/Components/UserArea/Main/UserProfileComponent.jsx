@@ -6,6 +6,7 @@ import closeIcon from "../../../svg/X.svg";
 import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
 import { VacanciesFavouritesComponent } from "./VacanciesFavouritesComponent";
 import { phoneValidation } from "../../CommonToolsComponents";
+import { AvatarComponent } from "../../AvatarComponent";
 
 const cvInputRef = React.createRef();
 
@@ -17,6 +18,7 @@ export const UserProfileComponent = () => {
 
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const username = localStorage.getItem("username");
+  const userAvatarUrl=localStorage.getItem("userAvatarUrl");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -133,6 +135,8 @@ export const UserProfileComponent = () => {
       <h2 className="home-h2">User profile</h2>
       <section className="profile-user-data-section">
         <div>
+          <AvatarComponent userAvatarUrl={userAvatarUrl} username={username} />
+
           <div className="profile-user-avatar-set">
             <p className="profile-avatar-capital-letter">
               {username[0].toUpperCase()}
