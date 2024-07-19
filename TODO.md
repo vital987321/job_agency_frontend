@@ -4,10 +4,13 @@ NEXT TODO STEP:
         [x] Handle UTF-8 Error
         [x] Read avatarUrl from localStorage
         [x] pass functionality from old Header Avatar to new AvatarComponent
-        [ ] Add Avatar component to User profile
-        [ ] Adjust size of Avatar in User profile
-        [ ] Avatar component title shall be optional
-        [ ] Add CRUD for Avatar image in User profile
+        [x] Add Avatar component to User profile
+        [x] Adjust size of Avatar in User profile
+        [x] Avatar component title shall be optional
+        [x] Add CRUD for Avatar image in User profile
+        [ ] limit Avatar input file to image types only
+        [ ] Check what would happen if picture is not rectangular (wide or high)
+        [ ] get rid of "No file chosen" sign next to input file buttons
 
 
 BACKEND:
