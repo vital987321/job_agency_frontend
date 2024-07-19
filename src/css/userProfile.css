@@ -74,7 +74,10 @@
 
 
 .user-profile-cv-input-upload,
-.user-profile-cv-input-replace{
+.user-profile-cv-input-replace,
+.user-profile-avatar-input-upload,
+.user-profile-avatar-input-replace
+{
     padding-top: 4px;
     /* border: 1px solid red; */
     width: 100%;
@@ -84,11 +87,15 @@
 }
 
 .user-profile-cv-input-upload::-webkit-file-upload-button,
-.user-profile-cv-input-replace::-webkit-file-upload-button {
+.user-profile-cv-input-replace::-webkit-file-upload-button,
+.user-profile-avatar-input-upload::-webkit-file-upload-button,
+.user-profile-avatar-input-replace::-webkit-file-upload-button {
     visibility: hidden;
 }
 .user-profile-cv-input-upload::before,
-.user-profile-cv-input-replace::before{
+.user-profile-cv-input-replace::before,
+.user-profile-avatar-input-upload::before,
+.user-profile-avatar-input-replace::before{
     display: inline-block;
     background: var(--button-general-background-color3);
   border-radius: 10px;
@@ -100,7 +107,9 @@
 }
 
 .user-profile-cv-input-upload:hover::before,
-.user-profile-cv-input-replace:hover::before {
+.user-profile-cv-input-replace:hover::before,
+.user-profile-avatar-input-upload:hover::before,
+.user-profile-avatar-input-replace:hover::before {
     /* text-decoration: underline; */
     /* border-color: black; */
     box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
@@ -108,16 +117,26 @@
 
   }
   .user-profile-cv-input-upload:active::before,
-  .user-profile-cv-input-replace:active::before {
+  .user-profile-cv-input-replace:active::before,
+    .user-profile-avatar-input-upload:active::before,
+    .user-profile-avatar-input-replace:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
 
   .user-profile-cv-input-upload::before{
-    content: 'Upload';
+    content: 'Upload CV';
   }
   .user-profile-cv-input-replace::before{
-    content: 'Replace';
+    content: 'Replace CV';
   }
+
+  .user-profile-avatar-input-upload::before {
+      content: 'Upload Photo';
+    }
+  
+    .user-profile-avatar-input-replace::before {
+      content: 'Replace Photo';
+    }
 
   .profile-cv-input-container{
     width: 100%;

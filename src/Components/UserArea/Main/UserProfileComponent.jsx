@@ -9,6 +9,7 @@ import { phoneValidation } from "../../CommonToolsComponents";
 import { AvatarComponent } from "../../AvatarComponent";
 
 const cvInputRef = React.createRef();
+const avatarInputRef = React.createRef();
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
@@ -86,9 +87,12 @@ export const UserProfileComponent = () => {
       formData.append("first_name", userCurrentData.first_name);
       formData.append("last_name", userCurrentData.last_name);
       formData.append("phone", userCurrentData.phone);
-      const cv = document.getElementById("user-profile-cv-input");
+      // const cv = document.getElementById("user-profile-cv-input");
       if (cvInputRef.current.files[0]) {
         formData.append("cv", cvInputRef.current.files[0]);
+      }
+      if (avatarInputRef.current.files[0]) {
+        formData.append("avatar", avatarInputRef.current.files[0]);
       }
 
       const updateProfile = async (formData) => {
@@ -135,7 +139,11 @@ export const UserProfileComponent = () => {
       <h2 className="home-h2">User profile</h2>
       <section className="profile-user-data-section">
         <div>
-          <AvatarComponent userAvatarUrl={userAvatarUrl} iconSymbol={username[0].toUpperCase()}  size={250}/>
+          <AvatarComponent
+            userAvatarUrl={userAvatarUrl}
+            iconSymbol={username[0].toUpperCase()}
+            size={250}
+          />
 
           {/* <div className="profile-user-avatar-set">
             <p className="profile-avatar-capital-letter">
@@ -147,6 +155,17 @@ export const UserProfileComponent = () => {
           className="profile-user-data-form"
           onSubmit={submitUserProfileHandler}
         >
+          <input
+            type="file"
+            id="user-profile-avatar-input"
+            className={
+              userCurrentData.avatar
+                ? "user-profile-avatar-input-replace"
+                : "user-profile-avatar-input-upload"
+            }
+            ref={avatarInputRef}
+            onChange={() => setIsUserDataChanged(true)}
+          />
           <div className="profile-user-data-input-container">
             <input
               className="profile-user-data-form-text-input"
