@@ -8,7 +8,7 @@ NEXT TODO STEP:
         [x] Adjust size of Avatar in User profile
         [x] Avatar component title shall be optional
         [x] Add CRUD for Avatar image in User profile
-        [ ] limit Avatar input file to image types only
+        [x] limit Avatar input file to image types only
         [ ] Check what would happen if picture is not rectangular (wide or high)
         [x] get rid of "No file chosen" sign next to input file buttons
 

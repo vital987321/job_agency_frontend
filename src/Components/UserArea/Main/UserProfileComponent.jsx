@@ -180,6 +180,7 @@ export const UserProfileComponent = () => {
             <div className="profile-user-avatar-controls-container">
               <input
                 type="file"
+                accept=".jpg, .jgeg, .png"
                 id="user-profile-avatar-input"
                 className={
                   userCurrentData.avatar
@@ -307,6 +308,7 @@ export const UserProfileComponent = () => {
 
               <input
                 type="file"
+                accept=".pdf, .doc, .docx"
                 id="user-profile-cv-input"
                 className={
                   userCurrentData.cv
