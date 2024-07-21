@@ -4,32 +4,13 @@
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
     margin-top: 40px;
-    /* display:flex;
-    justify-content: space-around; */
+
 }
-
-/* .profile-user-avatar-set{
-    background-color: var(--avatar_default_background_color);
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-/* .profile-avatar-capital-letter{
-    font-size: 150px;
-
-    padding:0;
-    padding-bottom: 15px;
-    margin:0;
-} */
 
 .profile-user-data-form{
     display: flex;
     justify-content: space-around;
-    /* flex-direction: column; */
+
 }
 
 .profile-user-data-form-cotnainer1{
@@ -37,6 +18,13 @@
   flex-direction: column;
   align-items: center;
   width: 320px;
+}
+
+.profile-user-avatar-controls-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .profile-user-data-form-cotnainer2{
@@ -93,7 +81,8 @@
 {
     padding-top: 4px;
     /* border: 1px solid red; */
-    width: 100%;
+    color: rgba(0, 0, 0, 0);
+    width: 50%;
     margin-top: 10px;
     margin-bottom: 4px;
 
@@ -117,6 +106,7 @@
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
+  color: black;
 }
 
 .user-profile-cv-input-upload:hover::before,
@@ -168,12 +158,14 @@
     justify-content: space-between;
   }
 
-  .profile-delete-cv-button{
+  .profile-delete-cv-button,
+  .profile-delete-avatar-button{
     background-color: transparent;
     border: none;
     font-size: larger;
   }
-  .profile-delete-cv-button:hover{
+  .profile-delete-cv-button:hover,
+  .profile-delete-avatar-button:hover{
     color: rgb(204, 0, 0);
     font-weight: bold;
   }

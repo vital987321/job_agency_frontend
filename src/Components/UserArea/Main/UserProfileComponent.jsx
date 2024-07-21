@@ -166,13 +166,7 @@ export const UserProfileComponent = () => {
     <>
       <h2 className="home-h2">User profile</h2>
       <section className="profile-user-data-section">
-        {/* <div>
-          <div className="profile-user-avatar-set">
-            <p className="profile-avatar-capital-letter">
-              {username[0].toUpperCase()}
-            </p>
-          </div>
-        </div> */}
+
         <form
           className="profile-user-data-form"
           onSubmit={submitUserProfileHandler}
@@ -195,7 +189,22 @@ export const UserProfileComponent = () => {
                 ref={avatarInputRef}
                 onChange={() => setIsUserDataChanged(true)}
               />
-              <button onClick={deletePhotoButtonHandler}>Delete photo</button>
+              {(() => {
+                  if (userCurrentData.avatar) {
+                    return (
+                      <>
+                        <button
+                          className="profile-delete-avatar-button"
+                          title="Delete Photo"
+                          onClick={deletePhotoButtonHandler}
+                        >
+                          &#x2716;
+                        </button>
+                      </>
+                    );
+                  }
+
+                })()}
             </div>
           </div>
           <div className="profile-user-data-form-cotnainer2">

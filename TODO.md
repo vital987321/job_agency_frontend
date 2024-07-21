@@ -10,7 +10,7 @@ NEXT TODO STEP:
         [x] Add CRUD for Avatar image in User profile
         [ ] limit Avatar input file to image types only
         [ ] Check what would happen if picture is not rectangular (wide or high)
-        [ ] get rid of "No file chosen" sign next to input file buttons
+        [x] get rid of "No file chosen" sign next to input file buttons
 
 
 BACKEND:
