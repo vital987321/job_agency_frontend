@@ -10,8 +10,9 @@ NEXT TODO STEP:
         [x] Add CRUD for Avatar image in User profile
         [x] limit Avatar input file to image types only
         [x] Check what would happen if picture is not rectangular (wide or high)
-        [ ] limit input file size (1mb)
-        [ ] delet fils from DB and from media
+        [x] limit input file size (1mb)
+        [ ] delet files from DB and from media
+        [ ] limitations (min/max) for photo resolution?
         [x] get rid of "No file chosen" sign next to input file buttons
 
 

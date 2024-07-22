@@ -31,12 +31,16 @@
   
 }
 
+.profile-user-data-input-validation-container{
+  margin-top: 15px;
+  /* border: solid 1px red; */
+}
 
 .profile-user-data-input-container{
     position: relative;
     /* border: solid 1px red; */
     width: 400px;
-    margin-top: 25px;
+    
 }
 
 .profile-user-data-form-validation-item{
@@ -148,7 +152,7 @@
     padding: 0 15px 0 15px;
     box-sizing: border-box;
     font-size: medium;
-    margin-top: 20px;
+    
   }
 
   .profile-my-cv-link-container{
