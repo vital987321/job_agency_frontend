@@ -1,19 +1,5 @@
 NEXT TODO STEP:
-    [ ] user profile photo
-        [x] Add userAvatarUrl to CustomObtainAuthToken backend
-        [x] Handle UTF-8 Error
-        [x] Read avatarUrl from localStorage
-        [x] pass functionality from old Header Avatar to new AvatarComponent
-        [x] Add Avatar component to User profile
-        [x] Adjust size of Avatar in User profile
-        [x] Avatar component title shall be optional
-        [x] Add CRUD for Avatar image in User profile
-        [x] limit Avatar input file to image types only
-        [x] Check what would happen if picture is not rectangular (wide or high)
-        [x] limit input file size (1mb)
-        [ ] delet files from DB and from media
-        [ ] limitations (min/max) for photo resolution?
-        [x] get rid of "No file chosen" sign next to input file buttons
+    [ ] Break components into smaller components and group components into modules
 
 
 BACKEND:
@@ -52,7 +38,21 @@ FRONTEND:
             [x] If vacancy is deactevated add div block to vacancy component.
         [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.      
     User Environment
-        [ ] user profile foto
+        [x] user profile foto
+            [x] Add userAvatarUrl to CustomObtainAuthToken backend
+            [x] Handle UTF-8 Error
+            [x] Read avatarUrl from localStorage
+            [x] pass functionality from old Header Avatar to new AvatarComponent
+            [x] Add Avatar component to User profile
+            [x] Adjust size of Avatar in User profile
+            [x] Avatar component title shall be optional
+            [x] Add CRUD for Avatar image in User profile
+            [x] limit Avatar input file to image types only
+            [x] Check what would happen if picture is not rectangular (wide or high)
+            [x] limit input file size (1mb)
+            [ ] delete files from DB and from media
+            [x] check min/max for photo resolution?
+            [x] get rid of "No file chosen" sign next to input file buttons
         [x] for user add the possibility to add Vacancy to favorite list
         [x] list of favourite vacancies in user profile page.
         [x] bug on the homepage. Vacancy Details button leads to incorrect url.
@@ -60,7 +60,8 @@ FRONTEND:
         [ ] Reviews. User writes a review, admin Approves or rejects the review.
         [x] Think of default sorting order
         [x] think of todo handling
-    
+        [ ] Break components into smaller components and group components into modules
+            
     
     
 
