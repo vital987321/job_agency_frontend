@@ -1,5 +1,5 @@
 import { ListVacanciesComponent } from "./ListVacanciesComponent";
-import { LIST_VACANCIES_BASE_URL } from "../../../constants";
+import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { useState } from "react";
 import "../../../css/vacanciesFavourites.css"
 

@@ -4,12 +4,12 @@ import "../../../css/vacancies.css";
 import {
   LIST_VACANCIES_BASE_URL,
   VACANCY_LIST_LIMIT,
-} from "../../../constants.js";
-import filterIcon from "../../../svg/settings.svg";
+} from "../../../data/constants.js";
+import filterIcon from "../../../assets/svg/settings.svg";
 import { ListVacanciesComponent } from "./ListVacanciesComponent.jsx";
 import { VacancyFilterComponent } from "./VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
-import closeIcon from "../../../svg/X.svg";
+import closeIcon from "../../../assets/svg/X.svg";
 
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =

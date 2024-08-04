@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../../css/adminArea/adminVacanciesList.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
-import api from "../../api";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
+import api from "../../../services/api/api";
 
 export const AdminVacanciesListComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
@@ -55,7 +56,7 @@ export const AdminVacanciesListComponent = (props) => {
                 <td>{vacancy.company}</td>
                 <td>{vacancy.location}</td>
                 <td>{vacancy.salary} CZK</td>
-                <td>{stringToDateDMY(vacancy.created_at)}</td>
+                <td>{stringToDateConverter(vacancy.created_at)}</td>
                 <td>{vacancy.active? 'Active' : "Deactivated"}</td>
                 <td>
                   <Link

@@ -12,7 +12,7 @@ import factoryIcon from "../../../svg/factory.svg";
 
 import "../../../css/vacancy.css";
 import { RESIDENCE_TYPES } from "../../../constants";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import { stringToDateDMY, identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
 import api from "../../api";
 

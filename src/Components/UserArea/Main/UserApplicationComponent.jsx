@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../services/api/api";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import salaryIcon from "../../../svg/salary.svg";
-import locationIcon from "../../../svg/location.svg";
-import contractTypeIcon from "../../../svg/contract_type.svg";
-import callIcon from "../../../svg/call_icon.svg";
-import emailIcon from "../../../svg/email_icon.svg";
-import genderIcon from "../../../svg/gender.svg";
-import editIcon from "../../../svg/edit.svg";
+import salaryIcon from "../../../assets/svg/salary.svg";
+import locationIcon from "../../../assets/svg/location.svg";
+import contractTypeIcon from "../../../assets/svg/contract_type.svg";
+import callIcon from "../../../assets/svg/call_icon.svg";
+import emailIcon from "../../../assets/svg/email_icon.svg";
+import genderIcon from "../../../assets/svg/gender.svg";
+import editIcon from "../../../assets/svg/edit.svg";
 import "../../../css/userApplication.css";
 import "../../../css/test.css";
+import workingHoursIcon from "../../../assets/svg/working_hours.svg";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 
-import workingHoursIcon from "../../../svg/working_hours.svg";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
-
-import api from "../../api";
 
 export const UserApplicationComponent = () => {
   const { application_id } = useParams();
@@ -61,7 +60,7 @@ export const UserApplicationComponent = () => {
         </button>
       </div>
       <div className="application-sent-date-container">
-        <p>sent on: {stringToDateDMY(application.created_at)}</p>
+        <p>sent on: {stringToDateConverter(application.created_at)}</p>
       </div>
       <div className="user-application-data-container">
         <div className="user-application-data-item">

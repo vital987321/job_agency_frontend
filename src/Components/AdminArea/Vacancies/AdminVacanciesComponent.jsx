@@ -7,7 +7,7 @@ import {
   LIST_VACANCIES_BASE_URL,
   VACANCY_LIST_LIMIT,
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT
-} from "../../../constants.js";
+} from "../../../data/constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../css/adminArea/adminApplicationsList.css";
-import { stringToDateDMY,} from "../../../funcs.js";
-import api from "../../api.jsx";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter.js";
+import api from  "../../../services/api/api.jsx"
 import { ApplicationStatusMarker } from "../../CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
@@ -62,7 +62,7 @@ export const AdminApplicationsListComponent = (props) => {
                 <td>{application.vacancy_details.id}</td>
                 <td>{application.vacancy_details.company}</td>
                 <td>{application.first_name + " " + application.last_name}</td>
-                <td>{stringToDateDMY(application.created_at)}</td>
+                <td>{stringToDateConverter(application.created_at)}</td>
                 <td>
                   <span className="admin-application-status">{application.status}</span>
                   

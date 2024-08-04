@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import salaryIcon from "../../../svg/salary.svg";
-import locationIcon from "../../../svg/location.svg";
-import contractTypeIcon from "../../../svg/contract_type.svg";
-import workingHoursIcon from "../../../svg/working_hours.svg";
-import passportIcon from "../../../svg/open-passport-svgrepo-com.svg";
-import visaServiceIcon from "../../../svg/visa-service.svg";
-import genderIcon from "../../../svg/gender.svg";
-import factoryIcon from "../../../svg/factory.svg";
-import idIcon from "../../../svg/id_item.svg";
-import iconHeartFull from "../../../svg/heart_full.svg";
-import iconHeartEmpty from "../../../svg/heart_empty.svg";
+import salaryIcon from "../../../assets/svg/salary.svg";
+import locationIcon from "../../../assets/svg/location.svg";
+import contractTypeIcon from "../../../assets/svg/contract_type.svg";
+import workingHoursIcon from "../../../assets/svg/working_hours.svg";
+import passportIcon from "../../../assets/svg/open-passport-svgrepo-com.svg";
+import visaServiceIcon from "../../../assets/svg/visa-service.svg";
+import genderIcon from "../../../assets/svg/gender.svg";
+import factoryIcon from "../../../assets/svg/factory.svg";
+import idIcon from "../../../assets/svg/id_item.svg";
+import iconHeartFull from "../../../assets/svg/heart_full.svg";
+import iconHeartEmpty from "../../../assets/svg/heart_empty.svg";
 
 import "../../../css/vacancy.css";
-import { RESIDENCE_TYPES } from "../../../constants";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import { RESIDENCE_TYPES } from "../../../data/constants";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 import { ApplicationFormComponent } from "./ApplicationFormComponent";
-import api from "../../api";
+import api from "../../../services/api/api";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
@@ -161,7 +162,7 @@ export const VacancyDataComponent = (props) => {
     <>
       <section className="vacancy-section">
         <div className="vacancy-pre-header-container">
-          <p>Published: {stringToDateDMY(props.vacancyData.created_at)}</p>
+          <p>Published: {stringToDateConverter(props.vacancyData.created_at)}</p>
           <FavouriteComponent
             userData={props.userData}
             setUserData={props.setUserData}

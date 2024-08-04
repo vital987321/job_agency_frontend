@@ -1,4 +1,4 @@
-import agencyLogoIcon from "../../../svg/agency_logo.svg";
+import agencyLogoIcon from "../../../assets/svg/agency_logo.svg";
 import {
   BrowserRouter as Router,
   Route,

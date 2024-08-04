@@ -1,7 +1,3 @@
-export function stringToDateDMY(string_date) {
-  const date = new Date(string_date)
-  return date.getDate() +"-"+ date.getMonth() +"-" + date.getFullYear()
-}
 
 export function identifyWorkingHours(hours_from, hours_to) {
   if (hours_from == null) {

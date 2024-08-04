@@ -1,10 +1,9 @@
-import agencyLogoIcon from "../../svg/agency_logo_yellow.svg";
-import {ReactComponent as IconListIcon} from "../../svg/icon_list.svg";
-import {ReactComponent as MessageIcon} from "../../svg/message.svg";
-import {ReactComponent as SettingsGearIcon} from "../../svg/settings_gear.svg";
-import {ReactComponent as PartnersIcon} from "../../svg/partners.svg";
+import agencyLogoIcon from "../../assets/svg/agency_logo_yellow.svg";
+import {ReactComponent as IconListIcon} from "../../assets/svg/icon_list.svg";
+import {ReactComponent as MessageIcon} from "../../assets/svg/message.svg";
+import {ReactComponent as SettingsGearIcon} from "../../assets/svg/settings_gear.svg";
+import {ReactComponent as PartnersIcon} from "../../assets/svg/partners.svg";
 import { NavLink } from "react-router-dom";
-
 import "../../css/adminArea/adminSideBar.css";
 
 export const AdminSideBarComponent = () => {

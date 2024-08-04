@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../../services/api/api";
 import "../../../css/userProfile.css";
-import editIcon from "../../../svg/edit.svg";
-import closeIcon from "../../../svg/X.svg";
+import editIcon from "../../../assets/svg/edit.svg";
+import closeIcon from "../../../assets/svg/X.svg";
 import { ListUserApplicationsComponent } from "./ListUserApplicationsComponent";
 import { VacanciesFavouritesComponent } from "./VacanciesFavouritesComponent";
 import { phoneValidation } from "../../CommonToolsComponents";
 import { AvatarComponent } from "../../AvatarComponent";
-import { AVATAR_FILE_SIZE_LIMIT, CV_FILE_SIZE_LIMIT } from "../../../constants";
+import { AVATAR_FILE_SIZE_LIMIT, CV_FILE_SIZE_LIMIT } from "../../../data/constants";
 
 const cvInputRef = React.createRef();
 const avatarInputRef = React.createRef();

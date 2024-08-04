@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import closeIcon from "../../../svg/X.svg";
+import closeIcon from "../../../assets/svg/X.svg";
 import { Form } from "react-router-dom";
 import "../../../css/ApplicationForm.css";
 import axios from "axios";

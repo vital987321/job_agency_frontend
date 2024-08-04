@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "../../../css/listUserApplications.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs.js";
-import { LIST_APPLICATIONS_BASE_URL } from "../../../constants.js";
-import api from "../../api.jsx";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter.js";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours.js";
+import { LIST_APPLICATIONS_BASE_URL } from "../../../data/constants.js";
+import api from "../../../services/api/api.jsx";
 import { ApplicationStatusMarker} from "../../CommonToolsComponents.jsx";
 
 export const ListUserApplicationsComponent = () => {
@@ -69,7 +69,7 @@ export const ListUserApplicationsComponent = () => {
                   <ApplicationStatusMarker status={application.status} />
                 </td>
 
-                <td>{stringToDateDMY(application.created_at)}</td>
+                <td>{stringToDateConverter(application.created_at)}</td>
                 <td>
                   <Link
                     to={"/applications/" + application.id}

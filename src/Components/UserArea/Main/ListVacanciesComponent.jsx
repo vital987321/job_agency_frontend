@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../../../services/api/api";
 import "../../../css/listVacancies.css";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
-import api from "../../api";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 
 export const ListVacanciesComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
@@ -48,7 +48,7 @@ export const ListVacanciesComponent = (props) => {
                 <td>
                   {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
                 </td>
-                <td>{stringToDateDMY(vacancy.created_at)}</td>
+                <td>{stringToDateConverter(vacancy.created_at)}</td>
                 <td>
                   <Link
                     to={"/vacancies/" + vacancy.id}

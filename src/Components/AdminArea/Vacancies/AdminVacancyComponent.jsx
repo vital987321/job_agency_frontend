@@ -2,8 +2,8 @@ import { VacancyDataComponent } from "../../UserArea/Main/VacancyComponent";
 import { AdminVacancyFormComponent } from "./AdminVacancyFormComponent";
 import "../../../css/adminArea/adminVacancy.css";
 import { useEffect, useState } from "react";
-import api from "../../api";
-import { LIST_VACANCIES_BASE_URL } from "../../../constants";
+import api from "../../../services/api/api";
+import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));

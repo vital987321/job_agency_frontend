@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import salaryIcon from "../../../svg/salary.svg";
-import locationIcon from "../../../svg/location.svg";
-import contractTypeIcon from "../../../svg/contract_type.svg";
-import callIcon from "../../../svg/call_icon.svg";
-import emailIcon from "../../../svg/email_icon.svg";
-import genderIcon from "../../../svg/gender.svg";
-import editIcon from "../../../svg/edit.svg";
-import companyIcon from "../../../svg/company.svg";
-import idIcon from "../../../svg/id_item.svg";
-import infoIcon from "../../../svg/info_icon.svg";
-import userIdIcon from "../../../svg/user_id.svg";
-import userIcon from "../../../svg/user_icon.svg";
-
-import workingHoursIcon from "../../../svg/working_hours.svg";
-import { stringToDateDMY, identifyWorkingHours } from "../../../funcs";
+import salaryIcon from "../../../assets/svg/salary.svg";
+import locationIcon from "../../../assets/svg/location.svg";
+import contractTypeIcon from "../../../assets/svg/contract_type.svg";
+import callIcon from "../../../assets/svg/call_icon.svg";
+import emailIcon from "../../../assets/svg/email_icon.svg";
+import genderIcon from "../../../assets/svg/gender.svg";
+import editIcon from "../../../assets/svg/edit.svg";
+import companyIcon from "../../../assets/svg/company.svg";
+import idIcon from "../../../assets/svg/id_item.svg";
+import infoIcon from "../../../assets/svg/info_icon.svg";
+import userIdIcon from "../../../assets/svg/user_id.svg";
+import userIcon from "../../../assets/svg/user_icon.svg";
+import workingHoursIcon from "../../../assets/svg/working_hours.svg";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 import "../../../css/adminArea/adminApplication.css";
-import api from "../../api";
+import api from "../../../services/api/api";
 import { ApplicationStatusMarker } from "../../CommonToolsComponents";
 
 export const AdminApplicationComponent = () => {
@@ -107,7 +107,7 @@ export const AdminApplicationComponent = () => {
           <div className="admin-application-data-item-block">
             <p>CREATED</p>
             <p>
-              <b>{stringToDateDMY(application.created_at)}</b>
+              <b>{stringToDateConverter(application.created_at)}</b>
             </p>
           </div>
         </div>

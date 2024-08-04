@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { CONTRACT_TYPE } from "../../../constants";
-import { GENDER_LIST } from "../../../constants";
-import { SECTOR_REQUEST_URL } from "../../../constants";
-import { RESIDENCE_TYPES } from "../../../constants";
-import { LIST_VACANCIES_BASE_URL } from "../../../constants";
-import { WORKING_HOURS } from "../../../constants";
-import closeIcon from "../../../svg/X.svg";
-import api from "../../api";
+import { CONTRACT_TYPE } from "../../../data/constants";
+import { GENDER_LIST } from "../../../data/constants";
+import { SECTOR_REQUEST_URL } from "../../../data/constants";
+import { RESIDENCE_TYPES } from "../../../data/constants";
+import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
+import { WORKING_HOURS } from "../../../data/constants";
+import closeIcon from "../../../assets/svg/X.svg";
+import api from "../../../services/api/api";
 import "../../../css/adminArea/adminVacancyForm.css";
 
 export const AdminVacancyFormComponent = (props) => {

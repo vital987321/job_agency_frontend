@@ -1,4 +1,4 @@
-import agencyLogoIcon from '../../../svg/agency_logo_yellow.svg'
+import agencyLogoIcon from '../../../assets/svg/agency_logo_yellow.svg'
 import '../../../css/footer.css'
 
 export const FooterComponent = () => {

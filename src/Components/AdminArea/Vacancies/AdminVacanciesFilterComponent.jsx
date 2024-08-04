@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "../../../css/adminArea/adminListItemsFilter.css";
-import filterIcon from "../../../svg/settings.svg";
-import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../constants";
-import closeIcon from "../../../svg/X.svg";
+import filterIcon from "../../../assets/svg/settings.svg";
+import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../data/constants";
+import closeIcon from "../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
-import { RESIDENCE_TYPES } from "../../../constants";
+import { RESIDENCE_TYPES } from "../../../data/constants";
 
 
 
