@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] Break components into smaller components and group components into modules
+    [ ] Rearchitecture the project. Break components into smaller components and group components into modules
 
 
 BACKEND:
@@ -10,6 +10,7 @@ BACKEND:
             probably similar isue for user area. Check VacancyListDjangoFilterBackend
     [ ] permitions to admin environment
     [ ] Admin can see only his own applications. Fix it.
+    [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
     [ ] Permissions
         [ ]
 
@@ -58,9 +59,14 @@ FRONTEND:
         [x] bug on the homepage. Vacancy Details button leads to incorrect url.
     Common Environment
         [ ] Reviews. User writes a review, admin Approves or rejects the review.
+            [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
+            [ ] User Form to add Review.
+            [ ] Admin Area. User review request list.
+            [ ] Reviews section review pagination.
+            [ ] User profile section add My rewiws section or button
         [x] Think of default sorting order
         [x] think of todo handling
-        [ ] Break components into smaller components and group components into modules
+        [ ] Rearchitecture the project. Break components into smaller components and group components into modules
             
     
     
