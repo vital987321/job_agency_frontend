@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouterComponent } from './Components/BrowserRouterComponent';
+import { BrowserRouterComponent } from './router/BrowserRouterComponent';
 
 
 function App() {
