@@ -4,8 +4,8 @@ import "../../../css/userProfile.css";
 import editIcon from "../../../assets/svg/edit.svg";
 import { ListUserApplicationsComponent } from "./context/ListUserApplicationsComponent";
 import { VacanciesFavouritesComponent } from "./context/VacanciesFavouritesComponent";
-import { phoneValidation } from "../../../commonEnvironment/components/CommonToolsComponents";
-import { AvatarComponent } from "../../../commonEnvironment/components/AvatarComponent";
+import { phoneValidation } from "../../../environmentCommon/components/CommonToolsComponents";
+import { AvatarComponent } from "../../../environmentCommon/components/AvatarComponent";
 import {
   AVATAR_FILE_SIZE_LIMIT,
   CV_FILE_SIZE_LIMIT,

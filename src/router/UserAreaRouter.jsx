@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
-import { VacanciesComponent } from "../userEnvironment/pages/vacancies/VacanciesComponent";
-import { VacancyComponent } from "../commonEnvironment/components/VacancyComponent";
-import { ListUserApplicationsComponent } from "../userEnvironment/pages/userProfile/context/ListUserApplicationsComponent";
-import { HomeComponent } from "../userEnvironment/pages/home/HomeComponent";
-import { AuthenticationComponent } from "../userEnvironment/pages/authenntication/AuthenticationComponent";
-import { UserProfileComponent } from "../userEnvironment/pages/userProfile/UserProfileComponent";
-import { UserApplicationComponent } from "../userEnvironment/pages/userProfile/context/UserApplicationComponent";
-import { AboutUsComponent } from "../userEnvironment/pages/aboutUs/AboutUsComponent";
-import { CertificatesComponent } from "../userEnvironment/pages/certificates/CertificatesComponent";
-import { ContactsComponent } from "../userEnvironment/pages/contacts/ContactsComponent";
-import { ReviewsComponent } from "../userEnvironment/pages/reviews/ReviewsComponent";
-import { BodyComponent } from "../userEnvironment/layout/BodyComponent";
+import { VacanciesComponent } from "../environmentUser/pages/vacancies/VacanciesComponent";
+import { VacancyComponent } from "../environmentCommon/components/VacancyComponent";
+import { ListUserApplicationsComponent } from "../environmentUser/pages/userProfile/context/ListUserApplicationsComponent";
+import { HomeComponent } from "../environmentUser/pages/home/HomeComponent";
+import { AuthenticationComponent } from "../environmentUser/pages/authenntication/AuthenticationComponent";
+import { UserProfileComponent } from "../environmentUser/pages/userProfile/UserProfileComponent";
+import { UserApplicationComponent } from "../environmentUser/pages/userProfile/context/UserApplicationComponent";
+import { AboutUsComponent } from "../environmentUser/pages/aboutUs/AboutUsComponent";
+import { CertificatesComponent } from "../environmentUser/pages/certificates/CertificatesComponent";
+import { ContactsComponent } from "../environmentUser/pages/contacts/ContactsComponent";
+import { ReviewsComponent } from "../environmentUser/pages/reviews/ReviewsComponent";
+import { BodyComponent } from "../environmentUser/layout/BodyComponent";
 
 export const UserAreaRouter = (
   <Route path="/" element={<BodyComponent />}>

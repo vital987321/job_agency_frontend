@@ -1,9 +1,9 @@
 import { Route } from "react-router-dom";
-import { AdminVacanciesComponent } from "../adminEnvironment/pages/vacancies/AdminVacanciesComponent";
-import { AdminBodyComponent } from "../adminEnvironment/layout/AdminBodyComponent";
-import { AdminVacancyComponent } from "../adminEnvironment/pages/vacancy/AdminVacancyComponent";
-import { AdminApplicationComponent } from "../adminEnvironment/pages/application/AdminApplicationComponent";
-import { AdminApplicationsComponent } from "../adminEnvironment/pages/applications/AdminApplicationsComponent";
+import { AdminVacanciesComponent } from "../environmentAdmin/pages/vacancies/AdminVacanciesComponent";
+import { AdminBodyComponent } from "../environmentAdmin/layout/AdminBodyComponent";
+import { AdminVacancyComponent } from "../environmentAdmin/pages/vacancy/AdminVacancyComponent";
+import { AdminApplicationComponent } from "../environmentAdmin/pages/application/AdminApplicationComponent";
+import { AdminApplicationsComponent } from "../environmentAdmin/pages/applications/AdminApplicationsComponent";
 
 export const AdminRouterComponent = (
   <Route path="admin/" element={<AdminBodyComponent />}>

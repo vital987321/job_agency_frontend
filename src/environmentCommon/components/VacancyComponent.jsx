@@ -16,7 +16,7 @@ import "../../css/vacancy.css";
 import { RESIDENCE_TYPES } from "../../data/constants";
 import { stringToDateConverter } from "../../services/utils/stringToDateConverter";
 import { identifyWorkingHours } from "../../services/utils/identifyWorkingHours";
-import { ApplicationFormComponent } from "../../userEnvironment/pages/vacancy/context/ApplicationFormComponent";
+import { ApplicationFormComponent } from "../../environmentUser/components/ApplicationFormComponent";
 import api from "../../services/api/api";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));

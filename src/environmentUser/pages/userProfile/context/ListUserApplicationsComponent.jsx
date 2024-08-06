@@ -4,7 +4,7 @@ import "../../../../css/listUserApplications.css";
 import { stringToDateConverter } from "../../../../services/utils/stringToDateConverter.js";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../../data/constants.js";
 import api from "../../../../services/api/api.jsx";
-import { ApplicationStatusMarker } from "../../../../commonEnvironment/components/CommonToolsComponents.jsx";
+import { ApplicationStatusMarker } from "../../../../environmentCommon/components/CommonToolsComponents.jsx";
 
 export const ListUserApplicationsComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
