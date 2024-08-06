@@ -8,7 +8,7 @@ import man1 from "../../../assets/img/ourTeam/man1.png";
 import man2 from "../../../assets/img/ourTeam/man2.png";
 import man3 from "../../../assets/img/ourTeam/man3.png";
 import man4 from "../../../assets/img/ourTeam/man4.png";
-import "../../../css/infoComponents/aboutUs.css"
+import "./aboutUs.css"
 
 export const AboutUsComponent=()=>{
     return<>

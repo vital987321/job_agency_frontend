@@ -1,4 +1,4 @@
-@import './constants.css';
+@import '../../../data/constants.css';
 
 /* __________ Common styles __________ */
 .home-h2{
@@ -10,7 +10,7 @@
 /* __________ individual styles __________*/
 
 .introductory-section{
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../assets/img/smilypeople.jpeg');
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../../assets/img/smilypeople.jpeg');
     background-color: #2b2b2b; 
     background-repeat: no-repeat;
     background-size: cover;

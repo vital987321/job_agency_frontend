@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../../../services/api/api";
-import "../../../../css/listVacancies.css";
-import { stringToDateConverter } from "../../../../services/utils/stringToDateConverter";
-import { identifyWorkingHours } from "../../../../services/utils/identifyWorkingHours";
+import api from "../../../services/api/api";
+import "./listVacancies.css";
+import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
+import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 
 export const ListVacanciesComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);

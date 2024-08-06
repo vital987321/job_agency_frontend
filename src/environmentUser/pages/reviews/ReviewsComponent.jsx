@@ -1,4 +1,4 @@
-import "../../../css/infoComponents/reviews.css";
+import "./reviews.css";
 import clientPhoto1 from "../../../assets/img/clients/c1.jpg";
 import clientPhoto2 from "../../../assets/img/clients/c2.jpg";
 import clientPhoto3 from "../../../assets/img/clients/c3.jpg";

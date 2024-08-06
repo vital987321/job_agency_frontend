@@ -1,4 +1,4 @@
-import { VacancyDataComponent } from "../../../environmentCommon/components/VacancyComponent";
+import { VacancyDataComponent } from "../../../environmentCommon/components/vacancy/VacancyComponent";
 import { AdminVacancyFormComponent } from "../../../assets/features/AdminVacancyForm/AdminVacancyFormComponent";
 import "../../../css/adminArea/adminVacancy.css";
 import { useEffect, useState } from "react";

@@ -1,11 +1,11 @@
-import closeIcon from "../../../../assets/svg/X.svg";
-import "../../../../css/vacancyFilter.css";
+import closeIcon from "../../../../../assets/svg/X.svg";
+import "./vacancyFilter.css";
 import React, { useState, useEffect } from "react";
 import {
   SALARY_CEILING,
   FILTER_POINTER_SIZE,
   RESIDENCE_TYPES,
-} from "../../../../data/constants";
+} from "../../../../../data/constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 
 const vacancyKeyWordsRef = React.createRef();

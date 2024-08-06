@@ -1,4 +1,4 @@
-@import '../constants.css';
+@import '../../data/constants.css';
 
 .admin-applications-container{
     padding-left: var(--global_margin_left_right);

@@ -1,4 +1,4 @@
-@import "../constants.css";
+@import '../../data/constants.css';
 
 .admin-side-bar{
     background-color: var(--design-color2);

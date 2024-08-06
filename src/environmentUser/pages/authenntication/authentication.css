@@ -1,4 +1,5 @@
-@import './constants.css';
+@import '../../../data/constants.css';
+
 .authentication-modal-window{
         /* display: none; */
     display: flex;

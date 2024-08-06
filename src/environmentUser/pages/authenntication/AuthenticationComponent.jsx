@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import closeIcon from "../../../assets/svg/X.svg";
-import "../../../css/authentication.css";
+import "./authentication.css";
 import loginImage from "../../../assets/img/login_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

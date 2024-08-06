@@ -9,10 +9,10 @@ import lidlIcon from "../../../assets/svg/Lidl_logo 1.svg";
 import kauflandIcon from "../../../assets/svg/KL_standard_pos_frei_S_sRGB 1.svg";
 import ceskaPostaIcon from "../../../assets/svg/cp-sponzoring-sirka-rgb 1.svg";
 import searchIcon from "../../../assets/svg/search.svg";
-import { ListVacanciesComponent } from "../vacancies/context/ListVacanciesComponent.jsx";
+import { ListVacanciesComponent } from "../../components/listVacancies/ListVacanciesComponent.jsx";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants.js";
 import { Navigate, useNavigate, Link } from "react-router-dom";
-import "../../../css/home.css";
+import "./home.css";
 import React, { useState, useEffect } from "react";
 
 const quickSearchRef = React.createRef();

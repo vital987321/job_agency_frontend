@@ -8,7 +8,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import "../../../css/commonElements.css";
-import "../../../css/header.css";
+import "./header.css";
 import { AvatarComponent } from "../../../environmentCommon/components/AvatarComponent";
 import {useEffect, useState } from "react";
 

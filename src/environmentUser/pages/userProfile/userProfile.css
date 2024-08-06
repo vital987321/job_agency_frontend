@@ -1,4 +1,4 @@
-@import './constants.css';
+@import '../../../data/constants.css';
 
 .profile-user-data-section{
     margin-left: var(--global_margin_left_right);

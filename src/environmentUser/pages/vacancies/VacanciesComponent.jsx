@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../../../css/commonElements.css";
-import "../../../css/vacancies.css";
+import "./vacancies.css";
 import {
   LIST_VACANCIES_BASE_URL,
   VACANCY_LIST_LIMIT,
 } from "../../../data/constants.js";
 import filterIcon from "../../../assets/svg/settings.svg";
-import { ListVacanciesComponent } from "./context/ListVacanciesComponent.jsx";
-import { VacancyFilterComponent } from "./context/VacancyFilterComponent.jsx";
+import { ListVacanciesComponent } from "../../components/listVacancies/ListVacanciesComponent.jsx";
+import { VacancyFilterComponent } from "./context/VacancyFilter/VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
 

@@ -4,7 +4,7 @@ import certificate2fullsize from "../../../assets/img/certificates/certificate2f
 import certificate3fullsize from "../../../assets/img/certificates/certificate3fullsize.png";
 import certificate2 from "../../../assets/img/certificates/certificate2.png";
 import certificate3 from "../../../assets/img/certificates/certificate3.png";
-import "../../../css/infoComponents/certificates.css";
+import "./certificates.css";
 import { useState } from "react";
 
 const ShowCertificateComponent = (props) => {

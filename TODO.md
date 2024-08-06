@@ -67,6 +67,7 @@ FRONTEND:
         [x] Think of default sorting order
         [x] think of todo handling
         [ ] Rearchitecture the project. Break components into smaller components and group components into modules
+        [ ] switch from global css to module.css
             
     
     

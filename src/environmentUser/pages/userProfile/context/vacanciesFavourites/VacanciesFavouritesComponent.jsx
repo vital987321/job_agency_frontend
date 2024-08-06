@@ -1,7 +1,7 @@
-import { ListVacanciesComponent } from "../../vacancies/context/ListVacanciesComponent";
-import { LIST_VACANCIES_BASE_URL } from "../../../../data/constants";
+import { ListVacanciesComponent } from "../../../../components/listVacancies/ListVacanciesComponent";
+import { LIST_VACANCIES_BASE_URL } from "../../../../../data/constants";
 import { useState } from "react";
-import "../../../../css/vacanciesFavourites.css";
+import "./vacanciesFavourites.css";
 
 export const VacanciesFavouritesComponent = (props) => {
   const [listVacanciesRequestUrl, setListVacanciesRequestUrl] = useState(

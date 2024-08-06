@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../../services/api/api";
+import api from "../../../../../services/api/api";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import salaryIcon from "../../../../assets/svg/salary.svg";
-import locationIcon from "../../../../assets/svg/location.svg";
-import contractTypeIcon from "../../../../assets/svg/contract_type.svg";
-import callIcon from "../../../../assets/svg/call_icon.svg";
-import emailIcon from "../../../../assets/svg/email_icon.svg";
-import genderIcon from "../../../../assets/svg/gender.svg";
-import editIcon from "../../../../assets/svg/edit.svg";
-import "../../../../css/userApplication.css";
-// import "../../../../css/test.css";
-import workingHoursIcon from "../../../../assets/svg/working_hours.svg";
-import { stringToDateConverter } from "../../../../services/utils/stringToDateConverter";
+import salaryIcon from "../../../../../assets/svg/salary.svg";
+import locationIcon from "../../../../../assets/svg/location.svg";
+import contractTypeIcon from "../../../../../assets/svg/contract_type.svg";
+import callIcon from "../../../../../assets/svg/call_icon.svg";
+import emailIcon from "../../../../../assets/svg/email_icon.svg";
+import genderIcon from "../../../../../assets/svg/gender.svg";
+import editIcon from "../../../../../assets/svg/edit.svg";
+import "./userApplication.css";
+import workingHoursIcon from "../../../../../assets/svg/working_hours.svg";
+import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
 
 export const UserApplicationComponent = () => {
   const { application_id } = useParams();

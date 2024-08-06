@@ -1,10 +1,9 @@
-@import '../constants.css';
+@import '../../../data/constants.css';
 
 .reviews-section {
     margin-top: 50px;
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
-
 }
 
 .review-section-header{

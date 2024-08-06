@@ -1,9 +1,9 @@
 import React, {useState } from "react";
-import closeIcon from "../../assets/svg/X.svg";
-import "../../css/ApplicationForm.css";
+import closeIcon from "../../../assets/svg/X.svg";
+import "./applicationForm.css";
 import axios from "axios";
-import { phoneValidation } from "../../environmentCommon/components/CommonToolsComponents";
-import { emailValidation } from "../../environmentCommon/components/CommonToolsComponents";
+import { phoneValidation } from "../../../environmentCommon/components/CommonToolsComponents";
+import { emailValidation } from "../../../environmentCommon/components/CommonToolsComponents";
 
 const firstNameRef = React.createRef();
 const lastNameRef = React.createRef();

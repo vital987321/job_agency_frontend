@@ -2,7 +2,7 @@ import locationIcon from "../../../assets/svg/locationIcon.svg";
 import callIcon from "../../../assets/svg/call_icon.svg";
 import emailIcon from "../../../assets/svg/email_icon.svg";
 import timeIcon from "../../../assets/svg/time_icon.svg";
-import '../../../css/infoComponents/contacts.css'
+import './contacts.css'
 
 export const ContactsComponent = () => {
   return (
