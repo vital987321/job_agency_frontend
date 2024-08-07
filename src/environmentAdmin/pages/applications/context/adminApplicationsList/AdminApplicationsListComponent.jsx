@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./adminApplicationsList.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
 import api from "../../../../../services/api/api.jsx";
-import { ApplicationStatusMarker } from "../../../../../environmentCommon/components/CommonToolsComponents.jsx";
+import { ApplicationStatusMarker } from "../../../../../environmentCommon/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);

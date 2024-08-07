@@ -1,14 +1,15 @@
-.application-status-marker-approved{
+
+.statusApproved{
     color: #33D625;
     margin-left: 10px;
 }
 
-.application-status-marker-rejected{
+.statusRejected{
     color: #d62b25;
     margin-left: 10px;
 }
 
-.application-status-marker-pending {
+.statusPending {
     color: lightgray;
     margin-left: 10px;
 }

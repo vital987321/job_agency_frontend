@@ -17,7 +17,7 @@ import workingHoursIcon from "../../../assets/svg/working_hours.svg";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
 import "./adminApplication.css";
 import api from "../../../services/api/api";
-import { ApplicationStatusMarker } from "../../../environmentCommon/components/CommonToolsComponents";
+import { ApplicationStatusMarker } from "../../../environmentCommon/components/applicationStatusMarker/ApplicationStatusMarker";
 
 export const AdminApplicationComponent = () => {
   const { application_id } = useParams();
