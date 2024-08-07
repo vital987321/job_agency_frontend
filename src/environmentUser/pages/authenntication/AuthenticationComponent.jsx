@@ -5,6 +5,7 @@ import loginImage from "../../../assets/img/login_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../../../services/api/api";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 const emailRef = React.createRef();
 const passwordRef = React.createRef();
@@ -234,11 +235,13 @@ export const AuthenticationComponent = () => {
               {errors.password}
             </div>
             <PassworRepeatComponent />
-            <input
-              type="submit"
-              className="authentication-submit-button button-common button-common-color1"
-              value="Enter"
-            />
+            <div className="authentication-submit-button-container">
+              <ButtonType1
+                value='Enter'
+                onClickHandler={authenticationFormSubmitHandler}
+                strength='1'
+              />
+            </div>
           </form>
         </div>
       </div>

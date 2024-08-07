@@ -17,6 +17,7 @@ import { stringToDateConverter } from "../../../services/utils/stringToDateConve
 import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
 import { ApplicationFormComponent } from "../../../environmentUser/components/applicationForm/ApplicationForm";
 import api from "../../../services/api/api";
+import { ButtonType1 } from "../buttons/buttonType1/ButtonType1";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
@@ -321,12 +322,7 @@ export const VacancyComponent = (props) => {
         setUserData={setUserData}
       />
       <div className="vacancy-apply-button-container">
-        <button
-          className="vacancy-apply-button button-common button-common-color1"
-          onClick={applyButtonHandler}
-        >
-          Apply
-        </button>
+        <ButtonType1 value='Apply' onClickHandler={applyButtonHandler} strength='1'/>
       </div>
       <ApplicationFormComponent
         AppFormDisplayValue={AppFormDisplayValue}

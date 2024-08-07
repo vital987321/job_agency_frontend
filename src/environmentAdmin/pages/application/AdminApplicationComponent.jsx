@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import salaryIcon from "../../../assets/svg/salary.svg";
-import locationIcon from "../../../assets/svg/location.svg";
 import contractTypeIcon from "../../../assets/svg/contract_type.svg";
 import callIcon from "../../../assets/svg/call_icon.svg";
 import emailIcon from "../../../assets/svg/email_icon.svg";
-import genderIcon from "../../../assets/svg/gender.svg";
 import editIcon from "../../../assets/svg/edit.svg";
 import companyIcon from "../../../assets/svg/company.svg";
 import idIcon from "../../../assets/svg/id_item.svg";

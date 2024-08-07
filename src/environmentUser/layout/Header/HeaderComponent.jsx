@@ -11,6 +11,7 @@ import "../../../css/commonElements.css";
 import "./header.css";
 import { AvatarComponent } from "../../../environmentCommon/components/AvatarComponent";
 import {useEffect, useState } from "react";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 const NavMenu = () => {
   return (
@@ -75,33 +76,25 @@ const HeaderControls = () => {
                   iconSymbol={username[0].toUpperCase()}
                 />
               </Link>
-              
-              <button
-                onClick={logOutButtonClick}
-                className="button-common button-common-color2 header-button "
-              >
-                LogOut
-              </button>
+              <div className="log-button-container">
+                <ButtonType1 value='LogOut' onClickHandler={logOutButtonClick} strength='2'/>
+              </div>
             </>
           );
         }
         return (
-          <button
-            onClick={logInButtonClick}
-            className="header-button button-common-color2 button-common"
-          >
-            Log In
-          </button>
+          <div className="log-button-container">
+            <ButtonType1 value='LogIn' onClickHandler={logInButtonClick} strength='2'/>
+          </div>
         );
       })()}
 
-      <button className="language-button">En</button>
+      {/* <button className="language-button">En</button> */}
     </div>
   );
 };
 
 export const HeaderComponent = () => {
-  const onLogOut = () => {};
 
   return (
     <header>

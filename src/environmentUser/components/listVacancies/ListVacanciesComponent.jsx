@@ -4,6 +4,7 @@ import api from "../../../services/api/api";
 import "./listVacancies.css";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
 import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 export const ListVacanciesComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
@@ -54,9 +55,8 @@ export const ListVacanciesComponent = (props) => {
                     // to={"" + vacancy.id}
                     className="details-link"
                   >
-                    <button className="details-link-button button-common button-common-color4 ">
-                      Details
-                    </button>
+                    <ButtonType1 value='Details' strength='4'/>
+
                   </Link>
                 </td>
               </tr>

@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] Rearchitecture the project. Break components into smaller components and group components into modules
+    [ ] Button cpmponent (for Admin Environment)
 
 
 BACKEND:
@@ -66,8 +66,19 @@ FRONTEND:
             [ ] User profile section add My rewiws section or button
         [x] Think of default sorting order
         [x] think of todo handling
-        [ ] Rearchitecture the project. Break components into smaller components and group components into modules
-        [ ] switch from global css to module.css
+        [x] Rearchitecture the project.
+        [ ] Break components into smaller components
+            [x] application ststus component
+            [ ] Button cpmponent
+            [ ] Input file button
+            [ ] X button (Close)
+            [ ] X button (Delete)
+            [ ] favourite Button
+            [ ] Pagination component
+        [ ] switch from global css to module.css+++++
+
+
+
             
     
     

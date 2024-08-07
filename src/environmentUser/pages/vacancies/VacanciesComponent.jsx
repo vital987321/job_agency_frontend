@@ -10,6 +10,7 @@ import { ListVacanciesComponent } from "../../components/listVacancies/ListVacan
 import { VacancyFilterComponent } from "./context/VacancyFilter/VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
@@ -144,25 +145,25 @@ export const VacanciesComponent = (props) => {
   const ResetFiltersComponent = () => {
     if (searchParams.size > 0) {
       return (
-        <button
-          className="vacancy-filter-button-general cancel-filter-button button-common button-common-color3"
-          onClick={resetFiltersHandler}
-        >
-          Reset Filters
-          <img src={closeIcon} alt="" height="14px" />
-        </button>
+        <div className="reset-filter-button-container">
+          <ButtonType1
+            value={<span>Reset Filters <img className="vacancy-in-button-icon" src={closeIcon} alt="" height="14px" /></span>}
+            onClickHandler={resetFiltersHandler}
+            strength='3'
+          />
+        </div>
       );
     }
   };
 
   return (
     <div className="vacancies-container">
-      <button
-        className="vacancy-filter-button-general vacancies-filter-button button-common button-common-color1"
-        onClick={filterButtonHandler}
-      >
-        Filter <img src={filterIcon} alt="" height="14px" />
-      </button>
+      <ButtonType1
+        value={<span>Filter <img className="vacancy-in-button-icon" src={filterIcon} alt="" height="14px" /> </span>}
+        onClickHandler={filterButtonHandler}
+        strength='1'
+      />
+
       <ResetFiltersComponent />
       <h2 className="h2-main-header h2-common">Vacancies</h2>
       <ListVacanciesComponent

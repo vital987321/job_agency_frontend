@@ -4,6 +4,7 @@ import "./applicationForm.css";
 import axios from "axios";
 import { phoneValidation } from "../../../environmentCommon/components/CommonToolsComponents";
 import { emailValidation } from "../../../environmentCommon/components/CommonToolsComponents";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 const firstNameRef = React.createRef();
 const lastNameRef = React.createRef();
@@ -252,10 +253,9 @@ export const ApplicationFormComponent = (props) => {
             ></textarea>
           </div>
           <div className="application-form-submit-block">
-            <input
-              className="application-form-submit-button button-common button-common-color1"
-              type="submit"
-              value="Apply"
+            <ButtonType1
+              value='Apply'
+              onClickHandler={appFormSubmitHandler}
             />
           </div>
         </div>

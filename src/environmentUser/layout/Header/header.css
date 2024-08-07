@@ -41,12 +41,8 @@ header{
     /* border: 1px solid red; */
   }
   
-  .header-button{
+  .log-button-container{
     margin-left: 20px;
-    height: 40px;
-    padding:0 10px;
-    border-radius: 5px;
-    border: none;
   }
 
   .language-button{

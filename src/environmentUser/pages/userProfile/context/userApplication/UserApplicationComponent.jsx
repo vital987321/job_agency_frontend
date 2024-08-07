@@ -11,6 +11,7 @@ import editIcon from "../../../../../assets/svg/edit.svg";
 import "./userApplication.css";
 import workingHoursIcon from "../../../../../assets/svg/working_hours.svg";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
+import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 export const UserApplicationComponent = () => {
   const { application_id } = useParams();
@@ -55,13 +56,11 @@ export const UserApplicationComponent = () => {
     <section className="user-application-section">
       <div className="user-application-header-line-container">
         <h2 className="user-application-header">Sent application</h2>
-        <button
-          className="button-common button-common-color2"
-          title="Delete Application"
-          onClick={deleteApplicationRequest}
-        >
-          Delete
-        </button>
+        <ButtonType1
+          value="Delete"
+          onClickHandler={deleteApplicationRequest}
+          strength='2'
+        />
       </div>
       <div className="application-sent-date-container">
         <p>sent on: {stringToDateConverter(application.created_at)}</p>
@@ -182,10 +181,12 @@ export const UserApplicationComponent = () => {
         <div>
           <Link
             to={"/vacancies/" + application.vacancy}
-            className="navLinks button-common button-common-color1 user-application-vacancy-details-link"
             key="contacts"
           >
-            See Vacancy details
+            <ButtonType1
+              value='Vacancy details'
+              strength='3'
+            />
           </Link>
         </div>
       </div>

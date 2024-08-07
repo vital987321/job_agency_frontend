@@ -7,6 +7,7 @@ import {
   RESIDENCE_TYPES,
 } from "../../../../../data/constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 const vacancyKeyWordsRef = React.createRef();
 const salaryMinRef = React.createRef();
@@ -294,10 +295,11 @@ export const VacancyFilterComponent = (props) => {
           ref={vacancyLocationRef}
         />
         <div className="vacancy-filter-submit-button-container">
-          <input
-            className="vacancy-filter-submit-button button-common button-common-color2"
-            type="submit"
-            value="Filter"
+
+          <ButtonType1
+            value='Filter'
+            onClickHandler={submitVacancyFilterHandler}
+            strength='2'          
           />
         </div>
       </form>

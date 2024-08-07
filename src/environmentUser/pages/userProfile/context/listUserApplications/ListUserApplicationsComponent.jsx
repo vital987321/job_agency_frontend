@@ -5,6 +5,7 @@ import { stringToDateConverter } from "../../../../../services/utils/stringToDat
 import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../environmentCommon/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
+import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 
 export const ListUserApplicationsComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
@@ -76,9 +77,10 @@ export const ListUserApplicationsComponent = () => {
                     to={"/applications/" + application.id}
                     className="details-link"
                   >
-                    <button className="details-link-button button-common button-common-color4">
-                      Details
-                    </button>
+                    <ButtonType1
+                      value='Details'
+                      strength='4'
+                    />
                   </Link>
                 </td>
               </tr>

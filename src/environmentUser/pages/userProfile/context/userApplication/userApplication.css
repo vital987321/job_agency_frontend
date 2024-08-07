@@ -53,14 +53,7 @@
     margin-top:20px
 }
 
-.user-application-vacancy-details-link{
-    margin-top: 20px;
-    display: inline-block;
-    
-}
-.user-application-vacancy-details-link:hover{
-    text-decoration: none;
-}
+
 
 .user-application-vacancy-id-container{
     /* display: grid;

@@ -89,9 +89,8 @@
     box-sizing: border-box;
 }
 
-.authentication-submit-button{
+.authentication-submit-button-container{
     margin-top: 30px;
-    width: 50%;
     
 }
 

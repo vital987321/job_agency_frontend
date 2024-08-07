@@ -19,9 +19,3 @@
   .vacancy-list-tr td:first-child{
     font-weight: bold;
   }
-
-  .details-link-button{
-    padding: 10px 15px;
-    border-radius: 8px;
-
-  }

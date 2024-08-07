@@ -119,14 +119,9 @@
 
 .vacancy-filter-submit-button-container{
     text-align: right;
-}
-.vacancy-filter-submit-button{
-    padding: 8px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: medium;
     margin-top: 50px;
 }
+
 
 .vacancy-filter-salary-bar{
     width: 100%;

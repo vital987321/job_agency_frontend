@@ -41,7 +41,11 @@
 .vacancy-filter-button-general img{
     margin-left:1rem;
 }
-.cancel-filter-button{
+.vacancy-in-button-icon{
+    margin-left:1rem;
+}
+.reset-filter-button-container{
+    display: inline;
     margin-left: 50px;
 }
 
