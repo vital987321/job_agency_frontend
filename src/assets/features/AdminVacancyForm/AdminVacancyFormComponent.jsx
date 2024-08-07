@@ -7,7 +7,7 @@ import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { WORKING_HOURS } from "../../../data/constants";
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
-import "../../../css/adminArea/adminVacancyForm.css";
+import "./adminVacancyForm.css";
 
 export const AdminVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);

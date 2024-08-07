@@ -15,7 +15,7 @@ import userIdIcon from "../../../assets/svg/user_id.svg";
 import userIcon from "../../../assets/svg/user_icon.svg";
 import workingHoursIcon from "../../../assets/svg/working_hours.svg";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
-import "../../../css/adminArea/adminApplication.css";
+import "./adminApplication.css";
 import api from "../../../services/api/api";
 import { ApplicationStatusMarker } from "../../../environmentCommon/components/CommonToolsComponents";
 

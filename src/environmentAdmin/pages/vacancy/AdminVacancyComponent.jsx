@@ -1,6 +1,6 @@
 import { VacancyDataComponent } from "../../../environmentCommon/components/vacancy/VacancyComponent";
 import { AdminVacancyFormComponent } from "../../../assets/features/AdminVacancyForm/AdminVacancyFormComponent";
-import "../../../css/adminArea/adminVacancy.css";
+import "./adminVacancy.css";
 import { useEffect, useState } from "react";
 import api from "../../../services/api/api";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";

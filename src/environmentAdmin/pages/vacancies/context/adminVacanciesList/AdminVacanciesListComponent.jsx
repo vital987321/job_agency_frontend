@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../../../../css/adminArea/adminVacanciesList.css";
-import { stringToDateConverter } from "../../../../services/utils/stringToDateConverter";
-import api from "../../../../services/api/api";
+import "./adminVacanciesList.css";
+import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
+import api from "../../../../../services/api/api";
 
 export const AdminVacanciesListComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);

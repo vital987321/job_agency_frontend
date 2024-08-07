@@ -1,7 +1,7 @@
 import { AdminVacancyFormComponent } from "../../../assets/features/AdminVacancyForm/AdminVacancyFormComponent.jsx";
-import { AdminVacanciesListComponent } from "./context/AdminVacanciesListComponent.jsx";
+import { AdminVacanciesListComponent } from "./context/adminVacanciesList/AdminVacanciesListComponent.jsx";
 import { AdminVacanciesFilterComponent } from "./context/AdminVacanciesFilterComponent.jsx";
-import "../../../css/adminArea/adminVacancies.css";
+import "./adminVacancies.css";
 import React from "react";
 import {
   LIST_VACANCIES_BASE_URL,

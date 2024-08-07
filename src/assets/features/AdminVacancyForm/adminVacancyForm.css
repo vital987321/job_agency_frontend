@@ -1,4 +1,4 @@
-@import '../../data/constants.css';
+@import '../../../data/constants.css';
 
 .admin-vacancy-form-modal-window-enviroment{
     background-color: var(--modal-window-background_color);

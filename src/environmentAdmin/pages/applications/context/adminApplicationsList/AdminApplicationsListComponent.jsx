@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../../../../css/adminArea/adminApplicationsList.css";
-import { stringToDateConverter } from "../../../../services/utils/stringToDateConverter.js";
-import api from "../../../../services/api/api.jsx";
-import { ApplicationStatusMarker } from "../../../../environmentCommon/components/CommonToolsComponents.jsx";
+import "./adminApplicationsList.css";
+import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
+import api from "../../../../../services/api/api.jsx";
+import { ApplicationStatusMarker } from "../../../../../environmentCommon/components/CommonToolsComponents.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);
