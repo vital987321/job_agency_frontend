@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./adminVacanciesList.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
 import api from "../../../../../services/api/api";
+import {ButtonType1} from '../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1'
 
 export const AdminVacanciesListComponent = (props) => {
   const [vacanciesList, setVacanciesList] = useState([]);
@@ -62,9 +63,10 @@ export const AdminVacanciesListComponent = (props) => {
                     to={"" + vacancy.id}
                     className="details-link"
                   >
-                    <button className="details-link-button button-common button-common-color4 ">
-                      Details
-                    </button>
+                    <ButtonType1
+                      value='Details'
+                      strength='4'
+                    />
                   </Link>
                 </td>
               </tr>

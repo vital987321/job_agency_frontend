@@ -14,6 +14,7 @@ import { stringToDateConverter } from "../../../services/utils/stringToDateConve
 import "./adminApplication.css";
 import api from "../../../services/api/api";
 import { ApplicationStatusMarker } from "../../../environmentCommon/components/applicationStatusMarker/ApplicationStatusMarker";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 export const AdminApplicationComponent = () => {
   const { application_id } = useParams();
@@ -85,10 +86,14 @@ export const AdminApplicationComponent = () => {
             <div p>
               <Link
                 to={"/admin/vacancies/" + application.vacancy}
-                className="navLinks button-common button-common-color3 admin-application-vacancy-details-link"
+                className="navLinks admin-application-vacancy-details-link"
                 key="contacts"
               >
-                Details
+                <ButtonType1
+                  value='Details'
+                  strength='3'
+                />
+                
               </Link>
             </div>
           </div>
@@ -206,6 +211,27 @@ export const AdminApplicationComponent = () => {
         </div>
       </div>
       <div className="admin-application-status-buttons-container">
+        {/* <div className="admin-application-status-button-container">
+          <ButtonType1
+            value="Approve"
+            onClickHandler={changeApplicationStatusRequest}
+            strength="1"
+          />
+        </div>
+        <div className="admin-application-status-button-container">
+          <ButtonType1
+            value="Reject"
+            onClickHandler={changeApplicationStatusRequest}
+            strength="1"
+          />
+        </div>
+        <div className="admin-application-status-button-container">
+          <ButtonType1
+            value="Pending"
+            onClickHandler={changeApplicationStatusRequest}
+            strength="1"
+          />
+        </div> */}
         <button
           className="button-common button-common-color1 admin-application-status-button"
           onClick={changeApplicationStatusRequest}

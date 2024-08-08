@@ -8,6 +8,7 @@ import { WORKING_HOURS } from "../../../data/constants";
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
 import "./adminVacancyForm.css";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 export const AdminVacancyFormComponent = (props) => {
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
@@ -556,10 +557,10 @@ export const AdminVacancyFormComponent = (props) => {
           </div>
 
           <div className="admin-vacancy-form-submit-container">
-            <input
-              type="submit"
+            <ButtonType1
               value={props.newVacancy ? "Create vacancy" : "Save changes"}
-              className="button-common button-common-color1"
+              onClickHandler={submitFormHandler}
+              strength='1'
             />
           </div>
         </div>

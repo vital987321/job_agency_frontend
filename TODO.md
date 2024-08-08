@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] Button cpmponent (for Admin Environment)
+    [ ] Button component (for Admin Environment)
 
 
 BACKEND:
@@ -70,6 +70,7 @@ FRONTEND:
         [ ] Break components into smaller components
             [x] application ststus component
             [ ] Button cpmponent
+                [ ] AdminApplicationComponent. Looks like I need two more props to add to ButtonType1: className and data-userData (data-status).
             [ ] Input file button
             [ ] X button (Close)
             [ ] X button (Delete)

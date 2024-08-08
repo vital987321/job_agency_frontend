@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import api from "../../../services/api/api";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
+import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
@@ -78,24 +79,25 @@ export const AdminVacancyComponent = () => {
   return (
     <div className="admin-vacancy-container">
       <div className="admin-vacancy-buttons-container">
-        <button
-          onClick={editButtonHandler}
-          className="admin-vacancy-edit-button button-common button-common-color1"
-        >
-          Edit
-        </button>
-        <button
-          onClick={deleteButtonHandler}
-          className="admin-vacancy-edit-button button-common button-common-color1"
-        >
-          Delete
-        </button>
-        <button
-          className="admin-vacancy-edit-button button-common button-common-color1"
-          onClick={changeActivationStatus}
-        >
-          {vacancyData.active ? "Deactivate" : "Activate"}
-        </button>
+        <ButtonType1
+          value="Edit"
+          onClickHandler={editButtonHandler}
+          strength="1"
+        />
+
+        <ButtonType1
+          value="Delete"
+          onClickHandler={deleteButtonHandler}
+          strength="1"
+        />
+
+        <ButtonType1
+          value={vacancyData.active ? "Deactivate" : "Activate"}
+          onClickHandler={changeActivationStatus}
+          strength='1'
+        />
+
+
       </div>
       <div className="admin-vacancy-company-container">
         <span>Company: </span>

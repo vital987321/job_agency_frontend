@@ -10,6 +10,7 @@ import {
 } from "../../../data/constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {ButtonType1} from '../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx'
 
 export const AdminVacanciesComponent = (props) => {
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
@@ -157,12 +158,11 @@ export const AdminVacanciesComponent = (props) => {
 
         <div className="new-vacancy-button-container">
           <div>Found: {vacanciesResponseData.count} </div>
-          <button
-            className="button-common button-common-color1 add-new-vacancy-button"
-            onClick={newVacancyButtonHandler}
-          >
-            Add new vacancy
-          </button>
+          <ButtonType1
+            value="Add new vacancy"
+            onClickHandler={newVacancyButtonHandler}
+            strength='1'
+          />
         </div>
       </section>
 

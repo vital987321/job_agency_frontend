@@ -80,6 +80,10 @@
     /* justify-content: space-around; */
 }
 
-.admin-application-status-button{
+.admin-application-status-button-container{
+    margin-left: 2rem;
+}
+
+.admin-application-status-button {
     margin-left: 2rem;
 }

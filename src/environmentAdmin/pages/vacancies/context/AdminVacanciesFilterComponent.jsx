@@ -7,6 +7,7 @@ import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../data/constants";
 import closeIcon from "../../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 import { RESIDENCE_TYPES } from "../../../../data/constants";
+import {ButtonType1} from '../../../../environmentCommon/components/buttons/buttonType1/ButtonType1'
 
 export const AdminVacanciesFilterComponent = () => {
   const vacancyIdRef = React.createRef();
@@ -224,21 +225,42 @@ export const AdminVacanciesFilterComponent = () => {
 
           <div className="admin-list-items-form-controls">
             <div className="admin-list-items-form-buttons-container">
-              <button
-                className="button-common button-common-color1"
-                onClick={filterButtonHandler}
-              >
-                Filter <img src={filterIcon} alt="" height="14px" />
-              </button>
+              <ButtonType1
+                value={
+                  <span>
+                    Filter{" "}
+                    <img
+                      className="admin-filter-button-icon"
+                      src={filterIcon}
+                      alt=""
+                      height="14px"
+                    />
+                  </span>
+                }
+                onClickHandler={filterButtonHandler}
+                strength="1"
+              />
 
-              <button
-                className="vacancies-filter-button-general button-common button-common-color2 reset-filters-button"
-                id="admin-vacancies-reset-filters-button"
-                onClick={resetFiltersHandler}
+              <div
+                className="admin-reset-filters-button-container"
                 style={{ display: resetFiltersButtonDisplayValue }}
               >
-                Reset Filters <img src={closeIcon} alt="" height="14px" />
-              </button>
+                <ButtonType1
+                  value={
+                    <span>
+                      Reset Filters{" "}
+                      <img
+                        className="admin-filter-button-icon"
+                        src={closeIcon}
+                        alt=""
+                        height="14px"
+                      />
+                    </span>
+                  }
+                  onClickHandler={resetFiltersHandler}
+                  strength="2"
+                />
+              </div>
             </div>
 
             <div>
