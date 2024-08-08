@@ -41,9 +41,10 @@ export const AdminApplicationComponent = () => {
 
   const changeApplicationStatusRequest = (e) => {
     const url = "http://127.0.0.1:8000/application/" + application_id + "/";
+
     try {
       api
-        .patch(url, { status: e.target.dataset.status })
+        .patch(url, { status: e.target.dataset.buttondataset })
         .then((response) => setApplication(response.data))
         .catch((error) => console.log(error));
     } catch {
@@ -89,11 +90,7 @@ export const AdminApplicationComponent = () => {
                 className="navLinks admin-application-vacancy-details-link"
                 key="contacts"
               >
-                <ButtonType1
-                  value='Details'
-                  strength='3'
-                />
-                
+                <ButtonType1 value="Details" strength="3" />
               </Link>
             </div>
           </div>
@@ -211,48 +208,30 @@ export const AdminApplicationComponent = () => {
         </div>
       </div>
       <div className="admin-application-status-buttons-container">
-        {/* <div className="admin-application-status-button-container">
-          <ButtonType1
-            value="Approve"
-            onClickHandler={changeApplicationStatusRequest}
-            strength="1"
-          />
-        </div>
-        <div className="admin-application-status-button-container">
-          <ButtonType1
-            value="Reject"
-            onClickHandler={changeApplicationStatusRequest}
-            strength="1"
-          />
-        </div>
-        <div className="admin-application-status-button-container">
-          <ButtonType1
-            value="Pending"
-            onClickHandler={changeApplicationStatusRequest}
-            strength="1"
-          />
-        </div> */}
-        <button
-          className="button-common button-common-color1 admin-application-status-button"
-          onClick={changeApplicationStatusRequest}
-          data-status="Approved"
-        >
-          Approve
-        </button>
-        <button
-          className="button-common button-common-color1 admin-application-status-button"
-          onClick={changeApplicationStatusRequest}
-          data-status="Rejected"
-        >
-          Reject
-        </button>
-        <button
-          className="button-common button-common-color1 admin-application-status-button"
-          onClick={changeApplicationStatusRequest}
-          data-status="Pending"
-        >
-          Pending
-        </button>
+        <ButtonType1
+          value="Approve"
+          onClickHandler={changeApplicationStatusRequest}
+          strength="1"
+          buttonDatasetValue="Approved"
+          buttonClass="admin-application-status-button"
+        />
+        <ButtonType1
+          value="Reject"
+          onClickHandler={changeApplicationStatusRequest}
+          strength="1"
+          buttonDatasetValue="Rejected"
+          buttonClass="admin-application-status-button"
+        />
+        <ButtonType1
+          value="Pending"
+          onClickHandler={changeApplicationStatusRequest}
+          strength="1"
+          buttonDatasetValue="Pending"
+          buttonClass="admin-application-status-button"
+        />
+        <div className="admin-application-status-button-container"></div>
+        <div className="admin-application-status-button-container"></div>
+        <div className="admin-application-status-button-container"></div>
       </div>
     </section>
   );
