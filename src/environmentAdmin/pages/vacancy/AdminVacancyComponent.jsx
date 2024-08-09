@@ -1,6 +1,6 @@
-import { VacancyDataComponent } from "../../../environmentCommon/components/vacancy/VacancyComponent";
+import { VacancyDataComponent } from "../../../environmentCommon/features/vacancyData/VacancyData";
 import { AdminVacancyFormComponent } from "../../../assets/features/AdminVacancyForm/AdminVacancyFormComponent";
-import "./adminVacancy.css";
+import styles from "./adminVacancy.module.css";
 import { useEffect, useState } from "react";
 import api from "../../../services/api/api";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
@@ -77,8 +77,8 @@ export const AdminVacancyComponent = () => {
   };
 
   return (
-    <div className="admin-vacancy-container">
-      <div className="admin-vacancy-buttons-container">
+    <div className={styles["admin-vacancy-container"]}>
+      <div className={styles["admin-vacancy-buttons-container"]}>
         <ButtonType1
           value="Edit"
           onClickHandler={editButtonHandler}
@@ -94,14 +94,12 @@ export const AdminVacancyComponent = () => {
         <ButtonType1
           value={vacancyData.active ? "Deactivate" : "Activate"}
           onClickHandler={changeActivationStatus}
-          strength='1'
+          strength="1"
         />
-
-
       </div>
-      <div className="admin-vacancy-company-container">
+      <div className={styles["admin-vacancy-company-container"]}>
         <span>Company: </span>
-        <span className="admin-vacancy-company-name">
+        <span className={styles["admin-vacancy-company-name"]}>
           {vacancyData.company}
         </span>
       </div>

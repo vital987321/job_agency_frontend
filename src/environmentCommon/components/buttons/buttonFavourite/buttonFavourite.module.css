@@ -1,0 +1,12 @@
+.vacancy-favorite-button{
+    border: none;
+    background:none;
+}
+
+.heart-filter{
+    height: 20px;
+}
+
+.heart-filter:hover{
+    filter: invert(89%) sepia(63%) saturate(1410%) hue-rotate(322deg) brightness(100%) contrast(81%);
+}

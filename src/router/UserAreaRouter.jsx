@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { VacanciesComponent } from "../environmentUser/pages/vacancies/VacanciesComponent";
-import { VacancyComponent } from "../environmentCommon/components/vacancy/VacancyComponent";
+import { VacancyComponent } from "../environmentUser/pages/vacancy/VacancyComponent";
 import { ListUserApplicationsComponent } from "../environmentUser/pages/userProfile/context/listUserApplications/ListUserApplicationsComponent";
 import { HomeComponent } from "../environmentUser/pages/home/HomeComponent";
 import { AuthenticationComponent } from "../environmentUser/pages/authenntication/AuthenticationComponent";

@@ -84,7 +84,7 @@ export const AdminApplicationComponent = () => {
                 <b>{application.vacancy}</b>
               </p>
             </div>
-            <div p>
+            <div>
               <Link
                 to={"/admin/vacancies/" + application.vacancy}
                 className="navLinks admin-application-vacancy-details-link"
@@ -229,9 +229,6 @@ export const AdminApplicationComponent = () => {
           buttonDatasetValue="Pending"
           buttonClass="admin-application-status-button"
         />
-        <div className="admin-application-status-button-container"></div>
-        <div className="admin-application-status-button-container"></div>
-        <div className="admin-application-status-button-container"></div>
       </div>
     </section>
   );

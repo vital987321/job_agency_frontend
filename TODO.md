@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] Button component (for Admin Environment)
+    
 
 
 BACKEND:
@@ -67,14 +67,14 @@ FRONTEND:
         [x] Think of default sorting order
         [x] think of todo handling
         [x] Rearchitecture the project.
-        [ ] Break components into smaller components
+        [ ] Break components into smaller sub components
             [x] application ststus component
-            [ ] Button cpmponent
-                [ ] AdminApplicationComponent. Looks like I need two more props to add to ButtonType1: className and data-userData (data-status).
+            [x] Button component
+                [x] AdminApplicationComponent. Looks like I need two more props to add to ButtonType1: className and data-userData (data-status).
             [ ] Input file button
             [ ] X button (Close)
             [ ] X button (Delete)
-            [ ] favourite Button
+            [x] favourite Button
             [ ] Pagination component
         [ ] switch from global css to module.css+++++
 
