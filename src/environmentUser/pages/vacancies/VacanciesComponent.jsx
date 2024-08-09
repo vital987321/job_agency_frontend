@@ -12,6 +12,7 @@ import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 
+import { Pagination, PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
     useState("none");
@@ -204,6 +205,7 @@ export const VacanciesComponent = (props) => {
           })()}
         </div>
       </section>
+      <PaginationComponent responseData={vacanciesResponseData}/>
       <VacancyFilterComponent
         vacancyFilterDisplayValue={vacancyFilterDisplayValue}
         setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}

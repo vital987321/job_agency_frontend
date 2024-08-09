@@ -1,0 +1,10 @@
+.vacancies-pagination-button{
+    border: none;
+    background-color: transparent;
+    width: 100px;
+}
+
+.vacancies-pagination-button:hover{
+    text-decoration: underline;
+
+}

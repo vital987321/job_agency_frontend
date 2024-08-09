@@ -76,7 +76,7 @@ FRONTEND:
             [ ] X button (Delete)
             [x] favourite Button
             [ ] Pagination component
-        [ ] switch from global css to module.css+++++
+        [x] switch from global css to module.css
 
 
 
