@@ -1,5 +1,4 @@
 import styles from "./paginationNumberButton.module.css"
-import { VACANCY_LIST_LIMIT } from "../../../../../data/constants";
 import { useSearchParams } from "react-router-dom";
 
 
@@ -7,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 export const PaginationNumberButton=(props)=>{
     const responseData=props.responseData
     const itemsTotalNumber = responseData.count;
+    const listItemsLimit=props.listItemsLimit 
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -14,7 +14,7 @@ export const PaginationNumberButton=(props)=>{
         let qstr = "";
         qstr += searchParams.get("limit")
           ? "limit=" + searchParams.get("limit")
-          : "limit=" + VACANCY_LIST_LIMIT;
+          : "limit=" + listItemsLimit;
         if (isNaN(offset)) {
           qstr += searchParams.get("offset")
             ? "&offset=" + searchParams.get("offset")
@@ -44,18 +44,18 @@ export const PaginationNumberButton=(props)=>{
         return qstr;
       };
 
-      
-    if (itemsTotalNumber > VACANCY_LIST_LIMIT) {
+
+    if (itemsTotalNumber > listItemsLimit) {
         let paginationArray = new Array();
         const currentOffset = searchParams.get("offset")
           ? searchParams.get("offset")
           : "0";
         const currentPaginationNumber =
-          Math.floor(currentOffset / VACANCY_LIST_LIMIT) + 1;
+          Math.floor(currentOffset / listItemsLimit) + 1;
         const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
         const maxPaginationNumber = Math.min(
           currentPaginationNumber + 3,
-          Math.ceil(itemsTotalNumber / VACANCY_LIST_LIMIT)
+          Math.ceil(itemsTotalNumber / listItemsLimit)
         );
   
         for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
@@ -67,16 +67,15 @@ export const PaginationNumberButton=(props)=>{
               return (
                 <a
                   key={item}
-                  className={
-                    "vacancies-pagination-link" +
-                    (item == currentPaginationNumber
-                      ? " current-vacancy-pagination-link"
-                      : "")
-                  }
+                  className={`${styles["vacancies-pagination-link"]} ${
+                    item == currentPaginationNumber
+                    ? styles["current-vacancy-pagination-link"]
+                    :""
+                    }`}
+            
                   href={
                     "?" +
-                    generateListVacanciesRequestQueryString(
-                      (item - 1) * VACANCY_LIST_LIMIT
+                    generateListVacanciesRequestQueryString((item - 1) * listItemsLimit
                     )
                   }
                 >

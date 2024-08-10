@@ -8,11 +8,11 @@ import {
 import filterIcon from "../../../assets/svg/settings.svg";
 import { ListVacanciesComponent } from "../../components/listVacancies/ListVacanciesComponent.jsx";
 import { VacancyFilterComponent } from "./context/VacancyFilter/VacancyFilterComponent.jsx";
-import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import { useSearchParams, useNavigate} from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
+import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
 
-import { Pagination, PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
     useState("none");
@@ -76,69 +76,6 @@ export const VacanciesComponent = (props) => {
 
   updateListVacanciesRequestURL();
 
-  const getQueryString = (urlString) => {
-    if (urlString) {
-      const queryString = urlString.split("?")[1];
-      if (queryString) {
-        return queryString;
-      }
-    }
-    return "";
-  };
-
-  const paginationButtonHandler = (e) => {
-    const paginationDirection =
-      e.target.id === "previousVacanciesButton" ? "previous" : "next";
-    navigate("?" + getQueryString(vacanciesResponseData[paginationDirection]));
-  };
-
-  const PaginationNumberedLinks = () => {
-    const vacanciesTotalNumber = vacanciesResponseData.count;
-    if (vacanciesTotalNumber > VACANCY_LIST_LIMIT) {
-      let paginationArray = new Array();
-      const currentOffset = searchParams.get("offset")
-        ? searchParams.get("offset")
-        : "0";
-      const currentPaginationNumber =
-        Math.floor(currentOffset / VACANCY_LIST_LIMIT) + 1;
-      const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-      const maxPaginationNumber = Math.min(
-        currentPaginationNumber + 3,
-        Math.ceil(vacanciesTotalNumber / VACANCY_LIST_LIMIT)
-      );
-
-      for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-        paginationArray.push(i);
-      }
-      return (
-        <>
-          {paginationArray.map((item) => {
-            return (
-              <a
-                key={item}
-                className={
-                  "vacancies-pagination-link" +
-                  (item == currentPaginationNumber
-                    ? " current-vacancy-pagination-link"
-                    : "")
-                }
-                href={
-                  "?" +
-                  generateListVacanciesRequestQueryString(
-                    (item - 1) * VACANCY_LIST_LIMIT
-                  )
-                }
-              >
-                {item}
-              </a>
-            );
-          })}
-        </>
-      );
-    }
-    return "";
-  };
-
   const resetFiltersHandler = () => {
     navigate("");
   };
@@ -172,40 +109,11 @@ export const VacanciesComponent = (props) => {
         setVacanciesResponseData={setVacanciesResponseData}
         vacancyListChangedState={props.vacancyListChangedState}
       />
-      <section className="vacancies-pagination-section">
-        <div className="vacancies-pagination-previous-container">
-          {(() => {
-            if (vacanciesResponseData.previous !== null)
-              return (
-                <button
-                  id="previousVacanciesButton"
-                  className="vacancies-pagination-button"
-                  onClick={paginationButtonHandler}
-                >
-                  {"<"} Previous
-                </button>
-              );
-          })()}
-        </div>
-
-        <PaginationNumberedLinks />
-
-        <div className="vacancies-pagination-previous-container">
-          {(() => {
-            if (vacanciesResponseData.next !== null)
-              return (
-                <button
-                  className="vacancies-pagination-button"
-                  id="nextVacanciesButton"
-                  onClick={paginationButtonHandler}
-                >
-                  Next {">"}
-                </button>
-              );
-          })()}
-        </div>
-      </section>
-      <PaginationComponent responseData={vacanciesResponseData}/>
+      <PaginationComponent 
+        responseData={vacanciesResponseData}
+        listItemsLimit={VACANCY_LIST_LIMIT}
+        paginationClass='vacancies-pagination-section'
+      />
       <VacancyFilterComponent
         vacancyFilterDisplayValue={vacancyFilterDisplayValue}
         setVacancyFilterDisplayValue={setVacancyFilterDisplayValue}

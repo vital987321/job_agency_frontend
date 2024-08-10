@@ -76,6 +76,7 @@ FRONTEND:
             [ ] X button (Delete)
             [x] favourite Button
             [ ] Pagination component
+                [ ] seperate generateListVacanciesRequestQueryString function (https://builtin.com/articles/urlsearchparams)
         [x] switch from global css to module.css
 
 

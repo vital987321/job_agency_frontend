@@ -4,38 +4,12 @@
     margin-top: 50px;
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
-    
-
 }
 
 .vacancies-pagination-section{
     margin-top: 40px;
     display: flex;
     justify-content: end;
-}
-
-.vacancies-pagination-button{
-    border: none;
-    background-color: transparent;
-    width: 100px;
-}
-
-.vacancies-pagination-button:hover{
-    text-decoration: underline;
-
-}
-
-.vacancies-pagination-link{
-    text-decoration: none;
-    border: solid 1px gray;
-    margin-left: 10px;
-    padding: 2px 4px;
-    border-radius: 3px;
-    color: black;
-}
-
-.current-vacancy-pagination-link{
-    background-color: var(--button-general-background-color3);
 }
 
 .vacancy-filter-button-general img{
