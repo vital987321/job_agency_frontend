@@ -1,6 +1,7 @@
 import { ListVacanciesComponent } from "../../../../components/listVacancies/ListVacanciesComponent";
-import { LIST_VACANCIES_BASE_URL } from "../../../../../data/constants";
+import { LIST_VACANCIES_BASE_URL, VACANCY_LIST_LIMIT } from "../../../../../data/constants";
 import { useState } from "react";
+import { PaginationComponent } from "../../../../../environmentCommon/features/pagination/Pagination";
 import "./vacanciesFavourites.css";
 
 export const VacanciesFavouritesComponent = (props) => {
@@ -8,6 +9,7 @@ export const VacanciesFavouritesComponent = (props) => {
     LIST_VACANCIES_BASE_URL + "?favourite=true"
   );
   const [vacanciesResponseData, setVacanciesResponseData] = useState([]);
+  // const [listVacanciesRequestQueryString, setListVacanciesRequestQueryString]=useState('')
 
   const paginationButtonHandler = (e) => {
     const paginationDirection =
@@ -24,6 +26,14 @@ export const VacanciesFavouritesComponent = (props) => {
         listVacanciesRequestUrl={listVacanciesRequestUrl}
         setVacanciesResponseData={setVacanciesResponseData}
       />
+      <PaginationComponent 
+        responseData={vacanciesResponseData}
+        listItemsLimit={VACANCY_LIST_LIMIT}
+        requestUrl={listVacanciesRequestUrl}
+        setRequestUrl={setListVacanciesRequestUrl}
+      />
+
+
       <div className="vacancies-favourite-pagination-container">
         <div className="vacancies-pagination-previous-container">
           {(() => {
