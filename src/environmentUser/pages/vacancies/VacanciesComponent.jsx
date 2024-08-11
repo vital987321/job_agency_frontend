@@ -12,6 +12,7 @@ import { useSearchParams, useNavigate} from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
+import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
 
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
@@ -29,43 +30,11 @@ export const VacanciesComponent = (props) => {
 
   const generateListVacanciesRequestURL = () => {
     return (
-      LIST_VACANCIES_BASE_URL + "?" + generateListVacanciesRequestQueryString()
+      // LIST_VACANCIES_BASE_URL + "?" + generateListVacanciesRequestQueryString()
+      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, VACANCY_LIST_LIMIT)
     );
   };
 
-  const generateListVacanciesRequestQueryString = (offset) => {
-    let qstr = "";
-    qstr += searchParams.get("limit")
-      ? "limit=" + searchParams.get("limit")
-      : "limit=" + VACANCY_LIST_LIMIT;
-    if (isNaN(offset)) {
-      qstr += searchParams.get("offset")
-        ? "&offset=" + searchParams.get("offset")
-        : "&offset=0";
-    } else {
-      qstr += "&offset=" + offset;
-    }
-    qstr += "&active=active";
-    qstr += searchParams.get("key_search")
-      ? "&key_search=" + searchParams.get("key_search")
-      : "";
-    qstr += searchParams.get("salary_gte")
-      ? "&salary_gte=" + searchParams.get("salary_gte")
-      : "";
-    qstr += searchParams.get("salary_lte")
-      ? "&salary_lte=" + searchParams.get("salary_lte")
-      : "";
-    qstr += searchParams.get("location")
-      ? "&location=" + searchParams.get("location")
-      : "";
-    qstr += searchParams.get("residence_type")
-      ? "&residence_type=" + searchParams.get("residence_type")
-      : "";
-    qstr += searchParams.get("active")
-      ? "&active=" + searchParams.get("active")
-      : "";
-    return qstr;
-  };
 
   const updateListVacanciesRequestURL = () => {
     const updatedURL = generateListVacanciesRequestURL();
@@ -81,7 +50,11 @@ export const VacanciesComponent = (props) => {
   };
 
   const ResetFiltersComponent = () => {
-    if (searchParams.size > 0) {
+    if (searchParams.has("key_search") ||
+    searchParams.has("salary_gte") ||
+    searchParams.has("salary_lte") ||
+    searchParams.has("location") ||
+    searchParams.has("residence_type") ) {
       return (
         <div className="reset-filter-button-container">
           <ButtonType1

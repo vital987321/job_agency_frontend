@@ -2,48 +2,12 @@ import styles from "./paginationNumberButton.module.css"
 import { useSearchParams } from "react-router-dom";
 
 
-
 export const PaginationNumberButton=(props)=>{
     const responseData=props.responseData
     const itemsTotalNumber = responseData.count;
     const listItemsLimit=props.listItemsLimit 
 
     const [searchParams, setSearchParams] = useSearchParams();
-
-    const generateListVacanciesRequestQueryString = (offset) => {
-        let qstr = "";
-        qstr += searchParams.get("limit")
-          ? "limit=" + searchParams.get("limit")
-          : "limit=" + listItemsLimit;
-        if (isNaN(offset)) {
-          qstr += searchParams.get("offset")
-            ? "&offset=" + searchParams.get("offset")
-            : "&offset=0";
-        } else {
-          qstr += "&offset=" + offset;
-        }
-        qstr += "&active=active";
-        qstr += searchParams.get("key_search")
-          ? "&key_search=" + searchParams.get("key_search")
-          : "";
-        qstr += searchParams.get("salary_gte")
-          ? "&salary_gte=" + searchParams.get("salary_gte")
-          : "";
-        qstr += searchParams.get("salary_lte")
-          ? "&salary_lte=" + searchParams.get("salary_lte")
-          : "";
-        qstr += searchParams.get("location")
-          ? "&location=" + searchParams.get("location")
-          : "";
-        qstr += searchParams.get("residence_type")
-          ? "&residence_type=" + searchParams.get("residence_type")
-          : "";
-        qstr += searchParams.get("active")
-          ? "&active=" + searchParams.get("active")
-          : "";
-        return qstr;
-      };
-
 
     if (itemsTotalNumber > listItemsLimit) {
         let paginationArray = new Array();
@@ -61,6 +25,14 @@ export const PaginationNumberButton=(props)=>{
         for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
           paginationArray.push(i);
         }
+
+
+        const paginationQueryString=(offsetValue)=>{
+            const tempSearchParams=new URLSearchParams(searchParams.toString())
+            tempSearchParams.set('offset', offsetValue)
+            return tempSearchParams.toString()
+        }
+
         return (
           <>
             {paginationArray.map((item) => {
@@ -72,12 +44,7 @@ export const PaginationNumberButton=(props)=>{
                     ? styles["current-vacancy-pagination-link"]
                     :""
                     }`}
-            
-                  href={
-                    "?" +
-                    generateListVacanciesRequestQueryString((item - 1) * listItemsLimit
-                    )
-                  }
+                    href={"?" + paginationQueryString((item - 1) * listItemsLimit)}
                 >
                   {item}
                 </a>
