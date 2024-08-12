@@ -13,6 +13,8 @@ import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
+import { redirect } from "react-router-dom";
+
 
 export const VacanciesComponent = (props) => {
   const [vacancyFilterDisplayValue, setVacancyFilterDisplayValue] =
@@ -20,9 +22,19 @@ export const VacanciesComponent = (props) => {
   const [listVacanciesRequestUrl, setListVacanciesRequestUrl] = useState(
     LIST_VACANCIES_BASE_URL
   );
+  const [clientUrl, setClientUrl] = useState(window.location.href);
+  
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (clientUrl !== window.location.href) {
+      console.log(clientUrl);
+      console.log("clientUrl is changed");
+      redirect(clientUrl);
+    }
+  }, [clientUrl]);
 
   const filterButtonHandler = () => {
     setVacancyFilterDisplayValue("flex");
@@ -70,9 +82,19 @@ export const VacanciesComponent = (props) => {
   return (
     <div className="vacancies-container">
       <ButtonType1
-        value={<span>Filter <img className="vacancy-in-button-icon" src={filterIcon} alt="" height="14px" /> </span>}
+        value={
+          <span>
+            Filter{" "}
+            <img
+              className="vacancy-in-button-icon"
+              src={filterIcon}
+              alt=""
+              height="14px"
+            />{" "}
+          </span>
+        }
         onClickHandler={filterButtonHandler}
-        strength='1'
+        strength="1"
       />
 
       <ResetFiltersComponent />
@@ -80,12 +102,14 @@ export const VacanciesComponent = (props) => {
       <ListVacanciesComponent
         listVacanciesRequestUrl={listVacanciesRequestUrl}
         setVacanciesResponseData={setVacanciesResponseData}
-        vacancyListChangedState={props.vacancyListChangedState}
+        // vacancyListChangedState={props.vacancyListChangedState}
       />
-      <PaginationComponent 
+      <PaginationComponent
         responseData={vacanciesResponseData}
         listItemsLimit={VACANCY_LIST_LIMIT}
-        paginationClass='vacancies-pagination-section'
+        paginationClass="vacancies-pagination-section"
+        requestUrl={clientUrl}
+        setRequestUrl={setClientUrl}
       />
       <VacancyFilterComponent
         vacancyFilterDisplayValue={vacancyFilterDisplayValue}

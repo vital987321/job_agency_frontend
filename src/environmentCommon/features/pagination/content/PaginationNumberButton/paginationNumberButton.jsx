@@ -37,10 +37,10 @@ export const PaginationNumberButton=(props)=>{
         }
 
         const paginationButtonHandler = (e) => {
-            console.log(e)
             const paginationNumber = e.target.textContent
             const newOffsetValue=((paginationNumber - 1) * listItemsLimit)
-            const updatedUrl=changeUrlParam(requestUrl, 'offset', newOffsetValue)
+          const updatedUrl = changeUrlParam(requestUrl, 'offset', newOffsetValue)
+
             setRequestUrl(updatedUrl)
 
 
