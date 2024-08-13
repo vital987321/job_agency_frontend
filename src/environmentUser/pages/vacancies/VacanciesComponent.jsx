@@ -13,7 +13,7 @@ import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
 import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
-import { redirect } from "react-router-dom";
+
 
 
 export const VacanciesComponent = (props) => {
@@ -22,19 +22,22 @@ export const VacanciesComponent = (props) => {
   const [listVacanciesRequestUrl, setListVacanciesRequestUrl] = useState(
     LIST_VACANCIES_BASE_URL
   );
-  const [clientUrl, setClientUrl] = useState(window.location.href);
-  
+  const [currentClientUrl, setCurrentClientUrl] = useState(window.location.href);
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    // This hook is nesessary due to filter
+    setCurrentClientUrl(window.location.href)
+  },[window.location.href])
+
   useEffect(() => {
-    if (clientUrl !== window.location.href) {
-      console.log(clientUrl);
-      console.log("clientUrl is changed");
-      redirect(clientUrl);
+    if (currentClientUrl !== window.location.href) {
+      const params=new URL(currentClientUrl).searchParams
+      navigate(`/vacancies?${params.toString()}`);
     }
-  }, [clientUrl]);
+  }, [currentClientUrl]);
 
   const filterButtonHandler = () => {
     setVacancyFilterDisplayValue("flex");
@@ -102,14 +105,13 @@ export const VacanciesComponent = (props) => {
       <ListVacanciesComponent
         listVacanciesRequestUrl={listVacanciesRequestUrl}
         setVacanciesResponseData={setVacanciesResponseData}
-        // vacancyListChangedState={props.vacancyListChangedState}
       />
       <PaginationComponent
         responseData={vacanciesResponseData}
         listItemsLimit={VACANCY_LIST_LIMIT}
         paginationClass="vacancies-pagination-section"
-        requestUrl={clientUrl}
-        setRequestUrl={setClientUrl}
+        urlState={currentClientUrl}
+        setUrlState={setCurrentClientUrl}
       />
       <VacancyFilterComponent
         vacancyFilterDisplayValue={vacancyFilterDisplayValue}

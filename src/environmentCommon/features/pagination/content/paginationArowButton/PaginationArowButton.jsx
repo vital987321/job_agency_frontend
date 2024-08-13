@@ -1,38 +1,27 @@
 import styles from "./paginationArowButton.module.css";
-import { useNavigate } from "react-router-dom";
+import { changeUrlParam } from "../../../../../services/utils/changeUrlParam";
 
 export const PaginationArowButton = (props) => {
-  const direction = props.direction; /*previous or next*/
+  const direction = props.direction; /*'previous' or 'next'*/
   const responseData = props.responseData;
-  const setRequestUrl=props.setRequestUrl
-  const navigate = useNavigate();
+  const setUrlState = props.setUrlState;
+  const urlState = props.urlState;
+
+
 
   const paginationButtonHandler = (e) => {
     const paginationDirection = e.target.dataset.direction;
-    
-    if (setRequestUrl){
-      setRequestUrl(responseData[paginationDirection])
-    }
-    else {
-      const requestQueryString=getQueryString(responseData[paginationDirection])
-      navigate("?" + requestQueryString);
-    }
+    const requestUrl = new URL(responseData[paginationDirection]);
+    const newOffsetValue = requestUrl.searchParams.get("offset");
+    const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
+    setUrlState(updatedUrl);
   };
 
-  const getQueryString = (urlString) => {
-    if (urlString) {
-      const queryString = urlString.split("?")[1];
-      if (queryString) {
-        return queryString;
-      }
-    }
-    return "";
-  };
 
   if (responseData[direction] !== null) {
     return (
       <button
-        className={styles["vacancies-pagination-button"]}
+        className={styles["pagination-button"]}
         onClick={paginationButtonHandler}
         data-direction={direction}
       >
@@ -41,44 +30,3 @@ export const PaginationArowButton = (props) => {
     );
   }
 };
-
-
-
-
-// Previous version
-
-// import styles from "./paginationArowButton.module.css";
-// import { useNavigate } from "react-router-dom";
-
-// export const PaginationArowButton = (props) => {
-//   const direction = props.direction; /*previous or next*/
-//   const responseData = props.responseData;
-//   const navigate = useNavigate();
-
-//   const paginationButtonHandler = (e) => {
-//     const paginationDirection = e.target.dataset.direction;
-//     navigate("?" + getQueryString(responseData[paginationDirection]));
-//   };
-
-//   const getQueryString = (urlString) => {
-//     if (urlString) {
-//       const queryString = urlString.split("?")[1];
-//       if (queryString) {
-//         return queryString;
-//       }
-//     }
-//     return "";
-//   };
-
-//   if (responseData[direction] !== null) {
-//     return (
-//       <button
-//         className={styles["vacancies-pagination-button"]}
-//         onClick={paginationButtonHandler}
-//         data-direction={direction}
-//       >
-//         {direction === "previous" ? "< Previous" : "Next >"}
-//       </button>
-//     );
-//   }
-// };

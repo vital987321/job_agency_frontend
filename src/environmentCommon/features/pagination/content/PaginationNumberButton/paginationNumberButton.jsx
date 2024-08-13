@@ -1,146 +1,57 @@
-import styles from "./paginationNumberButton.module.css"
+import styles from "./paginationNumberButton.module.css";
 import { useSearchParams } from "react-router-dom";
 import { changeUrlParam } from "../../../../../services/utils/changeUrlParam";
 
+export const PaginationNumberButton = (props) => {
+  // props
+  const responseData = props.responseData;
+  const listItemsLimit = props.listItemsLimit;
+  const setUrlState = props.setUrlState;
+  const urlState = props.urlState;
 
-export const PaginationNumberButton=(props)=>{
-    const responseData=props.responseData
-    const itemsTotalNumber = responseData.count
-    const listItemsLimit=props.listItemsLimit
-    const setRequestUrl=props.setRequestUrl 
-    const requestUrl=props.requestUrl
+  const itemsTotalNumber = responseData.count;
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    const [searchParams, setSearchParams] = useSearchParams();
+  if (itemsTotalNumber <= listItemsLimit) {
+    return "";
+  }
 
-    if (itemsTotalNumber > listItemsLimit) {
-        let paginationArray = new Array();
-        const currentOffset = searchParams.get("offset")
-          ? searchParams.get("offset")
-          : "0";
-        const currentPaginationNumber =
-          Math.floor(currentOffset / listItemsLimit) + 1;
-        const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-        const maxPaginationNumber = Math.min(
-          currentPaginationNumber + 3,
-          Math.ceil(itemsTotalNumber / listItemsLimit)
-        );
-  
-        for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-          paginationArray.push(i);
-        }
+  let paginationArray = new Array();
 
+  let currentOffset=new URL(urlState).searchParams.get('offset')
+  currentOffset = currentOffset ? currentOffset: "0";
 
-        const paginationQueryString=(offsetValue)=>{
-            const tempSearchParams=new URLSearchParams(searchParams.toString())
-            tempSearchParams.set('offset', offsetValue)
-            return tempSearchParams.toString()
-        }
+  const currentPaginationNumber =
+    Math.floor(currentOffset / listItemsLimit) + 1;
+  const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
+  const maxPaginationNumber = Math.min(
+    currentPaginationNumber + 3,
+    Math.ceil(itemsTotalNumber / listItemsLimit)
+  );
 
-        const paginationButtonHandler = (e) => {
-            const paginationNumber = e.target.textContent
-            const newOffsetValue=((paginationNumber - 1) * listItemsLimit)
-          const updatedUrl = changeUrlParam(requestUrl, 'offset', newOffsetValue)
+  for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
+    paginationArray.push(i);
+  }
 
-            setRequestUrl(updatedUrl)
+  const paginationButtonHandler = (e) => {
+    const paginationNumber = e.target.textContent;
+    const newOffsetValue = (paginationNumber - 1) * listItemsLimit;
+    const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
+    setUrlState(updatedUrl);
+  };
 
-
-            
-            // if (setCustomState){
-            //   setCustomState(responseData[paginationDirection])
-            // }
-            // else {
-            //   const requestQueryString=getQueryString(responseData[paginationDirection])
-            //   navigate("?" + requestQueryString);
-            // }
-          };
-
+  return (
+    <>
+      {paginationArray.map((item) => {
+        const isCurrent=(item==currentPaginationNumber)
         return (
-          <>
-            {paginationArray.map((item) => {
-              return (
-              <>
-              <button
-                onClick={paginationButtonHandler}
-              >
-                {item}
-              </button>
-                <a
-                  key={item}
-                  className={`${styles["vacancies-pagination-link"]} ${
-                    item == currentPaginationNumber
-                    ? styles["current-vacancy-pagination-link"]
-                    :""
-                    }`}
-                    href={"?" + paginationQueryString((item - 1) * listItemsLimit)}
-                >
-                  {item}
-                </a>
-              </>
-                
-              );
-            })}
-          </>
+          <button key={item}
+          className={`${styles.paginationButton} ${isCurrent? styles.paginationButtonCurrent:""}`}
+          onClick={paginationButtonHandler}>
+            {item}
+          </button>
         );
-      }
-      return "";
-}
-
-
-// Previous version
-// import styles from "./paginationNumberButton.module.css"
-// import { useSearchParams } from "react-router-dom";
-
-
-// export const PaginationNumberButton=(props)=>{
-//     const responseData=props.responseData
-//     const itemsTotalNumber = responseData.count;
-//     const listItemsLimit=props.listItemsLimit 
-
-//     const [searchParams, setSearchParams] = useSearchParams();
-
-//     if (itemsTotalNumber > listItemsLimit) {
-//         let paginationArray = new Array();
-//         const currentOffset = searchParams.get("offset")
-//           ? searchParams.get("offset")
-//           : "0";
-//         const currentPaginationNumber =
-//           Math.floor(currentOffset / listItemsLimit) + 1;
-//         const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-//         const maxPaginationNumber = Math.min(
-//           currentPaginationNumber + 3,
-//           Math.ceil(itemsTotalNumber / listItemsLimit)
-//         );
-  
-//         for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-//           paginationArray.push(i);
-//         }
-
-
-//         const paginationQueryString=(offsetValue)=>{
-//             const tempSearchParams=new URLSearchParams(searchParams.toString())
-//             tempSearchParams.set('offset', offsetValue)
-//             return tempSearchParams.toString()
-//         }
-
-//         return (
-//           <>
-//             {paginationArray.map((item) => {
-//               return (
-//                 <a
-//                   key={item}
-//                   className={`${styles["vacancies-pagination-link"]} ${
-//                     item == currentPaginationNumber
-//                     ? styles["current-vacancy-pagination-link"]
-//                     :""
-//                     }`}
-//                     href={"?" + paginationQueryString((item - 1) * listItemsLimit)}
-//                 >
-//                   {item}
-//                 </a>
-//               );
-//             })}
-//           </>
-//         );
-//       }
-//       return "";
-// }
+      })}
+    </>
+  );
+};

@@ -1,14 +1,14 @@
 @import '../../../../../data/constants.css';
 
-.vacancies-pagination-link{
-    text-decoration: none;
-    border: solid 1px gray;
+.paginationButton{
+    /* text-decoration: none; */
+    border: solid 1px grey;
     margin-left: 10px;
-    padding: 2px 4px;
+    padding: 3px 4px 2px;
     border-radius: 3px;
     color: black;
 }
 
-.current-vacancy-pagination-link{
+.paginationButtonCurrent{
     background-color: var(--button-general-background-color3);
 }

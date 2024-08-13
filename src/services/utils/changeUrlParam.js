@@ -5,16 +5,24 @@
  * @param {string} paramValue 
  * @returns {string} udpated url
  * 
- * function replace (or adds if not exists) a value for specified QueryParameter in a given URL. 
+ * function replace (or adds if not exists) a value for specified QueryParameter in a given URL.
+ * If paramValue=Null then rerurns url string without paramKey 
  */
 
 export const changeUrlParam=(url, paramKey, paramValue)=>{
+
     url=new URL(url)
     const origin=url.origin
     const pathname=url.pathname
     const params=new URLSearchParams(url.search)
-
-    params.set(paramKey, paramValue)
-    const newUrl= new URL(`${origin}${pathname}?${params.toString()}`)
+    if (paramValue==null) {
+        params.delete(paramKey)
+    }
+    else {
+        params.set(paramKey, paramValue)
+    }
+        
+    const parmsString=params.toString()? (`?${params.toString()}`) : ''
+    const newUrl= new URL(`${origin}${pathname}${parmsString}`)
     return newUrl.toString()
 }
