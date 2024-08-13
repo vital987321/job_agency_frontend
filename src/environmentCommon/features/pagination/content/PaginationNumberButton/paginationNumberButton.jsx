@@ -35,7 +35,8 @@ export const PaginationNumberButton = (props) => {
 
   const paginationButtonHandler = (e) => {
     const paginationNumber = e.target.textContent;
-    const newOffsetValue = (paginationNumber - 1) * listItemsLimit;
+    let newOffsetValue = (paginationNumber - 1) * listItemsLimit;
+    newOffsetValue=newOffsetValue!==0? newOffsetValue : null
     const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
     setUrlState(updatedUrl);
   };

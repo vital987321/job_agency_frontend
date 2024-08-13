@@ -1,0 +1,25 @@
+.admin-vacancies-container{
+    position: relative;
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
+    padding-bottom: 40px;
+}
+
+.new-vacancy-button-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.admin-vacancies-list-section{
+    margin-top: 2rem;
+}
+
+.vacancies-pagination-section{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: end;
+}
+
+
+
