@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./listUserApplications.css";
+import styles from "./listUserApplications.module.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
-import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants.js";
+import { LIST_APPLICATIONS_BASE_URL, USER_LIST_ITEMS_LIMIT } from "../../../../../data/constants.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../environmentCommon/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
 import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1.jsx";
+import { PaginationComponent } from "../../../../../environmentCommon/features/pagination/Pagination.jsx";
 
 export const ListUserApplicationsComponent = () => {
   const [applicationsListData, setApplicationsListData] = useState([]);
@@ -51,12 +52,12 @@ export const ListUserApplicationsComponent = () => {
   };
 
   return (
-    <section className="list-applications-container">
-      <table className="list-applications-table">
+    <section className={styles["list-applications-container"]}>
+      <table className={styles["list-applications-table"]}>
         <tbody>
           {applicationsListData.map((application) => {
             return (
-              <tr className="applications-table-tr" key={application.id}>
+              <tr className={styles["applications-table-tr"]} key={application.id}>
                 <td>
                   {application.vacancy_details.name.length < 30
                     ? application.vacancy_details.name
@@ -65,7 +66,7 @@ export const ListUserApplicationsComponent = () => {
                 <td>{application.vacancy_details.salary} CZK</td>
                 <td>{application.vacancy_details.location}</td>
                 <td>
-                  <span className="application-status">
+                  <span className={styles["application-status"]}>
                     {application.status}
                   </span>
                   <ApplicationStatusMarker status={application.status} />
@@ -75,7 +76,6 @@ export const ListUserApplicationsComponent = () => {
                 <td>
                   <Link
                     to={"/applications/" + application.id}
-                    className="details-link"
                   >
                     <ButtonType1
                       value='Details'
@@ -88,28 +88,13 @@ export const ListUserApplicationsComponent = () => {
           })}
         </tbody>
       </table>
-      <div className="applications-list-pagination-container">
-        {applicationsResponseData.previous ? (
-          <button
-            onClick={paginationButtonHandler}
-            data-direction="previous"
-            id="previousApplicationsButton"
-            className="applications-pagination-button"
-          >
-            {"<"} Previous
-          </button>
-        ) : null}
-        {applicationsResponseData.next ? (
-          <button
-            onClick={paginationButtonHandler}
-            data-direction="next"
-            id="nextApplicationsButton"
-            className="applications-pagination-button"
-          >
-            Next {">"}
-          </button>
-        ) : null}
-      </div>
+      <PaginationComponent
+          responseData={applicationsResponseData}
+          listItemsLimit={USER_LIST_ITEMS_LIMIT}
+          urlState={applicationsListRequestUrl}
+          setUrlState={setApplicationListRequestUrl}
+          paginationClass={styles["applications-list-pagination-container"]}
+        />
     </section>
   );
 };

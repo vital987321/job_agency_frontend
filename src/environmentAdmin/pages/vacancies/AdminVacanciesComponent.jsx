@@ -5,7 +5,6 @@ import "./adminVacancies.css";
 import React from "react";
 import {
   LIST_VACANCIES_BASE_URL,
-  VACANCY_LIST_LIMIT,
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
 } from "../../../data/constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
@@ -106,17 +105,17 @@ export const AdminVacanciesComponent = (props) => {
 
   const PaginationNumberedLinks = () => {
     const vacanciesTotalNumber = vacanciesResponseData.count;
-    if (vacanciesTotalNumber > VACANCY_LIST_LIMIT) {
+    if (vacanciesTotalNumber > ADMIN_LIST_ITEMS_LIMIT_DEFAULT) {
       let paginationArray = new Array();
       const currentOffset = searchParams.get("offset")
         ? searchParams.get("offset")
         : "0";
       const currentPaginationNumber =
-        Math.floor(currentOffset / VACANCY_LIST_LIMIT) + 1;
+        Math.floor(currentOffset / ADMIN_LIST_ITEMS_LIMIT_DEFAULT) + 1;
       const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
       const maxPaginationNumber = Math.min(
         currentPaginationNumber + 3,
-        Math.ceil(vacanciesTotalNumber / VACANCY_LIST_LIMIT)
+        Math.ceil(vacanciesTotalNumber / ADMIN_LIST_ITEMS_LIMIT_DEFAULT)
       );
 
       for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
@@ -137,7 +136,7 @@ export const AdminVacanciesComponent = (props) => {
                 href={
                   "?" +
                   generateListVacanciesRequestQueryString(
-                    (item - 1) * VACANCY_LIST_LIMIT
+                    (item - 1) * ADMIN_LIST_ITEMS_LIMIT_DEFAULT
                   )
                 }
               >

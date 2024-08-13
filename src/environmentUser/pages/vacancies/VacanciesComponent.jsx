@@ -3,7 +3,7 @@ import "../../../css/commonElements.css";
 import "./vacancies.css";
 import {
   LIST_VACANCIES_BASE_URL,
-  VACANCY_LIST_LIMIT,
+  USER_LIST_ITEMS_LIMIT,
 } from "../../../data/constants.js";
 import filterIcon from "../../../assets/svg/settings.svg";
 import { ListVacanciesComponent } from "../../components/listVacancies/ListVacanciesComponent.jsx";
@@ -46,7 +46,7 @@ export const VacanciesComponent = (props) => {
   const generateListVacanciesRequestURL = () => {
     return (
       // LIST_VACANCIES_BASE_URL + "?" + generateListVacanciesRequestQueryString()
-      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, VACANCY_LIST_LIMIT)
+      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, USER_LIST_ITEMS_LIMIT)
     );
   };
 
@@ -108,7 +108,7 @@ export const VacanciesComponent = (props) => {
       />
       <PaginationComponent
         responseData={vacanciesResponseData}
-        listItemsLimit={VACANCY_LIST_LIMIT}
+        listItemsLimit={USER_LIST_ITEMS_LIMIT}
         paginationClass="vacancies-pagination-section"
         urlState={currentClientUrl}
         setUrlState={setCurrentClientUrl}

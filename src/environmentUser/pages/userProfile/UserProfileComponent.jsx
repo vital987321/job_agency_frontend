@@ -10,6 +10,7 @@ import {
   AVATAR_FILE_SIZE_LIMIT,
   CV_FILE_SIZE_LIMIT,
 } from "../../../data/constants";
+import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination";
 
 const cvInputRef = React.createRef();
 const avatarInputRef = React.createRef();
@@ -388,6 +389,7 @@ export const UserProfileComponent = () => {
       <section className="profile-sent-applications-section">
         <h3 className="profile-sent-applications-header">My Applications</h3>
         <ListUserApplicationsComponent />
+        
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import { ListVacanciesComponent } from "../../../../components/listVacancies/ListVacanciesComponent";
-import { LIST_VACANCIES_BASE_URL, VACANCY_LIST_LIMIT } from "../../../../../data/constants";
+import { LIST_VACANCIES_BASE_URL, USER_LIST_ITEMS_LIMIT } from "../../../../../data/constants";
 import { useState } from "react";
 import { PaginationComponent } from "../../../../../environmentCommon/features/pagination/Pagination";
 import styles from "./vacanciesFavourites.module.css";
@@ -21,7 +21,7 @@ export const VacanciesFavouritesComponent = (props) => {
       />
       <PaginationComponent 
         responseData={vacanciesResponseData}
-        listItemsLimit={VACANCY_LIST_LIMIT}
+        listItemsLimit={USER_LIST_ITEMS_LIMIT}
         urlState={listVacanciesRequestUrl}
         setUrlState={setListVacanciesRequestUrl}
         paginationClass={styles["vacancies-favourite-pagination-container"]}

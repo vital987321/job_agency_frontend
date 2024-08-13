@@ -1,0 +1,32 @@
+
+
+
+.list-applications-table{
+    margin-top: 2px;
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+.applications-table-tr{
+    border-bottom: 1px solid grey;
+    
+}
+
+.applications-table-tr td{
+    padding: 10px 0;
+}
+
+.applications-table-tr td:first-child{
+    font-weight: bold;
+  }
+
+.application-status{
+    display: inline-block;
+    width: 4rem;
+}
+
+.applications-list-pagination-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}

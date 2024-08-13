@@ -52,7 +52,7 @@ export const WORKING_HOURS=[
 export const SALARY_CEILING=150000
 export const FILTER_POINTER_SIZE=20
 
-export const VACANCY_LIST_LIMIT=10
+export const USER_LIST_ITEMS_LIMIT=10
 
 export const ADMIN_LIST_ITEMS_LIMIT_DEFAULT=10
 
