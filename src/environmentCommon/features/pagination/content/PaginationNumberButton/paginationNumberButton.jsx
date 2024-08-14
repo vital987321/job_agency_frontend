@@ -9,30 +9,13 @@ export const PaginationNumberButton = (props) => {
   const setUrlState = props.setUrlState;
   const urlState = props.urlState;
 
-  const itemsTotalNumber = responseData.count;
+  // hooks
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (itemsTotalNumber <= listItemsLimit) {
-    return "";
-  }
+  // variables
+  const itemsTotalNumber = responseData.count;
 
-  let paginationArray = new Array();
-
-  let currentOffset=new URL(urlState).searchParams.get('offset')
-  currentOffset = currentOffset ? currentOffset: "0";
-
-  const currentPaginationNumber =
-    Math.floor(currentOffset / listItemsLimit) + 1;
-  const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-  const maxPaginationNumber = Math.min(
-    currentPaginationNumber + 3,
-    Math.ceil(itemsTotalNumber / listItemsLimit)
-  );
-
-  for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-    paginationArray.push(i);
-  }
-
+  // functions
   const paginationButtonHandler = (e) => {
     const paginationNumber = e.target.textContent;
     let newOffsetValue = (paginationNumber - 1) * listItemsLimit;
@@ -40,6 +23,26 @@ export const PaginationNumberButton = (props) => {
     const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
     setUrlState(updatedUrl);
   };
+
+  // Pagination condition
+  if (itemsTotalNumber <= listItemsLimit) {
+    return "";
+  }
+
+  // Main Body (condition met)
+  let paginationArray = new Array();
+  let currentOffset=new URL(urlState).searchParams.get('offset')
+  currentOffset = currentOffset ? currentOffset: "0";
+  const currentPaginationNumber =
+    Math.floor(currentOffset / listItemsLimit) + 1;
+  const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
+  const maxPaginationNumber = Math.min(
+    currentPaginationNumber + 3,
+    Math.ceil(itemsTotalNumber / listItemsLimit)
+  );
+  for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
+    paginationArray.push(i);
+  }
 
   return (
     <>

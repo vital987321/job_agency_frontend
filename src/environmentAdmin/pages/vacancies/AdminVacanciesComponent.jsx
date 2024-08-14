@@ -26,7 +26,7 @@ export const AdminVacanciesComponent = (props) => {
   );
   const navigate = useNavigate();
 
-  const vacanciesOnPage = localStorage.getItem("AdminListItemsOnPage")
+  const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")
     : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
 
@@ -49,7 +49,7 @@ export const AdminVacanciesComponent = (props) => {
       ? localStorage.getItem("AdminListItemsOnPage")
       : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
     return (
-      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, vacanciesOnPage)
+      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, listItemsOnPage)
     );
   };
 
@@ -90,7 +90,7 @@ export const AdminVacanciesComponent = (props) => {
         />
         <PaginationComponent
           responseData={vacanciesResponseData}
-          listItemsLimit={vacanciesOnPage}
+          listItemsLimit={listItemsOnPage}
           paginationClass={styles["vacancies-pagination-section"]}
           urlState={currentClientUrl}
           setUrlState={setCurrentClientUrl}

@@ -1,77 +1,52 @@
 import { AdminApplicationsListComponent } from "./context/adminApplicationsList/AdminApplicationsListComponent.jsx";
-import "./adminApplications.css";
-import closeIcon from "../../../assets/svg/X.svg";
+import styles from "./adminApplications.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AdminApplicatiosFilterComponent } from "./context/adminApplicationsFilter/AdminApplicationsFilterComponet.jsx";
 import {
   LIST_APPLICATIONS_BASE_URL,
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
 } from "../../../data/constants.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination.jsx";
+import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
 
 export const AdminApplicationsComponent = () => {
+  
+  // Hooks
   const [searchParams, setSearchParams] = useSearchParams();
   const [adminApplicationListRequestUrl, setAdminApplicationListRequestUrl] =
     useState(LIST_APPLICATIONS_BASE_URL);
+  const [currentClientUrl, setCurrentClientUrl] = useState(
+    window.location.href
+  );
+  const [applicationsResponseData, setApplicationsResponseData] = useState({});
+  const navigate = useNavigate();
 
+  // variables
+  const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
+    ? localStorage.getItem("AdminListItemsOnPage")
+    : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
+
+  // UseEffects
+  useEffect(() => {
+    // This hook is nesessary due to filter
+    setCurrentClientUrl(window.location.href);
+  }, [window.location.href]);
+
+  useEffect(() => {
+    if (currentClientUrl !== window.location.href) {
+      const params = new URL(currentClientUrl).searchParams;
+      navigate(`?${params.toString()}`);
+    }
+  }, [currentClientUrl]);
+
+  // functions
   const generateAdminListApplicationsRequestURL = () => {
     return (
       LIST_APPLICATIONS_BASE_URL +
       "?" +
-      generateAdminListApplicationsRequestQueryString()
+      generateRequestQueryString(searchParams, listItemsOnPage)
     );
-  };
-  const [applicationsResponseData, setApplicationsResponseData] = useState({});
-  const navigate = useNavigate();
-
-  const generateAdminListApplicationsRequestQueryString = (offset) => {
-    let qstr = "";
-
-    const ApplicationsOnPage = localStorage.getItem("AdminListItemsOnPage")
-      ? localStorage.getItem("AdminListItemsOnPage")
-      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
-    qstr += searchParams.get("limit")
-      ? "limit=" + searchParams.get("limit")
-      : "limit=" + ApplicationsOnPage;
-    if (isNaN(offset)) {
-      qstr += searchParams.get("offset")
-        ? "&offset=" + searchParams.get("offset")
-        : "&offset=0";
-    } else {
-      qstr += "&offset=" + offset;
-    }
-
-    let idParam = searchParams.get("id");
-    qstr += idParam ? "&id=" + idParam : "";
-
-    let vacancyIdParam = searchParams.get("vacancy_id");
-    qstr += vacancyIdParam ? "&vacancy_id=" + vacancyIdParam : "";
-
-    let emailParam = searchParams.get("email");
-    qstr += emailParam ? "&email=" + emailParam : "";
-
-    let statusParam = searchParams.get("status");
-    qstr += statusParam ? "&status=" + statusParam : "";
-
-    let vacancyNameParam = searchParams.get("vacancy_name");
-    qstr += vacancyNameParam ? "&vacancy_name=" + vacancyNameParam : "";
-
-    let companyParam = searchParams.get("company");
-    qstr += companyParam ? "&company=" + companyParam : "";
-
-    let userIdParam = searchParams.get("user_id");
-    qstr += userIdParam ? "&user_id=" + userIdParam : "";
-
-    let firstNameParam = searchParams.get("first_name");
-    qstr += firstNameParam ? "&first_name=" + firstNameParam : "";
-
-    let lastNameParam = searchParams.get("last_name");
-    qstr += lastNameParam ? "&last_name=" + lastNameParam : "";
-
-    let phoneParam = searchParams.get("phone");
-    qstr += phoneParam ? "&phone=" + phoneParam : "";
-
-    return qstr;
   };
 
   const updateAdminListApplicationsRequestURL = () => {
@@ -81,79 +56,13 @@ export const AdminApplicationsComponent = () => {
     }
   };
 
+  // Main Body
   updateAdminListApplicationsRequestURL();
 
-  const PaginationNumberedLinks = () => {
-    const applivationsTotalNumber = applicationsResponseData.count;
-    const applicationsOnPage = localStorage.getItem("ApplicationsOnPage")
-      ? localStorage.getItem("ApplicationsOnPage")
-      : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
-    if (applivationsTotalNumber > applicationsOnPage) {
-      let paginationArray = new Array();
-      const currentOffset = searchParams.get("offset")
-        ? searchParams.get("offset")
-        : "0";
-      const currentPaginationNumber =
-        Math.floor(currentOffset / applicationsOnPage) + 1;
-      const minPaginationNumber = Math.max(1, currentPaginationNumber - 3);
-      const maxPaginationNumber = Math.min(
-        currentPaginationNumber + 3,
-        Math.ceil(applivationsTotalNumber / applicationsOnPage)
-      );
-      for (let i = minPaginationNumber; i <= maxPaginationNumber; i++) {
-        paginationArray.push(i);
-      }
-      return (
-        <>
-          {paginationArray.map((item) => {
-            return (
-              <a
-                key={item}
-                className={
-                  "applications-pagination-link" +
-                  (item == currentPaginationNumber
-                    ? " current-aplications-pagination-link"
-                    : "")
-                }
-                href={
-                  "?" +
-                  generateAdminListApplicationsRequestQueryString(
-                    (item - 1) * applicationsOnPage
-                  )
-                }
-              >
-                {item}
-              </a>
-            );
-          })}
-        </>
-      );
-    }
-    return "";
-  };
-
-  const getQueryString = (urlString) => {
-    if (urlString) {
-      const queryString = urlString.split("?")[1];
-      if (queryString) {
-        return queryString;
-      }
-    }
-    return "";
-  };
-
-  const paginationButtonHandler = (e) => {
-    const paginationDirection =
-      e.target.id === "previousApplicationsButton" ? "previous" : "next";
-    navigate(
-      "?" + getQueryString(applicationsResponseData[paginationDirection])
-    );
-  };
-
   return (
-    <div className="admin-applications-container">
+    <div className={styles["admin-applications-container"]}>
       <AdminApplicatiosFilterComponent />
-      <div className="admin-applications-list-container">
+      <div className={styles["admin-applications-list-container"]}>
         <div>Found: {applicationsResponseData.count} </div>
         <h2 className="h2-common">Applications</h2>
         <AdminApplicationsListComponent
@@ -161,41 +70,13 @@ export const AdminApplicationsComponent = () => {
           setApplicationsResponseData={setApplicationsResponseData}
         />
       </div>
-      <section className="admin-applications-pagination-section">
-        <div className="admin-applications-pagination-previous-container">
-          {(() => {
-            if (applicationsResponseData.previous !== null) {
-              return (
-                <button
-                  id="previousApplicationsButton"
-                  className="applications-pagination-button"
-                  onClick={paginationButtonHandler}
-                >
-                  {"<"} Previous
-                </button>
-              );
-            }
-          })()}
-        </div>
-
-        <PaginationNumberedLinks />
-
-        <div className="admin-applications-pagination-next-container">
-          {(() => {
-            if (applicationsResponseData.next !== null) {
-              return (
-                <button
-                  id="nextApplicationsButton"
-                  className="applications-pagination-button"
-                  onClick={paginationButtonHandler}
-                >
-                  Next {">"}
-                </button>
-              );
-            }
-          })()}
-        </div>
-      </section>
+      <PaginationComponent
+        responseData={applicationsResponseData}
+        listItemsLimit={listItemsOnPage}
+        paginationClass={styles["admin-applications-pagination-section"]}
+        urlState={currentClientUrl}
+        setUrlState={setCurrentClientUrl}
+      />
     </div>
   );
 };
