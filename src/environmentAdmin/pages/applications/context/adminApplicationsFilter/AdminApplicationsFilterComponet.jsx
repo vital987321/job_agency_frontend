@@ -207,7 +207,7 @@ export const AdminApplicatiosFilterComponent = () => {
                 ref={emailRef}
               />
             </div>
-            <div className="admin-list-items-filter-input-container">
+            {/* <div className="admin-list-items-filter-input-container">
               <label htmlFor="application-filter-status-input">Status</label>
               <input
                 className="admin-list-items-filter-input"
@@ -215,6 +215,19 @@ export const AdminApplicatiosFilterComponent = () => {
                 type="text"
                 ref={statusRef}
               />
+            </div> */}
+            <div className="admin-list-items-filter-input-container">
+              <label htmlFor="application-filter-status-select">Status</label>
+              <select
+                className="admin-list-items-filter-input"
+                id="application-filter-status-select"
+                ref={statusRef}
+              >
+                <option value=""></option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+              </select>
             </div>
           </div>
 

@@ -80,7 +80,7 @@ FRONTEND:
                 [x] Pagination component shall use its own function paginationQueryString. Not generateListVacanciesRequestQueryString
                 [x] Check if there is a possibility to simplify generateListVacanciesRequestQueryString function by using URLSearchParams methods.
         [x] switch from global css to module.css
-        [ ] Admin Applications. Change Status filter input to select.
+        [x] Admin Applications. Change Status filter input to select.
 
 
 
