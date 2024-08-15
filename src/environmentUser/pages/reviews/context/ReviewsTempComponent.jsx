@@ -1,15 +1,15 @@
-import "./reviews.css";
-import clientPhoto1 from "../../../assets/img/clients/c1.jpg";
-import clientPhoto2 from "../../../assets/img/clients/c2.jpg";
-import clientPhoto3 from "../../../assets/img/clients/c3.jpg";
-import clientPhoto4 from "../../../assets/img/clients/c4.jpg";
-import clientPhoto5 from "../../../assets/img/clients/c5.jpg";
-import clientPhoto6 from "../../../assets/img/clients/c6.jpg";
-import clientPhoto7 from "../../../assets/img/clients/c7.jpg";
-import clientPhoto8 from "../../../assets/img/clients/c8.jpg";
+import "./reviewsTemp.css";
+import clientPhoto1 from "../../../../assets/img/clients/c1.jpg";
+import clientPhoto2 from "../../../../assets/img/clients/c2.jpg";
+import clientPhoto3 from "../../../../assets/img/clients/c3.jpg";
+import clientPhoto4 from "../../../../assets/img/clients/c4.jpg";
+import clientPhoto5 from "../../../../assets/img/clients/c5.jpg";
+import clientPhoto6 from "../../../../assets/img/clients/c6.jpg";
+import clientPhoto7 from "../../../../assets/img/clients/c7.jpg";
+import clientPhoto8 from "../../../../assets/img/clients/c8.jpg";
 
 
-export const ReviewsComponent = () => {
+export const ReviewsTempComponent = () => {
   return (
     <section className="reviews-section">
       <h1 className="review-section-header">Clients Reviews</h1>

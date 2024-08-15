@@ -1,4 +1,4 @@
-@import '../../../data/constants.css';
+@import '../../../../../data/constants.css';
 
 .reviews-section {
     margin-top: 50px;
@@ -28,9 +28,7 @@
     box-sizing: border-box;
 }
 
-.review-card-photo{
-    width: 100px;
-    border-radius: 50%;
+.avatar-container{
     position: absolute;
     left:10px;
     top: -50px;
@@ -45,9 +43,4 @@
 
 .review-card-text{
     margin-top: 20px;
-}
-
-.review-subfooter{
-    text-align: center;
-    margin-top: 50px;
 }

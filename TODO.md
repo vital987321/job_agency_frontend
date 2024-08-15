@@ -10,7 +10,8 @@ BACKEND:
             probably similar isue for user area. Check VacancyListDjangoFilterBackend
     [ ] permitions to admin environment
     [ ] Admin can see only his own applications. Fix it.
-    [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
+    [x] Add Review model to backend.
+        [ ] Permissions to Review
     [ ] Permissions
         [ ]
 
@@ -57,6 +58,12 @@ FRONTEND:
         [x] for user add the possibility to add Vacancy to favorite list
         [x] list of favourite vacancies in user profile page.
         [x] bug on the homepage. Vacancy Details button leads to incorrect url.
+        [ ] Add User reviews
+            [ ] Reviews page consists of 8 last reviws, paginations, total number of rewies, average rating mark, button to leave a review.
+            [ ] user may leave only one review (Forein key)
+            [ ] if user have a review, Write-Review button diassapears. Find_My_Review button is awailable
+            [ ] Buttons edit and Delete are available on the users review.
+            [ ] Buttons are awailabe for registerd users only
     Common Environment
         [ ] Reviews. User writes a review, admin Approves or rejects the review.
             [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
@@ -67,20 +74,24 @@ FRONTEND:
         [x] Think of default sorting order
         [x] think of todo handling
         [x] Rearchitecture the project.
-        [ ] Break components into smaller sub components
+        [+] Break components into smaller sub components
             [x] application ststus component
             [x] Button component
                 [x] AdminApplicationComponent. Looks like I need two more props to add to ButtonType1: className and data-userData (data-status).
-            [ ] Input file button
-            [ ] X button (Close)
-            [ ] X button (Delete)
+            [?] Input file button
+            [?] X button (Close)
+            [?] X button (Delete)
             [x] favourite Button
-            [ ] Pagination component
+            [x] Pagination component
                 [x] seperate generateListVacanciesRequestQueryString function (https://builtin.com/articles/urlsearchparams)
                 [x] Pagination component shall use its own function paginationQueryString. Not generateListVacanciesRequestQueryString
                 [x] Check if there is a possibility to simplify generateListVacanciesRequestQueryString function by using URLSearchParams methods.
         [x] switch from global css to module.css
         [x] Admin Applications. Change Status filter input to select.
+        [ ] Adapvive design
+        [ ] Add Users section to Admin side bar
+            [ ] posibbility to block user permanentely or temporaryly
+        [ ] Add Reviews section to Admin side bar
 
 
 

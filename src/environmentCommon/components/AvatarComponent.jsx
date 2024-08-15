@@ -2,8 +2,6 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
-// import userPhoto from "../img/clients/c1.jpg"
-
 export const AvatarComponent = (props) => {
   const [size, setSize] = React.useState(props.size);
 

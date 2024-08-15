@@ -10,7 +10,7 @@ import { UserApplicationComponent } from "../environmentUser/pages/userProfile/c
 import { AboutUsComponent } from "../environmentUser/pages/aboutUs/AboutUsComponent";
 import { CertificatesComponent } from "../environmentUser/pages/certificates/CertificatesComponent";
 import { ContactsComponent } from "../environmentUser/pages/contacts/ContactsComponent";
-import { ReviewsComponent } from "../environmentUser/pages/reviews/ReviewsComponent";
+import { ReviewsComponent } from "../environmentUser/pages/reviews/Reviews";
 import { BodyComponent } from "../environmentUser/layout/BodyComponent";
 
 export const UserAreaRouter = (
