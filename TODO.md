@@ -59,11 +59,12 @@ FRONTEND:
         [x] list of favourite vacancies in user profile page.
         [x] bug on the homepage. Vacancy Details button leads to incorrect url.
         [ ] Add User reviews
-            [ ] Reviews page consists of 8 last reviws, paginations, total number of rewies, average rating mark, button to leave a review.
-            [ ] user may leave only one review (Forein key)
+            [x] Reviews page consists of 8 last reviws, paginations, total number of rewies, average rating mark, button to leave a review.
+            [x] user may leave only one review (Forein key)
             [ ] if user have a review, Write-Review button diassapears. Find_My_Review button is awailable
             [ ] Buttons edit and Delete are available on the users review.
-            [ ] Buttons are awailabe for registerd users only
+            [x] Buttons are awailabe for registerd users only
+            [ ] Added admin check on review
     Common Environment
         [ ] Reviews. User writes a review, admin Approves or rejects the review.
             [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
@@ -92,6 +93,7 @@ FRONTEND:
         [ ] Add Users section to Admin side bar
             [ ] posibbility to block user permanentely or temporaryly
         [ ] Add Reviews section to Admin side bar
+        [ ] rename Admin Environment to Admin Flow. User+ 
 
 
 

@@ -51,16 +51,17 @@ export const WORKING_HOURS=[
 
 export const SALARY_CEILING=150000
 export const FILTER_POINTER_SIZE=20
-
 export const USER_LIST_ITEMS_LIMIT=10
-
 export const ADMIN_LIST_ITEMS_LIMIT_DEFAULT=10
+export const REVIEWS_LIST_LIMIT=8
 
 
 export const LIST_VACANCIES_BASE_URL ="http://127.0.0.1:8000/vacancy/"
 export const LIST_APPLICATIONS_BASE_URL ="http://127.0.0.1:8000/application/"
 export const SECTOR_REQUEST_URL="http://127.0.0.1:8000/sector/"
 export const LIST_REVIEWS_REQUEST_URL="http://127.0.0.1:8000/review/"
+export const USER_REQUEST_URL="http://127.0.0.1:8000/user/"
+
 
 export const AVATAR_FILE_SIZE_LIMIT = 500 * 1024   //B
 export const CV_FILE_SIZE_LIMIT = 500 * 1024   //B

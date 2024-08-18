@@ -2,6 +2,8 @@ import api from "../../../../../services/api/api";
 import styles from "./reviewsList.module.css";
 import { useState, useEffect } from "react";
 import { AvatarComponent } from "../../../../../environmentCommon/components/AvatarComponent";
+import starWhiteIcon from '../../../../../assets/svg/rating_star_icon_white.svg'
+import starYellowIcon from '../../../../../assets/svg/rating_star_icon_yellow.svg'
 
 export const ReviewsListComponent = (props) => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -24,7 +26,7 @@ export const ReviewsListComponent = (props) => {
       }
     };
     fetchReviewsList();
-  }, []);
+  }, [props.listReviewsRequestUrl]);
 
   return (
     <section className={styles["reviews-section"]}>
@@ -32,7 +34,7 @@ export const ReviewsListComponent = (props) => {
       <ul className={styles["reviews-cards-container"]}>
         {reviewsList.map((review) => {
           return (
-            <li className={styles["review-card"]}>
+            <li className={styles["review-card"]} key={review.user}>
               <div className={styles["avatar-container"]}>
                 <AvatarComponent
                   userAvatarUrl={review.avatar}
@@ -40,10 +42,16 @@ export const ReviewsListComponent = (props) => {
                   size={100}
                 />
               </div>
+              
               <p className={styles["review-card-name"]}>
                 {review.first_name ? review.first_name : "Noname"}
               </p>
-
+              <div>
+                {[1,2,3,4,5].map((item)=>{
+                  const starIcon=(review.rating>=item)? starYellowIcon : starWhiteIcon
+                  return <img src={starIcon} className={styles.star} alt="*" key={item}/>
+                })}
+              </div>
               <div className={styles["review-card-text"]}>{review.comment}</div>
             </li>
           );
