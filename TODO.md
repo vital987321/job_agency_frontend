@@ -93,11 +93,16 @@ FRONTEND:
         [ ] Add Users section to Admin side bar
             [ ] posibbility to block user permanentely or temporaryly
         [ ] Add Reviews section to Admin side bar
-        [ ] rename Admin Environment to Admin Flow. User+ 
+        [ ] rename Admin Environment to Admin Flow. User+
+        [ ] Add Users to admin side bar.
 
 
 
-            
+Review approach
+[ ] Add Remove button on the top right corner of the review item
+[ ] Remove review button is only available to the owner on staff
+[ ] Admin Area Has the same review list and filter.
+[ ] Admin filter: id, useremail, User name, rating, comment, OnPage(limit)          
     
     
 

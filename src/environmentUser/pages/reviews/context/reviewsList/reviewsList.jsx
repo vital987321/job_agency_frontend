@@ -42,6 +42,10 @@ export const ReviewsListComponent = (props) => {
                   size={100}
                 />
               </div>
+              <div>
+                <button>X</button>
+              </div>
+              
               
               <p className={styles["review-card-name"]}>
                 {review.first_name ? review.first_name : "Noname"}

@@ -23,36 +23,60 @@ export const AdminSideBarComponent = () => {
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
             );
           }}
-        > 
-          <IconListIcon/>
+        >
+          <IconListIcon />
           <p className="admin-side-bar-nav-link-text">Vacancies</p>
         </NavLink>
-        <NavLink to="applications" className={({ isActive }) => {
+        <NavLink
+          to="applications"
+          className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
             );
-          }}>
-          <MessageIcon/>
-          
+          }}
+        >
+          <MessageIcon />
+
           <p className="admin-side-bar-nav-link-text">Applications</p>
         </NavLink>
-        <NavLink to="partners" className={({ isActive }) => {
+
+        <NavLink
+          to="reviews"
+          className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
             );
-          }}>
-          <PartnersIcon/>  
+          }}
+        >
+          <MessageIcon />
+
+          <p className="admin-side-bar-nav-link-text">Reviews</p>
+        </NavLink>
+
+        <NavLink
+          to="partners"
+          className={({ isActive }) => {
+            return (
+              "admin-nav-link " +
+              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+            );
+          }}
+        >
+          <PartnersIcon />
           <p className="admin-side-bar-nav-link-text">Partners</p>
         </NavLink>
-        <NavLink to="settings" className={({ isActive }) => {
+        <NavLink
+          to="settings"
+          className={({ isActive }) => {
             return (
               "admin-nav-link " +
               (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
             );
-          }}>
-          <SettingsGearIcon/>  
+          }}
+        >
+          <SettingsGearIcon />
           <p className="admin-side-bar-nav-link-text">Settings</p>
         </NavLink>
       </nav>
