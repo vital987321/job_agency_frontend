@@ -2,11 +2,13 @@ import api from "../../../../../services/api/api";
 import styles from "./reviewsList.module.css";
 import { useState, useEffect } from "react";
 import { AvatarComponent } from "../../../../../environmentCommon/components/AvatarComponent";
-import starWhiteIcon from '../../../../../assets/svg/rating_star_icon_white.svg'
-import starYellowIcon from '../../../../../assets/svg/rating_star_icon_yellow.svg'
+import starWhiteIcon from "../../../../../assets/svg/rating_star_icon_white.svg";
+import starYellowIcon from "../../../../../assets/svg/rating_star_icon_yellow.svg";
 
 export const ReviewsListComponent = (props) => {
   const [reviewsList, setReviewsList] = useState([]);
+
+  const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
     const fetchReviewsList = async () => {
@@ -42,18 +44,36 @@ export const ReviewsListComponent = (props) => {
                   size={100}
                 />
               </div>
-              <div>
-                <button>X</button>
-              </div>
-              
-              
+              {(() => {
+                if (review.user == user_id) {
+                  return (
+                    <div className={styles["close-button-container"]}>
+                      <button
+                        className={styles["close-button"]}
+                        title="Delete Review"
+                      >
+                        &#x2716;
+                      </button>
+                    </div>
+                  );
+                }
+              })()}
+
               <p className={styles["review-card-name"]}>
                 {review.first_name ? review.first_name : "Noname"}
               </p>
               <div>
-                {[1,2,3,4,5].map((item)=>{
-                  const starIcon=(review.rating>=item)? starYellowIcon : starWhiteIcon
-                  return <img src={starIcon} className={styles.star} alt="*" key={item}/>
+                {[1, 2, 3, 4, 5].map((item) => {
+                  const starIcon =
+                    review.rating >= item ? starYellowIcon : starWhiteIcon;
+                  return (
+                    <img
+                      src={starIcon}
+                      className={styles.star}
+                      alt="*"
+                      key={item}
+                    />
+                  );
                 })}
               </div>
               <div className={styles["review-card-text"]}>{review.comment}</div>

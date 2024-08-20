@@ -32,6 +32,24 @@
     top: -50px;
 }
 
+.close-button-container{
+    position: absolute;
+    right:10px;
+    top: 5px;
+}
+
+.close-button{
+    background-color: transparent;
+    border: none;
+    font-size: larger;
+    color: lightgray;
+}
+
+.close-button:hover{
+    color: rgb(204, 0, 0);
+    font-weight: bold;
+}
+
 .review-card-name{
     font-size: large;
     font-weight: bold;

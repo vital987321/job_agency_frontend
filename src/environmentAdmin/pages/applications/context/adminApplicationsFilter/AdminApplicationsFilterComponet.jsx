@@ -84,6 +84,7 @@ export const AdminApplicatiosFilterComponent = () => {
     return queryString;
   };
 
+
   const filterButtonHandler = () => {
     navigate("" + buildFIlterQueryString());
   };
