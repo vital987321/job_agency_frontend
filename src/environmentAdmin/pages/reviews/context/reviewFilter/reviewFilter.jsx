@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export const ReviewFilter = () => {
   const userEmailRef = React.createRef();
@@ -17,12 +18,29 @@ export const ReviewFilter = () => {
   );
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
     useState("none");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const changeOnPageListItemsLimit = (e) => {
     localStorage.setItem("AdminListItemsOnPage", e.target.value);
     setOnPageListItems(e.target.value);
   };
+
+  // useEffects
+  useEffect(() => {
+    let showCancelFilterButton = false;
+    if (searchParams.size > 0) {
+      for (let paramKey of searchParams.keys()) {
+        if (paramKey !== "limit" && paramKey !== "offset") {
+          showCancelFilterButton = true;
+          break;
+        }
+      }
+    }
+    if (showCancelFilterButton)
+      setResetFiltersButtonDisplayValue("inline-block");
+    else setResetFiltersButtonDisplayValue("none");
+  }, [searchParams]);
 
   const buildFIlterQueryString = () => {
     const userEmail = userEmailRef.current.value;
@@ -36,10 +54,11 @@ export const ReviewFilter = () => {
     if (onPageListItems) queryStringArray.push("limit=" + onPageListItems);
     if (userEmail) queryStringArray.push("email=" + userEmail);
     if (userName) queryStringArray.push("name=" + userName);
-    if (rate) queryStringArray.push("rate=" + rate);
+    if (rate) queryStringArray.push("rating=" + rate);
     if (comment) queryStringArray.push("comment=" + comment);
     
     if (queryStringArray.length > 0) {
+      
       queryString = "?" + queryStringArray.join("&");
     }
 
@@ -47,9 +66,15 @@ export const ReviewFilter = () => {
   };
 
 
-  const filterButtonHandler = () => {
+  const filterButtonHandler = (e) => {
     navigate("" + buildFIlterQueryString());
   };
+
+  const filterFormSubmitHandler = (e) => {
+    e.preventDefault();
+    filterButtonHandler();
+  };
+
 
   const resetFiltersHandler = (e) => {
     e.preventDefault();
@@ -67,7 +92,7 @@ export const ReviewFilter = () => {
         <div className="admin-list-items-filter-main-container">
           <form
           // className=""
-          // onSubmit={}
+          onSubmit={filterFormSubmitHandler}
           >
             <div className="admin-list-items-filter-form-inputs">
               <div className="admin-list-items-filter-input-container">
@@ -95,6 +120,7 @@ export const ReviewFilter = () => {
                   id="review-filter-rate-select"
                   ref={rateRef}
                 >
+                  <option value=""></option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
