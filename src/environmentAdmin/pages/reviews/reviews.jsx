@@ -1,13 +1,15 @@
-import {reviewFilter} from "./context/reviewFilter/reviewFilter"
+import { reviewFilter } from "./context/reviewFilter/reviewFilter";
 import { ReviewsListComponent } from "../../../environmentUser/pages/reviews/context/reviewsList/reviewsList";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
   LIST_REVIEWS_REQUEST_URL,
 } from "../../../data/constants";
+import styles from "./reviews.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ReviewFilter } from "./context/reviewFilter/reviewFilter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
+import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination";
 
 export const AdminReviewsComponent = () => {
   // variables
@@ -25,6 +27,7 @@ export const AdminReviewsComponent = () => {
   );
   const [reviewsResponseData, setReviewsResponseData] = useState({});
   
+
   const navigate = useNavigate();
 
   // UseEffects
@@ -60,16 +63,27 @@ export const AdminReviewsComponent = () => {
     }
   };
 
+
   // Main Body
   updateAdminListReviewsRequestURL();
 
   return (
-    <>
-        <ReviewFilter/>
-      <ReviewsListComponent
-        listReviewsRequestUrl={listReviewsRequestUrl}
-        setReviewsResponseData={setReviewsResponseData}
+    <div className={styles.mainBody}>
+      <ReviewFilter />
+      <div className={styles["list-container"]}>
+
+      </div>
+        <ReviewsListComponent
+          listReviewsRequestUrl={listReviewsRequestUrl}
+          setReviewsResponseData={setReviewsResponseData}
+        />
+      <PaginationComponent
+        responseData={reviewsResponseData}
+        listItemsLimit={listItemsOnPage}
+        paginationClass={styles["pagination-section"]}
+        urlState={currentClientUrl}
+        setUrlState={setCurrentClientUrl}
       />
-    </>
+    </div>
   );
 };

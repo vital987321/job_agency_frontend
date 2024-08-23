@@ -65,13 +65,16 @@ FRONTEND:
             [ ] Buttons edit and Delete are available on the users review.
             [x] Buttons are awailabe for registerd users only
             [ ] Added admin check on review
+            [ ] Admin may delete any review
+            [ ] change Review Icon in Admin Area
+            [ ] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
     Common Environment
-        [ ] Reviews. User writes a review, admin Approves or rejects the review.
-            [ ] Add Review model to backend. Fields: User, Stars (1-5), Text, Created_at, Approved
-            [ ] User Form to add Review.
-            [ ] Admin Area. User review request list.
-            [ ] Reviews section review pagination.
-            [ ] User profile section add My rewiws section or button
+        [ ] Reviews.
+            [x] Add Review model to backend. 
+            [x] User Form to add Review.
+            [x] Reviews section review pagination.
+            [?] User profile section add My rewiws section or button
+            [ ] Add avarage rating to review page.
         [x] Think of default sorting order
         [x] think of todo handling
         [x] Rearchitecture the project.
@@ -99,10 +102,10 @@ FRONTEND:
 
 
 Review approach
-[ ] Add Remove button on the top right corner of the review item
-[ ] Remove review button is only available to the owner on staff
-[ ] Admin Area Has the same review list and filter.
-[ ] Admin filter: id, useremail, User name, rating, comment, OnPage(limit)          
+[x] Add Remove button on the top right corner of the review item
+[x] Remove review button is only available to the owner on staff
+[x] Admin Area Has the same review list and filter.
+[x] Admin filter: id, useremail, User name, rating, comment, OnPage(limit)          
     
     
 

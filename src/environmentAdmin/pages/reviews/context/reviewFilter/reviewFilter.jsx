@@ -8,7 +8,8 @@ import { useSearchParams } from "react-router-dom";
 
 export const ReviewFilter = () => {
   const userEmailRef = React.createRef();
-  const userNameRef = React.createRef();
+  const userFirstNameRef = React.createRef();
+  const userLastNameRef = React.createRef();
   const rateRef = React.createRef();
   const commentRef = React.createRef();
 
@@ -44,7 +45,8 @@ export const ReviewFilter = () => {
 
   const buildFIlterQueryString = () => {
     const userEmail = userEmailRef.current.value;
-    const userName = userNameRef.current.value;
+    const userFirstName = userFirstNameRef.current.value;
+    const userLastName = userLastNameRef.current.value;
     const rate = rateRef.current.value;
     const comment = commentRef.current.value;
 
@@ -53,7 +55,8 @@ export const ReviewFilter = () => {
 
     if (onPageListItems) queryStringArray.push("limit=" + onPageListItems);
     if (userEmail) queryStringArray.push("email=" + userEmail);
-    if (userName) queryStringArray.push("name=" + userName);
+    if (userFirstName) queryStringArray.push("first_name=" + userFirstName);
+    if (userLastName) queryStringArray.push("last_name=" + userLastName);
     if (rate) queryStringArray.push("rating=" + rate);
     if (comment) queryStringArray.push("comment=" + comment);
     
@@ -80,7 +83,7 @@ export const ReviewFilter = () => {
     e.preventDefault();
 
     userEmailRef.current.value = "";
-    userNameRef.current.value = "";
+    userFirstNameRef.current.value = "";
     rateRef.current.value = "";
     commentRef.current.value = "";
     navigate("");
@@ -105,16 +108,27 @@ export const ReviewFilter = () => {
                 />
               </div>
               <div className="admin-list-items-filter-input-container">
-                <label htmlFor="review-filter-user-name-input">Name</label>
+                <label htmlFor="review-filter-user-name-input">First Name</label>
                 <input
                   className="admin-list-items-filter-input"
                   id="review-filter-user-name-input"
                   type="text"
-                  ref={userNameRef}
+                  ref={userFirstNameRef}
                 />
               </div>
               <div className="admin-list-items-filter-input-container">
-                <label htmlFor="review-filter-rate-select">Rate</label>
+                <label htmlFor="review-filter-user-name-input">Last Name</label>
+                <input
+                  className="admin-list-items-filter-input"
+                  id="review-filter-user-last-name-input"
+                  type="text"
+                  ref={userLastNameRef}
+                />
+              </div>
+
+
+              <div className="admin-list-items-filter-input-container">
+                <label htmlFor="review-filter-rate-select">Rating</label>
                 <select
                   className="admin-list-items-filter-input"
                   id="review-filter-rate-select"
