@@ -1,9 +1,13 @@
 @import '../../../data/constants.css';
 
-.reviews-body{
-margin-top: 50px;
+.main-body{
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
+    margin-top: 50px;
+    
+}
+.reviews-body{
+
 }
 .pagination-section{
     display: flex;

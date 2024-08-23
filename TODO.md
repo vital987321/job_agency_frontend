@@ -67,7 +67,7 @@ FRONTEND:
             [ ] Added admin check on review
             [ ] Admin may delete any review
             [ ] change Review Icon in Admin Area
-            [ ] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
+            [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
     Common Environment
         [ ] Reviews.
             [x] Add Review model to backend. 

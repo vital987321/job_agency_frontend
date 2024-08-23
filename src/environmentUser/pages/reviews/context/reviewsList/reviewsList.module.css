@@ -4,12 +4,9 @@
 
 }
 
-.review-section-header{
-    text-align: center;
-}
 
 .reviews-cards-container{
-    margin-top: 50px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 20px;

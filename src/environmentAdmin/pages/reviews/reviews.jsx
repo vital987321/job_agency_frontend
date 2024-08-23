@@ -34,15 +34,11 @@ export const AdminReviewsComponent = () => {
   useEffect(() => {
     // This hook is nesessary due to filter
     setCurrentClientUrl(window.location.href);
-    // alert(window.location.href)
   }, [window.location.href]);
 
   useEffect(() => {
-    // alert(`second useEffect. ${currentClientUrl} ${window.location.href}`)
     if (currentClientUrl !== window.location.href) {
       const params = new URL(currentClientUrl).searchParams;
-      // alert(`?${params.toString()}`)
-      // alert(`second useEffect Navigate: ? ${params.toString()}`)
       navigate(`?${params.toString()}`);
     }
   }, [currentClientUrl]);
@@ -72,6 +68,7 @@ export const AdminReviewsComponent = () => {
       <ReviewFilter />
       <div className={styles["list-container"]}>
 
+      <h2 className="h2-common">Reviews</h2>
       </div>
         <ReviewsListComponent
           listReviewsRequestUrl={listReviewsRequestUrl}

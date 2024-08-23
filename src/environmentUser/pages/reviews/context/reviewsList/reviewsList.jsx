@@ -32,7 +32,6 @@ export const ReviewsListComponent = (props) => {
 
   return (
     <section className={styles["reviews-section"]}>
-      <h1 className={styles["review-section-header"]}>Clients Reviews</h1>
       <ul className={styles["reviews-cards-container"]}>
         {reviewsList.map((review) => {
           return (

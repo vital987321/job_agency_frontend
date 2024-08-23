@@ -25,41 +25,45 @@ export const ReviewsComponent = () => {
   // Body
   return (
     <>
-      <div className={styles["reviews-body"]}>
-        <ReviewsListComponent
-          listReviewsRequestUrl={listReviewsRequestUrl}
-          setReviewsResponseData={setReviewsResponseData}
-        />
-        <PaginationComponent
-          responseData={reviewsResponseData}
-          listItemsLimit={REVIEWS_LIST_LIMIT}
-          paginationClass={styles["pagination-section"]}
-          urlState={listReviewsRequestUrl}
-          setUrlState={setListReviewsRequestUrl}
-        />
-        {(() => {
-          if (localStorage.getItem("user_id") > 0) {
-            return (
-              <>
-                <div className={styles["new-review-button-container"]}>
-                  <ButtonType1
-                    value="Write my review"
-                    onClickHandler={writeReviewButtonHandler}
-                    strength="1"
-                  />
-                </div>
+      <div className={styles["main-body"]}>
+        <h2 className="h2-common">Reviews</h2>
+        <div className={styles["reviews-body"]}>
+          <ReviewsListComponent
+            listReviewsRequestUrl={listReviewsRequestUrl}
+            setReviewsResponseData={setReviewsResponseData}
+          />
+          <PaginationComponent
+            responseData={reviewsResponseData}
+            listItemsLimit={REVIEWS_LIST_LIMIT}
+            paginationClass={styles["pagination-section"]}
+            urlState={listReviewsRequestUrl}
+            setUrlState={setListReviewsRequestUrl}
+          />
+          {(() => {
+            if (localStorage.getItem("user_id") > 0) {
+              return (
+                <>
+                  <div className={styles["new-review-button-container"]}>
+                    <ButtonType1
+                      value="Write my review"
+                      onClickHandler={writeReviewButtonHandler}
+                      strength="1"
+                    />
+                  </div>
 
-                <ReviewForm
-                  formDisplayValue={formDisplayValue}
-                  setFormDisplayValue={setFormDisplayValue}
-                />
-              </>
-            );
-          }
-        })()}
+                  <ReviewForm
+                    formDisplayValue={formDisplayValue}
+                    setFormDisplayValue={setFormDisplayValue}
+                  />
+                </>
+              );
+            }
+          })()}
+        </div>
+
+        {/* <ReviewsTempComponent/> */}
       </div>
 
-      {/* <ReviewsTempComponent/> */}
     </>
   );
 };
