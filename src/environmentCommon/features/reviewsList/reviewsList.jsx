@@ -1,9 +1,9 @@
-import api from "../../../../../services/api/api";
+import api from "../../../services/api/api";
 import styles from "./reviewsList.module.css";
 import { useState, useEffect } from "react";
-import { AvatarComponent } from "../../../../../environmentCommon/components/AvatarComponent";
-import starWhiteIcon from "../../../../../assets/svg/rating_star_icon_white.svg";
-import starYellowIcon from "../../../../../assets/svg/rating_star_icon_yellow.svg";
+import { AvatarComponent } from "../../components/AvatarComponent";
+import {StarsLine} from "../../components/starsLine/StarsLine"
+
 
 export const ReviewsListComponent = (props) => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -62,18 +62,7 @@ export const ReviewsListComponent = (props) => {
                 {review.first_name ? review.first_name : "Noname"}
               </p>
               <div>
-                {[1, 2, 3, 4, 5].map((item) => {
-                  const starIcon =
-                    review.rating >= item ? starYellowIcon : starWhiteIcon;
-                  return (
-                    <img
-                      src={starIcon}
-                      className={styles.star}
-                      alt="*"
-                      key={item}
-                    />
-                  );
-                })}
+                <StarsLine rating={review.rating}/>
               </div>
               <div className={styles["review-card-text"]}>{review.comment}</div>
             </li>

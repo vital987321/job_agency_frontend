@@ -3,6 +3,7 @@ import {ReactComponent as IconListIcon} from "../../../assets/svg/icon_list.svg"
 import {ReactComponent as MessageIcon} from "../../../assets/svg/message.svg";
 import {ReactComponent as SettingsGearIcon} from "../../../assets/svg/settings_gear.svg";
 import {ReactComponent as PartnersIcon} from "../../../assets/svg/partners.svg";
+import {ReactComponent as ApplicationsIcon} from '../../../assets/svg/form_icon.svg'
 import { NavLink } from "react-router-dom";
 import "./adminSideBar.css";
 
@@ -36,7 +37,7 @@ export const AdminSideBarComponent = () => {
             );
           }}
         >
-          <MessageIcon />
+          <ApplicationsIcon />
 
           <p className="admin-side-bar-nav-link-text">Applications</p>
         </NavLink>

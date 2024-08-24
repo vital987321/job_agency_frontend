@@ -1,4 +1,4 @@
-@import '../../../../../data/constants.css';
+@import '../../../data/constants.css';
 
 .reviews-section {
 
@@ -56,8 +56,4 @@
 
 .review-card-text{
     margin-top: 20px;
-}
-
-.star{
-    height: 18px;
 }

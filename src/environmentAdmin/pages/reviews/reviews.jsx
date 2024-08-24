@@ -1,5 +1,5 @@
 import { reviewFilter } from "./context/reviewFilter/reviewFilter";
-import { ReviewsListComponent } from "../../../environmentUser/pages/reviews/context/reviewsList/reviewsList";
+import { ReviewsListComponent } from "../../../environmentCommon/features/reviewsList/reviewsList";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
   LIST_REVIEWS_REQUEST_URL,
@@ -10,6 +10,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { ReviewFilter } from "./context/reviewFilter/reviewFilter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination";
+import { AverageRating } from "../../../environmentCommon/features/averageRating/averageRaring";
 
 export const AdminReviewsComponent = () => {
   // variables
@@ -69,6 +70,9 @@ export const AdminReviewsComponent = () => {
       <div className={styles["list-container"]}>
 
       <h2 className="h2-common">Reviews</h2>
+      <AverageRating
+        responseData={reviewsResponseData}
+      />
       </div>
         <ReviewsListComponent
           listReviewsRequestUrl={listReviewsRequestUrl}

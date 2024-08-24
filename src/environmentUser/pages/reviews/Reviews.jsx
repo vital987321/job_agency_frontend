@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ReviewsTempComponent } from "./context/ReviewsTempComponent";
-import { ReviewsListComponent } from "./context/reviewsList/reviewsList";
+import { ReviewsListComponent } from "../../../environmentCommon/features/reviewsList/reviewsList";
+import {AverageRating} from "../../../environmentCommon/features/averageRating/averageRaring"
 import { ReviewForm } from "./context/reviewForm/reviewForm";
 import {
   LIST_REVIEWS_REQUEST_URL,
@@ -27,6 +28,9 @@ export const ReviewsComponent = () => {
     <>
       <div className={styles["main-body"]}>
         <h2 className="h2-common">Reviews</h2>
+        <AverageRating
+          responseData={reviewsResponseData}
+        />
         <div className={styles["reviews-body"]}>
           <ReviewsListComponent
             listReviewsRequestUrl={listReviewsRequestUrl}

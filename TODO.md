@@ -38,7 +38,8 @@ FRONTEND:
             [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
             [x] Check that registered user can see deactevated vacancy he applied to. 
             [x] If vacancy is deactevated add div block to vacancy component.
-        [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.      
+        [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
+        [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)      
     User Environment
         [x] user profile foto
             [x] Add userAvatarUrl to CustomObtainAuthToken backend
@@ -66,7 +67,7 @@ FRONTEND:
             [x] Buttons are awailabe for registerd users only
             [ ] Added admin check on review
             [ ] Admin may delete any review
-            [ ] change Review Icon in Admin Area
+            [x] change Review Icon in Admin Area
             [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
     Common Environment
         [ ] Reviews.
