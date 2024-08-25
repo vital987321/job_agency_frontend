@@ -13,6 +13,7 @@ import { PaginationComponent } from "../../../environmentCommon/features/paginat
 import { AverageRating } from "../../../environmentCommon/features/averageRating/averageRaring";
 
 export const AdminReviewsComponent = () => {
+
   // variables
   const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")
@@ -77,6 +78,7 @@ export const AdminReviewsComponent = () => {
         <ReviewsListComponent
           listReviewsRequestUrl={listReviewsRequestUrl}
           setReviewsResponseData={setReviewsResponseData}
+          staffUser={true}
         />
       <PaginationComponent
         responseData={reviewsResponseData}

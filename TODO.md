@@ -1,23 +1,7 @@
 NEXT TODO STEP:
-    
+    [ ] ...
 
 
-BACKEND:
-    [ ] Vacancies Environment
-        [x] Expand Vacancy Filter for Staff
-        [x] For Vacancy model add Add active and inactive status.
-        [x] Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
-            probably similar isue for user area. Check VacancyListDjangoFilterBackend
-    [ ] permitions to admin environment
-    [ ] Admin can see only his own applications. Fix it.
-    [x] Add Review model to backend.
-        [ ] Permissions to Review
-    [ ] Permissions
-        [ ]
-
-    
-    
-    
 
 FRONTEND:
     Admin Environment
@@ -39,7 +23,16 @@ FRONTEND:
             [x] Check that registered user can see deactevated vacancy he applied to. 
             [x] If vacancy is deactevated add div block to vacancy component.
         [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
-        [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)      
+        [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)
+        [ ] Add Partners page
+            [ ] list of partners [id , Company, HR Specialist, Phone,]
+            [ ] New Partner Form
+            [ ] Edit / Delete Partner
+        [ ] Vacancy shall be related to partner/company model
+        [ ] vacancy filter shall have a select input for company
+        [ ] vacancy filter shall have a select input for sector
+
+
     User Environment
         [x] user profile foto
             [x] Add userAvatarUrl to CustomObtainAuthToken backend
@@ -62,20 +55,21 @@ FRONTEND:
         [ ] Add User reviews
             [x] Reviews page consists of 8 last reviws, paginations, total number of rewies, average rating mark, button to leave a review.
             [x] user may leave only one review (Forein key)
-            [ ] if user have a review, Write-Review button diassapears. Find_My_Review button is awailable
-            [ ] Buttons edit and Delete are available on the users review.
+            [?] if user have a review, Write-Review button diassapears. Find_My_Review button is awailable
+            [x] Buttons edit and Delete are available on the users review.
             [x] Buttons are awailabe for registerd users only
-            [ ] Added admin check on review
-            [ ] Admin may delete any review
+            [?] Added admin check on review
+            [x] Admin may delete any review
             [x] change Review Icon in Admin Area
             [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
+            [x] Action on delete button review
     Common Environment
         [ ] Reviews.
             [x] Add Review model to backend. 
             [x] User Form to add Review.
             [x] Reviews section review pagination.
             [?] User profile section add My rewiws section or button
-            [ ] Add avarage rating to review page.
+            [x] Add avarage rating to review page.
         [x] Think of default sorting order
         [x] think of todo handling
         [x] Rearchitecture the project.
@@ -94,23 +88,13 @@ FRONTEND:
         [x] switch from global css to module.css
         [x] Admin Applications. Change Status filter input to select.
         [ ] Adapvive design
-        [ ] Add Users section to Admin side bar
-            [ ] posibbility to block user permanentely or temporaryly
-        [ ] Add Reviews section to Admin side bar
+        [?] Add Users section to Admin side bar
+            [?] posibbility to block user permanentely or temporaryly
+        [x] Add Reviews section to Admin side bar
         [ ] rename Admin Environment to Admin Flow. User+
-        [ ] Add Users to admin side bar.
-
-
-
-Review approach
-[x] Add Remove button on the top right corner of the review item
-[x] Remove review button is only available to the owner on staff
-[x] Admin Area Has the same review list and filter.
-[x] Admin filter: id, useremail, User name, rating, comment, OnPage(limit)          
+      
     
-    
-
-    
+  
     
     
 TO CONSIDER:
@@ -131,7 +115,20 @@ TO CONSIDER:
 
 
 
+BACKEND:
+    [ ] Vacancies Environment
+        [x] Expand Vacancy Filter for Staff
+        [x] For Vacancy model add Add active and inactive status.
+        [x] Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
+            probably similar isue for user area. Check VacancyListDjangoFilterBackend
+    [ ] permitions to admin environment
+    [ ] Admin can see only his own applications. Fix it.
+    [x] Add Review model to backend.
+        [ ] Permissions to Review
+    [ ] Permissions
+        [ ]
 
+    
 
 
 

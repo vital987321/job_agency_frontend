@@ -13,7 +13,9 @@ import {
 
 export const ReviewForm = (props) => {
   // props:
+  // formDisplayValue
   // setReviewFormDisplayValue
+  // setUpdateDataState
 
   //variables, consts
   const user_id = localStorage.getItem("user_id");
@@ -85,8 +87,9 @@ export const ReviewForm = (props) => {
       try {
         const request = await api
           .post(LIST_REVIEWS_REQUEST_URL, requestData)
-          .then((response) => alert("Form sent"))
+          // .then((res) => alert("Form sent"))
           .then((res) => closeButtonHandler())
+          .then((res)=>props.setUpdateDataState({}))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);

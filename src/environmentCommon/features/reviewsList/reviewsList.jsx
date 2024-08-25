@@ -3,24 +3,33 @@ import styles from "./reviewsList.module.css";
 import { useState, useEffect } from "react";
 import { AvatarComponent } from "../../components/AvatarComponent";
 import {StarsLine} from "../../components/starsLine/StarsLine"
+import { LIST_REVIEWS_REQUEST_URL } from "../../../data/constants";
 
 
 export const ReviewsListComponent = (props) => {
-  const [reviewsList, setReviewsList] = useState([]);
+// props
+  
+  const listReviewsRequestUrl=props.listReviewsRequestUrl
+  const setReviewsResponseData=props.setReviewsResponseData
+  const staffUser=props.staffUser // true if user is staff
+  const updateDataState=props.updateDataState
 
+  const [reviewsList, setReviewsList] = useState([]);
+  const [updateData, setUpdateData]=useState({})
   const user_id = localStorage.getItem("user_id");
+
 
   useEffect(() => {
     const fetchReviewsList = async () => {
       try {
         const response = await api
-          .get(props.listReviewsRequestUrl)
+          .get(listReviewsRequestUrl)
           .then((response) => {
             setReviewsList(response.data.results);
             return response;
           })
           .then((response) => {
-            props.setReviewsResponseData(response.data);
+            setReviewsResponseData(response.data);
           })
           .catch((error) => console.log(error));
       } catch (error) {
@@ -28,7 +37,25 @@ export const ReviewsListComponent = (props) => {
       }
     };
     fetchReviewsList();
-  }, [props.listReviewsRequestUrl]);
+  }, [listReviewsRequestUrl, updateDataState, updateData]);
+
+  const deleteButtonHandler = (e) => {
+    const reviewId=e.target.dataset.reviewid
+    const deleteReview = async () => {
+      try {
+        const requestUrl = LIST_REVIEWS_REQUEST_URL + reviewId + "/";
+        const response = await api
+          .delete(requestUrl)
+          .then((response)=>{ setUpdateData({}) })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteReview();
+  };
 
   return (
     <section className={styles["reviews-section"]}>
@@ -44,12 +71,14 @@ export const ReviewsListComponent = (props) => {
                 />
               </div>
               {(() => {
-                if (review.user == user_id) {
+                if (review.user == user_id || staffUser) {
                   return (
                     <div className={styles["close-button-container"]}>
                       <button
                         className={styles["close-button"]}
                         title="Delete Review"
+                        onClick={deleteButtonHandler}
+                        data-reviewid={review.id}
                       >
                         &#x2716;
                       </button>

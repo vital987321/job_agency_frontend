@@ -17,6 +17,7 @@ export const ReviewsComponent = () => {
   );
   const [reviewsResponseData, setReviewsResponseData] = useState({});
   const [formDisplayValue, setFormDisplayValue] = useState("none"); // none  block
+  const [ updateDataState, setUpdateDataState]=useState({})
 
   // functions
   const writeReviewButtonHandler = () => {
@@ -35,6 +36,7 @@ export const ReviewsComponent = () => {
           <ReviewsListComponent
             listReviewsRequestUrl={listReviewsRequestUrl}
             setReviewsResponseData={setReviewsResponseData}
+            updateDataState={updateDataState}
           />
           <PaginationComponent
             responseData={reviewsResponseData}
@@ -58,6 +60,7 @@ export const ReviewsComponent = () => {
                   <ReviewForm
                     formDisplayValue={formDisplayValue}
                     setFormDisplayValue={setFormDisplayValue}
+                    setUpdateDataState={setUpdateDataState}
                   />
                 </>
               );
