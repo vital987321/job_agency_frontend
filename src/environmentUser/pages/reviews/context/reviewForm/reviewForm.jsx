@@ -83,7 +83,7 @@ export const ReviewForm = (props) => {
       rating: userRate,
     };
 
-    const sendPortRequest = async () => {
+    const sendPostRequest = async () => {
       try {
         const request = await api
           .post(LIST_REVIEWS_REQUEST_URL, requestData)
@@ -97,7 +97,7 @@ export const ReviewForm = (props) => {
     };
 
     if (isFormValid(requestData)) {
-      sendPortRequest();
+      sendPostRequest();
     } else {
       console.log("form validation errors");
     }

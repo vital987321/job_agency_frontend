@@ -74,7 +74,7 @@ export const AdminVacanciesComponent = (props) => {
         <div className={styles["new-vacancy-button-container"]}>
           <div>Found: {vacanciesResponseData.count} </div>
           <ButtonType1
-            value="Add new vacancy"
+            value="Add vacancy"
             onClickHandler={newVacancyButtonHandler}
             strength="1"
           />

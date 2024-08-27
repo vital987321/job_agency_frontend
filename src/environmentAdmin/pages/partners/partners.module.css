@@ -1,0 +1,14 @@
+@import '../../../data/constants.css';
+
+.mainBody{
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
+}
+.main-header{
+    margin-top: 30px;
+}
+.new-partner-button-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}

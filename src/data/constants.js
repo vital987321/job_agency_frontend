@@ -61,6 +61,7 @@ export const LIST_APPLICATIONS_BASE_URL ="http://127.0.0.1:8000/application/"
 export const SECTOR_REQUEST_URL="http://127.0.0.1:8000/sector/"
 export const LIST_REVIEWS_REQUEST_URL="http://127.0.0.1:8000/review/"
 export const USER_REQUEST_URL="http://127.0.0.1:8000/user/"
+export const PARTNERS_REQUEST_URL="http://127.0.0.1:8000/partner/"
 
 
 export const AVATAR_FILE_SIZE_LIMIT = 500 * 1024   //B

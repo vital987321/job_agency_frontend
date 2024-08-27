@@ -92,7 +92,10 @@ FRONTEND:
             [?] posibbility to block user permanentely or temporaryly
         [x] Add Reviews section to Admin side bar
         [ ] rename Admin Environment to Admin Flow. User+
-      
+        [ ] move AdminVacancyForm from assets
+        [ ] applicaption-filter-on-page-input shall be a separate component
+        [ ] think if 2 filter buttons should be a separate component
+       
     
   
     

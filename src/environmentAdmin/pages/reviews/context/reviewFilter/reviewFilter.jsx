@@ -43,7 +43,8 @@ export const ReviewFilter = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  const buildFIlterQueryString = () => {
+
+  const buildFilterQueryString = () => {
     const userEmail = userEmailRef.current.value;
     const userFirstName = userFirstNameRef.current.value;
     const userLastName = userLastNameRef.current.value;
@@ -70,7 +71,7 @@ export const ReviewFilter = () => {
 
 
   const filterButtonHandler = (e) => {
-    navigate("" + buildFIlterQueryString());
+    navigate("" + buildFilterQueryString());
   };
 
   const filterFormSubmitHandler = (e) => {

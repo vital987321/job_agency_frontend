@@ -12,6 +12,7 @@ import { generateRequestQueryString } from "../../../services/utils/generateRequ
 import { PaginationComponent } from "../../../environmentCommon/features/pagination/Pagination";
 import { AverageRating } from "../../../environmentCommon/features/averageRating/averageRaring";
 
+
 export const AdminReviewsComponent = () => {
 
   // variables

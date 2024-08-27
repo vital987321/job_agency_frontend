@@ -5,6 +5,7 @@ import { AdminVacancyComponent } from "../environmentAdmin/pages/vacancy/AdminVa
 import { AdminApplicationComponent } from "../environmentAdmin/pages/application/AdminApplicationComponent";
 import { AdminApplicationsComponent } from "../environmentAdmin/pages/applications/AdminApplicationsComponent";
 import {AdminReviewsComponent} from '../environmentAdmin/pages/reviews/reviews'
+import { Partner } from "../environmentAdmin/pages/partners/partners";
 
 export const AdminRouterComponent = (
   <Route path="admin/" element={<AdminBodyComponent />}>
@@ -16,5 +17,6 @@ export const AdminRouterComponent = (
       path="applications/:application_id"
       element={<AdminApplicationComponent />}
     />
+    <Route path='partners' element={<Partner/>}/>
   </Route>
 );
