@@ -9,16 +9,15 @@ import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import { ButtonType1 } from "../../../../../environmentCommon/components/buttons/buttonType1/ButtonType1";
 
 export const PartnerFilter = () => {
-
-  // Variables
+  //* Variables
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
 
-  // Refs
+  //* Refs
   const companyRef = React.createRef();
   const hrSpecialistRef = React.createRef();
   const phoneRef = React.createRef();
 
-  // States
+  //* States
 
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
@@ -26,11 +25,11 @@ export const PartnerFilter = () => {
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
     useState("none");
 
-  // Hooks
+  //* Hooks
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // useEffects
+  //* useEffects
   useEffect(() => {
     let showCancelFilterButton = false;
     if (searchParams.size > 0) {
@@ -46,7 +45,7 @@ export const PartnerFilter = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  // functions
+  //* Functions
   const changeOnPageListItemsLimit = (e) => {
     localStorage.setItem("AdminListItemsOnPage", e.target.value);
     setOnPageListItems(e.target.value);
@@ -56,24 +55,17 @@ export const PartnerFilter = () => {
     const company = companyRef.current.value;
     const hrSpecialist = hrSpecialistRef.current.value;
     const phone = phoneRef.current.value;
-
-
     let queryStringArray = [];
     let queryString = "";
-
     if (onPageListItems) queryStringArray.push("limit=" + onPageListItems);
     if (company) queryStringArray.push("company=" + company);
     if (hrSpecialist) queryStringArray.push("hr_name=" + hrSpecialist);
     if (phone) queryStringArray.push("phone=" + phone);
-    
     if (queryStringArray.length > 0) {
-      
       queryString = "?" + queryStringArray.join("&");
     }
-
     return queryString;
   };
-
 
   const filterButtonHandler = (e) => {
     navigate("" + buildFilterQueryString());
@@ -86,15 +78,13 @@ export const PartnerFilter = () => {
 
   const resetFiltersHandler = (e) => {
     e.preventDefault();
-
     companyRef.current.value = "";
     hrSpecialistRef.current.value = "";
     phoneRef.current.value = "";
     navigate("");
   };
 
-
-
+  //* Main Body
   return (
     <section className="admin-list-items-filter-section">
       <div className="admin-list-items-filter-main-container">

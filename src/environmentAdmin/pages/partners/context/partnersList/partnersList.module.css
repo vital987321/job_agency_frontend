@@ -21,3 +21,7 @@
   .tableRow td:first-child{
     font-weight: bold;
   }
+
+  .deletebutton{
+    margin-left: 10px;
+  }
