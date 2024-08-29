@@ -1,5 +1,7 @@
 NEXT TODO STEP:
-    [ ] ...
+    [ ] rename Admin Environment to Admin Flow. User+
+    [ ] move AdminVacancyForm from assets
+    [ ] commonElements.css Still needed?
 
 
 
@@ -24,15 +26,13 @@ FRONTEND:
             [x] If vacancy is deactevated add div block to vacancy component.
         [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
         [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)
-        [ ] Add Partners page
-            [ ] list of partners [id , Company, HR Specialist, Phone,]
-            [ ] New Partner Form
-            [ ] Edit / Delete Partner
+        [x] Add Partners page
+            [x] list of partners [id , Company, HR Specialist, Phone,]
+            [x] New Partner Form
+            [x] Edit / Delete Partner
         [ ] Vacancy shall be related to partner/company model
         [ ] vacancy filter shall have a select input for company
         [ ] vacancy filter shall have a select input for sector
-
-
     User Environment
         [x] user profile foto
             [x] Add userAvatarUrl to CustomObtainAuthToken backend
@@ -63,8 +63,9 @@ FRONTEND:
             [x] change Review Icon in Admin Area
             [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
             [x] Action on delete button review
-    Common Environment
-        [ ] Reviews.
+        [ ] commonElements.css Still needed?
+    CommonItems
+        [x] Reviews.
             [x] Add Review model to backend. 
             [x] User Form to add Review.
             [x] Reviews section review pagination.
@@ -91,15 +92,12 @@ FRONTEND:
         [?] Add Users section to Admin side bar
             [?] posibbility to block user permanentely or temporaryly
         [x] Add Reviews section to Admin side bar
-        [ ] rename Admin Environment to Admin Flow. User+
-        [ ] move AdminVacancyForm from assets
+        [x] rename Admin Environment to Admin Flow. User+
+        [x] move AdminVacancyForm from assets
         [ ] applicaption-filter-on-page-input shall be a separate component
         [ ] think if 2 filter buttons should be a separate component
-       
-    
-  
-    
-    
+
+
 TO CONSIDER:
     [ ] Adding Partners Model to DB.
         [ ] Admin can select company only from awailabe list of partners

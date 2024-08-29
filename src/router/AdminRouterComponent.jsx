@@ -1,11 +1,11 @@
 import { Route } from "react-router-dom";
-import { AdminVacanciesComponent } from "../environmentAdmin/pages/vacancies/AdminVacanciesComponent";
-import { AdminBodyComponent } from "../environmentAdmin/layout/AdminBodyComponent";
-import { AdminVacancyComponent } from "../environmentAdmin/pages/vacancy/AdminVacancyComponent";
-import { AdminApplicationComponent } from "../environmentAdmin/pages/application/AdminApplicationComponent";
-import { AdminApplicationsComponent } from "../environmentAdmin/pages/applications/AdminApplicationsComponent";
-import {AdminReviewsComponent} from '../environmentAdmin/pages/reviews/reviews'
-import { Partner } from "../environmentAdmin/pages/partners/partners";
+import { AdminVacanciesComponent } from "../flowAdmin/pages/vacancies/AdminVacanciesComponent";
+import { AdminBodyComponent } from "../flowAdmin/layout/AdminBodyComponent";
+import { AdminVacancyComponent } from "../flowAdmin/pages/vacancy/AdminVacancyComponent";
+import { AdminApplicationComponent } from "../flowAdmin/pages/application/AdminApplicationComponent";
+import { AdminApplicationsComponent } from "../flowAdmin/pages/applications/AdminApplicationsComponent";
+import {AdminReviewsComponent} from '../flowAdmin/pages/reviews/reviews'
+import { Partner } from "../flowAdmin/pages/partners/partners";
 
 export const AdminRouterComponent = (
   <Route path="admin/" element={<AdminBodyComponent />}>
