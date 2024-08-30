@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import styles from './adminListItemsFilter.module.css';
+import styles from '../../../../../commonItems/css/adminListItemsFilter.module.css';
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import closeIcon from "../../../../../assets/svg/X.svg";

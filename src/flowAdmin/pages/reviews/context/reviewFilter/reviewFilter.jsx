@@ -5,6 +5,7 @@ import closeIcon from "../../../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css"
 
 export const ReviewFilter = () => {
   const userEmailRef = React.createRef();
@@ -92,35 +93,35 @@ export const ReviewFilter = () => {
 
   return (
     <>
-      <section className="admin-list-items-filter-section">
-        <div className="admin-list-items-filter-main-container">
+      <section className={styles["admin-list-items-filter-section"]}>
+        <div className={styles["admin-list-items-filter-main-container"]}>
           <form
           // className=""
           onSubmit={filterFormSubmitHandler}
           >
-            <div className="admin-list-items-filter-form-inputs">
-              <div className="admin-list-items-filter-input-container">
+            <div className={styles["admin-list-items-filter-form-inputs"]}>
+              <div className={styles["admin-list-items-filter-input-container"]}>
                 <label htmlFor="review-filter-user-email-input">Email</label>
                 <input
-                  className="admin-list-items-filter-input"
+                  className={styles["admin-list-items-filter-input"]}
                   id="review-filter-user-email-input"
                   type="text"
                   ref={userEmailRef}
                 />
               </div>
-              <div className="admin-list-items-filter-input-container">
+              <div className={styles["admin-list-items-filter-input-container"]}>
                 <label htmlFor="review-filter-user-name-input">First Name</label>
                 <input
-                  className="admin-list-items-filter-input"
+                  className={styles["admin-list-items-filter-input"]}
                   id="review-filter-user-name-input"
                   type="text"
                   ref={userFirstNameRef}
                 />
               </div>
-              <div className="admin-list-items-filter-input-container">
+              <div className={styles["admin-list-items-filter-input-container"]}>
                 <label htmlFor="review-filter-user-name-input">Last Name</label>
                 <input
-                  className="admin-list-items-filter-input"
+                  className={styles["admin-list-items-filter-input"]}
                   id="review-filter-user-last-name-input"
                   type="text"
                   ref={userLastNameRef}
@@ -128,10 +129,10 @@ export const ReviewFilter = () => {
               </div>
 
 
-              <div className="admin-list-items-filter-input-container">
+              <div className={styles["admin-list-items-filter-input-container"]}>
                 <label htmlFor="review-filter-rate-select">Rating</label>
                 <select
-                  className="admin-list-items-filter-input"
+                  className={styles["admin-list-items-filter-input"]}
                   id="review-filter-rate-select"
                   ref={rateRef}
                 >
@@ -143,10 +144,10 @@ export const ReviewFilter = () => {
                   <option value="5">5</option>
                 </select>
               </div>
-              <div className="admin-list-items-filter-input-container">
+              <div className={styles["admin-list-items-filter-input-container"]}>
                 <label htmlFor="review-filter-comment-input">Comment</label>
                 <input
-                  className="admin-list-items-filter-input"
+                  className={styles["admin-list-items-filter-input"]}
                   id="review-filter-comment-input"
                   type="text"
                   ref={commentRef}
@@ -154,14 +155,14 @@ export const ReviewFilter = () => {
               </div>
             </div>
 
-            <div className="admin-list-items-form-controls">
-              <div className="admin-list-items-form-buttons-container">
+            <div className={styles["admin-list-items-form-controls"]}>
+              <div className={styles["admin-list-items-form-buttons-container"]}>
                 <ButtonType1
                   value={
                     <span>
                       Filter{" "}
                       <img
-                        className="admin-filter-button-icon"
+                        className={styles["admin-filter-button-icon"]}
                         src={filterIcon}
                         alt=""
                         height="14px"
@@ -173,7 +174,7 @@ export const ReviewFilter = () => {
                 />
 
                 <div
-                  className="admin-reset-filters-button-container"
+                  className={styles["admin-reset-filters-button-container"]}
                   style={{ display: resetFiltersButtonDisplayValue }}
                 >
                   <ButtonType1
@@ -181,7 +182,7 @@ export const ReviewFilter = () => {
                       <span>
                         Reset Filters{" "}
                         <img
-                          className="admin-filter-button-icon"
+                          className={styles["admin-filter-button-icon"]}
                           src={closeIcon}
                           alt=""
                           height="14px"
@@ -197,7 +198,7 @@ export const ReviewFilter = () => {
               <div>
               <label htmlFor="applicaption-filter-on-page-input">on Page</label>
               <select
-                className="admin-list-items-filter-input admin-list-items-filter-on-page-input"
+                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
                 id="applicaption-filter-on-page-input"
                 value={onPageListItems}
                 onChange={changeOnPageListItemsLimit}

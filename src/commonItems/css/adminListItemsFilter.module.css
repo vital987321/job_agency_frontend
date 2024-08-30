@@ -1,4 +1,4 @@
-@import '../../../../../data/constants.css';
+@import '../../data/constants.css';
 
 .admin-list-items-filter-section{
     background-color: var(--design-text-color2);

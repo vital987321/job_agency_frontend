@@ -1,4 +1,4 @@
-import styles from "./partnerFilter.module.css";
+import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import React from "react";
@@ -86,34 +86,34 @@ export const PartnerFilter = () => {
 
   //* Main Body
   return (
-    <section className="admin-list-items-filter-section">
-      <div className="admin-list-items-filter-main-container">
+    <section className={styles["admin-list-items-filter-section"]}>
+      <div className={styles["admin-list-items-filter-main-container"]}>
         <form onSubmit={filterFormSubmitHandler}>
-          <div className="admin-list-items-filter-form-inputs">
-            <div className="admin-list-items-filter-input-container">
+          <div className={styles["admin-list-items-filter-form-inputs"]}>
+            <div className={styles["admin-list-items-filter-input-container"]}>
               <label htmlFor="partner-filter-company-input">Company</label>
               <input
-                className="admin-list-items-filter-input"
+                className={styles["admin-list-items-filter-input"]}
                 id="partner-filter-company-input"
                 type="text"
                 ref={companyRef}
               />
             </div>
-            <div className="admin-list-items-filter-input-container">
+            <div className={styles["admin-list-items-filter-input-container"]}>
               <label htmlFor="partner-filter-hr-specialist-input">
                 HR Specialist
               </label>
               <input
-                className="admin-list-items-filter-input"
+                className={styles["admin-list-items-filter-input"]}
                 id="partner-filter-hr-specialist-input"
                 type="text"
                 ref={hrSpecialistRef}
               />
             </div>
-            <div className="admin-list-items-filter-input-container">
+            <div className={styles["admin-list-items-filter-input-container"]}>
               <label htmlFor="review-filter-phone-input">Phone</label>
               <input
-                className="admin-list-items-filter-input"
+                className={styles["admin-list-items-filter-input"]}
                 id="partner-filter-phone-input"
                 type="text"
                 ref={phoneRef}
@@ -121,14 +121,14 @@ export const PartnerFilter = () => {
             </div>
           </div>
 
-          <div className="admin-list-items-form-controls">
-            <div className="admin-list-items-form-buttons-container">
+          <div className={styles["admin-list-items-form-controls"]}>
+            <div className={styles["admin-list-items-form-buttons-container"]}>
               <ButtonType1
                 value={
                   <span>
                     Filter{" "}
                     <img
-                      className="admin-filter-button-icon"
+                      className={styles["admin-filter-button-icon"]}
                       src={filterIcon}
                       alt=""
                       height="14px"
@@ -140,7 +140,7 @@ export const PartnerFilter = () => {
               />
 
               <div
-                className="admin-reset-filters-button-container"
+                className={styles["admin-reset-filters-button-container"]}
                 style={{ display: resetFiltersButtonDisplayValue }}
               >
                 <ButtonType1
@@ -148,7 +148,7 @@ export const PartnerFilter = () => {
                     <span>
                       Reset Filters{" "}
                       <img
-                        className="admin-filter-button-icon"
+                        className={styles["admin-filter-button-icon"]}
                         src={closeIcon}
                         alt=""
                         height="14px"
@@ -164,7 +164,7 @@ export const PartnerFilter = () => {
             <div>
               <label htmlFor="applicaption-filter-on-page-input">on Page</label>
               <select
-                className="admin-list-items-filter-input admin-list-items-filter-on-page-input"
+                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
                 id="applicaption-filter-on-page-input"
                 value={onPageListItems}
                 onChange={changeOnPageListItemsLimit}
