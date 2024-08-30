@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../../css/commonElements.css";
 import "./vacancies.css";
 import {
   LIST_VACANCIES_BASE_URL,

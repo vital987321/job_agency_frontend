@@ -7,7 +7,6 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import "../../../css/commonElements.css";
 import "./header.css";
 import { AvatarComponent } from "../../../commonItems/components/AvatarComponent";
 import {useEffect, useState } from "react";

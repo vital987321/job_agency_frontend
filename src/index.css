@@ -1,3 +1,4 @@
+@import './data/constants.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,8 +13,56 @@ code {
     monospace;
 }
 
-
 .textCenter{
   text-align: center;
 }
+
+/* User css */
+.body{
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.navLinks{
+    text-decoration: none;
+    color: black;
+  }
+
+.navLinks:hover{
+    text-decoration: underline;
+}
+
+.h2-common{
+  font-size: xx-large;
+  text-align: center;
+}
+
+/* .button-common{
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+}
+
+.button-common:hover  {
+  box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
+  transform: translateY(-0.25em);
+} */
+
+
+/* .button-common-color1{
+  background: var(--button-general-background-color1);
+}
+.button-common-color2{
+  background: var(--button-general-background-color2);
+}
+.button-common-color3{
+  background: var(--button-general-background-color3);
+}
+.button-common-color4{
+  background: var(--button-general-background-color4);
+  border:1px solid  grey;
+} */
+
+
+
 

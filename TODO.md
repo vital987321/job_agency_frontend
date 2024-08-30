@@ -1,7 +1,8 @@
 NEXT TODO STEP:
-    [ ] rename Admin Environment to Admin Flow. User+
-    [ ] move AdminVacancyForm from assets
+    [x] rename Admin Environment to Admin Flow. User+
+    [x] move AdminVacancyForm from assets
     [ ] commonElements.css Still needed?
+    [ ] App.css ?
 
 
 
