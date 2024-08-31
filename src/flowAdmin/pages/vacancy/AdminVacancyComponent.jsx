@@ -100,7 +100,7 @@ export const AdminVacancyComponent = () => {
       <div className={styles["admin-vacancy-company-container"]}>
         <span>Company: </span>
         <span className={styles["admin-vacancy-company-name"]}>
-          {vacancyData.company}
+          {vacancyData.partner_data ? vacancyData.partner_data.company : "-"}
         </span>
       </div>
       <VacancyDataComponent

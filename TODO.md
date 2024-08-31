@@ -1,8 +1,5 @@
 NEXT TODO STEP:
-    [x] rename Admin Environment to Admin Flow. User+
-    [x] move AdminVacancyForm from assets
-    [ ] commonElements.css Still needed?
-    [ ] App.css ?
+    [ ] ...
 
 
 
@@ -34,6 +31,7 @@ FRONTEND:
         [ ] Vacancy shall be related to partner/company model
         [ ] vacancy filter shall have a select input for company
         [ ] vacancy filter shall have a select input for sector
+        [ ] admin side bar is shorter than context on the rigth. 
     User Environment
         [x] user profile foto
             [x] Add userAvatarUrl to CustomObtainAuthToken backend
@@ -64,7 +62,8 @@ FRONTEND:
             [x] change Review Icon in Admin Area
             [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
             [x] Action on delete button review
-        [ ] commonElements.css Still needed?
+        [x] commonElements.css Still needed?
+        [ ] footer and header shall habe width 100%
     CommonItems
         [x] Reviews.
             [x] Add Review model to backend. 

@@ -52,7 +52,7 @@ export const AdminVacanciesListComponent = (props) => {
                     ? vacancy.name
                     : vacancy.name.slice(0, 25) + "..."}
                 </td>
-                <td>{vacancy.company}</td>
+                <td>{vacancy.partner_data? vacancy.partner_data.company : ""}</td>
                 <td>{vacancy.location}</td>
                 <td>{vacancy.salary} CZK</td>
                 <td>{stringToDateConverter(vacancy.created_at)}</td>
