@@ -4,6 +4,7 @@ import "./adminApplicationsList.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../commonItems/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
   const [applicationsListData, setApplicationsListData] = useState([]);
@@ -75,9 +76,10 @@ export const AdminApplicationsListComponent = (props) => {
                     to={"/admin/applications/" + application.id}
                     className="details-link"
                   >
-                    <button className="details-link-button button-common button-common-color4">
-                      Details
-                    </button>
+                    <ButtonType1
+                      value='Details'
+                      strength='4'
+                    />
                   </Link>
                 </td>
               </tr>

@@ -1,5 +1,7 @@
 NEXT TODO STEP:
-    [ ] ...
+    [ ] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
+    [ ] admin side bar is shorter than context on the rigth. 
+    [ ] footer and header shall habe width 100%
 
 
 
@@ -51,7 +53,7 @@ FRONTEND:
         [x] for user add the possibility to add Vacancy to favorite list
         [x] list of favourite vacancies in user profile page.
         [x] bug on the homepage. Vacancy Details button leads to incorrect url.
-        [ ] Add User reviews
+        [x] Add User reviews
             [x] Reviews page consists of 8 last reviws, paginations, total number of rewies, average rating mark, button to leave a review.
             [x] user may leave only one review (Forein key)
             [?] if user have a review, Write-Review button diassapears. Find_My_Review button is awailable
@@ -96,11 +98,12 @@ FRONTEND:
         [x] move AdminVacancyForm from assets
         [ ] applicaption-filter-on-page-input shall be a separate component
         [ ] think if 2 filter buttons should be a separate component
+        [ ] Adaptive design
 
 
 TO CONSIDER:
-    [ ] Adding Partners Model to DB.
-        [ ] Admin can select company only from awailabe list of partners
+    [x] Adding Partners Model to DB.
+        [x] Admin can select company only from awailabe list of partners
     [ ] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
     [ ] Add a checkbox for each item in admin application list. Add tools panel for Action for checked applications:
         - Mark as read
@@ -123,7 +126,7 @@ BACKEND:
         [x] Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
             probably similar isue for user area. Check VacancyListDjangoFilterBackend
     [ ] permitions to admin environment
-    [ ] Admin can see only his own applications. Fix it.
+    [x] Admin can see only his own applications. Fix it.
     [x] Add Review model to backend.
         [ ] Permissions to Review
     [ ] Permissions
