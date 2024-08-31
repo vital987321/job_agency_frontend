@@ -3,7 +3,10 @@ import { CONTRACT_TYPE } from "../../../data/constants";
 import { GENDER_LIST } from "../../../data/constants";
 import { SECTOR_REQUEST_URL } from "../../../data/constants";
 import { RESIDENCE_TYPES } from "../../../data/constants";
-import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
+import {
+  LIST_VACANCIES_BASE_URL,
+  PARTNERS_REQUEST_URL,
+} from "../../../data/constants";
 import { WORKING_HOURS } from "../../../data/constants";
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
@@ -11,7 +14,9 @@ import "./adminVacancyForm.css";
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
 
 export const AdminVacancyFormComponent = (props) => {
+  //* States
   const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
+  const [partnersList, setPartnersList] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
     sectors: [],
@@ -21,8 +26,9 @@ export const AdminVacancyFormComponent = (props) => {
     visa_assistance: "",
   });
 
+  //* Refs
   const vacancyNameRef = React.createRef();
-  const companyRef = React.createRef();
+  const partnerRef = React.createRef();
   const locationRef = React.createRef();
   const salaryRef = React.createRef();
   const hoursFromRef = React.createRef();
@@ -32,10 +38,11 @@ export const AdminVacancyFormComponent = (props) => {
   const descriptionRef = React.createRef();
   const requirementsRef = React.createRef();
 
+  //* useEffects
   useEffect(() => {
     const fetchSectors = async () => {
       try {
-        const response = await api
+        const request = await api
           .get(SECTOR_REQUEST_URL)
           .then((response) => {
             setSectorSelectOptions(
@@ -54,7 +61,19 @@ export const AdminVacancyFormComponent = (props) => {
         console.log(error);
       }
     };
+    const fetchPartners = async () => {
+      try {
+        const request = await api
+          .get(PARTNERS_REQUEST_URL)
+          .then((response) => setPartnersList(response.data.results))
+          .catch((error) => console.log(error));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchSectors();
+    fetchPartners();
   }, []);
 
   useEffect(() => {
@@ -69,11 +88,13 @@ export const AdminVacancyFormComponent = (props) => {
           visa_assistance: props.vacancyData.visa_assistance
             ? props.vacancyData.visa_assistance
             : "",
+          partner: props.vacancyData.partner_data.id,
         });
       } catch {}
     }
   }, [sectorSelectOptions]);
 
+  //* Functions
   const sectorDbItems = () => {
     return props.vacancyData.sector.map((sectorID) => {
       for (const item of sectorSelectOptions) {
@@ -95,31 +116,10 @@ export const AdminVacancyFormComponent = (props) => {
     });
   };
 
-  const changeResidenceTypeHandler = (e) => {
+  const changeSelectHandler = (e) => {
     setVacancyCurrentValues({
       ...vacancyCurrentValues,
-      residence_type: e.target.value,
-    });
-  };
-
-  const changeGenderHandler = (e) => {
-    setVacancyCurrentValues({
-      ...vacancyCurrentValues,
-      gender: e.target.value,
-    });
-  };
-
-  const changeContractTypeHandler = (e) => {
-    setVacancyCurrentValues({
-      ...vacancyCurrentValues,
-      contract_type: e.target.value,
-    });
-  };
-
-  const changeVisaAssistanceHandler = (e) => {
-    setVacancyCurrentValues({
-      ...vacancyCurrentValues,
-      visa_assistance: e.target.value,
+      [e.target.dataset.selectkey]: e.target.value,
     });
   };
 
@@ -170,7 +170,7 @@ export const AdminVacancyFormComponent = (props) => {
     }
     const hours = workingHoursString.split(":")[0];
     const minutes = workingHoursString.split(":")[1];
- 
+
     if (isNaN(hours) || isNaN(minutes)) {
       return {
         validation: false,
@@ -200,10 +200,9 @@ export const AdminVacancyFormComponent = (props) => {
       validation: true,
       errorMessage: "",
     };
-
   };
 
-  const workingHoursToRequestFormst = (hours, minutes) => {
+  const workingHoursToRequestFormat = (hours, minutes) => {
     if (!hours) return null;
     return `${hours}:${minutes ? minutes : "00"}`;
   };
@@ -213,15 +212,15 @@ export const AdminVacancyFormComponent = (props) => {
 
     const requestData = {
       name: vacancyNameRef.current.value,
-      company: companyRef.current.value,
+      partner: vacancyCurrentValues.partner,
       salary: salaryRef.current.value,
       location: locationRef.current.value,
       contract_type: vacancyCurrentValues.contract_type,
-      hours_from: workingHoursToRequestFormst(
+      hours_from: workingHoursToRequestFormat(
         hoursFromRef.current.value,
         minutesFromRef.current.value
       ),
-      hours_to: workingHoursToRequestFormst(
+      hours_to: workingHoursToRequestFormat(
         hoursToRef.current.value,
         minutesToRef.current.value
       ),
@@ -275,6 +274,7 @@ export const AdminVacancyFormComponent = (props) => {
     props.setVacancyFormDisplayValue("none");
   };
 
+  //* Main Body
   return (
     <div
       className="admin-vacancy-form-modal-window-enviroment"
@@ -308,13 +308,22 @@ export const AdminVacancyFormComponent = (props) => {
 
             <div className="admin-vacancy-form-company-container">
               <label htmlFor="form-vacancy-conpany-input">Company</label>
-              <input
+              <select
                 className="admin-vacancy-form-input"
-                id="form-vacancy-company-input"
-                type="text"
-                defaultValue={props.vacancyData.company}
-                ref={companyRef}
-              />
+                id="form-vacancy-company-select"
+                value={vacancyCurrentValues.partner}
+                data-selectkey="partner"
+                onChange={changeSelectHandler}
+              >
+                <option value=""></option>
+                {partnersList.map((item) => {
+                  return (
+                    <option value={item.id} key={item.id}>
+                      {item.company}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
           </div>
 
@@ -358,8 +367,9 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-contract-type-select"
+                data-selectkey='contract_type'
                 value={vacancyCurrentValues.contract_type}
-                onChange={changeContractTypeHandler}
+                onChange={changeSelectHandler}
               >
                 {CONTRACT_TYPE.map((item) => {
                   return (
@@ -376,8 +386,9 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-gender-select"
+                data-selectkey='gender'
                 value={vacancyCurrentValues.gender}
-                onChange={changeGenderHandler}
+                onChange={changeSelectHandler}
               >
                 {GENDER_LIST.map((item) => {
                   return (
@@ -483,8 +494,9 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-residence-select"
+                data-selectkey='residence_type'
                 value={vacancyCurrentValues.residence_type}
-                onChange={changeResidenceTypeHandler}
+                onChange={changeSelectHandler}
               >
                 {Object.keys(RESIDENCE_TYPES).map((item_key) => {
                   return (
@@ -503,8 +515,9 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-visa-assistance-select"
+                data-selectkey="visa_assistance"
                 value={vacancyCurrentValues.visa_assistance}
-                onChange={changeVisaAssistanceHandler}
+                onChange={changeSelectHandler}
               >
                 <option value={""}>Unknown</option>
                 <option value={true}>Yes</option>
@@ -560,7 +573,7 @@ export const AdminVacancyFormComponent = (props) => {
             <ButtonType1
               value={props.newVacancy ? "Create vacancy" : "Save changes"}
               onClickHandler={submitFormHandler}
-              strength='1'
+              strength="1"
             />
           </div>
         </div>
