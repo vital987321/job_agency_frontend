@@ -28,9 +28,9 @@ FRONTEND:
             [x] list of partners [id , Company, HR Specialist, Phone,]
             [x] New Partner Form
             [x] Edit / Delete Partner
-        [ ] Vacancy shall be related to partner/company model
-        [ ] vacancy filter shall have a select input for company
-        [ ] vacancy filter shall have a select input for sector
+        [x] Vacancy shall be related to partner/company model
+        [-] vacancy filter shall have a select input for company
+        [-] vacancy filter shall have a select input for sector
         [ ] admin side bar is shorter than context on the rigth. 
     User Environment
         [x] user profile foto

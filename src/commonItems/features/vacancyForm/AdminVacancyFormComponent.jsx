@@ -7,15 +7,21 @@ import {
   LIST_VACANCIES_BASE_URL,
   PARTNERS_REQUEST_URL,
 } from "../../../data/constants";
-import { WORKING_HOURS } from "../../../data/constants";
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
 import "./adminVacancyForm.css";
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
 
 export const AdminVacancyFormComponent = (props) => {
+  //* props
+  //    newVacancy
+  //    vacancyData
+  //    setVacancyData
+  //    setVacancyFormDisplayValue
+  //    setVacancyListChangedState
+
   //* States
-  const [sectorSelectOptions, setSectorSelectOptions] = useState([]);
+  const [sectorFullList, setSectorFullList] = useState([]);
   const [partnersList, setPartnersList] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
   const [vacancyCurrentValues, setVacancyCurrentValues] = useState({
@@ -28,7 +34,6 @@ export const AdminVacancyFormComponent = (props) => {
 
   //* Refs
   const vacancyNameRef = React.createRef();
-  const partnerRef = React.createRef();
   const locationRef = React.createRef();
   const salaryRef = React.createRef();
   const hoursFromRef = React.createRef();
@@ -40,45 +45,13 @@ export const AdminVacancyFormComponent = (props) => {
 
   //* useEffects
   useEffect(() => {
-    const fetchSectors = async () => {
-      try {
-        const request = await api
-          .get(SECTOR_REQUEST_URL)
-          .then((response) => {
-            setSectorSelectOptions(
-              response.data.results.map((item) => {
-                return {
-                  value: item.id,
-                  label: item.name,
-                };
-              })
-            );
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const fetchPartners = async () => {
-      try {
-        const request = await api
-          .get(PARTNERS_REQUEST_URL)
-          .then((response) => setPartnersList(response.data.results))
-          .catch((error) => console.log(error));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchSectors();
-    fetchPartners();
+    fetchAllSectors();
+    fetchAllPartners();
   }, []);
 
   useEffect(() => {
     if (!props.newVacancy) {
-      // changing existing vacancy
+      // editing existing vacancy
       try {
         setVacancyCurrentValues({
           sectors: sectorDbItems(),
@@ -92,12 +65,45 @@ export const AdminVacancyFormComponent = (props) => {
         });
       } catch {}
     }
-  }, [sectorSelectOptions]);
+  }, [sectorFullList]);
 
   //* Functions
+  const fetchAllSectors = async () => {
+    try {
+      const request = await api
+        .get(SECTOR_REQUEST_URL)
+        .then((response) => {
+          setSectorFullList(
+            response.data.results.map((item) => {
+              return {
+                value: item.id,
+                label: item.name,
+              };
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAllPartners = async () => {
+    try {
+      const request = await api
+        .get(PARTNERS_REQUEST_URL)
+        .then((response) => setPartnersList(response.data.results))
+        .catch((error) => console.log(error));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const sectorDbItems = () => {
     return props.vacancyData.sector.map((sectorID) => {
-      for (const item of sectorSelectOptions) {
+      for (const item of sectorFullList) {
         if (item.value == sectorID) {
           return item.value;
         }
@@ -209,7 +215,6 @@ export const AdminVacancyFormComponent = (props) => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-
     const requestData = {
       name: vacancyNameRef.current.value,
       partner: vacancyCurrentValues.partner,
@@ -231,8 +236,6 @@ export const AdminVacancyFormComponent = (props) => {
       visa_assistance: vacancyCurrentValues.visa_assistance,
       sector: vacancyCurrentValues.sectors,
     };
-
-    // const headers = { headers: { "Content-Type": "multipart/form-data" } };
 
     const sendPatchRequest = async () => {
       const requestUrl = LIST_VACANCIES_BASE_URL + props.vacancyData.id + "/";
@@ -265,12 +268,10 @@ export const AdminVacancyFormComponent = (props) => {
       if (props.newVacancy) sendPostRequest();
       else sendPatchRequest();
     }
-
-    // props.setVacancyFormDisplayValue("none");
   };
 
   const cancelButtonHandler = (e) => {
-    e.preventDefault(); //form to be submited without e.preventDefault()
+    e.preventDefault();
     props.setVacancyFormDisplayValue("none");
   };
 
@@ -367,7 +368,7 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-contract-type-select"
-                data-selectkey='contract_type'
+                data-selectkey="contract_type"
                 value={vacancyCurrentValues.contract_type}
                 onChange={changeSelectHandler}
               >
@@ -386,7 +387,7 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-gender-select"
-                data-selectkey='gender'
+                data-selectkey="gender"
                 value={vacancyCurrentValues.gender}
                 onChange={changeSelectHandler}
               >
@@ -494,7 +495,7 @@ export const AdminVacancyFormComponent = (props) => {
               <select
                 className="admin-vacancy-form-input"
                 id="form-vacancy-residence-select"
-                data-selectkey='residence_type'
+                data-selectkey="residence_type"
                 value={vacancyCurrentValues.residence_type}
                 onChange={changeSelectHandler}
               >
@@ -533,7 +534,7 @@ export const AdminVacancyFormComponent = (props) => {
                 value={vacancyCurrentValues.sectors}
                 onChange={changeSectorsHandler}
               >
-                {sectorSelectOptions.map((item) => {
+                {sectorFullList.map((item) => {
                   return (
                     <option key={item.value} value={item.value}>
                       {item.label}
