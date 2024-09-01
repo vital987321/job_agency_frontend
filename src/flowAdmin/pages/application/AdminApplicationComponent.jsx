@@ -19,14 +19,29 @@ import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1
 export const AdminApplicationComponent = () => {
   const { application_id } = useParams();
   const [application, setApplication] = useState(null);
-  const url = "http://127.0.0.1:8000/application/" + application_id;
+  const url = "http://127.0.0.1:8000/application/" + application_id+'/';
+
+  
+  const setApplicationSeen = async (applicationResponseData)=>{
+    if (!applicationResponseData.seen){
+      try {
+        const request = await api
+        .patch(url, {"seen":true})
+        .then((response)=>console.log('Application is changed to Seen.'))  
+      }catch(error) {console.log(error)}
+    }
+  }
 
   useEffect(() => {
     const fetchApplication = async () => {
       try {
-        const response = await api
+        const request = await api
           .get(url)
-          .then((response) => setApplication(response.data))
+          .then((response) => {
+            setApplication(response.data)
+            return response.data
+          })
+          .then((applicationResponseData)=>setApplicationSeen(applicationResponseData))
           .catch((err) => console.log(err));
       } catch (error) {
         console.log(error);
@@ -38,6 +53,8 @@ export const AdminApplicationComponent = () => {
   if (!application) {
     return <div>Loading data</div>;
   }
+
+
 
   const changeApplicationStatusRequest = (e) => {
     const url = "http://127.0.0.1:8000/application/" + application_id + "/";

@@ -28,20 +28,14 @@
 
 .admin-applications-table-tr td:first-child {
     font-weight: bold;
-    /* padding-left: 10px; */
-}
-
-.admin-applications-pagination-button {
-    border: none;
-    background-color: transparent;
-    width: 100px;
-}
-
-.admin-applications-pagination-button:hover {
-    text-decoration: underline;
 }
 
 .admin-application-status{
     display: inline-block;
     width: 4rem;
+}
+
+.newapplication{
+    font-weight: bold;
+
 }

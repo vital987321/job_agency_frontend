@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./adminApplicationsList.css";
+import styles from "./adminApplicationsList.module.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../commonItems/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
@@ -36,11 +36,11 @@ export const AdminApplicationsListComponent = (props) => {
   }, [props.adminApplicationListRequestUrl]);
 
   return (
-    <section className="admin-list-applications-container">
-      <table className="admin-list-applications-table">
+    <section className={styles["admin-list-applications-container"]}>
+      <table className={styles["admin-list-applications-table"]}>
         <tbody>
           <tr>
-            <th className="admin-list-applications-first-header">ID</th>
+            <th className={styles["admin-list-applications-first-header"]}>ID</th>
             <th>Vacancy Name</th>
             <th>Vac. ID</th>
             <th>Company</th>
@@ -52,7 +52,11 @@ export const AdminApplicationsListComponent = (props) => {
 
           {applicationsListData.map((application) => {
             return (
-              <tr className="admin-applications-table-tr" key={application.id}>
+              <tr 
+                key={application.id}
+                className={`${styles["admin-applications-table-tr"]} 
+                ${application.seen ? "" : styles["newapplication"]}`} 
+              >
                 <td>{application.id} </td>
                 <td>
                   {application.vacancy_details.name.length < 30
@@ -64,7 +68,7 @@ export const AdminApplicationsListComponent = (props) => {
                 <td>{application.first_name + " " + application.last_name}</td>
                 <td>{stringToDateConverter(application.created_at)}</td>
                 <td>
-                  <span className="admin-application-status">
+                  <span className={styles["admin-application-status"]}>
                     {application.status}
                   </span>
 
@@ -74,7 +78,6 @@ export const AdminApplicationsListComponent = (props) => {
                 <td>
                   <Link
                     to={"/admin/applications/" + application.id}
-                    className="details-link"
                   >
                     <ButtonType1
                       value='Details'
