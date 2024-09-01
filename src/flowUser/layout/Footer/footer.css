@@ -2,11 +2,15 @@
 
 footer{
     margin-top:100px;
-    background: #D9D9D9;
     background: var(--design-color2);
-    padding-bottom: 30px;
-    
+    padding-bottom: 30px;    
 }
+
+.footer-container{
+    max-width: var(--global-max-width);
+    margin: 0 auto;
+}
+
 .footer-sections-container{
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);

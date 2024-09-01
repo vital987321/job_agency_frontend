@@ -1,0 +1,8 @@
+.controls{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.log-button-container{
+  margin-left: 20px;
+}

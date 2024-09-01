@@ -1,7 +1,6 @@
 NEXT TODO STEP:
-    [x] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
-    [x] admin side bar is shorter than context on the rigth. 
-    [ ] footer and header shall habe width 100%
+    [ ] applicaption-filter-on-page-input shall be a separate component
+    [ ] think if 2 filter buttons should be a separate component
 
 
 
@@ -66,7 +65,7 @@ FRONTEND:
             [x] In Admin Area Clients Reviews header has a different style, then Applications and Vacancies
             [x] Action on delete button review
         [x] commonElements.css Still needed?
-        [ ] footer and header shall habe width 100%
+        [x] footer and header shall habe width 100%
     CommonItems
         [x] Reviews.
             [x] Add Review model to backend. 
@@ -91,7 +90,6 @@ FRONTEND:
                 [x] Check if there is a possibility to simplify generateListVacanciesRequestQueryString function by using URLSearchParams methods.
         [x] switch from global css to module.css
         [x] Admin Applications. Change Status filter input to select.
-        [ ] Adapvive design
         [?] Add Users section to Admin side bar
             [?] posibbility to block user permanentely or temporaryly
         [x] Add Reviews section to Admin side bar
