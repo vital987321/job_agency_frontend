@@ -1,6 +1,6 @@
 NEXT TODO STEP:
-    [ ] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
-    [ ] admin side bar is shorter than context on the rigth. 
+    [x] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
+    [x] admin side bar is shorter than context on the rigth. 
     [ ] footer and header shall habe width 100%
 
 
@@ -33,7 +33,8 @@ FRONTEND:
         [x] Vacancy shall be related to partner/company model
         [-] vacancy filter shall have a select input for company
         [-] vacancy filter shall have a select input for sector
-        [ ] admin side bar is shorter than context on the rigth. 
+        [x] admin side bar is shorter than context on the rigth. 
+        [x] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
     User Environment
         [x] user profile foto
             [x] Add userAvatarUrl to CustomObtainAuthToken backend

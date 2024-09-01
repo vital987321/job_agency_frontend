@@ -5,82 +5,83 @@ import {ReactComponent as SettingsGearIcon} from "../../../assets/svg/settings_g
 import {ReactComponent as PartnersIcon} from "../../../assets/svg/partners.svg";
 import {ReactComponent as ApplicationsIcon} from '../../../assets/svg/form_icon.svg'
 import { NavLink } from "react-router-dom";
-import "./adminSideBar.css";
+import styles from "./adminSideBar.module.css";
 
 export const AdminSideBarComponent = () => {
+
   return (
-    <aside className="admin-side-bar">
-      <div className="admin-side-bar-comany-container">
-        <img className="footer-logo-img" src={agencyLogoIcon} alt="Logo" />
-        <p className="footer-company-name">BEE Rercuitment</p>
+    <>
+      <div className={styles["comany-container"]}>
+        <img src={agencyLogoIcon} alt="Logo" />
+        <p className={styles["company-name"]}>BEE Rercuitment</p>
       </div>
 
-      <nav className="admin-side-bar-navigation-container">
+      <nav className={styles["navigation-container"]}>
         <NavLink
           to="vacancies"
           className={({ isActive }) => {
             return (
-              "admin-nav-link " +
-              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+              styles["admin-nav-link"] +' '+
+              (isActive ? styles["admin-nav-link-active"] : styles["admin-nav-link-non-active"])
             );
           }}
         >
           <IconListIcon />
-          <p className="admin-side-bar-nav-link-text">Vacancies</p>
+          <p className={styles["nav-link-text"]}>Vacancies</p>
         </NavLink>
         <NavLink
           to="applications"
           className={({ isActive }) => {
             return (
-              "admin-nav-link " +
-              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+              styles["admin-nav-link"] +' '+
+              (isActive ? styles["admin-nav-link-active"] : styles["admin-nav-link-non-active"])
             );
           }}
         >
           <ApplicationsIcon />
 
-          <p className="admin-side-bar-nav-link-text">Applications</p>
+          <p className={styles["nav-link-text"]}>Applications</p>
         </NavLink>
 
         <NavLink
           to="reviews"
           className={({ isActive }) => {
             return (
-              "admin-nav-link " +
-              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+              styles["admin-nav-link"] +' '+
+              (isActive ? styles["admin-nav-link-active"] : styles["admin-nav-link-non-active"])
             );
           }}
         >
           <MessageIcon />
 
-          <p className="admin-side-bar-nav-link-text">Reviews</p>
+          <p className={styles["nav-link-text"]}>Reviews</p>
         </NavLink>
 
         <NavLink
           to="partners"
           className={({ isActive }) => {
             return (
-              "admin-nav-link " +
-              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+              styles["admin-nav-link"] +' '+
+              (isActive ? styles["admin-nav-link-active"] : styles["admin-nav-link-non-active"])
             );
           }}
         >
           <PartnersIcon />
-          <p className="admin-side-bar-nav-link-text">Partners</p>
+          <p className={styles["nav-link-text"]}>Partners</p>
         </NavLink>
         <NavLink
           to="settings"
           className={({ isActive }) => {
             return (
-              "admin-nav-link " +
-              (isActive ? "admin-nav-link-active" : "admin-nav-link-non-active")
+              styles["admin-nav-link"] +' '+
+              (isActive ? styles["admin-nav-link-active"] : styles["admin-nav-link-non-active"])
             );
           }}
         >
           <SettingsGearIcon />
-          <p className="admin-side-bar-nav-link-text">Settings</p>
+          <p className={styles["nav-link-text"]}>Settings</p>
         </NavLink>
       </nav>
-    </aside>
+    </>
   );
 };

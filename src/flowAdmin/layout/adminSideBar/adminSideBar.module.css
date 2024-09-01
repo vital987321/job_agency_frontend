@@ -1,23 +1,14 @@
 @import '../../../data/constants.css';
 
-.admin-side-bar{
-    background-color: var(--design-color2);
-    height: 100vh;
-    width: 250px;
-    box-sizing: border-box;
-    padding:20px 10px;
-}
-
-.admin-side-bar-comany-container{
+.comany-container{
     display:flex;
     align-items: center;
 }
 
-.admin-side-bar-navigation-container{
+.navigation-container{
     margin-top:40px;
     display:flex;
     flex-direction: column;
-
 }
 
 .admin-nav-link{
@@ -50,6 +41,12 @@
     color: white;
 }
 
-.admin-side-bar-nav-link-text{
+.nav-link-text{
     margin-left: 10px;
+}
+
+.company-name{
+    color: var(--button-general-background-color1);
+    font-size: larger;
+    margin-left: 5px;;
 }
