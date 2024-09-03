@@ -5,7 +5,9 @@ import closeIcon from "../../../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css"
+import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
+import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const ReviewFilter = () => {
   const userEmailRef = React.createRef();
@@ -44,7 +46,6 @@ export const ReviewFilter = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-
   const buildFilterQueryString = () => {
     const userEmail = userEmailRef.current.value;
     const userFirstName = userFirstNameRef.current.value;
@@ -61,15 +62,13 @@ export const ReviewFilter = () => {
     if (userLastName) queryStringArray.push("last_name=" + userLastName);
     if (rate) queryStringArray.push("rating=" + rate);
     if (comment) queryStringArray.push("comment=" + comment);
-    
+
     if (queryStringArray.length > 0) {
-      
       queryString = "?" + queryStringArray.join("&");
     }
 
     return queryString;
   };
-
 
   const filterButtonHandler = (e) => {
     navigate("" + buildFilterQueryString());
@@ -79,7 +78,6 @@ export const ReviewFilter = () => {
     e.preventDefault();
     filterButtonHandler();
   };
-
 
   const resetFiltersHandler = (e) => {
     e.preventDefault();
@@ -96,11 +94,13 @@ export const ReviewFilter = () => {
       <section className={styles["admin-list-items-filter-section"]}>
         <div className={styles["admin-list-items-filter-main-container"]}>
           <form
-          // className=""
-          onSubmit={filterFormSubmitHandler}
+            // className=""
+            onSubmit={filterFormSubmitHandler}
           >
             <div className={styles["admin-list-items-filter-form-inputs"]}>
-              <div className={styles["admin-list-items-filter-input-container"]}>
+              <div
+                className={styles["admin-list-items-filter-input-container"]}
+              >
                 <label htmlFor="review-filter-user-email-input">Email</label>
                 <input
                   className={styles["admin-list-items-filter-input"]}
@@ -109,8 +109,12 @@ export const ReviewFilter = () => {
                   ref={userEmailRef}
                 />
               </div>
-              <div className={styles["admin-list-items-filter-input-container"]}>
-                <label htmlFor="review-filter-user-name-input">First Name</label>
+              <div
+                className={styles["admin-list-items-filter-input-container"]}
+              >
+                <label htmlFor="review-filter-user-name-input">
+                  First Name
+                </label>
                 <input
                   className={styles["admin-list-items-filter-input"]}
                   id="review-filter-user-name-input"
@@ -118,7 +122,9 @@ export const ReviewFilter = () => {
                   ref={userFirstNameRef}
                 />
               </div>
-              <div className={styles["admin-list-items-filter-input-container"]}>
+              <div
+                className={styles["admin-list-items-filter-input-container"]}
+              >
                 <label htmlFor="review-filter-user-name-input">Last Name</label>
                 <input
                   className={styles["admin-list-items-filter-input"]}
@@ -128,8 +134,9 @@ export const ReviewFilter = () => {
                 />
               </div>
 
-
-              <div className={styles["admin-list-items-filter-input-container"]}>
+              <div
+                className={styles["admin-list-items-filter-input-container"]}
+              >
                 <label htmlFor="review-filter-rate-select">Rating</label>
                 <select
                   className={styles["admin-list-items-filter-input"]}
@@ -144,7 +151,9 @@ export const ReviewFilter = () => {
                   <option value="5">5</option>
                 </select>
               </div>
-              <div className={styles["admin-list-items-filter-input-container"]}>
+              <div
+                className={styles["admin-list-items-filter-input-container"]}
+              >
                 <label htmlFor="review-filter-comment-input">Comment</label>
                 <input
                   className={styles["admin-list-items-filter-input"]}
@@ -155,63 +164,13 @@ export const ReviewFilter = () => {
               </div>
             </div>
 
-            <div className={styles["admin-list-items-form-controls"]}>
-              <div className={styles["admin-list-items-form-buttons-container"]}>
-                <ButtonType1
-                  value={
-                    <span>
-                      Filter{" "}
-                      <img
-                        className={styles["admin-filter-button-icon"]}
-                        src={filterIcon}
-                        alt=""
-                        height="14px"
-                      />
-                    </span>
-                  }
-                  onClickHandler={filterButtonHandler}
-                  strength="1"
-                />
-
-                <div
-                  className={styles["admin-reset-filters-button-container"]}
-                  style={{ display: resetFiltersButtonDisplayValue }}
-                >
-                  <ButtonType1
-                    value={
-                      <span>
-                        Reset Filters{" "}
-                        <img
-                          className={styles["admin-filter-button-icon"]}
-                          src={closeIcon}
-                          alt=""
-                          height="14px"
-                        />
-                      </span>
-                    }
-                    onClickHandler={resetFiltersHandler}
-                    strength="2"
-                  />
-                </div>
-              </div>
-
-              <div>
-              <label htmlFor="applicaption-filter-on-page-input">on Page</label>
-              <select
-                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
-                id="applicaption-filter-on-page-input"
-                value={onPageListItems}
-                onChange={changeOnPageListItemsLimit}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-
-            </div>
+            <AdminFilterControls
+              filterButtonHandler={filterButtonHandler}
+              resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+              resetFiltersHandler={resetFiltersHandler}
+              onPageListItemsAmount={onPageListItems}
+              onChangeListItemsAmount={changeOnPageListItemsLimit}
+            />
           </form>
         </div>
       </section>

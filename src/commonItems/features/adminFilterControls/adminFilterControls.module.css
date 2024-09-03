@@ -1,0 +1,14 @@
+.admin-list-items-form-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.admin-reset-filters-button-container{
+    margin-left: 20px;
+}
+
+.admin-filter-button-icon {
+    margin-left: 1rem;
+}

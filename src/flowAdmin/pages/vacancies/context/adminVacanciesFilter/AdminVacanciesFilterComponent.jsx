@@ -7,7 +7,9 @@ import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 import { RESIDENCE_TYPES } from "../../../../../data/constants";
-import {ButtonType1} from '../../../../../commonItems/components/buttons/buttonType1/ButtonType1'
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const AdminVacanciesFilterComponent = () => {
   const vacancyIdRef = React.createRef();
@@ -46,7 +48,7 @@ export const AdminVacanciesFilterComponent = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
-  const changeOpPageListItemsLimit = (e) => {
+  const changeOnPageListItemsLimit = (e) => {
     localStorage.setItem("AdminListItemsOnPage", e.target.value);
     setOnPageListItems(e.target.value);
   };
@@ -223,62 +225,13 @@ export const AdminVacanciesFilterComponent = () => {
             </div>
           </div>
 
-          <div className={styles["admin-list-items-form-controls"]}>
-            <div className={styles["admin-list-items-form-buttons-container"]}>
-              <ButtonType1
-                value={
-                  <span>
-                    Filter{" "}
-                    <img
-                      className={styles["admin-filter-button-icon"]}
-                      src={filterIcon}
-                      alt=""
-                      height="14px"
-                    />
-                  </span>
-                }
-                onClickHandler={filterButtonHandler}
-                strength="1"
-              />
-
-              <div
-                className={styles["admin-reset-filters-button-container"]}
-                style={{ display: resetFiltersButtonDisplayValue }}
-              >
-                <ButtonType1
-                  value={
-                    <span>
-                      Reset Filters{" "}
-                      <img
-                        className={styles["admin-filter-button-icon"]}
-                        src={closeIcon}
-                        alt=""
-                        height="14px"
-                      />
-                    </span>
-                  }
-                  onClickHandler={resetFiltersHandler}
-                  strength="2"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="vacancies-filter-status-input">on Page</label>
-              <select
-                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
-                id="vacancies-filter-on-page-input"
-                value={onPageListItems}
-                onChange={changeOpPageListItemsLimit}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-          </div>
+          <AdminFilterControls
+            filterButtonHandler={filterButtonHandler}
+            resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+            resetFiltersHandler={resetFiltersHandler}
+            onPageListItemsAmount={onPageListItems}
+            onChangeListItemsAmount={changeOnPageListItemsLimit}
+          />
         </form>
       </div>
     </section>

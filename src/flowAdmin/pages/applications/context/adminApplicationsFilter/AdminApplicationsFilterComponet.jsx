@@ -1,25 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import styles from '../../../../../commonItems/css/adminListItemsFilter.module.css';
+import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-
-const idRef = React.createRef();
-const vacancyIdRef = React.createRef();
-const emailRef = React.createRef();
-const statusRef = React.createRef();
-const vacancyNameRef = React.createRef();
-const companyRef = React.createRef();
-const userIdRef = React.createRef();
-const firstNameRef = React.createRef();
-const lastNameRef = React.createRef();
-const phoneRef = React.createRef();
+import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const AdminApplicatiosFilterComponent = () => {
+  //* Refs
+  const idRef = React.createRef();
+  const vacancyIdRef = React.createRef();
+  const emailRef = React.createRef();
+  const statusRef = React.createRef();
+  const vacancyNameRef = React.createRef();
+  const companyRef = React.createRef();
+  const userIdRef = React.createRef();
+  const firstNameRef = React.createRef();
+  const lastNameRef = React.createRef();
+  const phoneRef = React.createRef();
+
+  //* States
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
@@ -28,8 +32,10 @@ export const AdminApplicatiosFilterComponent = () => {
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
     useState("none");
 
+  //* Hooks
   const navigate = useNavigate();
 
+  //* useEffects
   useEffect(() => {
     let showCancelFilterButton = false;
     if (searchParams.size > 0) {
@@ -45,12 +51,13 @@ export const AdminApplicatiosFilterComponent = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
+  //* Functions
   const changeOnPageListItemsLimit = (e) => {
     localStorage.setItem("AdminListItemsOnPage", e.target.value);
     setOnPageListItems(e.target.value);
   };
 
-  const buildFIlterQueryString = () => {
+  const buildFilterQueryString = () => {
     const id = idRef.current.value;
     const vacancyId = vacancyIdRef.current.value;
     const email = emailRef.current.value;
@@ -80,13 +87,11 @@ export const AdminApplicatiosFilterComponent = () => {
     if (queryStringArray.length > 0) {
       queryString = "?" + queryStringArray.join("&");
     }
-    // console.log('queryString:', queryString)
     return queryString;
   };
 
-
   const filterButtonHandler = () => {
-    navigate("" + buildFIlterQueryString());
+    navigate("" + buildFilterQueryString());
   };
 
   const filterFormSubmitHandler = (e) => {
@@ -109,6 +114,7 @@ export const AdminApplicatiosFilterComponent = () => {
     navigate("");
   };
 
+  //* Main Body
   return (
     <section className={styles["admin-list-items-filter-section"]}>
       <div className={styles["admin-list-items-filter-main-container"]}>
@@ -208,15 +214,7 @@ export const AdminApplicatiosFilterComponent = () => {
                 ref={emailRef}
               />
             </div>
-            {/* <div className="admin-list-items-filter-input-container">
-              <label htmlFor="application-filter-status-input">Status</label>
-              <input
-                className="admin-list-items-filter-input"
-                id="application-filter-status-input"
-                type="text"
-                ref={statusRef}
-              />
-            </div> */}
+
             <div className={styles["admin-list-items-filter-input-container"]}>
               <label htmlFor="application-filter-status-select">Status</label>
               <select
@@ -232,63 +230,13 @@ export const AdminApplicatiosFilterComponent = () => {
             </div>
           </div>
 
-          <div className={styles["admin-list-items-form-controls"]}>
-            <div className={styles["admin-list-items-form-buttons-container"]}>
-              <ButtonType1
-                value={
-                  <span>
-                    Filter{" "}
-                    <img
-                      className={styles["admin-filter-button-icon"]}
-                      src={filterIcon}
-                      alt=""
-                      height="14px"
-                    />
-                  </span>
-                }
-                onClickHandler={filterButtonHandler}
-                strength="1"
-              />
-
-              <div
-                className={styles["admin-reset-filters-button-container"]}
-                style={{ display: resetFiltersButtonDisplayValue }}
-              >
-                <ButtonType1
-                  value={
-                    <span>
-                      Reset Filters{" "}
-                      <img
-                        className={styles["admin-filter-button-icon"]}
-                        src={closeIcon}
-                        alt=""
-                        height="14px"
-                      />
-                    </span>
-                  }
-                  onClickHandler={resetFiltersHandler}
-                  strength="2"
-                />
-              </div>
-
-            </div>
-
-            <div>
-              <label htmlFor="applicaption-filter-on-page-input">on Page</label>
-              <select
-                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
-                id="applicaption-filter-on-page-input"
-                value={onPageListItems}
-                onChange={changeOnPageListItemsLimit}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-          </div>
+          <AdminFilterControls
+            filterButtonHandler={filterButtonHandler}
+            resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+            resetFiltersHandler={resetFiltersHandler}
+            onPageListItemsAmount={onPageListItems}
+            onChangeListItemsAmount={changeOnPageListItemsLimit}
+          />
         </form>
       </div>
     </section>

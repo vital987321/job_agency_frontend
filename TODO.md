@@ -1,6 +1,7 @@
 NEXT TODO STEP:
-    [ ] applicaption-filter-on-page-input shall be a separate component
+    [x] applicaption-filter-on-page-input shall be a separate component
     [ ] think if 2 filter buttons should be a separate component
+    [ ] remove Setting button from Admin
 
 
 

@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const PartnerFilter = () => {
   //* Variables
@@ -121,62 +123,13 @@ export const PartnerFilter = () => {
             </div>
           </div>
 
-          <div className={styles["admin-list-items-form-controls"]}>
-            <div className={styles["admin-list-items-form-buttons-container"]}>
-              <ButtonType1
-                value={
-                  <span>
-                    Filter{" "}
-                    <img
-                      className={styles["admin-filter-button-icon"]}
-                      src={filterIcon}
-                      alt=""
-                      height="14px"
-                    />
-                  </span>
-                }
-                onClickHandler={filterButtonHandler}
-                strength="1"
-              />
-
-              <div
-                className={styles["admin-reset-filters-button-container"]}
-                style={{ display: resetFiltersButtonDisplayValue }}
-              >
-                <ButtonType1
-                  value={
-                    <span>
-                      Reset Filters{" "}
-                      <img
-                        className={styles["admin-filter-button-icon"]}
-                        src={closeIcon}
-                        alt=""
-                        height="14px"
-                      />
-                    </span>
-                  }
-                  onClickHandler={resetFiltersHandler}
-                  strength="2"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="applicaption-filter-on-page-input">on Page</label>
-              <select
-                className={`${styles["admin-list-items-filter-input"]} ${styles["admin-list-items-filter-on-page-input"]}`}
-                id="applicaption-filter-on-page-input"
-                value={onPageListItems}
-                onChange={changeOnPageListItemsLimit}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-          </div>
+          <AdminFilterControls
+            filterButtonHandler={filterButtonHandler}
+            resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+            resetFiltersHandler={resetFiltersHandler}
+            onPageListItemsAmount={onPageListItems}
+            onChangeListItemsAmount={changeOnPageListItemsLimit}
+          />
         </form>
       </div>
     </section>

@@ -30,24 +30,3 @@
     box-sizing: border-box;
 }
 
-
-.admin-list-items-form-controls{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.admin-list-items-filter-on-page-input{
-    margin-left: 5px;
-    text-align: center;
-}
-
-.admin-reset-filters-button-container{
-    margin-left: 20px;
-
-}
-
-.admin-filter-button-icon {
-    margin-left: 1rem;
-}
