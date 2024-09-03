@@ -132,7 +132,7 @@ export const AdminApplicationComponent = () => {
           <div className="admin-application-data-item-block">
             <p>COMPANY</p>
             <p>
-              <b>{application.vacancy_details.company}</b>
+              <b>{application.vacancy_details.partner_data? application.vacancy_details.partner_data.company: '-'}</b>
             </p>
           </div>
         </div>

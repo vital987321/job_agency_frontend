@@ -103,6 +103,7 @@ export const Partner = () => {
         listItemsLimit={listItemsOnPage}
         urlState={currentClientUrl}
         setUrlState={setCurrentClientUrl}
+        paginationClass={styles["pagination-section"]}
       />
       <PartnerForm
         formDisplayValue={formDisplayValue}

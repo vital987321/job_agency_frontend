@@ -64,7 +64,7 @@ export const AdminApplicationsListComponent = (props) => {
                     : application.vacancy_details.name.slice(0, 25) + "..."}
                 </td>
                 <td>{application.vacancy_details.id}</td>
-                <td>{application.vacancy_details.company}</td>
+                <td>{application.vacancy_details.partner_data? application.vacancy_details.partner_data.company: ''}</td>
                 <td>{application.first_name + " " + application.last_name}</td>
                 <td>{stringToDateConverter(application.created_at)}</td>
                 <td>
