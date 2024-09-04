@@ -1,0 +1,89 @@
+
+
+.vacancy-filter-salary-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 12px 12px 0;
+    height: 40px;
+    width: 100%;
+    border: 1px solid grey;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    font-size: medium;
+}
+
+.vacancy-filter-salary-from-container,
+.vacancy-filter-salary-to-container{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+
+}
+.vacancy-filter-salary-from-label,
+.vacancy-filter-salary-to-label{
+    height: 24px;
+    background-color: white;
+    border-radius: 5px 0 0 5px;
+    padding-left: 5px;
+}
+
+.vacancy-filter-salary-from-input,
+.vacancy-filter-salary-to-input{
+    height: 24px;
+    width: 65px;
+    border:none;
+    background-color: white;
+    border-radius: 0 5px 5px 0;
+    padding: 0 5px;
+    box-sizing: border-box;
+    font-size: medium;
+
+}
+
+.vacancy-filter-salary-from-input:focus,
+.vacancy-filter-salary-to-input:focus
+{
+    outline: none;
+}
+
+/* remove arrows/spinners from input type number */
+    /* Chrome, Safari, Edge, Opera */
+    .vacancy-filter-salary-from-input::-webkit-outer-spin-button,
+    .vacancy-filter-salary-from-input::-webkit-inner-spin-button,
+    .vacancy-filter-salary-to-input::-webkit-outer-spin-button,
+    .vacancy-filter-salary-to-input::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+                    margin: 0;
+    }
+
+    /* Firefox */
+    .vacancy-filter-salary-from-input[type=number],
+    .vacancy-filter-salary-to-input[type=number]
+    {
+        -moz-appearance: textfield;
+    }
+
+    
+.vacancy-filter-salary-bar{
+    width: 100%;
+    margin:0 10px;
+    height: 2px;
+    background-color: grey;
+    position: relative;
+
+}
+
+.vacancy-filter-salary-min-point{
+    background: #444444;
+    border-radius: 50%;
+    position: absolute;
+}
+
+
+.vacancy-filter-salary-max-point{
+    background: #444444;
+    border-radius: 50%;
+    position: absolute;
+}
