@@ -4,11 +4,12 @@
 .admin-application-section {
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
-    margin-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .admin-application-header {
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 .admin-application-id-container {

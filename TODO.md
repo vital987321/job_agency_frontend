@@ -1,7 +1,6 @@
 NEXT TODO STEP:
-    [x] applicaption-filter-on-page-input shall be a separate component
-    [ ] think if 2 filter buttons should be a separate component
     [ ] remove Setting button from Admin
+    [ ] adaptive design
 
 
 
@@ -96,8 +95,8 @@ FRONTEND:
         [x] Add Reviews section to Admin side bar
         [x] rename Admin Environment to Admin Flow. User+
         [x] move AdminVacancyForm from assets
-        [ ] applicaption-filter-on-page-input shall be a separate component
-        [ ] think if 2 filter buttons should be a separate component
+        [x] applicaption-filter-on-page-input shall be a separate component
+        [x] think if 2 filter buttons should be a separate component
         [ ] Adaptive design
 
 
