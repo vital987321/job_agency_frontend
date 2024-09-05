@@ -1,5 +1,4 @@
 NEXT TODO STEP:
-    [x] remove Setting button from Admin
     [ ] adaptive design
 
 

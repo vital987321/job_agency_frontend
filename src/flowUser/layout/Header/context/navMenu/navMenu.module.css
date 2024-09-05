@@ -1,5 +1,29 @@
+@import "../../../../../data//constants.css";
 .menu{
     display:flex;
     justify-content: space-evenly;
     /* border: 1px solid red; */
   }
+.menu :first-child{
+  display: none;
+}
+
+@media screen and (max-width:768px) {
+  .menu{
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .menu :any-link{
+    /* background-color: aqua; */
+    display:block;
+    text-align: center;
+    border: solid 1px grey;
+    padding:10px 0;
+  }
+  .menu :any-link:hover{
+    background-color: var(--button-general-background-color3);
+
+  }
+}

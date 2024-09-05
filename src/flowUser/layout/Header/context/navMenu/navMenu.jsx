@@ -4,6 +4,9 @@ import {Link} from "react-router-dom";
 export const NavMenu = () => {
     return (
       <nav className={styles.menu}>
+        <Link to="/" className="navLinks">
+          Home
+        </Link>
         <Link to="/vacancies" className="navLinks">
           Vacancies
         </Link>
