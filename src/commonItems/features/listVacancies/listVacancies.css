@@ -8,14 +8,46 @@
     border-collapse: collapse; 
   }
   
-  .vacancy-list-tr{
+  .vacancy-list-row{
     border-bottom: 1px solid grey;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media screen and (max-width:1024px) {
+    .vacancy-list-row{
+      grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+  @media screen and (max-width:768px) {
+    .vacancy-list-row{
+      grid-template-columns: 1fr 1fr;
+    }
+    .vacancy-list-row{
+      text-align: center;
+    }
+    .vacancy-name, .details-button{
+      grid-column-start:1;
+      grid-column-end: 3;
+    }
   }
   
-  .vacancy-list-tr td{
+  .vacancy-list-row div{
     padding: 12px 17px;
   }
 
-  .vacancy-list-tr td:first-child{
+  .vacancy-list-row div:first-child{
     font-weight: bold;
   }
+
+  @media screen and (max-width:1024px) {
+    .skip-tablet{
+      display:none
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    .skip-mobile{
+      display:none
+    }
+  }
+  

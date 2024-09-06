@@ -31,39 +31,37 @@ export const ListVacanciesComponent = (props) => {
   }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
   return (
     <div className="vacancies-list-container">
-      <table className="list-vacancies-table">
-        <tbody>
+      <div className="list-vacancies-table">
+        <ul>
           {vacanciesList.map((vacancy) => {
             return (
-              <tr className="vacancy-list-tr" key={vacancy.id}>
-                <td>
+              <li className="vacancy-list-row" key={vacancy.id}>
+                <div className="vacancy-name">
                   {vacancy.name.length < 30
                     ? vacancy.name
                     : vacancy.name.slice(0, 25) + "..."}
-                </td>
-                <td>{vacancy.location}</td>
-                <td>{vacancy.gender}</td>
-                <td>{vacancy.salary} CZK</td>
-                <td>{vacancy.contract_type}</td>
-                <td>
+                </div>
+                <div>{vacancy.location}</div>
+                <div className="skip-mobile">{vacancy.gender}</div>
+                <div>{vacancy.salary} CZK</div>
+                <div className="skip-mobile">{vacancy.contract_type}</div>
+                <div className="skip-tablet">
                   {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
-                </td>
-                <td>{stringToDateConverter(vacancy.created_at)}</td>
-                <td>
+                </div>
+                <div className="skip-tablet">{stringToDateConverter(vacancy.created_at)}</div>
+                <div className="details-button">
                   <Link
                     to={"/vacancies/" + vacancy.id}
-                    // to={"" + vacancy.id}
                     className="details-link"
                   >
                     <ButtonType1 value='Details' strength='4'/>
-
                   </Link>
-                </td>
-              </tr>
+                </div>
+              </li>
             );
           })}
-        </tbody>
-      </table>
+        </ul>
+      </div>
     </div>
   );
 };
