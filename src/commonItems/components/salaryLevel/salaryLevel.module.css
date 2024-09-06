@@ -13,6 +13,13 @@
     margin-top: 8px;
     font-size: medium;
 }
+@media screen and (max-width:768px) {
+    .vacancy-filter-salary-container{
+        height: 50px;
+        border-radius: 16px;
+    }
+    
+}
 
 .vacancy-filter-salary-from-container,
 .vacancy-filter-salary-to-container{
@@ -39,7 +46,13 @@
     padding: 0 5px;
     box-sizing: border-box;
     font-size: medium;
-
+}
+@media screen and (max-width:768px) {
+    .vacancy-filter-salary-from-input,
+    .vacancy-filter-salary-to-input{
+    height: 30px;
+    width: 165px;
+}
 }
 
 .vacancy-filter-salary-from-input:focus,
@@ -72,7 +85,12 @@
     height: 2px;
     background-color: grey;
     position: relative;
-
+}
+@media screen and (max-width:768px) {
+    .vacancy-filter-salary-bar{
+        display: none;
+    }
+    
 }
 
 .vacancy-filter-salary-min-point{

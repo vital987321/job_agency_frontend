@@ -5,6 +5,12 @@
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
 }
+@media screen and (max-width:1024px) {
+    .vacancies-container{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
 
 .vacancies-pagination-section{
     margin-top: 40px;

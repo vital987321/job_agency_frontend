@@ -91,12 +91,15 @@ export const VacancyFilterComponent = (props) => {
 
         <p className={styles["vacancy-filter-input-title"]}>Salary level:</p>
 
-        <SalaryLevel
-          salaryMinRef={salaryMinRef}
-          salaryMaxRef={salaryMaxRef}
-          searchParams={props.searchParams}
-          vacancyFilterDisplayValue={props.vacancyFilterDisplayValue}
-        />
+
+          <SalaryLevel
+            salaryMinRef={salaryMinRef}
+            salaryMaxRef={salaryMaxRef}
+            searchParams={props.searchParams}
+            vacancyFilterDisplayValue={props.vacancyFilterDisplayValue}
+          />  
+
+        
 
         <p className={styles["vacancy-filter-input-title"]}>Residence type:</p>
         <select
