@@ -6,28 +6,29 @@ import certificate2 from "../../../assets/img/certificates/certificate2.png";
 import certificate3 from "../../../assets/img/certificates/certificate3.png";
 import "./certificates.css";
 import { useState } from "react";
+import { CertificateFullScreenComponent } from "./context/certificateFullScreen/certificateFullScreen";
 
-const ShowCertificateComponent = (props) => {
-  const modelWindowClickHandler = (e) => {
-    props.setCertificateModalDisplay("none");
-  };
-  return (
-    <div
-      className="certificate-full-size-modal-window"
-      style={{ display: props.certificateModalDisplay }}
-      onClick={modelWindowClickHandler}
-    >
-      <div>
-        <img
-          className="certificate-full-size-image"
-          src={props.currentCertificate}
-          alt="certificate"
+// const ShowCertificateComponent = (props) => {
+//   const modelWindowClickHandler = (e) => {
+//     props.setCertificateModalDisplay("none");
+//   };
+//   return (
+//     <div
+//       className="certificate-full-size-modal-window"
+//       style={{ display: props.certificateModalDisplay }}
+//       onClick={modelWindowClickHandler}
+//     >
+//       <div>
+//         <img
+//           className="certificate-full-size-image"
+//           src={props.currentCertificate}
+//           alt="certificate"
           
-        />
-      </div>
-    </div>
-  );
-};
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 export const CertificatesComponent = () => {
   const [certificateModalDisplay, setCertificateModalDisplay] =
@@ -53,7 +54,7 @@ export const CertificatesComponent = () => {
               data-photo={certificate1fullsize}
               alt="certificate"
             />
-            <p>Business lisence</p>
+            <p className="certificate-description">Business lisence</p>
           </li>
           <li className="certificate-container">
             <img
@@ -63,7 +64,7 @@ export const CertificatesComponent = () => {
               data-photo={certificate2fullsize}
               alt="certificate"
             />
-            <p>Business registration</p>
+            <p className="certificate-description">Business registration</p>
           </li>
           <li className="certificate-container">
             <img
@@ -73,15 +74,20 @@ export const CertificatesComponent = () => {
               data-photo={certificate3fullsize}
               alt="certificate"
             />
-            <p>Working contract</p>
+            <p className="certificate-description">Working contract</p>
           </li>
         </ul>
       </section>
-      <ShowCertificateComponent
+      <CertificateFullScreenComponent
         certificateModalDisplay={certificateModalDisplay}
         setCertificateModalDisplay={setCertificateModalDisplay}
         currentCertificate={currentCertificate}
       />
+      {/* <ShowCertificateComponent
+        certificateModalDisplay={certificateModalDisplay}
+        setCertificateModalDisplay={setCertificateModalDisplay}
+        currentCertificate={currentCertificate}
+      /> */}
     </>
   );
 };
