@@ -126,7 +126,7 @@ export const VacancyDataComponent = (props) => {
           if (props.vacancyData.active == false) {
             return (
               <div>
-                Vacancy <b>Diactivated</b>
+                Vacancy is <b>Diactivated</b>
               </div>
             );
           }

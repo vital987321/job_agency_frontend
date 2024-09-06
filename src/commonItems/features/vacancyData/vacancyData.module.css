@@ -4,6 +4,12 @@
     margin-left: var(--global_margin_left_right);
     margin-right: var(--global_margin_left_right);
 }
+@media screen and (max-width:768px) {
+    .vacancy-section{
+        margin-left: 20px;
+        margin-right:20px;
+    }
+}
 
 .vacancy-pre-header-container{
     display: flex;
@@ -16,12 +22,22 @@
     margin-top: 10px;
     text-align: left;
 }
+@media screen and (max-width:768px) {
+    .vacancy-header{
+        text-align: center;
+    }
+}
 
 .vacancy-container{
     margin-top: 50px;
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-gap: 20px 40px;
+}
+@media screen and (max-width:768px) {
+    .vacancy-container{
+        grid-template-columns: 1fr;
+    }
 }
 
 .vacancy-item {

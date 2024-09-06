@@ -162,15 +162,16 @@ export const ApplicationFormComponent = (props) => {
   return (
     <>
       <form
+        className="application-form"
         id="application-form"
         onSubmit={appFormSubmitHandler}
         style={{ display: props.AppFormDisplayValue }}
         onClick={onFormModalSpaceClick}
       >
         <div className="application-form-container">
-          <div className="vacancy-filter-close-container">
+          <div className="application-filter-close-container">
             <img
-              className="vacancy-filter-close-button"
+              className="application-filter-close-button"
               onClick={closeButtonHandler}
               src={closeIcon}
               alt="X"
@@ -246,6 +247,7 @@ export const ApplicationFormComponent = (props) => {
             <label htmlFor="message-application-form">Your message:</label>
             <textarea
               name=""
+              className="message-application-form"
               id="message-application-form"
               cols="30"
               rows="6"
