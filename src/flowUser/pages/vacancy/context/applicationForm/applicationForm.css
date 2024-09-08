@@ -19,7 +19,7 @@
     .application-form{
         justify-content:start;
         align-items: start;
-        overflow: scroll;
+        overflow: auto;
     }
 }
 
