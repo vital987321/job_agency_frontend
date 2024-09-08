@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import closeIcon from "../../../assets/svg/X.svg";
-import "./authentication.css";
+import styles from "./authentication.module.css";
 import loginImage from "../../../assets/img/login_img.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
-
-const emailRef = React.createRef();
-const passwordRef = React.createRef();
-const confirmPasswordRef = React.createRef();
+import { PasswordRepeatComponent } from "./context/PassworRepeat/PassworRepeat";
 
 export const AuthenticationComponent = () => {
+  //* Refs
+  const emailRef = React.createRef();
+  const passwordRef = React.createRef();
+  const confirmPasswordRef = React.createRef();
+
+  //* States
   const [authenticationAction, setAuthenticationMethod] = useState("login"); // login signup
-  const [errors, setErrors] = useState({});
+  const [validationErrors, setValidationErrors] = useState({});
+  
+  //* Hooks
   const navigate = useNavigate();
 
+  //* Functions
   const closeButtonHandler = () => {
     navigate("/");
   };
@@ -40,7 +46,24 @@ export const AuthenticationComponent = () => {
     }
   };
 
-  const isValidForm = () => {
+  const isValidLoginForm = () => {
+    let isValid = true;
+    const newErrors = {};
+
+    if (!emailRef.current.value) {
+      newErrors.email = "Enter user login";
+      isValid = false;
+    }
+    if (!passwordRef.current.value) {
+      newErrors.password = "Enter password";
+      isValid = false;
+    }
+
+    setValidationErrors(newErrors);
+    return isValid;
+  };
+
+  const isValidSignUpForm = () => {
     let isValid = true;
     const newErrors = {};
 
@@ -59,6 +82,7 @@ export const AuthenticationComponent = () => {
     // validate password
     if (passwordRef.current.value.length < 3) {
       newErrors.password = "Password is too short";
+      isValid = false;
     }
 
     // validate confirm password
@@ -67,46 +91,21 @@ export const AuthenticationComponent = () => {
       isValid = false;
     }
 
-    setErrors(newErrors);
+    setValidationErrors(newErrors);
     return isValid;
   };
 
   const authenticationFormSubmitHandler = (e) => {
     e.preventDefault();
     if (authenticationAction === "login") {
-      sendLoginRequest();
+      if (isValidLoginForm()) {
+        sendLoginRequest();
+      }
     }
     if (authenticationAction === "signup") {
-      if (isValidForm()) {
-        const signupRequesrURL = "http://127.0.0.1:8000/user/";
-        axios
-          .post(signupRequesrURL, {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-          })
-          .then((response) =>
-            console.log("response sratus: " + response.status)
-          )
-          .then(() => sendLoginRequest())
-          .catch((error) => {
-            if (error.request.response) {
-              if (
-                error.request.response ==
-                '{"email":["User with such email already exists."]}'
-              )
-                setErrors({ email: "User with such email already exists." });
-              else {
-                console.log(error);
-              }
-            } else {
-              console.log(error);
-            }
-            return null;
-          });
-      } else {
-        console.log("form is not valid");
-        return null;
-      }
+      if (isValidSignUpForm()) {
+        sendSignUpRequest()  
+      } 
     }
   };
 
@@ -144,7 +143,7 @@ export const AuthenticationComponent = () => {
             error.request.response ==
             '{"non_field_errors":["Unable to log in with provided credentials."]}'
           ) {
-            setErrors({ password: "Wrong login or password" });
+            setValidationErrors({ password: "Wrong login or password" });
           } else {
             console.log(error);
           }
@@ -154,55 +153,61 @@ export const AuthenticationComponent = () => {
       });
   };
 
-  const PassworRepeatComponent = () => {
-    if (authenticationAction == "signup") {
-      return (
-        <>
-          <input
-            className="authentication-text-input"
-            id="authentication-confirm-password-input"
-            type="password"
-            placeholder="Confirm Password"
-            ref={confirmPasswordRef}
-          />
-          <div className="authentication-form-error-message">
-            {errors.confirmPassword}
-          </div>
-        </>
-      );
-    }
-    return (
-      <>
-        <div className="password-repeat-space-holder authentication-text-input"></div>
-        <div className="authentication-form-error-message"></div>
-      </>
-    );
-  };
+  const sendSignUpRequest=()=>{
+    const signupRequesrURL = "http://127.0.0.1:8000/user/";
+        axios
+          .post(signupRequesrURL, {
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+          })
+          .then((response) =>
+            console.log("response sratus: " + response.status)
+          )
+          .then(() => sendLoginRequest())
+          .catch((error) => {
+            if (error.request.response) {
+              if (
+                error.request.response ==
+                '{"email":["User with such email already exists."]}'
+              )
+                setValidationErrors({
+                  email: "User with such email already exists.",
+                });
+              else {
+                console.log(error);
+              }
+            } else {
+              console.log(error);
+            }
+            return null;
+          });
+  }
 
+  //* Main Body
   return (
-    <section className="authentication-modal-window">
-      <div className="authentication-modal-window-container">
-        <img className="login-img" src={loginImage} alt="" />
+    <section className={styles["authentication-modal-window"]}>
+      <div className={styles["authentication-modal-window-container"]}>
+        <img className={styles["login-img"]} src={loginImage} alt="" />
 
-        <div className="authentication-input-main-container">
-          <div className="vacancy-filter-close-container">
+        <div className={styles["authentication-input-main-container"]}>
+          <div className={styles["close-button-container"]}>
             <img
-              className="vacancy-filter-close-button"
+              className={styles["close-button"]}
               onClick={closeButtonHandler}
               src={closeIcon}
               alt="X"
             />
           </div>
-          <div className="authentication-action-buttons-container">
+          <div className={styles["authentication-action-buttons-container"]}>
             <button
-              className="authentication-action-buttons"
+              className={`${styles["authentication-action-buttons"]} ${styles["authentication-action-button-login"]}`}
               id="authentication-action-button-login"
               onClick={authenticationActionButtonHandler}
             >
               Log in
             </button>
             <button
-              className=" authentication-action-buttons"
+              className={styles["authentication-action-buttons"]}
               id="authentication-action-button-signup"
               onClick={authenticationActionButtonHandler}
             >
@@ -210,36 +215,40 @@ export const AuthenticationComponent = () => {
             </button>
           </div>
           <form
-            className="authentication-form"
+            className={styles["authentication-form"]}
             onSubmit={authenticationFormSubmitHandler}
           >
             <input
-              className="authentication-text-input"
+              className={styles["authentication-text-input"]}
               type="text"
               placeholder="User e-mail"
               ref={emailRef}
               required
             />
-            <div className="authentication-form-error-message">
-              {errors.email}
+            <div className={styles["authentication-form-error-message"]}>
+              {validationErrors.email}
             </div>
             <input
-              className="authentication-text-input"
+              className={styles["authentication-text-input"]}
               id="authentication-password-input"
               type="password"
               placeholder="Password"
               ref={passwordRef}
               required
             />
-            <div className="authentication-form-error-message">
-              {errors.password}
+            <div className={styles["authentication-form-error-message"]}>
+              {validationErrors.password}
             </div>
-            <PassworRepeatComponent />
-            <div className="authentication-submit-button-container">
+            <PasswordRepeatComponent
+              authenticationAction={authenticationAction}
+              confirmPasswordRef={confirmPasswordRef}
+              validationErrors={validationErrors}
+            />
+            <div className={styles["authentication-submit-button-container"]}>
               <ButtonType1
-                value='Enter'
+                value="Enter"
                 onClickHandler={authenticationFormSubmitHandler}
-                strength='1'
+                strength="1"
               />
             </div>
           </form>
