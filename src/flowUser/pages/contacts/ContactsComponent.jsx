@@ -12,9 +12,9 @@ export const ContactsComponent = () => {
         <div className="contacts-and-map-container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.16744312276!2d14.429246076111934!3d50.0831518137427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94f37cad653b%3A0x5e154eabf13c2e40!2sStep%20IT%20Academy!5e0!3m2!1scs!2scz!4v1713987102014!5m2!1scs!2scz"
-            width="600"
-            height="450"
-            style={{ border: 0 }}
+            // width="600"
+            // height="450"
+            // style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
