@@ -1,7 +1,7 @@
 import styles from "./reviewForm.module.css";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import starWhiteIcon from "../../../../../assets/svg/rating_star_icon_white.svg";
 import starYellowIcon from "../../../../../assets/svg/rating_star_icon_yellow.svg";
@@ -12,28 +12,34 @@ import {
 } from "../../../../../data/constants";
 
 export const ReviewForm = (props) => {
-  // props:
-  // formDisplayValue
-  // setReviewFormDisplayValue
-  // setUpdateDataState
+  //* props:
+  //    formDisplayValue
+  //    setReviewFormDisplayValue
+  //    setUpdateDataState
 
-  //variables, consts
+  //* variables, consts
   const user_id = localStorage.getItem("user_id");
 
-  // Hooks
+  //* Hooks
   const [userRate, setUserRate] = useState("");
   const [userComment, setUserComment] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
+  const [reviewIdToUpdate, setReviewIdToUpdate] = useState("");
 
-  // functions
+  //* useEffects
+  useEffect(() => {
+    checkUserReviewRequest();
+  }, []);
 
-  const userReviewRequest = async () => {
+  //* Functions
+  const checkUserReviewRequest = async () => {
     const url = `${LIST_REVIEWS_REQUEST_URL}?user=${user_id}`;
     try {
       const request = await api
         .get(url)
         .then((response) => {
           if (response.data.count == 1) {
+            setReviewIdToUpdate(response.data.results[0].id);
             setUserRate(response.data.results[0].rating);
             setUserComment(response.data.results[0].comment);
           }
@@ -43,7 +49,6 @@ export const ReviewForm = (props) => {
       console.log(error);
     }
   };
-  userReviewRequest();
 
   const closeButtonHandler = () => {
     props.setFormDisplayValue("none");
@@ -89,7 +94,20 @@ export const ReviewForm = (props) => {
           .post(LIST_REVIEWS_REQUEST_URL, requestData)
           // .then((res) => alert("Form sent"))
           .then((res) => closeButtonHandler())
-          .then((res)=>props.setUpdateDataState({}))
+          .then((res) => props.setUpdateDataState({}))
+          .catch((error) => console.log(error));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const sendPatchRequest = async () => {
+      const url = `${LIST_REVIEWS_REQUEST_URL}${reviewIdToUpdate}/`;
+      try {
+        const request = await api
+          .patch(url, requestData)
+          .then((res) => closeButtonHandler())
+          .then((res) => props.setUpdateDataState({}))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
@@ -97,13 +115,13 @@ export const ReviewForm = (props) => {
     };
 
     if (isFormValid(requestData)) {
-      sendPostRequest();
+      reviewIdToUpdate ? sendPatchRequest() : sendPostRequest();
     } else {
       console.log("form validation errors");
     }
   };
 
-  // Body
+  //* Main Body
   return (
     <>
       <div
