@@ -15,10 +15,13 @@
 }
 @media screen and (max-width:768px) {
     .vacancy-filter-salary-container{
-        height: 50px;
-        border-radius: 16px;
-    }
-    
+        flex-direction: column;
+        align-items: start;
+        height: auto;
+        border:none;
+        padding: 0;
+        /* border-radius: 16px; */
+    }    
 }
 
 .vacancy-filter-salary-from-container,
@@ -26,8 +29,21 @@
     /* background-color: aqua; */
     display: flex;
     align-items: center;
+}
+@media screen and (max-width:768px) {
+    .vacancy-filter-salary-from-container,
+    .vacancy-filter-salary-to-container{
+    border: 1px solid grey;
+    border-radius: 16px;
+    height: 50px;
+    width: 100%;
+    }
+    .vacancy-filter-salary-to-container{
+        margin-top: 20px;
+        }
 
 }
+
 .vacancy-filter-salary-from-label,
 .vacancy-filter-salary-to-label{
     height: 24px;
