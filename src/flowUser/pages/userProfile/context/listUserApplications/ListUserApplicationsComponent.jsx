@@ -46,34 +46,30 @@ export const ListUserApplicationsComponent = () => {
     fetchListApplications();
   }, [applicationsListRequestUrl]);
 
-  const paginationButtonHandler = (e) => {
-    const paginationDirection = e.target.dataset.direction;
-    setApplicationListRequestUrl(applicationsResponseData[paginationDirection]);
-  };
 
   return (
     <section className={styles["list-applications-container"]}>
-      <table className={styles["list-applications-table"]}>
-        <tbody>
+      <ul className={styles["list-applications-table"]}>
+        
           {applicationsListData.map((application) => {
             return (
-              <tr className={styles["applications-table-tr"]} key={application.id}>
-                <td>
+              <li className={styles["applications-row"]} key={application.id}>
+                <div className={styles["vacancy-name"]}>
                   {application.vacancy_details.name.length < 30
                     ? application.vacancy_details.name
                     : application.vacancy_details.name.slice(0, 25) + "..."}
-                </td>
-                <td>{application.vacancy_details.salary} CZK</td>
-                <td>{application.vacancy_details.location}</td>
-                <td>
+                </div>
+                <div>{application.vacancy_details.salary} CZK</div>
+                <div>{application.vacancy_details.location}</div>
+                <div>
                   <span className={styles["application-status"]}>
                     {application.status}
                   </span>
                   <ApplicationStatusMarker status={application.status} />
-                </td>
+                </div>
 
-                <td>{stringToDateConverter(application.created_at)}</td>
-                <td>
+                <div className={styles["desk-top-only"]}>{stringToDateConverter(application.created_at)}</div>
+                <div>
                   <Link
                     to={"/applications/" + application.id}
                   >
@@ -82,12 +78,12 @@ export const ListUserApplicationsComponent = () => {
                       strength='4'
                     />
                   </Link>
-                </td>
-              </tr>
+                </div>
+              </li>
             );
           })}
-        </tbody>
-      </table>
+        
+      </ul>
       <PaginationComponent
           responseData={applicationsResponseData}
           listItemsLimit={USER_LIST_ITEMS_LIMIT}

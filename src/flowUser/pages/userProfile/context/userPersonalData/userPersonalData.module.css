@@ -1,16 +1,14 @@
-@import '../../../data/constants.css';
-
-.profile-user-data-section{
-    margin-left: var(--global_margin_left_right);
-    margin-right: var(--global_margin_left_right);
-    margin-top: 40px;
-
-}
 
 .profile-user-data-form{
     display: flex;
     justify-content: space-around;
-
+}
+@media screen and (max-width:768px) {
+  .profile-user-data-form{
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+}
 }
 
 .profile-user-data-form-cotnainer1{
@@ -89,7 +87,6 @@
     width: 50%;
     margin-top: 10px;
     margin-bottom: 4px;
-
 }
 
 .user-profile-cv-input-upload::-webkit-file-upload-button,
@@ -173,14 +170,3 @@
     color: rgb(204, 0, 0);
     font-weight: bold;
   }
-
-.profile-sent-applications-section{
-  margin-top: 100px;
-  margin-left: var(--global_margin_left_right);
-  margin-right: var(--global_margin_left_right);
-}
-
-.profile-sent-applications-header{
-  text-align: center;
-}
-

@@ -1,0 +1,32 @@
+@import '../../../data/constants.css';
+
+.profile-user-data-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top: 40px;
+}
+@media screen and (max-width:1024px) {
+  .profile-user-data-section{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+
+.profile-sent-applications-section{
+  margin-top: 100px;
+  margin-left: var(--global_margin_left_right);
+  margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:1024px) {
+  .profile-sent-applications-section{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+
+.profile-sent-applications-header{
+  text-align: center;
+}
+
