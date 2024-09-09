@@ -102,13 +102,13 @@ FRONTEND:
 TO CONSIDER:
     [x] Adding Partners Model to DB.
         [x] Admin can select company only from awailabe list of partners
-    [ ] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
-    [ ] Add a checkbox for each item in admin application list. Add tools panel for Action for checked applications:
+    [+] In admin area in side bar add a number of new applications. New applications in the list shall be bold.
+    [?] Add a checkbox for each item in admin application list. Add tools panel for Action for checked applications:
         - Mark as read
         - Mark Approved
         - Mark Rejected
         - Mark Pending    
-    [ ] Add checkbox for Admin Vacancies list:
+    [?] Add checkbox for Admin Vacancies list:
         - deactevate
         - delete (concequances)
     [ ] sending email to admin about new application or to user about application status change.
@@ -117,18 +117,8 @@ TO CONSIDER:
 
 
 
-BACKEND:
-    [ ] Vacancies Environment
-        [x] Expand Vacancy Filter for Staff
-        [x] For Vacancy model add Add active and inactive status.
-        [x] Vacancy component does not show deactivated vacancy (single vacancy) in admin area.
-            probably similar isue for user area. Check VacancyListDjangoFilterBackend
-    [ ] permitions to admin environment
-    [x] Admin can see only his own applications. Fix it.
-    [x] Add Review model to backend.
-        [ ] Permissions to Review
-    [ ] Permissions
-        [ ]
+                
+
 
     
 
