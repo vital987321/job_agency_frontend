@@ -5,6 +5,7 @@ import axios from "axios";
 import { phoneValidation } from "../../../../../commonItems/components/CommonToolsComponents";
 import { emailValidation } from "../../../../../commonItems/components/CommonToolsComponents";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import api from "../../../../../services/api/api";
 
 const firstNameRef = React.createRef();
 const lastNameRef = React.createRef();
@@ -97,7 +98,7 @@ export const ApplicationFormComponent = (props) => {
     }
 
     const sendApplicationRequest = (formData) => {
-      axios
+      api
         .post(applicationPostURL, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
