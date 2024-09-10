@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useRef, useEffect, useState } from "react";
 import closeIcon from "../../../assets/svg/X.svg";
 import styles from "./authentication.module.css";
 import loginImage from "../../../assets/img/login_img.png";
@@ -10,9 +10,12 @@ import { PasswordRepeatComponent } from "./context/PassworRepeat/PassworRepeat";
 
 export const AuthenticationComponent = () => {
   //* Refs
-  const emailRef = React.createRef();
-  const passwordRef = React.createRef();
-  const confirmPasswordRef = React.createRef();
+  // const emailRef = React.createRef();
+  // const passwordRef = React.createRef();
+  // const confirmPasswordRef = React.createRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   //* States
   const [authenticationAction, setAuthenticationMethod] = useState("login"); // login signup
@@ -132,13 +135,10 @@ export const AuthenticationComponent = () => {
             navigate("/");
           })
           .catch((error) => {
-            console.log(error);
           });
       })
-
       .catch((error) => {
-        if (error.request.response) {
-          console.log(error.request.response);
+        if (error.request) {
           if (
             error.request.response ==
             '{"non_field_errors":["Unable to log in with provided credentials."]}'
@@ -155,32 +155,33 @@ export const AuthenticationComponent = () => {
 
   const sendSignUpRequest=()=>{
     const signupRequesrURL = "http://127.0.0.1:8000/user/";
-        axios
-          .post(signupRequesrURL, {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-          })
-          .then((response) =>
-            console.log("response sratus: " + response.status)
+    const e=emailRef.current.value
+    axios
+      .post(signupRequesrURL, {
+        email: e,
+        password: passwordRef.current.value,
+      })
+      .then((response) =>{
+        console.log("response sratus: " + response.status)
+      })
+      .then((res) =>  sendLoginRequest())
+      .catch((error) => {
+        if (error.request) {
+          if (
+            error.request.response ==
+            '{"email":["User with such email already exists."]}'
           )
-          .then(() => sendLoginRequest())
-          .catch((error) => {
-            if (error.request.response) {
-              if (
-                error.request.response ==
-                '{"email":["User with such email already exists."]}'
-              )
-                setValidationErrors({
-                  email: "User with such email already exists.",
-                });
-              else {
-                console.log(error);
-              }
-            } else {
-              console.log(error);
-            }
-            return null;
-          });
+            setValidationErrors({
+              email: "User with such email already exists.",
+            });
+          else {
+            console.log(error);
+          }
+        } else {
+          console.log(error);
+        }
+        return null;
+      });
   }
 
   //* Main Body
