@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
 import filterIcon from "../../../../../assets/svg/settings.svg";
@@ -12,16 +12,16 @@ import { AdminFilterControls } from "../../../../../commonItems/features/adminFi
 
 export const AdminApplicatiosFilterComponent = () => {
   //* Refs
-  const idRef = React.createRef();
-  const vacancyIdRef = React.createRef();
-  const emailRef = React.createRef();
-  const statusRef = React.createRef();
-  const vacancyNameRef = React.createRef();
-  const companyRef = React.createRef();
-  const userIdRef = React.createRef();
-  const firstNameRef = React.createRef();
-  const lastNameRef = React.createRef();
-  const phoneRef = React.createRef();
+  const idRef = useRef();
+  const vacancyIdRef = useRef();
+  const emailRef = useRef();
+  const statusRef = useRef();
+  const vacancyNameRef = useRef();
+  const companyRef = useRef();
+  const userIdRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const phoneRef = useRef();
 
   //* States
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");

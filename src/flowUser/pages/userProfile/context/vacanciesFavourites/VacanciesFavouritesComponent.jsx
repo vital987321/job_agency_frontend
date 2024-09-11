@@ -26,7 +26,6 @@ export const VacanciesFavouritesComponent = (props) => {
         setUrlState={setListVacanciesRequestUrl}
         paginationClass={styles["vacancies-favourite-pagination-container"]}
       />
-
     </section>
   );
 };

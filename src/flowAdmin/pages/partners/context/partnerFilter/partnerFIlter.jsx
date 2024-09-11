@@ -2,7 +2,7 @@ import styles from "../../../../../commonItems/css/adminListItemsFilter.module.c
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
@@ -15,9 +15,9 @@ export const PartnerFilter = () => {
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
 
   //* Refs
-  const companyRef = React.createRef();
-  const hrSpecialistRef = React.createRef();
-  const phoneRef = React.createRef();
+  const companyRef = useRef();
+  const hrSpecialistRef = useRef();
+  const phoneRef = useRef();
 
   //* States
 

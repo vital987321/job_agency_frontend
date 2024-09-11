@@ -1,7 +1,7 @@
 // import styles from "./userPersonalData.module.css";
 import styles from "./userPersonalData.module.css";
 import { AvatarComponent } from "../../../../../commonItems/components/AvatarComponent";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import api from "../../../../../services/api/api";
 import { phoneValidation } from "../../../../../commonItems/components/CommonToolsComponents";
 import {
@@ -16,8 +16,8 @@ export const UserPersonalData = (props) => {
   const userData = props.userData;
 
   //* Refs
-  const cvInputRef = React.createRef();
-  const avatarInputRef = React.createRef();
+  const cvInputRef = useRef();
+  const avatarInputRef = useRef();
 
   //* States
   const [userCurrentData, setUserCurrentData] = useState({ ...userData });

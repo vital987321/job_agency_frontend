@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] adaptive design
+    [ ] 
 
 
 
@@ -97,7 +97,7 @@ FRONTEND:
         [x] applicaption-filter-on-page-input shall be a separate component
         [x] think if 2 filter buttons should be a separate component
         [x] Adaptive design
-        [ ] replace React.createRef() by useRef, similarily to AuthenticationComponent
+        [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
 
 
