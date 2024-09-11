@@ -10,7 +10,7 @@ FRONTEND:
             - [x]  on page 
             - [x]  reset filters button 
             - [x]  pagination
-        [ ] Admin application check user button
+        [-] Admin application check user button
         [x] Admin Vacancies environment
             [x] Admin Vacancy. Add deactivate button. Think of the consequences.
             [x] Admin Vacancies. Filter layout (css) 
@@ -22,8 +22,8 @@ FRONTEND:
             [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
             [x] Check that registered user can see deactevated vacancy he applied to. 
             [x] If vacancy is deactevated add div block to vacancy component.
-        [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
-        [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)
+        [-] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
+        [-] Add users section. Add posibility to block user (tempporarily or parmanentely)
         [x] Add Partners page
             [x] list of partners [id , Company, HR Specialist, Phone,]
             [x] New Partner Form
@@ -99,6 +99,8 @@ FRONTEND:
         [x] Adaptive design
         [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
+        [x] User is authorized and tries to log-in again. What would and should happen?
+        [ ] Fix bugs according to screenShots 
 
 
 TO CONSIDER:

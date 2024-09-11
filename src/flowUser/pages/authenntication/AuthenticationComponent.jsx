@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import closeIcon from "../../../assets/svg/X.svg";
 import styles from "./authentication.module.css";
 import loginImage from "../../../assets/img/login_img.png";
@@ -10,9 +10,6 @@ import { PasswordRepeatComponent } from "./context/PassworRepeat/PassworRepeat";
 
 export const AuthenticationComponent = () => {
   //* Refs
-  // const emailRef = React.createRef();
-  // const passwordRef = React.createRef();
-  // const confirmPasswordRef = React.createRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
@@ -20,7 +17,7 @@ export const AuthenticationComponent = () => {
   //* States
   const [authenticationAction, setAuthenticationMethod] = useState("login"); // login signup
   const [validationErrors, setValidationErrors] = useState({});
-  
+
   //* Hooks
   const navigate = useNavigate();
 
@@ -107,8 +104,8 @@ export const AuthenticationComponent = () => {
     }
     if (authenticationAction === "signup") {
       if (isValidSignUpForm()) {
-        sendSignUpRequest()  
-      } 
+        sendSignUpRequest();
+      }
     }
   };
 
@@ -134,8 +131,7 @@ export const AuthenticationComponent = () => {
           .then((resp) => {
             navigate("/");
           })
-          .catch((error) => {
-          });
+          .catch((error) => {});
       })
       .catch((error) => {
         if (error.request) {
@@ -153,18 +149,18 @@ export const AuthenticationComponent = () => {
       });
   };
 
-  const sendSignUpRequest=()=>{
+  const sendSignUpRequest = () => {
     const signupRequesrURL = "http://127.0.0.1:8000/user/";
-    const e=emailRef.current.value
+    const e = emailRef.current.value;
     axios
       .post(signupRequesrURL, {
         email: e,
         password: passwordRef.current.value,
       })
-      .then((response) =>{
-        console.log("response sratus: " + response.status)
+      .then((response) => {
+        console.log("response sratus: " + response.status);
       })
-      .then((res) =>  sendLoginRequest())
+      .then((res) => sendLoginRequest())
       .catch((error) => {
         if (error.request) {
           if (
@@ -182,9 +178,11 @@ export const AuthenticationComponent = () => {
         }
         return null;
       });
-  }
+  };
 
   //* Main Body
+
+  
   return (
     <section className={styles["authentication-modal-window"]}>
       <div className={styles["authentication-modal-window-container"]}>
