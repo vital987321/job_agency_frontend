@@ -101,6 +101,19 @@ FRONTEND:
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
 
 
+Emplamenting Role-based-authorisation
+    [ ] create auth Context, provider and Hook
+    [ ] combine Admin and User Router into one
+    [ ] Create private router
+    [ ] Add private router and auth to BroserRouter
+    [ ] roles:
+        user:1150
+        staff:2250
+        admin:1001
+    [ ] Add roles to backend user
+
+
+
 TO CONSIDER:
     [x] Adding Partners Model to DB.
         [x] Admin can select company only from awailabe list of partners
