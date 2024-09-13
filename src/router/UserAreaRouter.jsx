@@ -12,41 +12,35 @@ import { CertificatesComponent } from "../flowUser/pages/certificates/Certificat
 import { ContactsComponent } from "../flowUser/pages/contacts/ContactsComponent";
 import { ReviewsComponent } from "../flowUser/pages/reviews/Reviews";
 import { BodyComponent } from "../flowUser/layout/BodyComponent";
+import { ProtectedRoute } from "./protectedRote";
 
 export const UserAreaRouter = (
   <Route path="/" element={<BodyComponent />}>
-    <Route path="" element={<HomeComponent />} key="home" />
-    <Route path="auth" element={<AuthenticationComponent />} key="auth" />
-    <Route path="vacancies" element={<VacanciesComponent />} key="vacancies" />
-    <Route
-      path="vacancies/:vacancy_id"
-      element={<VacancyComponent />}
-      key="vacancy"
-    />
-    <Route path="about" element={<AboutUsComponent />} key="about" />
-    <Route
-      path="certificates"
-      element={<CertificatesComponent />}
-      key="certificates"
-    />
-    <Route path="contacts" element={<ContactsComponent />} key="contacts" />
-    <Route path="reviews" element={<ReviewsComponent />} key="reviews" />
+    //* Public Routes
+    <Route path="" element={<HomeComponent />} />
+    <Route path="auth" element={<AuthenticationComponent />} />
+    <Route path="vacancies" element={<VacanciesComponent />} />
+    <Route path="vacancies/:vacancy_id" element={<VacancyComponent />} />
+    <Route path="about" element={<AboutUsComponent />} />
+    <Route path="certificates" element={<CertificatesComponent />} />
+    <Route path="contacts" element={<ContactsComponent />} />
+    <Route path="reviews" element={<ReviewsComponent />} />
 
-    <Route
+    //* Protected Routes
+    <Route element={<ProtectedRoute allowedRoles={[1150]} />}>
+      <Route path="profile" element={<UserProfileComponent />} />
+    </Route>
+    {/* <Route
       path="applications"
       element={<ListUserApplicationsComponent />}
-      key="listApplication"
-    />
-    <Route
-      path="profile"
-      element={<UserProfileComponent />}
-      key="userProfile"
-    />
-    <Route
-      path="applications/:application_id"
-      element={<UserApplicationComponent />}
-      key="Application"
-    />
-    <Route path="*" element={<p>Path not Found</p>} key="notFound" />
+    /> */}
+    <Route element={<ProtectedRoute allowedRoles={[1150]} />}>
+      <Route
+        path="applications/:application_id"
+        element={<UserApplicationComponent />}
+      />
+    </Route>
+
+    {/* <Route path="*" element={<p>Path not Found</p>} key="notFound" /> */}
   </Route>
 );

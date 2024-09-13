@@ -107,10 +107,11 @@ Emplamenting Role-based-authorisation
     [ ] Create private router
     [ ] Add private router and auth to BroserRouter
     [ ] roles:
-        user:1150
+        Authenticated user:1150
         staff:2250
         admin:1001
     [ ] Add roles to backend user
+    [ ] DO I need applications Route?
 
 
 
