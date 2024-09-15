@@ -15,7 +15,8 @@ export const UserProfileComponent = () => {
       try {
         const request = await api
           .get("/user/" + user_id)
-          .then((response)=>{
+          .then((response) => {
+            console.log(response.data);
            setUserData(response.data); 
           })          
       } catch (error) {

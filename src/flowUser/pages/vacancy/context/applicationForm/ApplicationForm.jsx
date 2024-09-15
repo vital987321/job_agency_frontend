@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState, useRef } from "react";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import "./applicationForm.css";
 import axios from "axios";
@@ -7,17 +7,18 @@ import { emailValidation } from "../../../../../commonItems/components/CommonToo
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import api from "../../../../../services/api/api";
 
-const firstNameRef = React.createRef();
-const lastNameRef = React.createRef();
-const phoneRef = React.createRef();
-const emailRef = React.createRef();
-const messageRef = React.createRef();
-const cvFileRef = React.createRef();
-
 export const ApplicationFormComponent = (props) => {
+  //* Refs
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const phoneRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+  const cvFileRef = useRef();
   const [usingProfileCV, setUsingProfileCV] = useState(true);
   const [formValidationErrors, setFormValidationErrors] = useState({});
 
+  //* Functions
   const formValidation = (formData) => {
     let isFormValid = true;
     let newValidationErrors = {};
@@ -160,6 +161,7 @@ export const ApplicationFormComponent = (props) => {
     }
   };
 
+  //* Main Body
   return (
     <>
       <form
@@ -256,10 +258,7 @@ export const ApplicationFormComponent = (props) => {
             ></textarea>
           </div>
           <div className="application-form-submit-block">
-            <ButtonType1
-              value='Apply'
-              onClickHandler={appFormSubmitHandler}
-            />
+            <ButtonType1 value="Apply" onClickHandler={appFormSubmitHandler} />
           </div>
         </div>
       </form>

@@ -1,6 +1,6 @@
 import closeIcon from "../../../../../assets/svg/X.svg";
 import styles from "./vacancyFilter.module.css";
-import React from "react";
+import React, {useRef} from "react";
 import { SALARY_CEILING, RESIDENCE_TYPES } from "../../../../../data/constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
@@ -8,11 +8,11 @@ import { SalaryLevel } from "../../../../../commonItems/components/salaryLevel/s
 
 export const VacancyFilterComponent = (props) => {
   //* Refs
-  const vacancyKeyWordsRef = React.createRef();
-  const salaryMinRef = React.createRef();
-  const salaryMaxRef = React.createRef();
-  const vacancyResidenceRef = React.createRef();
-  const vacancyLocationRef = React.createRef();
+  const vacancyKeyWordsRef = useRef();
+  const salaryMinRef = useRef();
+  const salaryMaxRef = useRef();
+  const vacancyResidenceRef = useRef();
+  const vacancyLocationRef = useRef();
 
   //* Hooks
   const navigate = useNavigate();

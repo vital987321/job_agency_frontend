@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import filterIcon from "../../../../../assets/svg/settings.svg";
 import closeIcon from "../../../../../assets/svg/X.svg";
@@ -10,11 +10,11 @@ import { AmountOnPageComponent } from "../../../../../commonItems/components/adm
 import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const ReviewFilter = () => {
-  const userEmailRef = React.createRef();
-  const userFirstNameRef = React.createRef();
-  const userLastNameRef = React.createRef();
-  const rateRef = React.createRef();
-  const commentRef = React.createRef();
+  const userEmailRef = useRef();
+  const userFirstNameRef = useRef();
+  const userLastNameRef = useRef();
+  const rateRef = useRef();
+  const commentRef = useRef();
 
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
   const [onPageListItems, setOnPageListItems] = useState(

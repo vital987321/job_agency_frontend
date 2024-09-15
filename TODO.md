@@ -1,5 +1,5 @@
 NEXT TODO STEP:
-    [ ] adaptive design
+    [ ] 
 
 
 
@@ -10,6 +10,7 @@ FRONTEND:
             - [x]  on page 
             - [x]  reset filters button 
             - [x]  pagination
+        [-] Admin application check user button
         [-] Admin application check user button
         [x] Admin Vacancies environment
             [x] Admin Vacancy. Add deactivate button. Think of the consequences.
@@ -22,6 +23,8 @@ FRONTEND:
             [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
             [x] Check that registered user can see deactevated vacancy he applied to. 
             [x] If vacancy is deactevated add div block to vacancy component.
+        [-] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
+        [-] Add users section. Add posibility to block user (tempporarily or parmanentely)
         [-] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
         [-] Add users section. Add posibility to block user (tempporarily or parmanentely)
         [x] Add Partners page
@@ -98,13 +101,14 @@ FRONTEND:
         [x] think if 2 filter buttons should be a separate component
         [x] Adaptive design
         [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
+        [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
         [x] Role-based-authorisation
         [ ] In AdminFlow add link to User flow
         [ ] in AdminFlow Add Logout button
         [ ] in admin flow add home page according to figma design
         [ ] in user flow add a link to admin flow
-
+        [ ] Fix bugs according to screenShots
 
 
 Emplamenting Role-based-authorisation
@@ -120,6 +124,7 @@ Emplamenting Role-based-authorisation
     [x] Do I need applications Route?
     [x] Add Unauthorized component
 
+         
 
 
 TO CONSIDER:

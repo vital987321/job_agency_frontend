@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { CONTRACT_TYPE } from "../../../data/constants";
 import { GENDER_LIST } from "../../../data/constants";
 import { SECTOR_REQUEST_URL } from "../../../data/constants";
@@ -33,15 +33,15 @@ export const AdminVacancyFormComponent = (props) => {
   });
 
   //* Refs
-  const vacancyNameRef = React.createRef();
-  const locationRef = React.createRef();
-  const salaryRef = React.createRef();
-  const hoursFromRef = React.createRef();
-  const minutesFromRef = React.createRef();
-  const hoursToRef = React.createRef();
-  const minutesToRef = React.createRef();
-  const descriptionRef = React.createRef();
-  const requirementsRef = React.createRef();
+  const vacancyNameRef = useRef();
+  const locationRef = useRef();
+  const salaryRef = useRef();
+  const hoursFromRef = useRef();
+  const minutesFromRef = useRef();
+  const hoursToRef = useRef();
+  const minutesToRef = useRef();
+  const descriptionRef = useRef();
+  const requirementsRef = useRef();
 
   //* useEffects
   useEffect(() => {
