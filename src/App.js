@@ -1,20 +1,6 @@
-// import './App.css';
-// import { BrowserRouterComponent } from './router/BrowserRouterComponent';
-
-
-// function App() {
-//   return (
-//     <>
-//       <BrowserRouterComponent />
-//     </>
-//   );
-// }
-
-// export default App;
-
 
 import './App.css';
-import { RouterComponent } from './router/RouterComponent';
+import { RouterComponent } from './router/routerComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
 

@@ -24,4 +24,10 @@ table{
   border-spacing: 0;
 }
 
+.e404message{
+  margin-top: 50px;
+  text-align: center;
+  font-size: larger;
+}
+
 

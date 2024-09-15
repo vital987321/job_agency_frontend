@@ -24,10 +24,11 @@ export const HeaderControls = () => {
 
     //* Functions
   const logOutButtonClick = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userAvatarUrl");
+    localStorage.removeItem("role");
     localStorage.removeItem("user_id");
     localStorage.removeItem("username");
-    localStorage.removeItem("userAvatarUrl");
+    localStorage.removeItem("token");
     setUserAvatarUrl("");
     navigate("/");
   };

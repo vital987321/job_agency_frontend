@@ -123,6 +123,7 @@ export const AuthenticationComponent = () => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user_id", response.data.user_id);
         localStorage.setItem("username", response.data.username);
+        localStorage.setItem("role", response.data.role);
         return response;
       })
       .then((response) => {

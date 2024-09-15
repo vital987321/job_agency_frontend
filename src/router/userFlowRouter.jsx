@@ -14,7 +14,7 @@ import { ReviewsComponent } from "../flowUser/pages/reviews/Reviews";
 import { BodyComponent } from "../flowUser/layout/BodyComponent";
 import { ProtectedRoute } from "./protectedRote";
 
-export const UserAreaRouter = (
+export const UserFlowRouter = (
   <Route path="/" element={<BodyComponent />}>
     //* Public Routes
     <Route path="" element={<HomeComponent />} />
@@ -27,20 +27,13 @@ export const UserAreaRouter = (
     <Route path="reviews" element={<ReviewsComponent />} />
 
     //* Protected Routes
-    <Route element={<ProtectedRoute allowedRoles={[1150]} />}>
+
+    <Route element={<ProtectedRoute allowedRoles={['1150','2250','1001']} />}>
       <Route path="profile" element={<UserProfileComponent />} />
-    </Route>
-    {/* <Route
-      path="applications"
-      element={<ListUserApplicationsComponent />}
-    /> */}
-    <Route element={<ProtectedRoute allowedRoles={[1150]} />}>
       <Route
         path="applications/:application_id"
         element={<UserApplicationComponent />}
       />
     </Route>
-
-    {/* <Route path="*" element={<p>Path not Found</p>} key="notFound" /> */}
   </Route>
 );

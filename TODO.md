@@ -10,7 +10,7 @@ FRONTEND:
             - [x]  on page 
             - [x]  reset filters button 
             - [x]  pagination
-        [ ] Admin application check user button
+        [-] Admin application check user button
         [x] Admin Vacancies environment
             [x] Admin Vacancy. Add deactivate button. Think of the consequences.
             [x] Admin Vacancies. Filter layout (css) 
@@ -22,8 +22,8 @@ FRONTEND:
             [x] If staffUser goes to User Area he should not see All vacancies, but active. Add active to queryparam. 
             [x] Check that registered user can see deactevated vacancy he applied to. 
             [x] If vacancy is deactevated add div block to vacancy component.
-        [ ] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
-        [ ] Add users section. Add posibility to block user (tempporarily or parmanentely)
+        [-] Admin settings. Posibble content: Active, onPage, sorting, columns for Applications and vacancies.
+        [-] Add users section. Add posibility to block user (tempporarily or parmanentely)
         [x] Add Partners page
             [x] list of partners [id , Company, HR Specialist, Phone,]
             [x] New Partner Form
@@ -97,21 +97,28 @@ FRONTEND:
         [x] applicaption-filter-on-page-input shall be a separate component
         [x] think if 2 filter buttons should be a separate component
         [x] Adaptive design
-        [ ] replace React.createRef() by useRef, similarily to AuthenticationComponent
+        [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
+        [x] Role-based-authorisation
+        [ ] In AdminFlow add link to User flow
+        [ ] in AdminFlow Add Logout button
+        [ ] in admin flow add home page according to figma design
+        [ ] in user flow add a link to admin flow
+
 
 
 Emplamenting Role-based-authorisation
-    [ ] create auth Context, provider and Hook
-    [ ] combine Admin and User Router into one
-    [ ] Create private router
-    [ ] Add private router and auth to BroserRouter
-    [ ] roles:
+    [x] create auth Context, provider and Hook
+    [x] combine Admin and User Router into one
+    [x] Create private router
+    [x] Add private router and auth to BroserRouter
+    [x] roles:
         Authenticated user:1150
         staff:2250
         admin:1001
-    [ ] Add roles to backend user
-    [ ] DO I need applications Route?
+    [x] Add roles to backend user
+    [x] Do I need applications Route?
+    [x] Add Unauthorized component
 
 
 
