@@ -7,10 +7,12 @@ import { AdminApplicationsComponent } from "../flowAdmin/pages/applications/Admi
 import { AdminReviewsComponent } from "../flowAdmin/pages/reviews/reviews";
 import { Partner } from "../flowAdmin/pages/partners/partners";
 import { ProtectedRoute } from "./protectedRote";
+import { AdminHome } from "../flowAdmin/pages/home/home";
 
 export const AdminFlowRouter = (
   <Route element={<ProtectedRoute allowedRoles={["2250", "1001"]} />}>
     <Route path="admin/" element={<AdminBodyComponent />}>
+      <Route path="" element={<AdminHome/>} />
       <Route path="vacancies" element={<AdminVacanciesComponent />} />
       <Route path="vacancies/:vacancy_id" element={<AdminVacancyComponent />} />
       <Route path="applications" element={<AdminApplicationsComponent />} />
