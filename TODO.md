@@ -104,11 +104,14 @@ FRONTEND:
         [x] replace React.createRef() by useRef, similarily to AuthenticationComponent
                 https://dev.to/carlosrafael22/      using-refs-in-react-functional-components-part-1-useref-callback-ref-2j5i
         [x] Role-based-authorisation
-        [ ] In AdminFlow add link to User flow
-        [ ] in AdminFlow Add Logout button
-        [ ] in admin flow add home page according to figma design
+        [x] In AdminFlow add link to User flow
+        [x] in AdminFlow Add Logout button
+        [x] in admin flow add home page according to figma design
+        [ ] consider fetching user object somewhere close to the root component and then pass it to the rest using useContext.
         [ ] in user flow add a link to admin flow
         [ ] Fix bugs according to screenShots
+        [ ] shall I rename context folders inside pages not to be confused with context objects?
+        
 
 
 Emplamenting Role-based-authorisation

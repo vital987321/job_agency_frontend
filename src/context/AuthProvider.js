@@ -11,8 +11,6 @@ export const AuthProvider=({children})=>{
         const user_id=localStorage.getItem('user_id')
         setAuth({role:role, user_id:user_id})
     },[])
-    console.log('AuthProvider')
-    console.log(auth)
 
     return (
         <AuthContext.Provider value={{auth, setAuth}}>
@@ -20,3 +18,5 @@ export const AuthProvider=({children})=>{
         </AuthContext.Provider>
     )
 }
+
+
