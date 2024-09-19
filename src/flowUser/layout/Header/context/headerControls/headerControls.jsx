@@ -7,7 +7,7 @@ import styles from "./headerControls.module.css"
 import { AvatarComponent } from "../../../../../commonItems/components/AvatarComponent";
 import { useEffect, useState } from "react";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-
+import { useLogOut } from "../../../../../hooks/useLogout";
 
 
 export const HeaderControls = () => {
@@ -22,17 +22,10 @@ export const HeaderControls = () => {
     setUserAvatarUrl(localStorage.getItem("userAvatarUrl"));
   }, [localStorage.getItem("userAvatarUrl")]);
 
-    //* Functions
-  const logOutButtonClick = () => {
-    localStorage.removeItem("userAvatarUrl");
-    localStorage.removeItem("role");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("username");
-    localStorage.removeItem("token");
-    setUserAvatarUrl("");
-    navigate("/");
-  };
+  //* Hooks
+  const {logout}=useLogOut()
 
+  //* Functions
   const logInButtonClick = () => {
     navigate("/auth");
   };
@@ -44,10 +37,7 @@ export const HeaderControls = () => {
         if (username) {
           return (
             <>
-              <Link
-                to="/profile"
-                title={username}
-              >
+              <Link to="/profile" title={username}>
                 <AvatarComponent
                   userAvatarUrl={userAvatarUrl}
                   title={username}
@@ -57,7 +47,7 @@ export const HeaderControls = () => {
               <div className={styles["log-button-container"]}>
                 <ButtonType1
                   value="LogOut"
-                  onClickHandler={logOutButtonClick}
+                  onClickHandler={() => logout()}
                   strength="2"
                 />
               </div>
