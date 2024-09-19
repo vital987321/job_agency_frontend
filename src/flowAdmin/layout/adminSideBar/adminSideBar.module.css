@@ -68,3 +68,8 @@
 .nav-link-text{
     margin-left: 10px;
 }
+
+.logOut-button-container{
+    text-align: center;
+    margin-top: 50px;
+}

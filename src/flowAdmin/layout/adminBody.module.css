@@ -12,6 +12,6 @@
 
 .mainContainer{
     margin-left: 250px;
-    position: relative;
+    /* position: relative; */
     /* width: calc(100% - 250px); */
 }
