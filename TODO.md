@@ -107,8 +107,8 @@ FRONTEND:
         [x] In AdminFlow add link to User flow
         [x] in AdminFlow Add Logout button
         [x] in admin flow add home page according to figma design
-        [ ] consider fetching user object somewhere close to the root component and then pass it to the rest using useContext.
-        [ ] in user flow add a link to admin flow
+        [x] consider fetching user object somewhere close to the root component and then pass it to the rest using useContext.
+        [x] in user flow add a link to admin flow
         [ ] Fix bugs according to screenShots
         [ ] shall I rename context folders inside pages not to be confused with context objects?
         

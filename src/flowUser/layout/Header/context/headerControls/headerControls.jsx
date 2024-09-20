@@ -8,22 +8,14 @@ import { AvatarComponent } from "../../../../../commonItems/components/AvatarCom
 import { useEffect, useState } from "react";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { useLogOut } from "../../../../../hooks/useLogout";
+import { useAuth } from "../../../../../hooks/useAuth";
 
 
 export const HeaderControls = () => {
-
-    //* States
-  const [userAvatarUrl, setUserAvatarUrl] = useState("");
-  const navigate = useNavigate();
-  const username = localStorage.getItem("username");
-
-    //* useEffects
-  useEffect(() => {
-    setUserAvatarUrl(localStorage.getItem("userAvatarUrl"));
-  }, [localStorage.getItem("userAvatarUrl")]);
-
   //* Hooks
   const {logout}=useLogOut()
+  const {auth}=useAuth()
+  const navigate = useNavigate();
 
   //* Functions
   const logInButtonClick = () => {
@@ -34,14 +26,14 @@ export const HeaderControls = () => {
   return (
     <div className={styles.controls}>
       {(() => {
-        if (username) {
+        if (auth.username) {
           return (
             <>
-              <Link to="/profile" title={username}>
+              <Link to="/profile" title={auth.username}>
                 <AvatarComponent
-                  userAvatarUrl={userAvatarUrl}
-                  title={username}
-                  iconSymbol={username[0].toUpperCase()}
+                  userAvatarUrl={auth.userAvatarUrl}
+                  title={auth.username}
+                  iconSymbol={auth.username[0].toUpperCase()}
                 />
               </Link>
               <div className={styles["log-button-container"]}>

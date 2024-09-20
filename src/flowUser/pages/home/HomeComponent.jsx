@@ -39,7 +39,7 @@ export const HomeComponent = () => {
             We will find the best employment for you
           </h2>
           <p className="introductory-section-text">
-            Employment agency of the year 2023
+            Employment agency of the year 2024
           </p>
         </div>
         <div className="introductory-form-container">

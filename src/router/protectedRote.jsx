@@ -1,4 +1,3 @@
-
 import { useAuth } from "../hooks/useAuth";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 
@@ -7,7 +6,7 @@ export const ProtectedRoute = ({ allowedRoles }) => {
   const { setAuth } = useAuth();
   const location = useLocation();
 
-  if (localStorage.getItem("role") && !auth.role) {
+  if (localStorage.getItem("user_id") && !auth.role) {
     return <p>Loading...</p>;
   }
 
@@ -19,4 +18,3 @@ export const ProtectedRoute = ({ allowedRoles }) => {
     <Navigate to="/auth" state={{ from: location }} replace />
   );
 };
-

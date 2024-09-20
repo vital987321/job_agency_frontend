@@ -10,6 +10,7 @@ import {
 } from "../../../../../data/constants";
 import editIcon from "../../../../../assets/svg/edit.svg";
 import { SubmitButton } from "./submitButton/submitButton";
+import { useAuth } from "../../../../../hooks/useAuth";
 
 export const UserPersonalData = (props) => {
   //* Props
@@ -18,19 +19,25 @@ export const UserPersonalData = (props) => {
   //* Refs
   const cvInputRef = useRef();
   const avatarInputRef = useRef();
+  
+  //* hooks
+  const {auth}=useAuth()
+  const {setAuth}=useAuth()
 
   //* States
   const [userCurrentData, setUserCurrentData] = useState({ ...userData });
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [userAvatarUrl, setUserAvatarUrl] = useState(
-    localStorage.getItem("userAvatarUrl")
-  );
+    auth.userAvatarUrl)
+  
+
+  
 
   //* Variables
-  const user_id = JSON.parse(localStorage.getItem("user_id"));
-  const username = localStorage.getItem("username");
-
+  const user_id = auth.user_id;
+  const username = auth.username;
+  
   //* Functions
   const inputChangeHandler = (e) => {
     let updatedItem = {};
@@ -149,13 +156,12 @@ export const UserPersonalData = (props) => {
             })
             .then((response) => {
               setUserCurrentData(response.data);
-              if (response.data.avatar) {
-                localStorage.setItem("userAvatarUrl", response.data.avatar);
-                setUserAvatarUrl(response.data.avatar);
-              } else {
-                localStorage.removeItem("userAvatarUrl");
-                setUserAvatarUrl("");
-              }
+              setAuth({
+                user_id:response.data.user_id,
+                role: response.data.role,
+                username: response.data.username,
+                userAvatarUrl: response.data.avatar,
+              })
             });
 
           setIsUserDataChanged(false);

@@ -7,7 +7,6 @@ import { UserPersonalData } from "./context/userPersonalData/userPersonalData";
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);
-
   const user_id = JSON.parse(localStorage.getItem("user_id"));
 
   useEffect(() => {
@@ -16,7 +15,6 @@ export const UserProfileComponent = () => {
         const request = await api
           .get("/user/" + user_id)
           .then((response) => {
-            console.log(response.data);
            setUserData(response.data); 
           })          
       } catch (error) {
@@ -28,7 +26,7 @@ export const UserProfileComponent = () => {
 
 
   if (!userData) {
-    return <div>User not found</div>;
+    return <div>Loading...</div>;
   }
   return (
     <>
