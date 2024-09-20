@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { ReviewsTempComponent } from "./context/ReviewsTempComponent";
+import { ReviewsTempComponent } from "./substructures/ReviewsTempComponent";
 import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
 import {AverageRating} from "../../../commonItems/features/averageRating/averageRaring"
-import { ReviewForm } from "./context/reviewForm/reviewForm";
+import { ReviewForm } from "./substructures/reviewForm/reviewForm";
 import {
   LIST_REVIEWS_REQUEST_URL,
   REVIEWS_LIST_LIMIT,

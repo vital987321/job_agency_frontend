@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { PasswordRepeatComponent } from "./context/PassworRepeat/PassworRepeat";
+import { PasswordRepeatComponent } from "./substructures/PassworRepeat/PassworRepeat";
 import { useAuth } from "../../../hooks/useAuth";
 
 export const AuthenticationComponent = () => {

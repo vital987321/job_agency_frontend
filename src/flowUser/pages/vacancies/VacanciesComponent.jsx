@@ -6,7 +6,7 @@ import {
 } from "../../../data/constants.js";
 import filterIcon from "../../../assets/svg/settings.svg";
 import { ListVacanciesComponent } from "../../../commonItems/features/listVacancies/ListVacanciesComponent.jsx";
-import { VacancyFilterComponent } from "./context/VacancyFilter/VacancyFilterComponent.jsx";
+import { VacancyFilterComponent } from "./substructures/VacancyFilter/VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate} from "react-router-dom";
 import closeIcon from "../../../assets/svg/X.svg";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";

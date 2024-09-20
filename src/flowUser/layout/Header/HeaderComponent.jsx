@@ -1,8 +1,8 @@
 import agencyLogoIcon from "../../../assets/svg/agency_logo.svg";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import styles from "./header.module.css";
-import { NavMenu } from "./context/navMenu/navMenu";
-import { HeaderControls } from "./context/headerControls/headerControls";
+import { NavMenu } from "./substructures/navMenu/navMenu";
+import { HeaderControls } from "./substructures/headerControls/headerControls";
 
 export const HeaderComponent = () => {
   return (

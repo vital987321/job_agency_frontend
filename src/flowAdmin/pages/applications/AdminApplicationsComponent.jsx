@@ -1,7 +1,7 @@
-import { AdminApplicationsListComponent } from "./context/adminApplicationsList/AdminApplicationsListComponent.jsx";
+import { AdminApplicationsListComponent } from "./substructures/adminApplicationsList/AdminApplicationsListComponent.jsx";
 import styles from "./adminApplications.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { AdminApplicatiosFilterComponent } from "./context/adminApplicationsFilter/AdminApplicationsFilterComponet.jsx";
+import { AdminApplicatiosFilterComponent } from "./substructures/adminApplicationsFilter/AdminApplicationsFilterComponet.jsx";
 import {
   LIST_APPLICATIONS_BASE_URL,
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,

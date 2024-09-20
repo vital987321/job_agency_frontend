@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../services/api/api";
 import styles from "./userProfile.module.css";
-import { ListUserApplicationsComponent } from "./context/listUserApplications/ListUserApplicationsComponent";
-import { VacanciesFavouritesComponent } from "./context/vacanciesFavourites/VacanciesFavouritesComponent";
-import { UserPersonalData } from "./context/userPersonalData/userPersonalData";
+import { ListUserApplicationsComponent } from "./substructures/listUserApplications/ListUserApplicationsComponent";
+import { VacanciesFavouritesComponent } from "./substructures/vacanciesFavourites/VacanciesFavouritesComponent";
+import { UserPersonalData } from "./substructures/userPersonalData/userPersonalData";
 
 export const UserProfileComponent = () => {
   const [userData, setUserData] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./vacancy.module.css";
-import { ApplicationFormComponent } from "./context/applicationForm/ApplicationForm";
+import { ApplicationFormComponent } from "./substructures/applicationForm/ApplicationForm";
 import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { VacancyDataComponent } from "../../../commonItems/features/vacancyData/VacancyData";

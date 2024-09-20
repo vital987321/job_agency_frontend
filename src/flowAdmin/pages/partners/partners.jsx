@@ -1,5 +1,5 @@
 import styles from "./partners.module.css";
-import { PartnersList } from "./context/partnersList/partnersList";
+import { PartnersList } from "./substructures/partnersList/partnersList";
 import { useState, useEffect } from "react";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
@@ -8,8 +8,8 @@ import {
   PARTNERS_REQUEST_URL,
 } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
-import { PartnerForm } from "./context/partnerForm/partnnerForm";
-import { PartnerFilter } from "./context/partnerFilter/partnerFIlter";
+import { PartnerForm } from "./substructures/partnerForm/partnnerForm";
+import { PartnerFilter } from "./substructures/partnerFilter/partnerFIlter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { useSearchParams } from "react-router-dom";
 

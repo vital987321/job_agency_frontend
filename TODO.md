@@ -110,7 +110,8 @@ FRONTEND:
         [x] consider fetching user object somewhere close to the root component and then pass it to the rest using useContext.
         [x] in user flow add a link to admin flow
         [ ] Fix bugs according to screenShots
-        [ ] shall I rename context folders inside pages not to be confused with context objects?
+        [x] shall I rename context folders inside pages not to be confused with context objects?
+        [ ] Delete unused files/components from the project
         
 
 

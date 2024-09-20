@@ -1,6 +1,6 @@
 import { AdminVacancyFormComponent } from "../../../commonItems/features/vacancyForm/AdminVacancyFormComponent.jsx";
-import { AdminVacanciesListComponent } from "./context/adminVacanciesList/AdminVacanciesListComponent.jsx";
-import { AdminVacanciesFilterComponent } from "./context/adminVacanciesFilter/AdminVacanciesFilterComponent.jsx";
+import { AdminVacanciesListComponent } from "./substructures/adminVacanciesList/AdminVacanciesListComponent.jsx";
+import { AdminVacanciesFilterComponent } from "./substructures/adminVacanciesFilter/AdminVacanciesFilterComponent.jsx";
 import styles from "./adminVacancies.module.css";
 import React from "react";
 import {

@@ -1,4 +1,4 @@
-import { reviewFilter } from "./context/reviewFilter/reviewFilter";
+import { reviewFilter } from "./substructures/reviewFilter/reviewFilter";
 import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
@@ -7,7 +7,7 @@ import {
 import styles from "./reviews.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ReviewFilter } from "./context/reviewFilter/reviewFilter";
+import { ReviewFilter } from "./substructures/reviewFilter/reviewFilter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
 import { AverageRating } from "../../../commonItems/features/averageRating/averageRaring";
