@@ -7,10 +7,10 @@ import { ReactComponent as IconPeople } from "../../../assets/svg/icon_people.sv
 import { NavLink } from "react-router-dom";
 import styles from "./adminSideBar.module.css";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { useLogOut } from "../../../services/utils/logout";
+import { useLogOut } from "../../../hooks/useLogout";
 
 export const AdminSideBarComponent = () => {
-  const logOutHandler = useLogOut("/");
+  const {logout}=useLogOut()
 
 
 
@@ -108,10 +108,8 @@ export const AdminSideBarComponent = () => {
         </div>
       </nav>
 
-      <hr />
-
-      <div>
-        <ButtonType1 value="LogOut" onClickHandler={logOutHandler} />
+      <div className={styles["logOut-button-container"]}>
+        <ButtonType1 value="LogOut" onClickHandler={()=>logout()} />
       </div>
     </>
   );
