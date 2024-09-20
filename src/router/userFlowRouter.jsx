@@ -27,13 +27,9 @@ export const UserFlowRouter = (
     <Route path="reviews" element={<ReviewsComponent />} />
 
     //* Protected Routes
-
     <Route element={<ProtectedRoute allowedRoles={['1150','2250','1001']} />}>
       <Route path="profile" element={<UserProfileComponent />} />
-      <Route
-        path="applications/:application_id"
-        element={<UserApplicationComponent />}
-      />
+      <Route path="applications/:application_id" element={<UserApplicationComponent />}/>
     </Route>
   </Route>
 );
