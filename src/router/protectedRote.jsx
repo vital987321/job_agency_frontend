@@ -1,3 +1,4 @@
+// protectedRoute.jsx
 import { useAuth } from "../hooks/useAuth";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 

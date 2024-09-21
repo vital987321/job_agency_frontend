@@ -3,7 +3,7 @@ import closeIcon from "../../../assets/svg/X.svg";
 import styles from "./authentication.module.css";
 import loginImage from "../../../assets/img/login_img.png";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { PasswordRepeatComponent } from "./substructures/PassworRepeat/PassworRepeat";
@@ -22,8 +22,12 @@ export const AuthenticationComponent = () => {
 
   //* Hooks
   const navigate = useNavigate();
+  const location=useLocation()
   const {auth}=useAuth()
   const {setAuth}=useAuth()
+
+  //* variables
+  const fromUrl=location.state?.from?.pathname || "/"
 
   //* Functions
   const closeButtonHandler = () => {
@@ -123,54 +127,29 @@ export const AuthenticationComponent = () => {
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user_id", response.data.user_id);
-        // localStorage.setItem("username", response.data.username);
-        // localStorage.setItem("role", response.data.role);
         return response;
       })
       .then((response) => {
         const fetchUserData = (user_id) => {
-          console.log('inside fetch function')
           try {
-            console.log(localStorage.getItem('token'))
             const request = api
               .get("/user/" + user_id)
               .then((response) => {
-                console.log('before setAuth')
-                console.log('auth:')
-                console.log(auth)
-                console.log(`role: ${auth.role}`)
                 setAuth({
                   user_id,
                   role: response.data.role,
                   username: response.data.username,
                   userAvatarUrl: response.data.avatar,
                 })
-                console.log('auth:')
-                console.log(auth);
-                console.log(`role: ${auth.role}`)
               })
               .catch((error) => console.log(error));
           } catch (error) {
             console.log(error);
           }
-          console.log ('end of fetch function')
         };
-        console.log(`user_id: ${response.data.user_id}`)
         fetchUserData(response.data.user_id)
-        console.log('post fetch dada function')
-        
-
-        // api
-        //   .get("/user/" + response.data.user_id)
-        //   .then((response) => {
-        //     localStorage.setItem("userAvatarUrl", response.data.avatar);
-        //   })
-        //   .then((resp) => {
-        //     navigate("/");
-        //   })
-        //   .catch((error) => {});
       })
-      .then((res)=>navigate("/"))
+      .then((res)=>navigate(fromUrl, {replace:true}))
       .catch((error) => {
         if (error.request) {
           if (

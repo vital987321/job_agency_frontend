@@ -111,9 +111,10 @@ FRONTEND:
         [x] in user flow add a link to admin flow
         [ ] Fix bugs according to screenShots
         [x] shall I rename context folders inside pages not to be confused with context objects?
-        [ ] Delete unused files/components from the project
+        [x] Delete unused files/components from the project
         [ ] Add unit tests
-        [ ] review the whole project        
+        [ ] review the whole project
+        [ ] Create represantative DB        
 
 
 Emplamenting Role-based-authorisation
