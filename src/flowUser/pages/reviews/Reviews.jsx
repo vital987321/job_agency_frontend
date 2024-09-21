@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ReviewsTempComponent } from "./substructures/ReviewsTempComponent";
 import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
 import {AverageRating} from "../../../commonItems/features/averageRating/averageRaring"
 import { ReviewForm } from "./substructures/reviewForm/reviewForm";

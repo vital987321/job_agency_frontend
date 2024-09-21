@@ -112,7 +112,8 @@ FRONTEND:
         [ ] Fix bugs according to screenShots
         [x] shall I rename context folders inside pages not to be confused with context objects?
         [ ] Delete unused files/components from the project
-        
+        [ ] Add unit tests
+        [ ] review the whole project        
 
 
 Emplamenting Role-based-authorisation

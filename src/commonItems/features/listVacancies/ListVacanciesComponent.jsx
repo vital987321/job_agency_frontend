@@ -12,7 +12,7 @@ export const ListVacanciesComponent = (props) => {
   useEffect(() => {
     const fetchVacancyList = async () => {
       try {
-        const response = await api
+        const request = await api
           .get(props.listVacanciesRequestUrl)
           .then((response) => {
             setVacanciesList(response.data.results);
