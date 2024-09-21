@@ -29,7 +29,7 @@ export const HeaderControls = () => {
         if (auth.username) {
           return (
             <>
-              <Link to="/profile" title={auth.username}>
+              <Link to="/profile" className={styles.navLink} title={auth.username}>
                 <AvatarComponent
                   userAvatarUrl={auth.userAvatarUrl}
                   title={auth.username}
