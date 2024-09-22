@@ -14,11 +14,17 @@ import { stringToDateConverter } from "../../../../../services/utils/stringToDat
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 
 export const UserApplicationComponent = () => {
-  const { application_id } = useParams();
+  //* States
   const [application, setApplication] = useState(null);
-  const url = "http://127.0.0.1:8000/application/" + application_id + "/";
+
+  //* Hooks
+  const { application_id } = useParams();
   const navigate = useNavigate();
 
+  //* Variables
+  const url = "http://127.0.0.1:8000/application/" + application_id + "/";
+
+  //* useEffects
   useEffect(() => {
     const fetchApplication = async () => {
       try {
@@ -33,10 +39,7 @@ export const UserApplicationComponent = () => {
     fetchApplication();
   }, []);
 
-  if (!application) {
-    return <div>Loading data</div>;
-  }
-
+  //* Functions
   const deleteApplicationRequest = () => {
     try {
       api
@@ -52,6 +55,10 @@ export const UserApplicationComponent = () => {
     }
   };
 
+  //* Main Body
+  if (!application) {
+    return <div>Loading data</div>;
+  }
   return (
     <section className="user-application-section">
       <div className="user-application-header-line-container">
@@ -59,7 +66,7 @@ export const UserApplicationComponent = () => {
         <ButtonType1
           value="Delete"
           onClickHandler={deleteApplicationRequest}
-          strength='2'
+          strength="2"
         />
       </div>
       <div className="application-sent-date-container">
@@ -179,14 +186,8 @@ export const UserApplicationComponent = () => {
           </div>
         </div>
         <div>
-          <Link
-            to={"/vacancies/" + application.vacancy}
-            key="contacts"
-          >
-            <ButtonType1
-              value='Vacancy details'
-              strength='3'
-            />
+          <Link to={"/vacancies/" + application.vacancy} key="contacts">
+            <ButtonType1 value="Vacancy details" strength="3" />
           </Link>
         </div>
       </div>

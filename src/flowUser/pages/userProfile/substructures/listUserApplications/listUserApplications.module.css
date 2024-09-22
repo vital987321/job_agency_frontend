@@ -1,6 +1,21 @@
+.list-applications-container{
+    margin-top: 100px;
+  margin-left: var(--global_margin_left_right);
+  margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:1024px) {
+    .list-applications-container{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+.profile-sent-applications-header{
+    text-align: center;
+  }
 
 .list-applications-table{
-    margin-top: 2px;
+    margin-top: 20px;
     width: 100%;
     border-collapse: collapse; 
   }

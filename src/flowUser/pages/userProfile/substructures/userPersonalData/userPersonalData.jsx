@@ -19,25 +19,21 @@ export const UserPersonalData = (props) => {
   //* Refs
   const cvInputRef = useRef();
   const avatarInputRef = useRef();
-  
+
   //* hooks
-  const {auth}=useAuth()
-  const {setAuth}=useAuth()
+  const { auth } = useAuth();
+  const { setAuth } = useAuth();
 
   //* States
   const [userCurrentData, setUserCurrentData] = useState({ ...userData });
   const [isUserDataChanged, setIsUserDataChanged] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const [userAvatarUrl, setUserAvatarUrl] = useState(
-    auth.userAvatarUrl)
-  
-
-  
+  const [userAvatarUrl, setUserAvatarUrl] = useState(auth.userAvatarUrl);
 
   //* Variables
   const user_id = auth.user_id;
   const username = auth.username;
-  
+
   //* Functions
   const inputChangeHandler = (e) => {
     let updatedItem = {};
@@ -157,11 +153,11 @@ export const UserPersonalData = (props) => {
             .then((response) => {
               setUserCurrentData(response.data);
               setAuth({
-                user_id:response.data.user_id,
+                user_id: response.data.user_id,
                 role: response.data.role,
                 username: response.data.username,
                 userAvatarUrl: response.data.avatar,
-              })
+              });
             });
 
           setIsUserDataChanged(false);
@@ -180,186 +176,202 @@ export const UserPersonalData = (props) => {
 
   //* Main Body
   return (
-    <form
-      className={styles["profile-user-data-form"]}
-      onSubmit={submitUserProfileFormHandler}
-    >
-      <div className={styles["profile-user-data-form-cotnainer1"]}>
-        <AvatarComponent
-          userAvatarUrl={userAvatarUrl}
-          iconSymbol={username[0].toUpperCase()}
-          size={250}
-        />
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-user-avatar-controls-container"]}>
-            <input
-              type="file"
-              accept=".jpg, .jgeg, .png"
-              id="user-profile-avatar-input"
-              className={
-                userCurrentData.avatar
-                  ? styles["user-profile-avatar-input-replace"]
-                  : styles["user-profile-avatar-input-upload"]
-              }
-              ref={avatarInputRef}
-              onChange={() => setIsUserDataChanged(true)}
-            />
-            {(() => {
-              if (userCurrentData.avatar) {
-                return (
-                  <>
-                    <button
-                      className={styles["profile-delete-avatar-button"]}
-                      title="Delete Photo"
-                      onClick={deletePhotoButtonHandler}
-                    >
-                      &#x2716;
-                    </button>
-                  </>
-                );
-              }
-            })()}
-          </div>
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.avatar}
-          </div>
-        </div>
-      </div>
-
-      <div className={styles["profile-user-data-form-cotnainer2"]}>
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-user-data-input-container"]}>
-            <input
-              className={styles["profile-user-data-form-text-input"]}
-              id="user-profile-email-input"
-              data-key="email"
-              type="text"
-              placeholder="email"
-              readOnly
-              // onChange={inputChangeHandler}
-              value={userCurrentData.email}
-            />
-          </div>
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.email}
-          </div>
-        </div>
-
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-user-data-input-container"]}>
-            <img
-              className={styles["profile-user-data-edit-icon"]}
-              src={editIcon}
-              alt=""
-            />
-            <input
-              className={styles["profile-user-data-form-text-input"]}
-              id="user-profile-first-name-input"
-              data-key="first_name"
-              type="text"
-              placeholder="First name"
-              onChange={inputChangeHandler}
-              value={
-                userCurrentData.first_name ? userCurrentData.first_name : ""
-              }
-            />
-          </div>
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.first_name}
-          </div>
-        </div>
-
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-user-data-input-container"]}>
-            <img
-              className={styles["profile-user-data-edit-icon"]}
-              src={editIcon}
-              alt=""
-            />
-            <input
-              className={styles["profile-user-data-form-text-input"]}
-              id="user-profile-last-name-input"
-              data-key="last_name"
-              type="text"
-              placeholder="Last name"
-              onChange={inputChangeHandler}
-              value={userCurrentData.last_name ? userCurrentData.last_name : ""}
-            />
-          </div>
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.last_name}
-          </div>
-        </div>
-
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-user-data-input-container"]}>
-            <img
-              className={styles["profile-user-data-edit-icon"]}
-              src={editIcon}
-              alt=""
-            />
-            <input
-              className={styles["profile-user-data-form-text-input"]}
-              id="user-profile-phone-input"
-              data-key="phone"
-              type="text"
-              placeholder="Phone number"
-              onChange={inputChangeHandler}
-              value={userCurrentData.phone ? userCurrentData.phone : ""}
-            />
-          </div>
-
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.phone}
-          </div>
-        </div>
-
-        <div className={styles["profile-user-data-input-validation-container"]}>
-          <div className={styles["profile-cv-input-container"]}>
-            <div className={styles["profile-my-cv-link-container"]}>
+    <section className={styles["profile-user-data-section"]}>
+      <form
+        className={styles["profile-user-data-form"]}
+        onSubmit={submitUserProfileFormHandler}
+      >
+        <div className={styles["profile-user-data-form-cotnainer1"]}>
+          <AvatarComponent
+            userAvatarUrl={userAvatarUrl}
+            iconSymbol={username[0].toUpperCase()}
+            size={250}
+          />
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-user-avatar-controls-container"]}>
+              <input
+                type="file"
+                accept=".jpg, .jgeg, .png"
+                id="user-profile-avatar-input"
+                className={
+                  userCurrentData.avatar
+                    ? styles["user-profile-avatar-input-replace"]
+                    : styles["user-profile-avatar-input-upload"]
+                }
+                ref={avatarInputRef}
+                onChange={() => setIsUserDataChanged(true)}
+              />
               {(() => {
-                if (userCurrentData.cv) {
+                if (userCurrentData.avatar) {
                   return (
                     <>
-                      <a className="navLinks" href={userData.cv}>
-                        My CV file
-                      </a>
                       <button
-                        className={styles["profile-delete-cv-button"]}
-                        title="Delete CV"
-                        onClick={deleteCvButtonHandler}
+                        className={styles["profile-delete-avatar-button"]}
+                        title="Delete Photo"
+                        onClick={deletePhotoButtonHandler}
                       >
                         &#x2716;
                       </button>
                     </>
                   );
                 }
-                return <p>No user CV file</p>;
               })()}
             </div>
-
-            <input
-              type="file"
-              accept=".pdf, .doc, .docx"
-              id="user-profile-cv-input"
-              className={
-                userCurrentData.cv
-                  ? styles["user-profile-cv-input-replace"]
-                  : styles["user-profile-cv-input-upload"]
-              }
-              ref={cvInputRef}
-              onChange={() => setIsUserDataChanged(true)}
-            />
-          </div>
-          <div className={styles["profile-user-data-form-validation-item"]}>
-            {validationErrors.cv}
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.avatar}
+            </div>
           </div>
         </div>
-        <SubmitButton
-          isUserDataChanged={isUserDataChanged}
-          onSubmit={submitUserProfileFormHandler}
-        />
-      </div>
-    </form>
+
+        <div className={styles["profile-user-data-form-cotnainer2"]}>
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-user-data-input-container"]}>
+              <input
+                className={styles["profile-user-data-form-text-input"]}
+                id="user-profile-email-input"
+                data-key="email"
+                type="text"
+                placeholder="email"
+                readOnly
+                // onChange={inputChangeHandler}
+                value={userCurrentData.email}
+              />
+            </div>
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.email}
+            </div>
+          </div>
+
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-user-data-input-container"]}>
+              <img
+                className={styles["profile-user-data-edit-icon"]}
+                src={editIcon}
+                alt=""
+              />
+              <input
+                className={styles["profile-user-data-form-text-input"]}
+                id="user-profile-first-name-input"
+                data-key="first_name"
+                type="text"
+                placeholder="First name"
+                onChange={inputChangeHandler}
+                value={
+                  userCurrentData.first_name ? userCurrentData.first_name : ""
+                }
+              />
+            </div>
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.first_name}
+            </div>
+          </div>
+
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-user-data-input-container"]}>
+              <img
+                className={styles["profile-user-data-edit-icon"]}
+                src={editIcon}
+                alt=""
+              />
+              <input
+                className={styles["profile-user-data-form-text-input"]}
+                id="user-profile-last-name-input"
+                data-key="last_name"
+                type="text"
+                placeholder="Last name"
+                onChange={inputChangeHandler}
+                value={
+                  userCurrentData.last_name ? userCurrentData.last_name : ""
+                }
+              />
+            </div>
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.last_name}
+            </div>
+          </div>
+
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-user-data-input-container"]}>
+              <img
+                className={styles["profile-user-data-edit-icon"]}
+                src={editIcon}
+                alt=""
+              />
+              <input
+                className={styles["profile-user-data-form-text-input"]}
+                id="user-profile-phone-input"
+                data-key="phone"
+                type="text"
+                placeholder="Phone number"
+                onChange={inputChangeHandler}
+                value={userCurrentData.phone ? userCurrentData.phone : ""}
+              />
+            </div>
+
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.phone}
+            </div>
+          </div>
+
+          <div
+            className={styles["profile-user-data-input-validation-container"]}
+          >
+            <div className={styles["profile-cv-input-container"]}>
+              <div className={styles["profile-my-cv-link-container"]}>
+                {(() => {
+                  if (userCurrentData.cv) {
+                    return (
+                      <>
+                        <a className="navLinks" href={userData.cv}>
+                          My CV file
+                        </a>
+                        <button
+                          className={styles["profile-delete-cv-button"]}
+                          title="Delete CV"
+                          onClick={deleteCvButtonHandler}
+                        >
+                          &#x2716;
+                        </button>
+                      </>
+                    );
+                  }
+                  return <p>No user CV file</p>;
+                })()}
+              </div>
+
+              <input
+                type="file"
+                accept=".pdf, .doc, .docx"
+                id="user-profile-cv-input"
+                className={
+                  userCurrentData.cv
+                    ? styles["user-profile-cv-input-replace"]
+                    : styles["user-profile-cv-input-upload"]
+                }
+                ref={cvInputRef}
+                onChange={() => setIsUserDataChanged(true)}
+              />
+            </div>
+            <div className={styles["profile-user-data-form-validation-item"]}>
+              {validationErrors.cv}
+            </div>
+          </div>
+          <SubmitButton
+            isUserDataChanged={isUserDataChanged}
+            onSubmit={submitUserProfileFormHandler}
+          />
+        </div>
+      </form>
+    </section>
   );
 };

@@ -5,8 +5,6 @@ import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { VacancyDataComponent } from "../../../commonItems/features/vacancyData/VacancyData";
 
-
-
 export const VacancyComponent = (props) => {
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const [AppFormDisplayValue, setAppFormDisplayValue] = useState("none");
@@ -39,7 +37,11 @@ export const VacancyComponent = (props) => {
         setUserData={setUserData}
       />
       <div className={styles["vacancy-apply-button-container"]}>
-        <ButtonType1 value='Apply' onClickHandler={applyButtonHandler} strength='1'/>
+        <ButtonType1
+          value="Apply"
+          onClickHandler={applyButtonHandler}
+          strength="1"
+        />
       </div>
       <ApplicationFormComponent
         AppFormDisplayValue={AppFormDisplayValue}

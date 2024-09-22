@@ -8,14 +8,12 @@ import "./certificates.css";
 import { useState } from "react";
 import { CertificateFullScreenComponent } from "./substructures/certificateFullScreen/certificateFullScreen";
 
-
 export const CertificatesComponent = () => {
   const [certificateModalDisplay, setCertificateModalDisplay] =
     useState("none");
   const [currentCertificate, setCurrentCertificate] = useState();
 
   const certificateClickHandler = (e) => {
-    // console.log(e.target.dataset.photo)
     setCurrentCertificate(e.target.dataset.photo);
     setCertificateModalDisplay("flex");
   };

@@ -6,6 +6,12 @@
     margin-right: var(--global_margin_left_right);
     margin-bottom: 100px;
 }
+@media screen and (max-width:1024px) {
+    .user-application-section{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
 
 .user-application-header-line-container{
     margin-top: 50px;
@@ -25,6 +31,11 @@
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-gap: 30px 40px;
+}
+@media screen and (max-width:768px){
+    .user-application-data-container{
+        grid-template-columns: 1fr;
+    }
 }
 
 .user-application-data-item-block{

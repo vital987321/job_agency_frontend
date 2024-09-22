@@ -7,6 +7,13 @@ import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHou
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
 
 export const ListVacanciesComponent = (props) => {
+  //* Props
+  //    listVacanciesRequestUrl
+  //    setVacanciesResponseData
+  //    vacancyListChangedState
+  //    listVacanciesRequestUrl
+
+
   const [vacanciesList, setVacanciesList] = useState([]);
 
   useEffect(() => {

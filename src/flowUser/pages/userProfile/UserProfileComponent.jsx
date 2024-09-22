@@ -12,11 +12,9 @@ export const UserProfileComponent = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const request = await api
-          .get("/user/" + user_id)
-          .then((response) => {
-           setUserData(response.data); 
-          })          
+        const request = await api.get("/user/" + user_id).then((response) => {
+          setUserData(response.data);
+        });
       } catch (error) {
         console.log(error);
       }
@@ -24,24 +22,15 @@ export const UserProfileComponent = () => {
     fetchProfile();
   }, []);
 
-
   if (!userData) {
     return <div>Loading...</div>;
   }
   return (
     <>
-      <h2 className="home-h2">User profile</h2>
-      <section className={styles["profile-user-data-section"]}>
-        <UserPersonalData
-          userData={userData}
-        />
-      </section>
+      <h2 className={`h2-common ${styles.headline}`}>User profile</h2>
+      <UserPersonalData userData={userData} />
       <VacanciesFavouritesComponent />
-      <section className={styles["profile-sent-applications-section"]}>
-        <h3 className={styles["profile-sent-applications-header"]}>My Applications</h3>
-        <ListUserApplicationsComponent />
-        
-      </section>
+      <ListUserApplicationsComponent />
     </>
   );
 };

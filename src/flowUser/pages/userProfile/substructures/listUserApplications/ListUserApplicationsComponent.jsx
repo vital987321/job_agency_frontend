@@ -46,9 +46,14 @@ export const ListUserApplicationsComponent = () => {
     fetchListApplications();
   }, [applicationsListRequestUrl]);
 
+  if (applicationsListData.length===0){
+    return ""
+  }
 
   return (
     <section className={styles["list-applications-container"]}>
+      
+      <h3 className={styles["profile-sent-applications-header"]}>My Applications</h3>
       <ul className={styles["list-applications-table"]}>
         
           {applicationsListData.map((application) => {

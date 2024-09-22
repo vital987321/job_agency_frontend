@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
-import {AverageRating} from "../../../commonItems/features/averageRating/averageRaring"
+import { AverageRating } from "../../../commonItems/features/averageRating/averageRaring";
 import { ReviewForm } from "./substructures/reviewForm/reviewForm";
 import {
   LIST_REVIEWS_REQUEST_URL,
@@ -9,28 +9,32 @@ import {
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import styles from "./reviews.module.css";
+import {useAuth} from "../../../hooks/useAuth"
 
 export const ReviewsComponent = () => {
+
+  //* States
   const [listReviewsRequestUrl, setListReviewsRequestUrl] = useState(
     `${LIST_REVIEWS_REQUEST_URL}?limit=${REVIEWS_LIST_LIMIT}`
   );
   const [reviewsResponseData, setReviewsResponseData] = useState({});
   const [formDisplayValue, setFormDisplayValue] = useState("none"); // none  block
-  const [ updateDataState, setUpdateDataState]=useState({})
+  const [updateDataState, setUpdateDataState] = useState({});
 
-  // functions
+  //* Hooks
+  const {auth}=useAuth()
+
+  //* Functions
   const writeReviewButtonHandler = () => {
     setFormDisplayValue("block");
   };
 
-  // Body
+  //* Main Body
   return (
     <>
       <div className={styles["main-body"]}>
         <h2 className="h2-common">Reviews</h2>
-        <AverageRating
-          responseData={reviewsResponseData}
-        />
+        <AverageRating responseData={reviewsResponseData} />
         <div className={styles["reviews-body"]}>
           <ReviewsListComponent
             listReviewsRequestUrl={listReviewsRequestUrl}
@@ -45,7 +49,7 @@ export const ReviewsComponent = () => {
             setUrlState={setListReviewsRequestUrl}
           />
           {(() => {
-            if (localStorage.getItem("user_id") > 0) {
+            if (auth.user_id) {
               return (
                 <>
                   <div className={styles["new-review-button-container"]}>
@@ -66,10 +70,7 @@ export const ReviewsComponent = () => {
             }
           })()}
         </div>
-
-        {/* <ReviewsTempComponent/> */}
       </div>
-
     </>
   );
 };

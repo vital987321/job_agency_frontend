@@ -10,6 +10,7 @@ import {
   LIST_REVIEWS_REQUEST_URL,
   USER_REQUEST_URL,
 } from "../../../../../data/constants";
+import { useAuth } from "../../../../../hooks/useAuth";
 
 export const ReviewForm = (props) => {
   //* props:
@@ -17,14 +18,19 @@ export const ReviewForm = (props) => {
   //    setReviewFormDisplayValue
   //    setUpdateDataState
 
-  //* variables, consts
-  const user_id = localStorage.getItem("user_id");
 
-  //* Hooks
+
+  //* States
   const [userRate, setUserRate] = useState("");
   const [userComment, setUserComment] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [reviewIdToUpdate, setReviewIdToUpdate] = useState("");
+
+  //* Hooks
+  const {auth}=useAuth()
+
+  //* variables, consts
+  const user_id = auth.user_id;
 
   //* useEffects
   useEffect(() => {
@@ -80,7 +86,7 @@ export const ReviewForm = (props) => {
   const submitFormHandler = (e) => {
     e.preventDefault();
     const comment = userComment;
-    const user_id = localStorage.getItem("user_id");
+    // const user_id = localStorage.getItem("user_id");
 
     const requestData = {
       user: user_id,

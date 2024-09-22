@@ -8,6 +8,7 @@ import api from "../../../services/api/api";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { PasswordRepeatComponent } from "./substructures/PassworRepeat/PassworRepeat";
 import { useAuth } from "../../../hooks/useAuth";
+import { USER_REQUEST_URL, AUTH_REQUEST_URL } from "../../../data/constants";
 
 export const AuthenticationComponent = () => {
   //* Refs
@@ -18,16 +19,15 @@ export const AuthenticationComponent = () => {
   //* States
   const [authenticationAction, setAuthenticationMethod] = useState("login"); // login signup
   const [validationErrors, setValidationErrors] = useState({});
-  
 
   //* Hooks
   const navigate = useNavigate();
-  const location=useLocation()
-  const {auth}=useAuth()
-  const {setAuth}=useAuth()
+  const location = useLocation();
+  const { auth } = useAuth();
+  const { setAuth } = useAuth();
 
   //* variables
-  const fromUrl=location.state?.from?.pathname || "/"
+  const fromUrl = location.state?.from?.pathname || "/";
 
   //* Functions
   const closeButtonHandler = () => {
@@ -118,9 +118,8 @@ export const AuthenticationComponent = () => {
   };
 
   const sendLoginRequest = () => {
-    const loginRequestURL = "http://127.0.0.1:8000/auth/";
     axios
-      .post(loginRequestURL, {
+      .post(AUTH_REQUEST_URL, {
         username: emailRef.current.value,
         password: passwordRef.current.value,
       })
@@ -140,16 +139,16 @@ export const AuthenticationComponent = () => {
                   role: response.data.role,
                   username: response.data.username,
                   userAvatarUrl: response.data.avatar,
-                })
+                });
               })
               .catch((error) => console.log(error));
           } catch (error) {
             console.log(error);
           }
         };
-        fetchUserData(response.data.user_id)
+        fetchUserData(response.data.user_id);
       })
-      .then((res)=>navigate(fromUrl, {replace:true}))
+      .then((res) => navigate(fromUrl, { replace: true }))
       .catch((error) => {
         if (error.request) {
           if (
@@ -167,10 +166,9 @@ export const AuthenticationComponent = () => {
   };
 
   const sendSignUpRequest = () => {
-    const signupRequesrURL = "http://127.0.0.1:8000/user/";
     const e = emailRef.current.value;
     axios
-      .post(signupRequesrURL, {
+      .post(USER_REQUEST_URL, {
         email: e,
         password: passwordRef.current.value,
       })
@@ -199,7 +197,6 @@ export const AuthenticationComponent = () => {
 
   //* Main Body
 
-  
   return (
     <section className={styles["authentication-modal-window"]}>
       <div className={styles["authentication-modal-window-container"]}>
