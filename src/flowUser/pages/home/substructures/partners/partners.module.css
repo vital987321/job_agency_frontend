@@ -1,0 +1,27 @@
+
+.our-partners-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+.header{
+    text-align: center;
+    margin-top: 80px;
+}
+
+.our-partners-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content:space-between;
+}
+@media screen and (max-width:768px) {
+    .our-partners-container{
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
+    
+}
+
+.our-partners-subcontainer{
+    padding: 0 20px;
+}

@@ -12,7 +12,7 @@ import { CertificatesComponent } from "../flowUser/pages/certificates/Certificat
 import { ContactsComponent } from "../flowUser/pages/contacts/ContactsComponent";
 import { ReviewsComponent } from "../flowUser/pages/reviews/Reviews";
 import { BodyComponent } from "../flowUser/layout/BodyComponent";
-import { ProtectedRoute } from "./protectedRote";
+import { ProtectedRoute } from "./protectedRoute";
 
 export const UserFlowRouter = (
   <Route path="/" element={<BodyComponent />}>
