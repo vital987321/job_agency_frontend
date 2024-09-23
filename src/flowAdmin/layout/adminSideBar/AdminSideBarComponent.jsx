@@ -10,10 +10,11 @@ import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1
 import { useLogOut } from "../../../hooks/useLogout";
 
 export const AdminSideBarComponent = () => {
+
+  //* Hooks
   const {logout}=useLogOut()
 
-
-
+  //* Main Body
   return (
     <>
       <nav className={styles["navigation-container"]}>

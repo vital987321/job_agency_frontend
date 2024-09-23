@@ -10,16 +10,16 @@ import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
 export const AdminVacancyComponent = () => {
+  //* States
   const [vacancyData, setVacancyData] = useState({});
   const [userData, setUserData] = useState({});
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
+
+  //* Hooks
   const navigate = useNavigate();
 
-  const editButtonHandler = () => {
-    setVacancyFormDisplayValue("block");
-  };
-
+  //* UseEffects
   useEffect(() => {
     if (user_id) {
       const fetchUser = async () => {
@@ -34,11 +34,16 @@ export const AdminVacancyComponent = () => {
     }
   }, []);
 
+  //* Functions
+  const editButtonHandler = () => {
+    setVacancyFormDisplayValue("block");
+  };
+
   const deleteButtonHandler = () => {
     const deleteVacancy = async () => {
       try {
         const requestUrl = LIST_VACANCIES_BASE_URL + vacancyData.id + "/";
-        const response = await api
+        const request = await api
           .delete(requestUrl)
           .then((response) => {
             console.log(response.statusText);
@@ -76,6 +81,7 @@ export const AdminVacancyComponent = () => {
     changeActivateRequest();
   };
 
+  //* Main Body
   return (
     <div className={styles["admin-vacancy-container"]}>
       <div className={styles["admin-vacancy-buttons-container"]}>

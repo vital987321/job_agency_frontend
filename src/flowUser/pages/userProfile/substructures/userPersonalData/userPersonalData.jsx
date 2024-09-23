@@ -3,7 +3,7 @@ import styles from "./userPersonalData.module.css";
 import { AvatarComponent } from "../../../../../commonItems/components/AvatarComponent";
 import React, { useState, useRef } from "react";
 import api from "../../../../../services/api/api";
-import { phoneValidation } from "../../../../../commonItems/components/CommonToolsComponents";
+import { phoneValidation } from "../../../../../services/validators/phoneValidation";
 import {
   AVATAR_FILE_SIZE_LIMIT,
   CV_FILE_SIZE_LIMIT,

@@ -9,6 +9,7 @@ export const useLogOut = (url) => {
   const logout = useCallback(() => {
     localStorage.removeItem("user_id");
     localStorage.removeItem("token");
+    localStorage.removeItem("AdminListItemsOnPage");
     setAuth({});
     navigate("/");
   }, [navigate]);

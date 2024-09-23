@@ -4,7 +4,7 @@ import api from "../../../../../services/api/api";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import React from "react";
 import { useState, useEffect } from "react";
-import { phoneValidation } from "../../../../../commonItems/components/CommonToolsComponents";
+import { phoneValidation } from "../../../../../services/validators/phoneValidation";
 import { PARTNERS_REQUEST_URL } from "../../../../../data/constants";
 
 export const PartnerForm = (props) => {

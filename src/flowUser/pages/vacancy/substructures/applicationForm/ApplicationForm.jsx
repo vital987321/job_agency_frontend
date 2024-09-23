@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import "./applicationForm.css";
-import axios from "axios";
-import { phoneValidation } from "../../../../../commonItems/components/CommonToolsComponents";
-import { emailValidation } from "../../../../../commonItems/components/CommonToolsComponents";
+import { phoneValidation } from "../../../../../services/validators/phoneValidation";
+import { emailValidation } from "../../../../../services/validators/emailValidation";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import api from "../../../../../services/api/api";
+import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants";
 
 export const ApplicationFormComponent = (props) => {
   //* Refs
@@ -68,7 +68,7 @@ export const ApplicationFormComponent = (props) => {
 
   const appFormSubmitHandler = (event) => {
     event.preventDefault();
-    const applicationPostURL = "http://127.0.0.1:8000/application/";
+    const applicationPostURL = LIST_APPLICATIONS_BASE_URL;
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const email = emailRef.current.value;

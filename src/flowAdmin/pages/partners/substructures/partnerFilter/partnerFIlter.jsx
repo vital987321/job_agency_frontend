@@ -1,13 +1,9 @@
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
-import filterIcon from "../../../../../assets/svg/settings.svg";
-import closeIcon from "../../../../../assets/svg/X.svg";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
 import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const PartnerFilter = () => {
@@ -20,7 +16,6 @@ export const PartnerFilter = () => {
   const phoneRef = useRef();
 
   //* States
-
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );

@@ -2,12 +2,8 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
-import filterIcon from "../../../../../assets/svg/settings.svg";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
-import closeIcon from "../../../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
 import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const AdminApplicatiosFilterComponent = () => {
@@ -68,10 +64,8 @@ export const AdminApplicatiosFilterComponent = () => {
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const phone = phoneRef.current.value;
-
     let queryStringArray = [];
     let queryString = "";
-
     if (onPageListItems) queryStringArray.push("limit=" + onPageListItems);
     if (id) queryStringArray.push("id=" + id);
     if (vacancyId) queryStringArray.push("vacancy_id=" + vacancyId);

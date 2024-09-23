@@ -7,13 +7,11 @@ import { ApplicationStatusMarker } from "../../../../../commonItems/components/a
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
-  const [applicationsListData, setApplicationsListData] = useState([]);
-  // const [applicationsResponseData, setApplicationsResponseData] = useState({
-  //   count: "0",
-  //   next: null,
-  //   previous: null,
-  // });
 
+  //* States
+  const [applicationsListData, setApplicationsListData] = useState([]);
+
+  //* UseEffects
   useEffect(() => {
     const fetchListApplications = async () => {
       try {
@@ -35,12 +33,15 @@ export const AdminApplicationsListComponent = (props) => {
     fetchListApplications();
   }, [props.adminApplicationListRequestUrl]);
 
+  //* Main body
   return (
     <section className={styles["admin-list-applications-container"]}>
       <table className={styles["admin-list-applications-table"]}>
         <tbody>
           <tr>
-            <th className={styles["admin-list-applications-first-header"]}>ID</th>
+            <th className={styles["admin-list-applications-first-header"]}>
+              ID
+            </th>
             <th>Vacancy Name</th>
             <th>Vac. ID</th>
             <th>Company</th>
@@ -52,10 +53,10 @@ export const AdminApplicationsListComponent = (props) => {
 
           {applicationsListData.map((application) => {
             return (
-              <tr 
+              <tr
                 key={application.id}
                 className={`${styles["admin-applications-table-tr"]} 
-                ${application.seen ? "" : styles["newapplication"]}`} 
+                ${application.seen ? "" : styles["newapplication"]}`}
               >
                 <td>{application.id} </td>
                 <td>
@@ -64,7 +65,11 @@ export const AdminApplicationsListComponent = (props) => {
                     : application.vacancy_details.name.slice(0, 25) + "..."}
                 </td>
                 <td>{application.vacancy_details.id}</td>
-                <td>{application.vacancy_details.partner_data? application.vacancy_details.partner_data.company: ''}</td>
+                <td>
+                  {application.vacancy_details.partner_data
+                    ? application.vacancy_details.partner_data.company
+                    : ""}
+                </td>
                 <td>{application.first_name + " " + application.last_name}</td>
                 <td>{stringToDateConverter(application.created_at)}</td>
                 <td>
@@ -76,13 +81,8 @@ export const AdminApplicationsListComponent = (props) => {
                 </td>
 
                 <td>
-                  <Link
-                    to={"/admin/applications/" + application.id}
-                  >
-                    <ButtonType1
-                      value='Details'
-                      strength='4'
-                    />
+                  <Link to={"/admin/applications/" + application.id}>
+                    <ButtonType1 value="Details" strength="4" />
                   </Link>
                 </td>
               </tr>

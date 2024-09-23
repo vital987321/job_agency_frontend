@@ -14,24 +14,27 @@ import { PaginationComponent } from "../../../commonItems/features/pagination/Pa
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
 
 export const AdminVacanciesComponent = (props) => {
+
+  //* States
   const [vacancyFormDisplayValue, setVacancyFormDisplayValue] =
     useState("none");
   const [vacanciesResponseData, setVacanciesResponseData] = useState({});
   const [adminListVacanciesRequestUrl, setAdminListVacanciesRequestUrl] =
     useState(LIST_VACANCIES_BASE_URL);
   const [vacancyListChangedState, setVacancyListChangedState] = useState({});
-  const [searchParams, setSearchParams] = useSearchParams();
   const [currentClientUrl, setCurrentClientUrl] = useState(
     window.location.href
   );
+
+  //* Hooks
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")
     : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
 
- 
-
+  //* UseEffects
   useEffect(() => {
     // This hook is nesessary due to filter
     setCurrentClientUrl(window.location.href);
@@ -44,15 +47,18 @@ export const AdminVacanciesComponent = (props) => {
     }
   }, [currentClientUrl]);
 
+
+  //* Functions
   const generateListVacanciesRequestURL = () => {
     const vacanciesOnPage = localStorage.getItem("AdminListItemsOnPage")
       ? localStorage.getItem("AdminListItemsOnPage")
       : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
     return (
-      LIST_VACANCIES_BASE_URL + "?" + generateRequestQueryString(searchParams, listItemsOnPage)
+      LIST_VACANCIES_BASE_URL +
+      "?" +
+      generateRequestQueryString(searchParams, listItemsOnPage)
     );
   };
-
 
   const updateAdminListVacanciesRequestURL = () => {
     const updatedURL = generateListVacanciesRequestURL();
@@ -61,12 +67,12 @@ export const AdminVacanciesComponent = (props) => {
     }
   };
 
-  updateAdminListVacanciesRequestURL();
-
   const newVacancyButtonHandler = () => {
     setVacancyFormDisplayValue("block");
   };
 
+  //* Main Body
+  updateAdminListVacanciesRequestURL();
   return (
     <div className={styles["admin-vacancies-container"]}>
       <section>
