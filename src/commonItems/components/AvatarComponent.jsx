@@ -3,6 +3,12 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
 export const AvatarComponent = (props) => {
+  //* Props
+  //     size
+  //     userAvatarUrl
+  //     title
+  //     iconSymbol
+      
   const [size, setSize] = React.useState(props.size);
 
   React.useEffect(() => {

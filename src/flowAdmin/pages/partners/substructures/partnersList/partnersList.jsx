@@ -2,7 +2,6 @@ import styles from "./partnersList.module.css";
 import api from "../../../../../services/api/api";
 import { useState, useEffect } from "react";
 import { PARTNERS_REQUEST_URL } from "../../../../../data/constants";
-import { Link } from "react-router-dom";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 
 export const PartnersList = (props) => {

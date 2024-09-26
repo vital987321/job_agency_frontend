@@ -1,4 +1,3 @@
-import { reviewFilter } from "./substructures/reviewFilter/reviewFilter";
 import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
@@ -15,12 +14,12 @@ import { AverageRating } from "../../../commonItems/features/averageRating/avera
 
 export const AdminReviewsComponent = () => {
 
-  // variables
+  //* Variables
   const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")
     : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
 
-  // Hooks
+  //* Hooks
   const [searchParams, setSearchParams] = useSearchParams();
   const [listReviewsRequestUrl, setListReviewsRequestUrl] = useState(
     `${LIST_REVIEWS_REQUEST_URL}?limit=${listItemsOnPage}`
@@ -33,7 +32,7 @@ export const AdminReviewsComponent = () => {
 
   const navigate = useNavigate();
 
-  // UseEffects
+  //* UseEffects
   useEffect(() => {
     // This hook is nesessary due to filter
     setCurrentClientUrl(window.location.href);
@@ -46,7 +45,7 @@ export const AdminReviewsComponent = () => {
     }
   }, [currentClientUrl]);
 
-  // functions
+  //* Functions
   const generateAdminListReviewsRequestURL = () => {
     return (
       LIST_REVIEWS_REQUEST_URL +
@@ -63,7 +62,7 @@ export const AdminReviewsComponent = () => {
   };
 
 
-  // Main Body
+  //* Main Body
   updateAdminListReviewsRequestURL();
 
   return (

@@ -2,16 +2,14 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
-import filterIcon from "../../../../../assets/svg/settings.svg";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
-import closeIcon from "../../../../../assets/svg/X.svg";
 import { useSearchParams } from "react-router-dom";
 import { RESIDENCE_TYPES } from "../../../../../data/constants";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
-import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
 import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const AdminVacanciesFilterComponent = () => {
+
+  //* Refs
   const vacancyIdRef = React.createRef();
   const locationRef = React.createRef();
   const activeRef = React.createRef();
@@ -22,17 +20,22 @@ export const AdminVacanciesFilterComponent = () => {
   const sectorRef = React.createRef();
   const residanceTypeRef = React.createRef();
 
+  //* Variavles
   let listItemsOnPage = localStorage.getItem("AdminListItemsOnPage");
+
+  //* States
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
-  const [searchParams, setSearchParams] = useSearchParams();
   const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
     useState("none");
   const [activeSelection, setActiveSelection] = useState("");
-
+  
+  //* Hooks
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  //* UseEffects
   useEffect(() => {
     let showCancelFilterButton = false;
     if (searchParams.size > 0) {
@@ -48,6 +51,7 @@ export const AdminVacanciesFilterComponent = () => {
     else setResetFiltersButtonDisplayValue("none");
   }, [searchParams]);
 
+  //* Functions
   const changeOnPageListItemsLimit = (e) => {
     localStorage.setItem("AdminListItemsOnPage", e.target.value);
     setOnPageListItems(e.target.value);
@@ -109,6 +113,8 @@ export const AdminVacanciesFilterComponent = () => {
     navigate("");
   };
 
+
+  //* Main Body
   return (
     <section className={styles["admin-list-items-filter-section"]}>
       <div className={styles["admin-list-items-filter-main-container"]}>

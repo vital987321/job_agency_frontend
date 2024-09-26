@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { VacanciesComponent } from "../flowUser/pages/vacancies/VacanciesComponent";
 import { VacancyComponent } from "../flowUser/pages/vacancy/VacancyComponent";
-import { ListUserApplicationsComponent } from "../flowUser/pages/userProfile/substructures/listUserApplications/ListUserApplicationsComponent";
 import { HomeComponent } from "../flowUser/pages/home/HomeComponent";
 import { AuthenticationComponent } from "../flowUser/pages/authenntication/AuthenticationComponent";
 import { UserProfileComponent } from "../flowUser/pages/userProfile/UserProfileComponent";

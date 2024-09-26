@@ -6,12 +6,19 @@ import api from "../../../../../services/api/api";
 import {ButtonType1} from '../../../../../commonItems/components/buttons/buttonType1/ButtonType1'
 
 export const AdminVacanciesListComponent = (props) => {
+  //* Props
+  //    adminListVacanciesRequestUrl
+  //    setVacanciesResponseData
+  //    vacancyListChangedState
+
+  //* States
   const [vacanciesList, setVacanciesList] = useState([]);
 
+  //* UseEffects
   useEffect(() => {
     const fetchVacancyList = async () => {
       try {
-        const response = await api
+        const request = await api
           .get(props.adminListVacanciesRequestUrl)
           .then((response) => {
             setVacanciesList(response.data.results);
@@ -29,11 +36,12 @@ export const AdminVacanciesListComponent = (props) => {
     fetchVacancyList();
   }, [props.adminListVacanciesRequestUrl, props.vacancyListChangedState]);
 
+  //* Main body
   return (
     <div className="admin-vacancies-list-container">
       <table className="admin-list-vacancies-table">
         <tbody>
-        <tr>
+          <tr>
             <th className="admin-list-vacancies-first-header">ID</th>
             <th>Vacancy Name</th>
             <th>Company</th>
@@ -52,21 +60,19 @@ export const AdminVacanciesListComponent = (props) => {
                     ? vacancy.name
                     : vacancy.name.slice(0, 25) + "..."}
                 </td>
-                <td>{vacancy.partner_data? vacancy.partner_data.company : ""}</td>
+                <td>
+                  {vacancy.partner_data ? vacancy.partner_data.company : ""}
+                </td>
                 <td>{vacancy.location}</td>
                 <td>{vacancy.salary} CZK</td>
                 <td>{stringToDateConverter(vacancy.created_at)}</td>
-                <td>{vacancy.active? 'Active' : "Deactivated"}</td>
+                <td>{vacancy.active ? "Active" : "Deactivated"}</td>
                 <td>
                   <Link
-                    // to={"/vacancies/" + vacancy.id}
                     to={"" + vacancy.id}
                     className="details-link"
                   >
-                    <ButtonType1
-                      value='Details'
-                      strength='4'
-                    />
+                    <ButtonType1 value="Details" strength="4" />
                   </Link>
                 </td>
               </tr>

@@ -11,23 +11,25 @@ import { PaginationComponent } from "../../../commonItems/features/pagination/Pa
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
 
 export const AdminApplicationsComponent = () => {
-  
-  // Hooks
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [adminApplicationListRequestUrl, setAdminApplicationListRequestUrl] =
-    useState(LIST_APPLICATIONS_BASE_URL);
+
+  //* States
   const [currentClientUrl, setCurrentClientUrl] = useState(
     window.location.href
   );
   const [applicationsResponseData, setApplicationsResponseData] = useState({});
+  const [adminApplicationListRequestUrl, setAdminApplicationListRequestUrl] =
+    useState(LIST_APPLICATIONS_BASE_URL);
+  
+  //* Hooks
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // variables
+  //* Variables
   const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")
     : ADMIN_LIST_ITEMS_LIMIT_DEFAULT;
 
-  // UseEffects
+  //* UseEffects
   useEffect(() => {
     // This hook is nesessary due to filter
     setCurrentClientUrl(window.location.href);
@@ -40,7 +42,7 @@ export const AdminApplicationsComponent = () => {
     }
   }, [currentClientUrl]);
 
-  // functions
+  //* Functions
   const generateAdminListApplicationsRequestURL = () => {
     return (
       LIST_APPLICATIONS_BASE_URL +
@@ -56,7 +58,7 @@ export const AdminApplicationsComponent = () => {
     }
   };
 
-  // Main Body
+  //* Main Body
   updateAdminListApplicationsRequestURL();
 
   return (
