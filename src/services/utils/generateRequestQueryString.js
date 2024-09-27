@@ -4,7 +4,7 @@
  * for server request to get list of items. 
  * @param {URLSearchParams} searchParams 
  * @param {Number} listItemsLimit - amount of items to be requested from DB
- * @returns QueryString to be used for server request
+ * @returns {string} QueryString to be used for server request
  */
 
 /*TODO: offset parameter is not needed anymowre. Remove it*/
