@@ -5,7 +5,7 @@ import {
   USER_LIST_ITEMS_LIMIT,
 } from "../../../data/constants.js";
 import filterIcon from "../../../assets/svg/settings.svg";
-import { ListVacanciesComponent } from "../../../commonItems/features/listVacancies/ListVacanciesComponent.jsx";
+import { ListVacanciesComponent } from "../../../commonItems/features/listVacancies/listVacanciesComponent.jsx";
 import { VacancyFilterComponent } from "./substructures/VacancyFilter/VacancyFilterComponent.jsx";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";

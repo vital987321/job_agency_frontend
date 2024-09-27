@@ -1,4 +1,4 @@
-import { ListVacanciesComponent } from "../../../../../commonItems/features/listVacancies/ListVacanciesComponent.jsx";
+import { ListVacanciesComponent } from "../../../../../commonItems/features/listVacancies/listVacanciesComponent.jsx";
 import { LIST_VACANCIES_BASE_URL } from "../../../../../data/constants.js";
 import { Link } from "react-router-dom";
 import styles from "./vacanciesPreview.module.css"

@@ -5,7 +5,7 @@
  * @returns {string} Time range in format "08:35 - 16:30"
  */
 
-export function identifyWorkingHours(hours_from, hours_to) {
+export function workingHoursRange(hours_from, hours_to) {
   if (hours_from == null) {
     hours_from = ''
   }

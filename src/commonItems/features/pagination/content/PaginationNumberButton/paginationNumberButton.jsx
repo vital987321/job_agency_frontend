@@ -1,6 +1,6 @@
 import styles from "./paginationNumberButton.module.css";
 import { useSearchParams } from "react-router-dom";
-import { changeUrlParam } from "../../../../../services/utils/changeUrlParam";
+import { changeUrlParamValue } from "../../../../../services/utils/changeUrlParamValue";
 
 export const PaginationNumberButton = (props) => {
   // props
@@ -20,7 +20,7 @@ export const PaginationNumberButton = (props) => {
     const paginationNumber = e.target.textContent;
     let newOffsetValue = (paginationNumber - 1) * listItemsLimit;
     newOffsetValue=newOffsetValue!==0? newOffsetValue : null
-    const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
+    const updatedUrl = changeUrlParamValue(urlState, "offset", newOffsetValue);
     setUrlState(updatedUrl);
   };
 
