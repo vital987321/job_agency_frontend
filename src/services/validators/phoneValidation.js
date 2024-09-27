@@ -1,3 +1,16 @@
+/**
+ * @typedef {object} PhoneValidation
+ * @property {boolean} phoneIsValid
+ * @property {string} validatedPhone
+ * @property {string} phoneValidationErrors
+ */
+
+/**
+ * Validates phone number. Returns an object with validated phone. 
+ * @param {string} phone 
+ * @returns {PhoneValidation}
+ */
+
 export const phoneValidation = (phone) => {
 
   let phoneObject = {
@@ -5,6 +18,12 @@ export const phoneValidation = (phone) => {
     validatedPhone: "",
     phoneValidationErrors: "",
   };
+
+  if (!phone){
+    phoneObject.phoneIsValid = false;
+    phoneObject.phoneValidationErrors = "phone is missing"
+    return phoneObject
+  }
 
   for (let symbol of phone) {
     if (symbol.toLowerCase() != symbol.toUpperCase()) {
