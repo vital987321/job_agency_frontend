@@ -4,7 +4,7 @@ import styles from "./adminApplicationsList.module.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../commonItems/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1.jsx";
 
 export const AdminApplicationsListComponent = (props) => {
 

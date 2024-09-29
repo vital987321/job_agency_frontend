@@ -10,7 +10,7 @@ import {
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
 import "./adminVacancyForm.css";
-import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../components/buttons/buttonType1/buttonType1";
 
 export const AdminVacancyFormComponent = (props) => {
   //* props

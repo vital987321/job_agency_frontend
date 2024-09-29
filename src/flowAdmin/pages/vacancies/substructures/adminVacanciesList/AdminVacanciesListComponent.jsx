@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./adminVacanciesList.css";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
 import api from "../../../../../services/api/api";
-import {ButtonType1} from '../../../../../commonItems/components/buttons/buttonType1/ButtonType1'
+import {ButtonType1} from '../../../../../commonItems/components/buttons/buttonType1/buttonType1'
 
 export const AdminVacanciesListComponent = (props) => {
   //* Props

@@ -1,6 +1,6 @@
 import styles from "./reviewForm.module.css";
 import closeIcon from "../../../../../assets/svg/X.svg";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { useState, useEffect } from "react";
 import React from "react";
 import starWhiteIcon from "../../../../../assets/svg/rating_star_icon_white.svg";

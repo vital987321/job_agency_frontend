@@ -4,7 +4,7 @@ import api from "../../../services/api/api";
 import "./listVacancies.css";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
 import { workingHoursRange } from "../../../services/utils/workingHoursRange";
-import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../components/buttons/buttonType1/buttonType1";
 
 export const ListVacanciesComponent = (props) => {
   //* Props

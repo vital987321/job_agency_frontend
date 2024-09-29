@@ -1,4 +1,4 @@
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants";
 import api from "../../../../../services/api/api";
 import { useParams } from "react-router-dom";

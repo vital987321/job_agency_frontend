@@ -9,7 +9,7 @@ import {
 } from "../../../data/constants.js";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1.jsx";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination.jsx";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString.js";
 

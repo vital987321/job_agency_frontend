@@ -3,7 +3,7 @@ import closeIcon from "../../../../../assets/svg/X.svg";
 import "./applicationForm.css";
 import { phoneValidation } from "../../../../../services/validators/phoneValidation";
 import { emailValidation } from "../../../../../services/validators/emailValidation";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import api from "../../../../../services/api/api";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants";
 

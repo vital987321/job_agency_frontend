@@ -7,7 +7,7 @@ import {
   REVIEWS_LIST_LIMIT,
 } from "../../../data/constants";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import styles from "./reviews.module.css";
 import {useAuth} from "../../../hooks/useAuth"
 

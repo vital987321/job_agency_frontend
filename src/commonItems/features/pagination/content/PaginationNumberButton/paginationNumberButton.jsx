@@ -3,19 +3,19 @@ import { useSearchParams } from "react-router-dom";
 import { changeUrlParamValue } from "../../../../../services/utils/changeUrlParamValue";
 
 export const PaginationNumberButton = (props) => {
-  // props
+  //* props
   const responseData = props.responseData;
   const listItemsLimit = props.listItemsLimit;
-  const setUrlState = props.setUrlState;
   const urlState = props.urlState;
+  const setUrlState = props.setUrlState;
 
-  // hooks
+  //* hooks
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // variables
+  //* variables
   const itemsTotalNumber = responseData.count;
 
-  // functions
+  //* functions
   const paginationButtonHandler = (e) => {
     const paginationNumber = e.target.textContent;
     let newOffsetValue = (paginationNumber - 1) * listItemsLimit;
@@ -24,6 +24,7 @@ export const PaginationNumberButton = (props) => {
     setUrlState(updatedUrl);
   };
 
+  
   // Pagination condition
   if (itemsTotalNumber <= listItemsLimit) {
     return "";

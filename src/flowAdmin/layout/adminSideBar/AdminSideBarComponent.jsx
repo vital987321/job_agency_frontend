@@ -6,7 +6,7 @@ import { ReactComponent as ApplicationsIcon } from "../../../assets/svg/form_ico
 import { ReactComponent as IconPeople } from "../../../assets/svg/icon_people.svg";
 import { NavLink } from "react-router-dom";
 import styles from "./adminSideBar.module.css";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { useLogOut } from "../../../hooks/useLogout";
 
 export const AdminSideBarComponent = () => {

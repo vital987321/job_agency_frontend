@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
-import filterIcon from "../../../../../assets/svg/settings.svg";
-import closeIcon from "../../../../../assets/svg/X.svg";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
-import { AmountOnPageComponent } from "../../../../../commonItems/components/adminAmountOnPage/amountOnPage";
 import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
 
 export const ReviewFilter = () => {

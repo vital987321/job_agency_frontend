@@ -5,7 +5,7 @@ import { stringToDateConverter } from "../../../../../services/utils/stringToDat
 import { LIST_APPLICATIONS_BASE_URL, USER_LIST_ITEMS_LIMIT } from "../../../../../data/constants.js";
 import api from "../../../../../services/api/api.jsx";
 import { ApplicationStatusMarker } from "../../../../../commonItems/components/applicationStatusMarker/ApplicationStatusMarker.jsx";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1.jsx";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1.jsx";
 import { PaginationComponent } from "../../../../../commonItems/features/pagination/Pagination.jsx";
 
 export const ListUserApplicationsComponent = () => {

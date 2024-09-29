@@ -6,7 +6,7 @@ import {
 import styles from "./headerControls.module.css"
 import { AvatarComponent } from "../../../../../commonItems/components/AvatarComponent";
 import { useEffect, useState } from "react";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { useLogOut } from "../../../../../hooks/useLogout";
 import { useAuth } from "../../../../../hooks/useAuth";
 

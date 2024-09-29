@@ -1,5 +1,5 @@
 import styles from "./partnerForm.module.css";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import api from "../../../../../services/api/api";
 import closeIcon from "../../../../../assets/svg/X.svg";
 import React from "react";

@@ -11,7 +11,7 @@ import editIcon from "../../../../../assets/svg/edit.svg";
 import "./userApplication.css";
 import workingHoursIcon from "../../../../../assets/svg/working_hours.svg";
 import { stringToDateConverter } from "../../../../../services/utils/stringToDateConverter";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 
 export const UserApplicationComponent = () => {
   //* States

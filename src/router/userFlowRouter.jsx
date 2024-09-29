@@ -5,7 +5,7 @@ import { HomeComponent } from "../flowUser/pages/home/HomeComponent";
 import { AuthenticationComponent } from "../flowUser/pages/authenntication/AuthenticationComponent";
 import { UserProfileComponent } from "../flowUser/pages/userProfile/UserProfileComponent";
 import { UserApplicationComponent } from "../flowUser/pages/userProfile/substructures/userApplication/UserApplicationComponent";
-import { AboutUsComponent } from "../flowUser/pages/aboutUs/AboutUsComponent";
+import { AboutUsComponent } from "../flowUser/pages/aboutUs/aboutUsComponent";
 import { CertificatesComponent } from "../flowUser/pages/certificates/CertificatesComponent";
 import { ContactsComponent } from "../flowUser/pages/contacts/ContactsComponent";
 import { ReviewsComponent } from "../flowUser/pages/reviews/Reviews";

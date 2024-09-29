@@ -14,7 +14,7 @@ import { stringToDateConverter } from "../../../services/utils/stringToDateConve
 import styles from "./adminApplication.module.css";
 import api from "../../../services/api/api";
 import { ApplicationStatusMarker } from "../../../commonItems/components/applicationStatusMarker/ApplicationStatusMarker";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../data/constants";
 import { ApplicationControls } from "./substructures/applicationControls/applicationControls";
 

@@ -1,18 +1,19 @@
 import styles from "./buttonType1.module.css";
-
-// This component returns a typical button to be used in a project.
-// Props:
-//     value - represents a text to be on the Button.
-//          type: string (expl: 'Cancel')
+/**
+ * @typedef {object} Props
+ * @param {string, HTML} value Text on the button. (e.g.: 'Cancel')
 //              or HTML DOM Element
-//              (expl: <span>Filter <img className="vacancy-in-button-icon" src={filterIcon} alt="" height="14px" /> </span>
-//     onClickHandler - function to be called on button click.
-//          type: function
-//     strength - represents a button style. Posible values are '1', '2', '3', '4'
-//          type: string
-//     customDatasetValue allows to use custom dataset property customdataset.
-//          type: string
-//
+//              (e.g.: <span>Filter <img className="vacancy-in-button-icon" src={filterIcon} alt="" height="14px" /> </span>
+ * @param {function} onClickHandler 
+ * @param {string} buttonStrength Button style. Possible values: ['1', '2', '3', '4']
+ * @param {string} customDatasetValue Custom dataset property customdataset.
+ * @param {string} buttonClass 
+ */
+/**
+ * Component returns a typical button to be used in a project.
+ * @param {Props} props 
+ * @returns {JSX.Element} Button
+ */
 
 export const ButtonType1 = (props) => {
   //* Props
