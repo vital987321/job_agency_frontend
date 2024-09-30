@@ -9,6 +9,8 @@ export const HomeComponent = () => {
 
   return (
     <>
+      {true}
+      {<h1>Header</h1> && true}
       <Introduction/>
       <Statistics/>
       <OurService/>
