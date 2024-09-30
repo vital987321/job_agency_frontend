@@ -3,7 +3,7 @@ import styles from "./vacancyFilter.module.css";
 import React, {useRef} from "react";
 import { SALARY_CEILING, RESIDENCE_TYPES } from "../../../../../data/constants";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { SalaryLevel } from "../../../../../commonItems/components/salaryLevel/salaryLevel";
 
 export const VacancyFilterComponent = (props) => {

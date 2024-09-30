@@ -1,4 +1,4 @@
-import { ListVacanciesComponent } from "../../../../../commonItems/features/listVacancies/ListVacanciesComponent";
+import { ListVacanciesComponent } from "../../../../../commonItems/features/listVacancies/listVacanciesComponent";
 import {
   LIST_VACANCIES_BASE_URL,
   USER_LIST_ITEMS_LIMIT,

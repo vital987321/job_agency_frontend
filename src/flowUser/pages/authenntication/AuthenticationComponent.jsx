@@ -5,7 +5,7 @@ import loginImage from "../../../assets/img/login_img.png";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import api from "../../../services/api/api";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { PasswordRepeatComponent } from "./substructures/PassworRepeat/PassworRepeat";
 import { useAuth } from "../../../hooks/useAuth";
 import { USER_REQUEST_URL, AUTH_REQUEST_URL } from "../../../data/constants";

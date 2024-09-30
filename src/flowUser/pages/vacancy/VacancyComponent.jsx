@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./vacancy.module.css";
 import { ApplicationFormComponent } from "./substructures/applicationForm/ApplicationForm";
 import api from "../../../services/api/api";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { VacancyDataComponent } from "../../../commonItems/features/vacancyData/VacancyData";
 
 export const VacancyComponent = (props) => {

@@ -1,5 +1,5 @@
 import styles from "./paginationArowButton.module.css";
-import { changeUrlParam } from "../../../../../services/utils/changeUrlParam";
+import { changeUrlParamValue } from "../../../../../services/utils/changeUrlParamValue";
 
 export const PaginationArowButton = (props) => {
   const direction = props.direction; /*'previous' or 'next'*/
@@ -13,7 +13,7 @@ export const PaginationArowButton = (props) => {
     const paginationDirection = e.target.dataset.direction;
     const requestUrl = new URL(responseData[paginationDirection]);
     const newOffsetValue = requestUrl.searchParams.get("offset");
-    const updatedUrl = changeUrlParam(urlState, "offset", newOffsetValue);
+    const updatedUrl = changeUrlParamValue(urlState, "offset", newOffsetValue);
     setUrlState(updatedUrl);
   };
 

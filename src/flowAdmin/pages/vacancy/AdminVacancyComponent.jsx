@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import api from "../../../services/api/api";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 

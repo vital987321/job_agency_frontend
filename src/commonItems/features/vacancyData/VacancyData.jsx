@@ -11,7 +11,7 @@ import visaServiceIcon from "../../../assets/svg/visa-service.svg";
 import genderIcon from "../../../assets/svg/gender.svg";
 import factoryIcon from "../../../assets/svg/factory.svg";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
-import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
+import { workingHoursRange } from "../../../services/utils/workingHoursRange";
 import { RESIDENCE_TYPES } from "../../../data/constants";
 import { ButtonFavourite } from "../../components/buttons/buttonFavourite/ButtonFavourite";
 import styles from "./vacancyData.module.css";
@@ -212,7 +212,7 @@ export const VacancyDataComponent = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>WORKING HOURHS</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {identifyWorkingHours(
+                {workingHoursRange(
                   props.vacancyData.hours_from,
                   props.vacancyData.hours_to
                 )}

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import api from "../../../services/api/api";
 import "./listVacancies.css";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
-import { identifyWorkingHours } from "../../../services/utils/identifyWorkingHours";
-import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
+import { workingHoursRange } from "../../../services/utils/workingHoursRange";
+import { ButtonType1 } from "../../components/buttons/buttonType1/buttonType1";
 
 export const ListVacanciesComponent = (props) => {
   //* Props
@@ -53,7 +53,7 @@ export const ListVacanciesComponent = (props) => {
                 <div>{vacancy.salary} CZK</div>
                 <div className="skip-mobile">{vacancy.contract_type}</div>
                 <div className="skip-tablet">
-                  {identifyWorkingHours(vacancy.hours_from, vacancy.hours_to)}
+                  {workingHoursRange(vacancy.hours_from, vacancy.hours_to)}
                 </div>
                 <div className="skip-tablet">{stringToDateConverter(vacancy.created_at)}</div>
                 <div className="details-button">

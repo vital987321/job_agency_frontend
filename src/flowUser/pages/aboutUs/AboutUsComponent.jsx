@@ -12,7 +12,7 @@ import "./aboutUs.css"
 
 export const AboutUsComponent=()=>{
     return<>
-    <div className='about-us-component-main-container'>
+    <div className='about-us-component-main-container' data-testid="about-us-component">
         <section className="about-us-section">
             <h1 className='about-us-header'>
                 About us
@@ -21,7 +21,7 @@ export const AboutUsComponent=()=>{
                 <div>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis iste cupiditate, incidunt obcaecati eos praesentium mollitia veritatis amet dolore voluptate. Non exercitationem accusantium commodi animi nulla dolor dolore inventore harum? Ipsum error asperiores sequi eos, id voluptates ea distinctio, exercitationem perferendis dolores, ducimus laudantium deleniti eveniet laboriosam provident! Eaque totam, ut commodi corrupti sit quisquam repellat unde, velit molestiae eligendi, quis repudiandae sequi! Commodi iste, consequatur provident esse magni tempore voluptas distinctio quae deleniti voluptatibus corrupti natus alias eius laboriosam dolor rem inventore! Iure autem debitis nemo aut esse quaerat quae, blanditiis ad sed earum vitae assumenda quo sunt at.
                 </div>
-                <div>
+                <div> 
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae amet exercitationem ducimus totam nisi unde, hic vitae blanditiis eveniet cupiditate repudiandae impedit dolorum fugit. Eaque rerum iste quaerat est exercitationem rem, mollitia quas sit modi eos minus sequi fugit quasi id dolore nostrum labore accusamus cupiditate at? Debitis excepturi asperiores accusamus similique quisquam eaque nisi eius ducimus impedit, officia magnam facilis esse commodi. Nam vel architecto, consequatur eligendi earum deserunt ratione quasi dolorem, quis, temporibus quos? Ab ipsum doloribus voluptates!
                 </div>
             </div>

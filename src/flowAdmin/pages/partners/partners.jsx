@@ -1,7 +1,7 @@
 import styles from "./partners.module.css";
 import { PartnersList } from "./substructures/partnersList/partnersList";
 import { useState, useEffect } from "react";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,

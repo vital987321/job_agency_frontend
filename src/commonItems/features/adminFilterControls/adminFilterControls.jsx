@@ -1,4 +1,4 @@
-import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1"
+import { ButtonType1 } from "../../components/buttons/buttonType1/buttonType1"
 import { AmountOnPageComponent } from "../../components/adminAmountOnPage/amountOnPage"
 import filterIcon from "../../../assets/svg/settings.svg";
 import closeIcon from "../../../assets/svg/X.svg";
