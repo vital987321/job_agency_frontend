@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { ReviewsListComponent } from "../../../commonItems/features/reviewsList/reviewsList";
-import { AverageRating } from "../../../commonItems/features/averageRating/averageRaring";
-import { ReviewForm } from "./substructures/reviewForm/reviewForm";
+import { ReviewsList } from "../../../commonItems/features/reviewsList/ReviewsList";
+import { AverageRating } from "../../../commonItems/features/averageRating/AverageRaring";
+import { ReviewForm } from "./substructures/reviewForm/ReviewForm";
 import {
   LIST_REVIEWS_REQUEST_URL,
   REVIEWS_LIST_LIMIT,
 } from "../../../data/constants";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
-import styles from "./reviews.module.css";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import styles from "./Reviews.module.css";
 import {useAuth} from "../../../hooks/useAuth"
 
 export const ReviewsComponent = () => {
@@ -36,7 +36,7 @@ export const ReviewsComponent = () => {
         <h2 className="h2-common">Reviews</h2>
         <AverageRating responseData={reviewsResponseData} />
         <div className={styles["reviews-body"]}>
-          <ReviewsListComponent
+          <ReviewsList
             listReviewsRequestUrl={listReviewsRequestUrl}
             setReviewsResponseData={setReviewsResponseData}
             updateDataState={updateDataState}

@@ -1,7 +1,7 @@
-import { ListVacanciesComponent } from "../../../../../commonItems/features/listVacancies/listVacanciesComponent.jsx";
+import { ListVacancies } from "../../../../../commonItems/features/listVacancies/ListVacancies.jsx";
 import { LIST_VACANCIES_BASE_URL } from "../../../../../data/constants.js";
 import { Link } from "react-router-dom";
-import styles from "./vacanciesPreview.module.css"
+import styles from "./VacanciesPreview.module.css"
 
 export const VacanciesPreview=()=>{
 
@@ -10,7 +10,7 @@ export const VacanciesPreview=()=>{
     return (
         <section className={styles["vacancies-list-section"]}>
         <h2 className={`${styles.header} h2-common`}>Vacancies</h2>
-        <ListVacanciesComponent
+        <ListVacancies
           listVacanciesRequestUrl={listVacanciesRequestUrl}
         />
         <div className={styles["vacancies-link-container"]}>

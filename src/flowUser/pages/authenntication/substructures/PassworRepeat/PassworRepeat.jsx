@@ -1,6 +1,6 @@
-import styles from "../../authentication.module.css";
+import styles from "../../Authentication.module.css";
 
-export const PasswordRepeatComponent = (props) => {
+export const PasswordRepeat = (props) => {
   //* Props
   const authenticationAction = props.authenticationAction;
   const confirmPasswordRef = props.confirmPasswordRef;

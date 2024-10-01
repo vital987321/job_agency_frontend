@@ -1,4 +1,4 @@
-import styles from "./averageRating.module.css"
+import styles from "./AverageRating.module.css"
 import { StarsLine } from "../../components/starsLine/StarsLine";
 
 

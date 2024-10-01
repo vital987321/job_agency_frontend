@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom"
-import { UserFlowRouter } from "./userFlowRouter"
-import { AdminFlowRouter } from "./adminFlowRouter"
+import { UserFlowRouter } from "./UserFlowRouter"
+import { AdminFlowRouter } from "./AdminFlowRouter"
 
 export const RouterComponent=(
         <Route>

@@ -1,4 +1,4 @@
-import styles from "./salaryLevel.module.css";
+import styles from "./SalaryLevel.module.css";
 import { useState, useEffect } from "react";
 import { SALARY_CEILING, FILTER_POINTER_SIZE } from "../../../data/constants";
 

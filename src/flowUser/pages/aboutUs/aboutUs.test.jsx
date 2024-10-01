@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect} from "vitest";
-import { AboutUsComponent } from "./aboutUsComponent";
+import { AboutUs } from "./AboutUs";
 
 describe("AboutUsComponent", ()=>{
     it("renders component", ()=>{
-        render(<AboutUsComponent/>)
+        render(<AboutUs/>)
         // screen.debug();
         expect(screen.getByTestId("about-us-component")).toHaveTextContent("About us")
     })

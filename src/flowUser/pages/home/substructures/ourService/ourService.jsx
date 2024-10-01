@@ -4,7 +4,7 @@ import teamSupportIcon from "../../../../../assets/svg/team_support.svg";
 import studyIcon from "../../../../../assets/svg/study.svg";
 import bagIcon from "../../../../../assets/svg/bag.svg";
 import phonemanIcon from "../../../../../assets/svg/phoneman.svg";
-import styles from "./ourService.module.css"
+import styles from "./OurService.module.css"
 
 export const OurService=()=>{
     return(

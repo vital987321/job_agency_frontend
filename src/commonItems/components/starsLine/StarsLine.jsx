@@ -1,6 +1,6 @@
 import starWhiteIcon from "../../../assets/svg/rating_star_icon_white.svg";
 import starYellowIcon from "../../../assets/svg/rating_star_icon_yellow.svg";
-import styles from "./starsLine.module.css";
+import styles from "./StarsLine.module.css";
 
 export const StarsLine = (props) => {
   //* Props

@@ -1,4 +1,4 @@
-import styles from "./applicationStatusMarker.module.css";
+import styles from "./ApplicationStatusMarker.module.css";
 
 export const ApplicationStatusMarker = (props) => {
   //* Props

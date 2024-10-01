@@ -1,4 +1,4 @@
-import { ButtonType1 } from "../../../../../../commonItems/components/buttons/buttonType1/buttonType1";
+import { ButtonType1 } from "../../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 export const SubmitButton = (props) => {
   //* Props
   const isUserDataChanged = props.isUserDataChanged;

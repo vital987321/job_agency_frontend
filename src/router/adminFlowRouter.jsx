@@ -1,27 +1,27 @@
 import { Route } from "react-router-dom";
-import { AdminVacanciesComponent } from "../flowAdmin/pages/vacancies/AdminVacanciesComponent";
-import { AdminBodyComponent } from "../flowAdmin/layout/AdminBodyComponent";
-import { AdminVacancyComponent } from "../flowAdmin/pages/vacancy/AdminVacancyComponent";
-import { AdminApplicationComponent } from "../flowAdmin/pages/application/AdminApplicationComponent";
-import { AdminApplicationsComponent } from "../flowAdmin/pages/applications/AdminApplicationsComponent";
-import { AdminReviewsComponent } from "../flowAdmin/pages/reviews/reviews";
-import { Partner } from "../flowAdmin/pages/partners/partners";
-import { ProtectedRoute } from "./protectedRoute";
-import { AdminHome } from "../flowAdmin/pages/home/home";
+import { AdminVacancies } from "../flowAdmin/pages/vacancies/AdminVacancies";
+import { AdminBody } from "../flowAdmin/layout/AdminBody";
+import { AdminVacancy } from "../flowAdmin/pages/vacancy/AdminVacancy";
+import { AdminApplication } from "../flowAdmin/pages/application/AdminApplication";
+import { AdminApplications } from "../flowAdmin/pages/applications/AdminApplications";
+import { AdminReviews } from "../flowAdmin/pages/adminReviews/AdminReviews";
+import { Partners } from "../flowAdmin/pages/partners/Partners";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { AdminHome } from "../flowAdmin/pages/adminHome/AdminHome";
 
 export const AdminFlowRouter = (
   <Route element={<ProtectedRoute allowedRoles={["2250", "1001"]} />}>
-    <Route path="admin/" element={<AdminBodyComponent />}>
+    <Route path="admin/" element={<AdminBody />}>
       <Route path="" element={<AdminHome/>} />
-      <Route path="vacancies" element={<AdminVacanciesComponent />} />
-      <Route path="vacancies/:vacancy_id" element={<AdminVacancyComponent />} />
-      <Route path="applications" element={<AdminApplicationsComponent />} />
-      <Route path="reviews" element={<AdminReviewsComponent />} />
+      <Route path="vacancies" element={<AdminVacancies />} />
+      <Route path="vacancies/:vacancy_id" element={<AdminVacancy />} />
+      <Route path="applications" element={<AdminApplications />} />
+      <Route path="reviews" element={<AdminReviews />} />
       <Route
         path="applications/:application_id"
-        element={<AdminApplicationComponent />}
+        element={<AdminApplication />}
       />
-      <Route path="partners" element={<Partner />} />
+      <Route path="partners" element={<Partners />} />
     </Route>
   </Route>
 );

@@ -1,6 +1,6 @@
-import styles from "./pagination.module.css"
-import { PaginationArowButton } from "./content/paginationArowButton/PaginationArowButton";
-import { PaginationNumberButton } from "./content/PaginationNumberButton/paginationNumberButton";
+
+import { PaginationArowButton } from "./substructures/paginationArowButton/PaginationArowButton";
+import { PaginationNumberButtons } from "./substructures/PaginationNumberButton/PaginationNumberButtons";
 
 export const PaginationComponent=(props)=>{
     const responseData=props.responseData
@@ -11,7 +11,7 @@ export const PaginationComponent=(props)=>{
     return(
         <section className={paginationClass}>
             <PaginationArowButton direction='previous' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
-            <PaginationNumberButton responseData={responseData} listItemsLimit={listItemsLimit} urlState={urlState} setUrlState={setUrlState}/>
+            <PaginationNumberButtons responseData={responseData} listItemsLimit={listItemsLimit} urlState={urlState} setUrlState={setUrlState}/>
             <PaginationArowButton direction='next' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
         </section>
     )

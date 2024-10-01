@@ -1,12 +1,12 @@
 import api from "../../../services/api/api";
-import styles from "./reviewsList.module.css";
+import styles from "./ReviewsList.module.css";
 import { useState, useEffect } from "react";
-import { AvatarComponent } from "../../components/AvatarComponent";
+import { AvatarComponent } from "../../components/avatarComponent/AvatarComponent";
 import {StarsLine} from "../../components/starsLine/StarsLine"
 import { LIST_REVIEWS_REQUEST_URL } from "../../../data/constants";
 
 
-export const ReviewsListComponent = (props) => {
+export const ReviewsList = (props) => {
 // props
   
   const listReviewsRequestUrl=props.listReviewsRequestUrl

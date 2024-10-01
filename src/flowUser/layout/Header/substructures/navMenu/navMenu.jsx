@@ -1,4 +1,4 @@
-import styles from "./navMenu.module.css";
+import styles from "./NavMenu.module.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../../../hooks/useAuth";
 

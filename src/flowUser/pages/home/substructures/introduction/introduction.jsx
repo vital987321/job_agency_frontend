@@ -1,7 +1,7 @@
 import searchIcon from "../../../../../assets/svg/search.svg";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./introduction.module.css"
+import styles from "./Introduction.module.css"
 
 export const Introduction = () => {
     const quickSearchRef=React.createRef()

@@ -1,8 +1,8 @@
-import { ButtonType1 } from "../../components/buttons/buttonType1/buttonType1"
-import { AmountOnPageComponent } from "../../components/adminAmountOnPage/amountOnPage"
+import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1"
+import { AmountOnPage } from "../../components/amountOnPage/AmountOnPage"
 import filterIcon from "../../../assets/svg/settings.svg";
 import closeIcon from "../../../assets/svg/X.svg";
-import styles from "./adminFilterControls.module.css"
+import styles from "./AdminFilterControls.module.css"
 
 export const AdminFilterControls=(props)=>{
     //* Props
@@ -52,7 +52,7 @@ export const AdminFilterControls=(props)=>{
                 />
               </div>
             </div>
-            <AmountOnPageComponent
+            <AmountOnPage
               onPageListItemsAmount={onPageListItemsAmount}
               onChangeListItemsAmount={onChangeListItemsAmount}
             />

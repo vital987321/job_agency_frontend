@@ -1,4 +1,4 @@
-import styles from "./statistics.module.css"
+import styles from "./Statistics.module.css"
 
 export const Statistics=()=>{
     return(

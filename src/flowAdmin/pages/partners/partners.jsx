@@ -1,19 +1,19 @@
-import styles from "./partners.module.css";
-import { PartnersList } from "./substructures/partnersList/partnersList";
+import styles from "./Partners.module.css";
+import { PartnersList } from "./substructures/partnersList/PartnersList";
 import { useState, useEffect } from "react";
-import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/buttonType1";
+import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
   PARTNERS_REQUEST_URL,
 } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
-import { PartnerForm } from "./substructures/partnerForm/partnnerForm";
-import { PartnerFilter } from "./substructures/partnerFilter/partnerFIlter";
+import { PartnerForm } from "./substructures/partnerForm/PartnnerForm";
+import { PartnerFilter } from "./substructures/partnerFilter/PartnerFIlter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { useSearchParams } from "react-router-dom";
 
-export const Partner = () => {
+export const Partners = () => {
   //* Variables
   const listItemsOnPage = localStorage.getItem("AdminListItemsOnPage")
     ? localStorage.getItem("AdminListItemsOnPage")

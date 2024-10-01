@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
-import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/adminFilterControls";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/AdminFilterControls";
 
 export const PartnerFilter = () => {
   //* Variables

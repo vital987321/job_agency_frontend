@@ -1,6 +1,6 @@
 // import styles from "./userPersonalData.module.css";
-import styles from "./userPersonalData.module.css";
-import { AvatarComponent } from "../../../../../commonItems/components/AvatarComponent";
+import styles from "./UserPersonalData.module.css";
+import { AvatarComponent } from "../../../../../commonItems/components/avatarComponent/AvatarComponent";
 import React, { useState, useRef } from "react";
 import api from "../../../../../services/api/api";
 import { phoneValidation } from "../../../../../services/validators/phoneValidation";
@@ -9,7 +9,7 @@ import {
   CV_FILE_SIZE_LIMIT,
 } from "../../../../../data/constants";
 import editIcon from "../../../../../assets/svg/edit.svg";
-import { SubmitButton } from "./submitButton/submitButton";
+import { SubmitButton } from "./submitButton/SubmitButton";
 import { useAuth } from "../../../../../hooks/useAuth";
 
 export const UserPersonalData = (props) => {

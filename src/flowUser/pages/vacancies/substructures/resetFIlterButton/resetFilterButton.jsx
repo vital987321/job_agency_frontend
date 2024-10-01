@@ -1,7 +1,7 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/buttonType1";
+import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import closeIcon from "../../../../../assets/svg/X.svg";
-import styles from "./resetFilterButton.module.css"
+import styles from "./ResetFilterButton.module.css"
 
 export const ResetFiltersButton = () => {
     //* Hooks

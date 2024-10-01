@@ -2,7 +2,7 @@ import kofolaIcon from "../../../../../assets/svg/1200px-Kofola_logo 1.svg";
 import lidlIcon from "../../../../../assets/svg/Lidl_logo 1.svg";
 import kauflandIcon from "../../../../../assets/svg/KL_standard_pos_frei_S_sRGB 1.svg";
 import ceskaPostaIcon from "../../../../../assets/svg/cp-sponzoring-sirka-rgb 1.svg";
-import styles from "./partners.module.css"
+import styles from "./Partners.module.css"
 
 export const Partners=()=>{
     return(

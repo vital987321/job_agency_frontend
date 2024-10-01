@@ -1,7 +1,7 @@
 import api from "../../../../services/api/api";
 import iconHeartFull from "../../../../assets/svg/heart_full.svg";
 import iconHeartEmpty from "../../../../assets/svg/heart_empty.svg";
-import styles from "./buttonFavourite.module.css";
+import styles from "./ButtonFavourite.module.css";
 import { USER_REQUEST_URL } from "../../../../data/constants";
 import { useAuth } from "../../../../hooks/useAuth";
 

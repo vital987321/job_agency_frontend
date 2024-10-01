@@ -1,4 +1,4 @@
-import styles from "./buttonType1.module.css";
+import styles from "./ButtonType1.module.css";
 /**
  * @typedef {object} Props
  * @param {string, HTML} value Text on the button. (e.g.: 'Cancel')

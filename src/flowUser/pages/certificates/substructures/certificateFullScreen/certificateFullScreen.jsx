@@ -1,6 +1,6 @@
-import styles from "./certificateFullScreen.module.css"
+import styles from "./CertificateFullScreen.module.css"
 
-export const CertificateFullScreenComponent = (props) => {
+export const CertificateFullScreen = (props) => {
     //* Props
     const setCertificateModalDisplay=props.setCertificateModalDisplay
     const currentCertificate=props.currentCertificate

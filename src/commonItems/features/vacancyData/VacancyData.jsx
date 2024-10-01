@@ -14,9 +14,9 @@ import { stringToDateConverter } from "../../../services/utils/stringToDateConve
 import { workingHoursRange } from "../../../services/utils/workingHoursRange";
 import { RESIDENCE_TYPES } from "../../../data/constants";
 import { ButtonFavourite } from "../../components/buttons/buttonFavourite/ButtonFavourite";
-import styles from "./vacancyData.module.css";
+import styles from "./VacancyData.module.css";
 
-export const VacancyDataComponent = (props) => {
+export const VacancyData = (props) => {
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const [isFavouriteVacancy, setIsFavouriteVacancy] = useState(false);
   const { vacancy_id } = useParams();

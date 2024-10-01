@@ -1,6 +1,6 @@
 
 import './App.css';
-import { RouterComponent } from './router/routerComponent';
+import { RouterComponent } from './router/RouterComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
 
