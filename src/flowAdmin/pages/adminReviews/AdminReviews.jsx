@@ -1,4 +1,4 @@
-import { ReviewsList } from "../../../commonItems/features/reviewsList/ReviewsList";
+import { ReviewsList } from "../../../commonItems/features/reviewsList/ReviewsList_1";
 import {
   ADMIN_LIST_ITEMS_LIMIT_DEFAULT,
   LIST_REVIEWS_REQUEST_URL,
@@ -6,10 +6,10 @@ import {
 import styles from "./AdminReviews.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ReviewFilter } from "./substructures/reviewFilter/ReviewFilter";
+import { ReviewFilter } from "./substructures/reviewFilter/ReviewFilter_1";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
-import { AverageRating } from "../../../commonItems/features/averageRating/AverageRaring";
+import { AverageRating } from "../../../commonItems/features/averageRating/AverageRaring_1";
 
 
 export const AdminReviews = () => {

@@ -3,7 +3,7 @@ import { ADMIN_LIST_ITEMS_LIMIT_DEFAULT } from "../../../../../data/constants";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import styles from "../../../../../commonItems/css/adminListItemsFilter.module.css";
-import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/AdminFilterControls";
+import { AdminFilterControls } from "../../../../../commonItems/features/adminFilterControls/AdminFilterControls_1";
 
 export const ReviewFilter = () => {
   const userEmailRef = useRef();

@@ -6,7 +6,7 @@ import { AdminApplication } from "../flowAdmin/pages/application/AdminApplicatio
 import { AdminApplications } from "../flowAdmin/pages/applications/AdminApplications";
 import { AdminReviews } from "../flowAdmin/pages/adminReviews/AdminReviews";
 import { Partners } from "../flowAdmin/pages/partners/Partners";
-import { ProtectedRoute } from "./ProtectedRoute";
+import { ProtectedRoute } from "./ProtectedRoute_1";
 import { AdminHome } from "../flowAdmin/pages/adminHome/AdminHome";
 
 export const AdminFlowRouter = (
