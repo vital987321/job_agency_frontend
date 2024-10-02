@@ -12,7 +12,7 @@ describe("ButtonType1", ()=>{
         render(<ButtonType1 value="Submit"/>)
         expect(screen.getByText("Submit")).toBeInTheDocument()
     })
-    it('renders with correct style strength', async ()=>{
+    it('calls clickHandler on click', async ()=>{
         const user=userEvent.setup()
         const clickHandler=vi.fn()
         render(<ButtonType1 value="Submit" onClickHandler={clickHandler} />)
