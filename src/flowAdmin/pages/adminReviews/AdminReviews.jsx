@@ -6,7 +6,7 @@ import {
 import styles from "./AdminReviews.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ReviewFilter } from "./substructures/reviewFilter/reviewFilter";
+import { ReviewFilter } from "./substructures/reviewFilter/ReviewFilter";
 import { generateRequestQueryString } from "../../../services/utils/generateRequestQueryString";
 import { PaginationComponent } from "../../../commonItems/features/pagination/Pagination";
 import { AverageRating } from "../../../commonItems/features/averageRating/AverageRaring";
