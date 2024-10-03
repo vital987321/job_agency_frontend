@@ -12,6 +12,11 @@ describe("ButtonType1", ()=>{
         render(<ButtonType1 value="Submit"/>)
         expect(screen.getByText("Submit")).toBeInTheDocument()
     })
+    it('renders with correct class', ()=>{
+        render(<ButtonType1 strength='2'/>)
+        const result=screen.getByRole("button")
+        expect(result).toHaveClass(/buttonStrength2/i)
+    })
     it('calls clickHandler on click', async ()=>{
         const user=userEvent.setup()
         const clickHandler=vi.fn()
