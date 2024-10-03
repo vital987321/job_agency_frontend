@@ -11,13 +11,14 @@ export const AverageRating=(props)=>{
     }catch(error){rating='loading'}
 
     return (
-        <section>
-            <div className={styles.mainBody}>
-                <p>Averege Rating:</p>
-                <p className={styles.ratingValue}>{rating}</p>
-                <p><StarsLine rating={rating} shiftCriteria={-0.5}/></p>
-            </div>
-            
-        </section>
-    )
+      <section>
+        <div className={styles.mainBody}>
+          <p>Averege Rating:</p>
+          <p className={styles.ratingValue}>{rating}</p>
+          <p>
+            <StarsLine rating={rating} roundRating={true} />
+          </p>
+        </div>
+      </section>
+    );
 }

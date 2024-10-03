@@ -5,7 +5,6 @@ import { ApplicationStatusMarker } from "./ApplicationStatusMarker";
 describe("ApplicationStatusMarker", () => {
     it('returns correct results without props', () => {
         render(<ApplicationStatusMarker />);
-        screen.debug()
         const result = screen.getByTestId("status-element");
         // expect(result).toHaveTextContent("⬤");
         expect(result).toHaveClass(/statusPending/i)
