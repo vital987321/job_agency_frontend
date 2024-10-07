@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { AvatarComponent } from "../../components/avatarComponent/AvatarComponent";
 import {StarsLine} from "../../components/starsLine/StarsLine"
 import { LIST_REVIEWS_REQUEST_URL } from "../../../data/constants";
-
+import toast from "react-hot-toast";
 
 export const ReviewsList = (props) => {
 // props
@@ -47,6 +47,7 @@ export const ReviewsList = (props) => {
         const response = await api
           .delete(requestUrl)
           .then((response)=>{ setUpdateData({}) })
+          .then((response)=>toast.error('Removed'))
           .catch((error) => {
             console.log(error);
           });

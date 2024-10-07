@@ -11,14 +11,13 @@ import {
   USER_REQUEST_URL,
 } from "../../../../../data/constants";
 import { useAuth } from "../../../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export const ReviewForm = (props) => {
   //* props:
   //    formDisplayValue
   //    setReviewFormDisplayValue
   //    setUpdateDataState
-
-
 
   //* States
   const [userRate, setUserRate] = useState("");
@@ -27,7 +26,7 @@ export const ReviewForm = (props) => {
   const [reviewIdToUpdate, setReviewIdToUpdate] = useState("");
 
   //* Hooks
-  const {auth}=useAuth()
+  const { auth } = useAuth();
 
   //* variables, consts
   const user_id = auth.user_id;
@@ -122,6 +121,7 @@ export const ReviewForm = (props) => {
 
     if (isFormValid(requestData)) {
       reviewIdToUpdate ? sendPatchRequest() : sendPostRequest();
+      toast.success("Review is sent");
     } else {
       console.log("form validation errors");
     }

@@ -4,7 +4,7 @@ import iconHeartEmpty from "../../../../assets/svg/heart_empty.svg";
 import styles from "./ButtonFavourite.module.css";
 import { USER_REQUEST_URL } from "../../../../data/constants";
 import { useAuth } from "../../../../hooks/useAuth";
-import toast, { Toaster } from "react-hot-toast";
+import toast  from "react-hot-toast";
 
 export const ButtonFavourite = (props) => {
   //* Hooks
@@ -61,7 +61,6 @@ export const ButtonFavourite = (props) => {
           alt="Favorite"
         />
         </button>
-        <Toaster/>
       </>
       
     );

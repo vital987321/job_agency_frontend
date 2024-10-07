@@ -11,6 +11,7 @@ import {
 import editIcon from "../../../../../assets/svg/edit.svg";
 import { SubmitButton } from "./submitButton/SubmitButton";
 import { useAuth } from "../../../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export const UserPersonalData = (props) => {
   //* Props
@@ -132,7 +133,6 @@ export const UserPersonalData = (props) => {
       formData.append("first_name", userCurrentData.first_name);
       formData.append("last_name", userCurrentData.last_name);
       formData.append("phone", userCurrentData.phone);
-      // const cv = document.getElementById("user-profile-cv-input");
       if (cvInputRef.current.files[0]) {
         formData.append("cv", cvInputRef.current.files[0]);
       } else if (userCurrentData.cv == "") {
@@ -170,6 +170,7 @@ export const UserPersonalData = (props) => {
       setValidationErrors(formValidationObject.validationErrors);
       if (formValidationObject.isValid) {
         updateProfile(formValidationObject.formData);
+        toast.success('Updated')
       }
     }
   };

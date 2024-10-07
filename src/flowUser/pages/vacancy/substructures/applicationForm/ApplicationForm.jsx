@@ -6,6 +6,7 @@ import { emailValidation } from "../../../../../services/validators/emailValidat
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
 import api from "../../../../../services/api/api";
 import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants";
+import toast  from "react-hot-toast";
 
 export const ApplicationFormComponent = (props) => {
   //* Refs
@@ -104,7 +105,7 @@ export const ApplicationFormComponent = (props) => {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => console.log("response sratus: " + response.status))
-        .then(() => alert("Application sent succesfully"))
+        .then((res)=>toast.success("Application sent"))
         .then(() => props.setAppFormDisplayValue("none"))
         .catch((err) => {
           console.log("Application error:");

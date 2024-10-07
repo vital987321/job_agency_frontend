@@ -1,6 +1,7 @@
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import styles from "./Body.module.css"
 
 export const Body = () => {
@@ -11,6 +12,9 @@ export const Body = () => {
           <Outlet /> 
         </div>
         <Footer />
+
+        {/* utilities  */}
+        <Toaster/>
       </>
     );
 };
