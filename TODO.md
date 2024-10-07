@@ -114,7 +114,8 @@ FRONTEND:
         [x] Delete unused files/components from the project
         [ ] Add unit tests
         [ ] review the whole project
-        [ ] Create represantative DB        
+        [ ] Create represantative DB
+        [ ] Add pop-up messages from react-hot-toast        
 
 
 Emplamenting Role-based-authorisation

@@ -4,6 +4,7 @@ import iconHeartEmpty from "../../../../assets/svg/heart_empty.svg";
 import styles from "./ButtonFavourite.module.css";
 import { USER_REQUEST_URL } from "../../../../data/constants";
 import { useAuth } from "../../../../hooks/useAuth";
+import toast, { Toaster } from "react-hot-toast";
 
 export const ButtonFavourite = (props) => {
   //* Hooks
@@ -34,14 +35,17 @@ export const ButtonFavourite = (props) => {
       const vacancyIndex = favouritesArray.indexOf(props.vacancyData.id);
       favouritesArray.splice(vacancyIndex, 1);
       updateUserFavouritesRequest(favouritesArray);
+      toast.error("Removed");
     } else if (props.isFavouriteVacancy === false) {
       favouritesArray.push(props.vacancyData.id);
       updateUserFavouritesRequest(favouritesArray);
+      toast.success("Added");
     }
   };
 
   if (auth.user_id) {
     return (
+      <>
       <button
         onClick={favouriteButtonHandler}
         className={styles["vacancy-favorite-button"]}
@@ -56,7 +60,10 @@ export const ButtonFavourite = (props) => {
           className={styles["heart-filter"]}
           alt="Favorite"
         />
-      </button>
+        </button>
+        <Toaster/>
+      </>
+      
     );
   }
   return "";
