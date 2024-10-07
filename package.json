@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.16.4",
     "@types/react-router-dom": "^5.3.3",
+    "@vitest/ui": "^2.1.2",
     "axios": "^1.6.8",
     "core-js": "^3.36.1",
     "jwt-decode": "^4.0.0",
@@ -21,6 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "eject": "react-scripts eject",
     "test:unit": "vitest --root src/"
   },
