@@ -3,6 +3,7 @@ import { LIST_APPLICATIONS_BASE_URL } from "../../../../../data/constants";
 import api from "../../../../../services/api/api";
 import { useParams } from "react-router-dom";
 import styles from "./ApplicationControls.module.css"
+import toast from "react-hot-toast";
 
 export const ApplicationControls = (props) => {
     //* Props
@@ -19,6 +20,7 @@ export const ApplicationControls = (props) => {
       api
         .patch(url, { status: e.target.dataset.buttondataset })
         .then((response) => setApplication(response.data))
+        .then((res) => toast(e.target.dataset.buttondataset))
         .catch((error) => console.log(error));
     } catch (error) {
       console.log(error);

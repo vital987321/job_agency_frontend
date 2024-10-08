@@ -6,6 +6,7 @@ import api from "../../../services/api/api";
 import { LIST_VACANCIES_BASE_URL } from "../../../data/constants";
 import { useNavigate } from "react-router-dom";
 import { ButtonType1 } from "../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import toast from "react-hot-toast";
 
 const user_id = JSON.parse(localStorage.getItem("user_id"));
 
@@ -45,10 +46,9 @@ export const AdminVacancy = () => {
         const requestUrl = LIST_VACANCIES_BASE_URL + vacancyData.id + "/";
         const request = await api
           .delete(requestUrl)
-          .then((response) => {
-            console.log(response.statusText);
-          })
-          .then(navigate("/admin/vacancies/"))
+          // .then((response) => {console.log(response.statusText)})
+          .then((response) => navigate("/admin/vacancies/"))
+          .then((res) =>toast.error('Deleted'))
           .catch((error) => {
             console.log(error);
           });
@@ -73,6 +73,7 @@ export const AdminVacancy = () => {
         const response = await api
           .patch(requestUrl, requestData)
           .then((response) => setVacancyData(response.data))
+          .then((result)=>toast.success(requestData.active? "Activated" : "Deactivated"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);

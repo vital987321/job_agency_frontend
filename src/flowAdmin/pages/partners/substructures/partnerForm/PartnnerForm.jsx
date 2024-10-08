@@ -6,6 +6,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { phoneValidation } from "../../../../../services/validators/phoneValidation";
 import { PARTNERS_REQUEST_URL } from "../../../../../data/constants";
+import toast from "react-hot-toast";
 
 export const PartnerForm = (props) => {
   //* Props
@@ -82,6 +83,7 @@ export const PartnerForm = (props) => {
           .post(PARTNERS_REQUEST_URL, formValues)
           .then((res) => closeButtonHandler())
           .then((res) => setUpdateDataState({}))
+          .then((res) => toast.success("Created"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
@@ -99,7 +101,8 @@ export const PartnerForm = (props) => {
         const request = await api
           .patch(requestUrl, requestData)
           .then((res) => closeButtonHandler())
-          .then((res) => setUpdateDataState({}));
+          .then((res) => setUpdateDataState({}))
+          .then((res)=>toast.success("Updated"))
       } catch (error) {
         console.log(error);
       }

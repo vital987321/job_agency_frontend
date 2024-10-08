@@ -11,6 +11,7 @@ import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
 import "./AdminVacancyForm.css";
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
+import toast from "react-hot-toast";
 
 export const AdminVacancyForm = (props) => {
   //* props
@@ -244,6 +245,7 @@ export const AdminVacancyForm = (props) => {
           .patch(requestUrl, requestData)
           .then((response) => props.setVacancyData(response.data))
           .then((result) => props.setVacancyFormDisplayValue("none"))
+          .then((res)=>toast.success('Updated'))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);
@@ -257,7 +259,7 @@ export const AdminVacancyForm = (props) => {
           .post(requestUrl, requestData)
           .then((result) => props.setVacancyListChangedState({}))
           .then((result) => props.setVacancyFormDisplayValue("none"))
-          .then((result) => console.log("Vacancy created"))
+          .then((res) => toast.success("Vacancy created"))
           .catch((error) => console.log(error));
       } catch (error) {
         console.log(error);

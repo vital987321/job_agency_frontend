@@ -3,6 +3,7 @@ import api from "../../../../../services/api/api";
 import { useState, useEffect } from "react";
 import { PARTNERS_REQUEST_URL } from "../../../../../data/constants";
 import { ButtonType1 } from "../../../../../commonItems/components/buttons/buttonType1/ButtonType1";
+import toast from "react-hot-toast";
 
 export const PartnersList = (props) => {
   //* Props
@@ -41,7 +42,8 @@ export const PartnersList = (props) => {
       try {
         const request = await api
           .delete(PARTNERS_REQUEST_URL + partnerId)
-          .then((response) => setupdateData({}));
+          .then((response) => setupdateData({}))
+          .then((res)=>toast.error('Deleted'))
       } catch (error) {
         console.log(error);
       }
