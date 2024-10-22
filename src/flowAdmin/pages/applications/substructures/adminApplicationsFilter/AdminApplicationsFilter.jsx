@@ -25,8 +25,7 @@ export const AdminApplicatiosFilter = () => {
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
   const [searchParams, setSearchParams] = useSearchParams();
-  const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
-    useState("none");
+  const [displayResetFilterButton, setDisplayResetFilterButton]=useState(false)
 
   //* Hooks
   const navigate = useNavigate();
@@ -43,8 +42,9 @@ export const AdminApplicatiosFilter = () => {
       }
     }
     if (showCancelFilterButton)
-      setResetFiltersButtonDisplayValue("inline-block");
-    else setResetFiltersButtonDisplayValue("none");
+      setDisplayResetFilterButton(true)
+    else 
+      setDisplayResetFilterButton(false)
   }, [searchParams]);
 
   //* Functions
@@ -226,7 +226,7 @@ export const AdminApplicatiosFilter = () => {
 
           <AdminFilterControls
             filterButtonHandler={filterButtonHandler}
-            resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+            displayResetFilterButton={displayResetFilterButton}
             resetFiltersHandler={resetFiltersHandler}
             onPageListItemsAmount={onPageListItems}
             onChangeListItemsAmount={changeOnPageListItemsLimit}

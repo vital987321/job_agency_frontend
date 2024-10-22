@@ -27,8 +27,7 @@ export const AdminVacanciesFilter = () => {
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
-  const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
-    useState("none");
+  const [displayResetFilterButton, setDisplayResetFilterButton]=useState(false)
   const [activeSelection, setActiveSelection] = useState("");
   
   //* Hooks
@@ -47,8 +46,9 @@ export const AdminVacanciesFilter = () => {
       }
     }
     if (showCancelFilterButton)
-      setResetFiltersButtonDisplayValue("inline-block");
-    else setResetFiltersButtonDisplayValue("none");
+      setDisplayResetFilterButton(true)
+    else 
+      setDisplayResetFilterButton(false)
   }, [searchParams]);
 
   //* Functions
@@ -233,7 +233,7 @@ export const AdminVacanciesFilter = () => {
 
           <AdminFilterControls
             filterButtonHandler={filterButtonHandler}
-            resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+            displayResetFilterButton={displayResetFilterButton}
             resetFiltersHandler={resetFiltersHandler}
             onPageListItemsAmount={onPageListItems}
             onChangeListItemsAmount={changeOnPageListItemsLimit}

@@ -16,8 +16,7 @@ export const ReviewFilter = () => {
   const [onPageListItems, setOnPageListItems] = useState(
     listItemsOnPage ? listItemsOnPage : ADMIN_LIST_ITEMS_LIMIT_DEFAULT
   );
-  const [resetFiltersButtonDisplayValue, setResetFiltersButtonDisplayValue] =
-    useState("none");
+  const [displayResetFilterButton, setDisplayResetFilterButton]=useState(false)
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -38,8 +37,10 @@ export const ReviewFilter = () => {
       }
     }
     if (showCancelFilterButton)
-      setResetFiltersButtonDisplayValue("inline-block");
-    else setResetFiltersButtonDisplayValue("none");
+      setDisplayResetFilterButton(true)
+    else 
+      setDisplayResetFilterButton(false)
+
   }, [searchParams]);
 
   const buildFilterQueryString = () => {
@@ -162,7 +163,7 @@ export const ReviewFilter = () => {
 
             <AdminFilterControls
               filterButtonHandler={filterButtonHandler}
-              resetFiltersButtonDisplayValue={resetFiltersButtonDisplayValue}
+              displayResetFilterButton={displayResetFilterButton}
               resetFiltersHandler={resetFiltersHandler}
               onPageListItemsAmount={onPageListItems}
               onChangeListItemsAmount={changeOnPageListItemsLimit}
