@@ -56,5 +56,4 @@ describe('AdminFilterControls', () => {
         await user.click(getResetFilterButton())
         expect(resetFiltersHandler).toHaveBeenCalledOnce()
     })
-
 })

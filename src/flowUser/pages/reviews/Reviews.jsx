@@ -34,7 +34,7 @@ export const ReviewsComponent = () => {
     <>
       <div className={styles["main-body"]}>
         <h2 className="h2-common">Reviews</h2>
-        <AverageRating responseData={reviewsResponseData} />
+        <AverageRating reviewsResponseData={reviewsResponseData} />
         <div className={styles["reviews-body"]}>
           <ReviewsList
             listReviewsRequestUrl={listReviewsRequestUrl}
