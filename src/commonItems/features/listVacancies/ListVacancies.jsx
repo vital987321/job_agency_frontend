@@ -11,11 +11,12 @@ export const ListVacancies = (props) => {
   //    listVacanciesRequestUrl
   //    setVacanciesResponseData
   //    vacancyListChangedState
-  //    listVacanciesRequestUrl
 
 
+  //* useStates
   const [vacanciesList, setVacanciesList] = useState([]);
 
+  //* UseEffects
   useEffect(() => {
     const fetchVacancyList = async () => {
       try {
@@ -36,6 +37,8 @@ export const ListVacancies = (props) => {
     };
     fetchVacancyList();
   }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
+  
+  //* MainBody
   return (
     <div className="vacancies-list-container">
       <div className="list-vacancies-table">

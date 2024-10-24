@@ -1,0 +1,258 @@
+{
+    "count": 19,
+    "next": "http://127.0.0.1:8000/vacancy/?limit=10&offset=10",
+    "previous": null,
+    "results": [
+        {
+            "id": 23,
+            "name": "Jr. Python Developer",
+            "sector": [
+                4
+            ],
+            "location": "Prague",
+            "salary": 50000,
+            "contract_type": "Full-time",
+            "hours_from": "09:00:00",
+            "hours_to": "16:00:00",
+            "gender": "Male/Female",
+            "description": "As a Systems and Consumer Integration (CI) Engineer on this team, you will be working closely with subject matter experts to research, define, implement, test, deploy, and maintain key software components within an existing enterprise class information system. You will have a hand in every phase of the product lifecycle, from initial prototyping all the way to production maintenance and integration.",
+            "requirements": "Experience or familiarity with the following identity, credential, and access management (ICAM) concepts/standards:\n            - LDAP or MS Active Directory\n\n            - Public Key Infrastructure (PKI)\n\n            - Transport Layer Security (TLS) / Secure Sockets Layer (SSL)\n\n            - OAuth 2.0, OpenID Connect (OIDC) or Security Assertion Markup Language (SAML)      \n\nExperience or familiarity with the following technologies, and a desire to learn the others:\n             - Linux OS administration or scripting (Bash)\n\n             - Cloud infrastructure platforms (e.g., Amazon Web Services, Microsoft Azure)\n\nExperience or familiarity with common Agile practices and tools",
+            "created_at": "2024-04-03T18:31:12.693475Z",
+            "residence_type": 5,
+            "visa_assistance": null,
+            "sector_name": [
+                {
+                    "id": 4,
+                    "name": "IT - Software development"
+                }
+            ],
+            "active": true,
+            "partner_data": {
+                "id": 5,
+                "company": "StepIT",
+                "hr_name": "Suzana Nobvakova",
+                "phone": "789456123"
+            }
+        },
+        {
+            "id": 21,
+            "name": "Remote C++ Engineer",
+            "sector": [
+                4
+            ],
+            "location": "Kladno",
+            "salary": 60000,
+            "contract_type": "Full-time",
+            "hours_from": "08:00:00",
+            "hours_to": "15:30:00",
+            "gender": "Male/Female",
+            "description": "We build a cross-platform, local-first and AI native framework that can be used to build anything. This includes  a desktop app that runs AI on your own laptop, 100% offline and privately. We support most popular AI models, and are actively working on a roadmap to allow users to customize and fine-tune these AIs to meet their specific needs.\r\n\r\nWe are a fully remote, open source company. We target the global market, but operate as a lean, bootstrapped company.",
+            "requirements": "Lead the development efforts on the Nitro Inference Server in C++, maximizing its performance and functionality. Learn more about this project  here .\r\nDrogon CPP framework experience is a big plus.\r\nApply your expertise in computer vision/ NLP and matrix manipulation using C++, creating robust and optimized solutions.\r\nDesign and write efficient bindings from other languages to C++, similar to projects like Llama C++ Python.",
+            "created_at": "2024-04-03T17:39:54.405816Z",
+            "residence_type": null,
+            "visa_assistance": null,
+            "sector_name": [
+                {
+                    "id": 4,
+                    "name": "IT - Software development"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 20,
+            "name": "JavaScript Developer",
+            "sector": [
+                4
+            ],
+            "location": "Prague",
+            "salary": 60000,
+            "contract_type": "Full-time",
+            "hours_from": "08:00:00",
+            "hours_to": "16:00:00",
+            "gender": "Male/Female",
+            "description": "By combining blockchain technologies such as Ethereum and the Inter Planetary File System (IPFS), AKASHA has the potential to change the way ideas, thoughts and experiences are shared and stored on the Internet.\r\n\r\nAs part of our remote team distributed across the globe, you will work with some of the brightest minds in the blockchain tech space on unique and challenging ideas. You will also be in direct contact with the development and user community at large, actively participating in open discussions and brainstorming sessions.",
+            "requirements": "3+ years JavaScript development experience\r\nAbility to work as a teammate in a fast-paced team\r\nExperience with software testing and continuous integration\r\nEye for detail\r\nGood English skills written and spoken",
+            "created_at": "2024-04-03T17:38:01.410001Z",
+            "residence_type": null,
+            "visa_assistance": null,
+            "sector_name": [
+                {
+                    "id": 4,
+                    "name": "IT - Software development"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 19,
+            "name": "Security Guard",
+            "sector": [
+                1
+            ],
+            "location": "Prague",
+            "salary": 40000,
+            "contract_type": "Full-time",
+            "hours_from": "07:00:00",
+            "hours_to": "16:00:00",
+            "gender": "Male",
+            "description": "Security Guards are part of a team of security personnel which monitor passenger and crew activities, investigating security matters that arise, promptly reporting and correcting security issues and contribute to maintaining a safe and secure shipboard environment in line with company values.",
+            "requirements": "Ability and willingness to deliver outstanding service to our passengers. ; Motivation to excel in all aspects of job duties and responsibilities.; Personable communicator with outstanding social skills and a warm, friendly, and caring personality. ; Willingness to embrace all company values and lead by example. ; Ability to adapt and adjust to a variety of circumstances. ; Ability to establish and maintain courteous and professional working relationships in a diverse cultural environment.; Skills, Knowledge & Expertise\r\nA minimum of 1 year experience in day-to-day x-ray screening operations (on stand-alone units or tier 1-4 in-line screening ops), walk-through metal detection screening, handheld metal detection, pat-down searches and preferable also being familiar with trace detection and CCTV operations.;",
+            "created_at": "2024-04-03T17:36:11.861069Z",
+            "residence_type": null,
+            "visa_assistance": false,
+            "sector_name": [
+                {
+                    "id": 1,
+                    "name": "Other"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 18,
+            "name": "Construction Inspector",
+            "sector": [
+                8
+            ],
+            "location": "Kladno",
+            "salary": 50000,
+            "contract_type": "Full-time",
+            "hours_from": "07:00:00",
+            "hours_to": "16:00:00",
+            "gender": "Male",
+            "description": "H&H is a full-service infrastructure engineering firm with more than 135 years of experience steeped in solving complex engineering challenges. Consulting firms, contractors and infrastructure owners count on us when innovative design and intricate engineering solutions are required. Our specialty lies in the ability to manage the entire life cycle of engineering services and support. We employ teams of superior engineers that bring a forward-thinking approach using the world’s latest project management, design, and support innovations. As a result, your projects are brought in on time, on budget, and are engineered to the highest standards in design, durability, safety, and aesthetic value.",
+            "requirements": "LA DOTD Certification (Structural, PCCP, or Embankments)\r\nTwo years of experience with roadway or bridge rehabilitation/reconstruction including: Highway: some or all the experience with the reconstruction of pavement, drainage systems, roadway lighting and traffic signals; asphalt pavement milling and paving; utility protection/relocation; pavement markings/stripings; and related work\r\nBridge: Several or all the following: concrete & steel demolition; repair of reinforced concrete and structural steel; steel erection; construction of reinforced concrete decks; retaining walls and/or substructure units (piers & abutments); reconstruction of approach roadways; inspection of Work Zone Traffic Control (WZTC) and related work\r\nDesirable having one or more of the certifications and/or training listed below or at least the willingness to obtain that relevant to the project at earliest convenience. This includes: HeadLight Fieldbook and Materials",
+            "created_at": "2024-04-03T17:33:13.997110Z",
+            "residence_type": null,
+            "visa_assistance": true,
+            "sector_name": [
+                {
+                    "id": 8,
+                    "name": "Construction & Real Estate"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 17,
+            "name": "General Construction Worker",
+            "sector": [],
+            "location": "Prague",
+            "salary": 40000,
+            "contract_type": "Full-time",
+            "hours_from": "07:00:00",
+            "hours_to": "15:00:00",
+            "gender": "Male",
+            "description": "General Construction Worker/Laborer\r\nWe are a growing company, currently seeking hard-working, dependable workers to join our team. Construction workers are critical members of our team, ensuring the customer's vision comes to life through real, solid modular structures. If you love working with your hands and contributing to a variety of projects, this challenging position is right for you!",
+            "requirements": "be able to physically stand, bend, squat, and lift up to 50 pounds\r\nbe able to work independently or as part of a team\r\nmaintain a regular, dependable attendance record\r\nbe able to work variable hours which may include some weekends and overtime",
+            "created_at": "2024-04-03T17:29:42.569941Z",
+            "residence_type": null,
+            "visa_assistance": true,
+            "sector_name": [],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 16,
+            "name": "Truck Driver C",
+            "sector": [],
+            "location": "Mlada Boleslabv",
+            "salary": 50000,
+            "contract_type": "Full-time",
+            "hours_from": "06:00:00",
+            "hours_to": "15:00:00",
+            "gender": "Male/Female",
+            "description": "AUTO AUCTION is looking for good people to help grow our business. As a one-stop independent auto auction, our team members are by far the most important part of our company. We are currently looking for a full-time Automotive Transport Class C Truck Driver.",
+            "requirements": "Must be reliable.\r\nCurrent class C license.\r\nA clean driving record is required.\r\nMust be able to provide a three-year DMV driving record printout.\r\nMust be able to work flexible hours.\r\nWork safely at all times and follows all established safety guidelines and procedures.\r\nProvide outstanding customer service during delivery and pickup operations.\r\nProvide any other tasks assigned to support and improve the overall team operations.\r\nExperience driving a Flatbed.",
+            "created_at": "2024-04-03T17:27:27.220054Z",
+            "residence_type": null,
+            "visa_assistance": false,
+            "sector_name": [],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 15,
+            "name": "Warehouse I",
+            "sector": [
+                7
+            ],
+            "location": "Prague",
+            "salary": 40000,
+            "contract_type": "Full-time",
+            "hours_from": "06:00:00",
+            "hours_to": "15:00:00",
+            "gender": "Male/Female",
+            "description": "Our client is seeking for Warehouser that know how to read and comprehend instructions, correspondence, and memos possess basic written communication skills, ability to apply concepts of basic math, Basic PC skills. The work environment is very fast paced and noisy. It is one of constant movement while performing the duties of this job.",
+            "requirements": "Forklift experience (minimum 3 years experience to include stand up forklift)\r\nERP system experience (Oracle and SAP)\r\nMust be able to operate a forklift while loading or unloading freight.\r\nAbility to read and comprehend instructions, correspondence, and memos.\r\nPossess basic written communication skills.\r\nAbility to apply concepts of basic math.\r\nBasic PC skills.",
+            "created_at": "2024-04-03T17:24:43.352655Z",
+            "residence_type": null,
+            "visa_assistance": true,
+            "sector_name": [
+                {
+                    "id": 7,
+                    "name": "Logistics & Transport"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 14,
+            "name": "Truck Driver",
+            "sector": [
+                7
+            ],
+            "location": "Kladno",
+            "salary": 40000,
+            "contract_type": "Full-time",
+            "hours_from": "06:00:00",
+            "hours_to": "15:00:00",
+            "gender": "Male/Female",
+            "description": "Our team is on-site at the Hunts Point Produce Market Monday through Friday from 9 am- 2 pm. This job may require earlier mornings starting at 7 am depending on our delivery schedule\r\nMain responsibilities for this position include loading and unloading produce donations onto our truck and delivering donations to our partner organizations around NYC\r\nThe ideal candidate will be comfortable working on a close-knit team, familiar with the streets of NYC, and comfortable driving and navigating with a 24-foot box truck in tight spaces\r\nYou will assist with recipient relationship building through facilitating smooth deliveries to our partner organizations and be an essential part of our nonprofit as we reduce food waste and food insecurity across New York City",
+            "requirements": "Available 7 am - 3 pm M-F \r\nMust be able to lift up to 50 pounds at one time\r\nTime management skills\r\nGood vision, hearing, and attention to detail\r\nStrong interpersonal communication\r\nExcellent customer service\r\nAbility to follow rules regarding food safety and preservation\r\nMust have a personal vehicle or reliable transportation (Our warehouse is in an industrial area & may not be easily accessible via public transportation)\r\nCDL certification is a plus\r\nMust have a driver's license without restrictions",
+            "created_at": "2024-04-03T17:23:00.639871Z",
+            "residence_type": null,
+            "visa_assistance": true,
+            "sector_name": [
+                {
+                    "id": 7,
+                    "name": "Logistics & Transport"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        },
+        {
+            "id": 13,
+            "name": "(Remote) Part-Time Spanish Instructor",
+            "sector": [
+                1
+            ],
+            "location": "Prague",
+            "salary": 30000,
+            "contract_type": "Part-time",
+            "hours_from": "16:00:00",
+            "hours_to": "20:00:00",
+            "gender": "Male/Female",
+            "description": "Our team is growing and we have an opening for a part-time Spanish instructor with strong experience in online teaching and communicative teaching practices. We encourage prospective applicants to take some time to review videos on our YouTube channel ( provide more context on our approach to teaching. We are particularly interested in applicants from the US, Mexico, and Canada.",
+            "requirements": "Educators with a BA in Spanish or a related field, eager to bring their advanced language teaching skills to a cutting-edge VR environment. \r\nSkilled Spanish instructors with a minimum of two years of experience, proficient in communicative and task-based teaching methodologies.\r\nTechnologically adept individuals who are comfortable conducting online sessions for both small and large groups, fostering a productive and supportive learning atmosphere, with a readiness to evolve with the company's technology and strategy.\r\nCandidates who are organized, detail-oriented, and capable of managing both teaching and administrative responsibilities in a digital learning environment.\r\nNative or advanced proficiency in Spanish (C1 level (CEFR) or Advanced-High (ACTFL) desired).",
+            "created_at": "2024-04-03T17:20:09.126041Z",
+            "residence_type": null,
+            "visa_assistance": null,
+            "sector_name": [
+                {
+                    "id": 1,
+                    "name": "Other"
+                }
+            ],
+            "active": true,
+            "partner_data": ""
+        }
+    ]
+}

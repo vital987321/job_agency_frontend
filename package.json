@@ -47,11 +47,14 @@
   },
   "proxy": "http://127.0.0.1:8000",
   "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "@mswjs/data": "^0.16.2",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@vitejs/plugin-react": "^4.3.1",
     "jsdom": "^25.0.1",
+    "msw": "^2.5.0",
     "vitest": "^2.1.1"
   }
 }
