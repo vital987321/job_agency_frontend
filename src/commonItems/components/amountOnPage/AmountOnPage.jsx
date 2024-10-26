@@ -1,9 +1,14 @@
 import styles from "./AmountOnPage.module.css";
 
-export const AmountOnPage = (props) => {
-  //* props
-  const onPageListItemsAmount = props.onPageListItemsAmount;
-  const onChangeListItemsAmount = props.onChangeListItemsAmount;
+/**
+ * @typedef {object} Props
+ * @property {string} onPageListItemsAmount
+ * @property {function} onChangeListItemsAmount
+ * @param {Props} props 
+ * @returns 
+ */
+
+export const AmountOnPage = ({onPageListItemsAmount, onChangeListItemsAmount}) => {
 
   //* Main Body
   return (
