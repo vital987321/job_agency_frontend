@@ -6,39 +6,54 @@ import { stringToDateConverter } from "../../../services/utils/stringToDateConve
 import { workingHoursRange } from "../../../services/utils/workingHoursRange";
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
 
-export const ListVacancies = (props) => {
-  //* Props
-  //    listVacanciesRequestUrl
-  //    setVacanciesResponseData
-  //    vacancyListChangedState
+/**
+ * @typedef {object} Props
+ * @property {string} listVacanciesRequestUrl
+ * @property {function} [setVacanciesResponseData]
+ * @property {boolean} [vacancyListChangedState]
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
 
+
+export const ListVacancies = ({listVacanciesRequestUrl, setVacanciesResponseData, vacancyListChangedState}) => {
 
   //* useStates
   const [vacanciesList, setVacanciesList] = useState([]);
+  const [fetchError, setFetchError]=useState(false)
+  const [loading, setLoading]=useState(true)
 
   //* UseEffects
   useEffect(() => {
     const fetchVacancyList = async () => {
       try {
         const request = await api
-          .get(props.listVacanciesRequestUrl)
+          .get(listVacanciesRequestUrl)
           .then((response) => {
             setVacanciesList(response.data.results);
             return response;
           })
           .then((response) => {
-            if (props.setVacanciesResponseData)
-              props.setVacanciesResponseData(response.data);
+            if (setVacanciesResponseData)
+              setVacanciesResponseData(response.data);
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err)
+            setFetchError(true)
+          })
+          .finally((res)=>setLoading(false))
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchVacancyList();
-  }, [props.listVacanciesRequestUrl, props.vacancyListChangedState]);
+  }, [listVacanciesRequestUrl, vacancyListChangedState]);
   
   //* MainBody
+  if (loading) return <div role="statusBlock" aria-label="loading">Loading...</div>
+  if (fetchError) return <div role="statusBlock" aria-label="error">Error.</div>
+
   return (
     <div className="vacancies-list-container">
       <div className="list-vacancies-table">
