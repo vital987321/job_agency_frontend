@@ -11,7 +11,6 @@ describe("ApplicationStatusMarker", () => {
     })
     it("returns correct results with props status=Rejected", () => {
       render(<ApplicationStatusMarker status="Rejected"/>);
-      screen.debug();
       const result = screen.getByTestId("status-element");
       expect(result).toHaveClass(/statusRejected/i);
     });

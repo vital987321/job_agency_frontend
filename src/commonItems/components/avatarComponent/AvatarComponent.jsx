@@ -2,32 +2,37 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
-export const AvatarComponent = (props) => {
-  //* Props
-  //     size
-  //     userAvatarUrl
-  //     title
-  //     iconSymbol
+/**
+ * @typedef {object} Props
+ * @property {} size
+ * @property {} [userAvatarUrl]
+ * @property {} [title]
+ * @property {} iconSymbol
+ * @param {Props} props 
+ * @returns 
+ */
+
+export const AvatarComponent = ({size, userAvatarUrl, title, iconSymbol}) => {
   
   //* States
-  const [size, setSize] = React.useState(props.size);
+  const [currentSize, setCurrentSize] = React.useState(size);
 
   //* UseEffects
   React.useEffect(() => {
-    setSize(props.size);
-  }, [props.size]);
+    setCurrentSize(size);
+  }, [size]);
 
   //* Main Body
   return (
     <Stack direction="row" spacing={2}>
       <Avatar
         alt="Avatar"
-        src={props.userAvatarUrl}
-        title={props.title? props.title: ''}
+        src={userAvatarUrl}
+        title={title? title: ''}
         sx={size ? { width: size, height: size } : {}}
       >
         <div style={size ? { fontSize: size / 2 + "px" } : {}}>
-          {props.iconSymbol ? props.iconSymbol : "?"}
+          {iconSymbol ? iconSymbol : "?"}
         </div>
       </Avatar>
     </Stack>
