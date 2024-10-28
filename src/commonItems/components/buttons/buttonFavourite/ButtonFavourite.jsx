@@ -5,10 +5,39 @@ import styles from "./ButtonFavourite.module.css";
 import { USER_REQUEST_URL } from "../../../../data/constants";
 import { useAuth } from "../../../../hooks/useAuth";
 import toast  from "react-hot-toast";
+import { useEffect, useState } from "react";
 
-export const ButtonFavourite = (props) => {
+/**
+ * @typedef {object} Props
+ * @property {object} userData from user endpoind
+ * @property {function} setUserData
+ * @property {string} vacancyId
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
+
+export const ButtonFavourite = ({
+  userData,
+  setUserData,
+  vacancyId,
+}) => {
+
+  //* States
+  const [isFavouriteVacancy, setIsFavouriteVacancy] = useState(false);
+  
   //* Hooks
   const { auth } = useAuth();
+  
+  //* useEffects
+  useEffect(() => {
+    if (auth.user_id) {
+      if (userData.favourites) {
+        if (userData.favourites.includes(vacancyId)) {
+          setIsFavouriteVacancy(true);
+        }
+      }
+    }
+  }, [userData?.favourites]);
   
   //* Functions
   const favouriteButtonHandler = () => {
@@ -19,30 +48,29 @@ export const ButtonFavourite = (props) => {
         const request = await api
           .patch(requestUrl, requestData)
           .then((response) => {
-            props.setUserData(response.data);
+            setUserData(response.data);
           })
-          .then((res) => {
-            props.setIsFavouriteVacancy(!props.isFavouriteVacancy);
-          });
+          .then((res) => setIsFavouriteVacancy(!isFavouriteVacancy));
       } catch (error) {
         console.log(error);
       }
     };
 
-    const favouritesArray = props.userData.favourites;
+    const favouritesArray = userData.favourites;
 
-    if (props.isFavouriteVacancy) {
-      const vacancyIndex = favouritesArray.indexOf(props.vacancyData.id);
+    if (isFavouriteVacancy) {
+      const vacancyIndex = favouritesArray.indexOf(vacancyId);
       favouritesArray.splice(vacancyIndex, 1);
       updateUserFavouritesRequest(favouritesArray);
       toast.error("Removed");
-    } else if (props.isFavouriteVacancy === false) {
-      favouritesArray.push(props.vacancyData.id);
+    } else if (isFavouriteVacancy === false) {
+      favouritesArray.push(vacancyId);
       updateUserFavouritesRequest(favouritesArray);
       toast.success("Added");
     }
   };
 
+  //* Main Body
   if (auth.user_id) {
     return (
       <>
@@ -50,15 +78,15 @@ export const ButtonFavourite = (props) => {
         onClick={favouriteButtonHandler}
         className={styles["vacancy-favorite-button"]}
         title={
-          props.isFavouriteVacancy
+          isFavouriteVacancy
             ? "Remove from Favourites"
             : "Add to Favourites"
         }
       >
         <img
-          src={props.isFavouriteVacancy ? iconHeartFull : iconHeartEmpty}
+          src={isFavouriteVacancy ? iconHeartFull : iconHeartEmpty}
           className={styles["heart-filter"]}
-          alt="Favorite"
+          alt="Favourite"
         />
         </button>
       </>

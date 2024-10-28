@@ -18,7 +18,6 @@ import styles from "./VacancyData.module.css";
 
 export const VacancyData = (props) => {
   const user_id = JSON.parse(localStorage.getItem("user_id"));
-  const [isFavouriteVacancy, setIsFavouriteVacancy] = useState(false);
   const { vacancy_id } = useParams();
 
   function listSectors(sector_name) {
@@ -96,15 +95,6 @@ export const VacancyData = (props) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (user_id) {
-      if (props.userData.favourites) {
-        if (props.userData.favourites.includes(props.vacancyData.id)) {
-          setIsFavouriteVacancy(true);
-        }
-      }
-    }
-  }, [props.userData.favourites]);
 
   return (
     <>
@@ -116,9 +106,7 @@ export const VacancyData = (props) => {
           <ButtonFavourite
             userData={props.userData}
             setUserData={props.setUserData}
-            vacancyData={props.vacancyData}
-            isFavouriteVacancy={isFavouriteVacancy}
-            setIsFavouriteVacancy={setIsFavouriteVacancy}
+            vacancyId={props.vacancyData.id}
           />
         </div>
 

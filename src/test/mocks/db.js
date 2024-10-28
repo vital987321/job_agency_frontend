@@ -24,5 +24,17 @@ export const db=factory({
         sector_name: ()=> [{id:faker.number.int(), name:faker.commerce.department()},],
         active: ()=>true,
         partner_data: ()=>'',
+    },
+    user: {
+        id: primaryKey(faker.number.int),
+        userName: faker.internet.userName,
+        firstName: faker.person.firstName,
+        lastName:faker.person.lastName,
+        email: faker.internet.email,
+        phone:faker.number.int,
+        cv:()=>null,
+        favourites:()=>[],
+        avater:()=>null,
+        role: ()=>'1150'
     }
 })
