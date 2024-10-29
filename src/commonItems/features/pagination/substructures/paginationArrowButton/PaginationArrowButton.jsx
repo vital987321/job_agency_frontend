@@ -1,13 +1,23 @@
-import styles from "./PaginationArowButton.module.css";
+import styles from "./PaginationArrowButton.module.css";
 import { changeUrlParamValue } from "../../../../../services/utils/changeUrlParamValue";
 
-export const PaginationArowButton = (props) => {
-  const direction = props.direction; /*'previous' or 'next'*/
-  const responseData = props.responseData;
-  const setUrlState = props.setUrlState;
-  const urlState = props.urlState;
+/**
+ * Returns pagination 'Previous' or 'Next' button. 
+ * @typedef {object} Props
+ * @property {string} direction 'previous' or 'next'
+ * @property {object} responseData 
+ * @property {string} urlState
+ * @property {function} setUrlState
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
 
-
+export const PaginationArrowButton = ({
+  direction, 
+  responseData,
+  urlState, 
+  setUrlState
+}) => {
 
   const paginationButtonHandler = (e) => {
     const paginationDirection = e.target.dataset.direction;

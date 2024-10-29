@@ -1,5 +1,5 @@
 
-import { PaginationArowButton } from "./substructures/paginationArowButton/PaginationArowButton";
+import { PaginationArrowButton } from "./substructures/paginationArrowButton/PaginationArrowButton";
 import { PaginationNumberButtons } from "./substructures/PaginationNumberButton/PaginationNumberButtons";
 
 export const PaginationComponent=(props)=>{
@@ -10,9 +10,9 @@ export const PaginationComponent=(props)=>{
     const urlState=props.urlState
     return(
         <section className={paginationClass}>
-            <PaginationArowButton direction='previous' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
+            <PaginationArrowButton direction='previous' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
             <PaginationNumberButtons responseData={responseData} listItemsLimit={listItemsLimit} urlState={urlState} setUrlState={setUrlState}/>
-            <PaginationArowButton direction='next' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
+            <PaginationArrowButton direction='next' responseData={responseData} urlState={urlState} setUrlState={setUrlState}/>
         </section>
     )
 }
