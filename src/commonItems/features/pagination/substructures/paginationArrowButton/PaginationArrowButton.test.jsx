@@ -3,6 +3,7 @@ import { PaginationArrowButton } from "./PaginationArrowButton";
 import { it, expect, describe, vi } from 'vitest'
 import userEvent from "@testing-library/user-event";
 
+
 describe('PaginationArrowButton', () => {
     const setUrlState=vi.fn()
     const validProps = {
@@ -11,8 +12,7 @@ describe('PaginationArrowButton', () => {
         next: "http://127.0.0.1:8000/vacancy/?limit=10&offset=20",
         previous: "http://127.0.0.1:8000/vacancy/?limit=10&offset=10",
       },
-      urlState:
-        "http://localhost:3000/vacancies",
+      urlState: "http://localhost:3000/vacancies",
       setUrlState,
     };
     const renderComponent=(props)=>{

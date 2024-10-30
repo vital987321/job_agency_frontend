@@ -2,12 +2,23 @@ import styles from "./PaginationNumberButtons.module.css";
 import { useSearchParams } from "react-router-dom";
 import { changeUrlParamValue } from "../../../../../services/utils/changeUrlParamValue";
 
-export const PaginationNumberButtons = (props) => {
-  //* props
-  const responseData = props.responseData;
-  const listItemsLimit = props.listItemsLimit;
-  const urlState = props.urlState;
-  const setUrlState = props.setUrlState;
+/**
+ * returns pagination buttons
+ * @typedef {object} Props
+ * @property {object} responseData
+ * @property {number | string} listItemsLimit
+ * @property {string} urlState
+ * @property {function} setUrlState
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
+
+export const PaginationNumberButtons = ({
+  responseData,
+  listItemsLimit,
+  urlState,
+  setUrlState,
+}) => {
 
   //* hooks
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,13 +35,11 @@ export const PaginationNumberButtons = (props) => {
     setUrlState(updatedUrl);
   };
 
-  
-  // Pagination condition
+  //* Main Body
   if (itemsTotalNumber <= listItemsLimit) {
     return "";
   }
 
-  // Main Body (condition met)
   let paginationArray = new Array();
   let currentOffset=new URL(urlState).searchParams.get('offset')
   currentOffset = currentOffset ? currentOffset: "0";
