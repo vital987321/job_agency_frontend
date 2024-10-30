@@ -9,6 +9,8 @@ describe('PaginationNumberButtons', () => {
     const setUrlState = vi.fn();
     const validProps = {
       responseData: {
+        next: "http://127.0.0.1:8000/vacancy/?limit=10&offset=20",
+        previous: "http://127.0.0.1:8000/vacancy/?limit=10&offset=10",
         count:'100',
       },
       listItemsLimit: "10",
