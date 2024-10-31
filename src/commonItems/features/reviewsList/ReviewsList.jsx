@@ -6,6 +6,17 @@ import {StarsLine} from "../../components/starsLine/StarsLine"
 import { LIST_REVIEWS_REQUEST_URL } from "../../../data/constants";
 import toast from "react-hot-toast";
 
+/**
+ * @typedef {object} Props
+ * @property {string} listReviewsRequestUrl
+ * @property {function} setReviewsResponseData
+ * @property {boolean} staffUser
+ * @property {object} updateDataState new empty object trigers component to rerender
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
+
+
 export const ReviewsList = (props) => {
 // props
   

@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { factory, primaryKey } from "@mswjs/data";
+import { factory, oneOf, primaryKey } from "@mswjs/data";
 import { CONTRACT_TYPE } from "../../data/constants";
 // import vacancyData from "./dbJson/vacancy.json"
 
@@ -28,13 +28,25 @@ export const db=factory({
     user: {
         id: primaryKey(faker.number.int),
         userName: faker.internet.userName,
-        firstName: faker.person.firstName,
-        lastName:faker.person.lastName,
+        first_name: faker.person.firstName,
+        last_name:faker.person.lastName,
         email: faker.internet.email,
         phone:faker.number.int,
         cv:()=>null,
         favourites:()=>[],
         avater:()=>null,
         role: ()=>'1150'
+    },
+    review: {
+        id: primaryKey(faker.number.int),
+        user: oneOf('user'),
+        first_name: faker.person.firstName,
+        last_name: faker.person.lastName,
+        rating: ()=> faker.number.int({min:1, max:5}),
+        comment: faker.commerce.productDescription,
+        created_at: new Date(Date.now()).toISOString(),
+        status: "Approved",
+        avatar: "",
+        avg_rating: '3.6'
     }
 })
