@@ -5,31 +5,32 @@ import { AvatarComponent } from "../../components/avatarComponent/AvatarComponen
 import {StarsLine} from "../../components/starsLine/StarsLine"
 import { LIST_REVIEWS_REQUEST_URL } from "../../../data/constants";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../hooks/useAuth";
 
 /**
  * @typedef {object} Props
  * @property {string} listReviewsRequestUrl
  * @property {function} setReviewsResponseData
- * @property {boolean} staffUser
  * @property {object} updateDataState new empty object trigers component to rerender
  * @param {Props} props 
  * @returns {JSX.Element}
  */
 
 
-export const ReviewsList = (props) => {
-// props
-  
-  const listReviewsRequestUrl=props.listReviewsRequestUrl
-  const setReviewsResponseData=props.setReviewsResponseData
-  const staffUser=props.staffUser // true if user is staff
-  const updateDataState=props.updateDataState
+export const ReviewsList = ({
+  listReviewsRequestUrl,
+  setReviewsResponseData,
+  updateDataState
+}) => {
 
+  //* States
   const [reviewsList, setReviewsList] = useState([]);
   const [updateData, setUpdateData]=useState({})
-  const user_id = localStorage.getItem("user_id");
 
+  //* Hooks
+  const {auth}=useAuth()
 
+  //* useEffects
   useEffect(() => {
     const fetchReviewsList = async () => {
       try {
@@ -57,7 +58,8 @@ export const ReviewsList = (props) => {
         const requestUrl = LIST_REVIEWS_REQUEST_URL + reviewId + "/";
         const response = await api
           .delete(requestUrl)
-          .then((response)=>{ setUpdateData({}) })
+          .then((response)=>{ 
+            setUpdateData({}) })
           .then((response)=>toast.error('Removed'))
           .catch((error) => {
             console.log(error);
@@ -69,6 +71,7 @@ export const ReviewsList = (props) => {
     deleteReview();
   };
 
+  //* Main Body
   return (
     <section className={styles["reviews-section"]}>
       <ul className={styles["reviews-cards-container"]}>
@@ -83,7 +86,7 @@ export const ReviewsList = (props) => {
                 />
               </div>
               {(() => {
-                if (review.user == user_id || staffUser) {
+                if (review.user == auth.user_id || ["2250", "1001"].includes(auth.role)) {
                   return (
                     <div className={styles["close-button-container"]}>
                       <button

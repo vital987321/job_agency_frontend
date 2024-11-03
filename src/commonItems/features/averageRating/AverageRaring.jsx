@@ -10,13 +10,10 @@ import { useEffect, useState } from "react";
  */
 
 export const AverageRating=({reviewsResponseData})=>{
-  console.log(reviewsResponseData)
-  // console.log(reviewsResponseData.results[0].avg_rating)
   let rating=''
   try{
       rating= reviewsResponseData.results[0].avg_rating
       rating=Math.round(rating*10)/10
-      console.log(rating)
   }catch(error){rating='loading'}
     
 

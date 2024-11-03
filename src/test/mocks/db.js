@@ -34,12 +34,13 @@ export const db=factory({
         phone:faker.number.int,
         cv:()=>null,
         favourites:()=>[],
-        avater:()=>null,
+        avatar:()=>null,
         role: ()=>'1150'
     },
     review: {
         id: primaryKey(faker.number.int),
-        user: oneOf('user'),
+        // user: oneOf('user'),
+        user: faker.number.int,
         first_name: faker.person.firstName,
         last_name: faker.person.lastName,
         rating: ()=> faker.number.int({min:1, max:5}),
