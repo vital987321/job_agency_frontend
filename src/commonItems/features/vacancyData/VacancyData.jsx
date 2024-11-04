@@ -12,14 +12,30 @@ import genderIcon from "../../../assets/svg/gender.svg";
 import factoryIcon from "../../../assets/svg/factory.svg";
 import { stringToDateConverter } from "../../../services/utils/stringToDateConverter";
 import { workingHoursRange } from "../../../services/utils/workingHoursRange";
-import { RESIDENCE_TYPES } from "../../../data/constants";
+import {
+  RESIDENCE_TYPES,
+  LIST_VACANCIES_BASE_URL,
+} from "../../../data/constants";
 import { ButtonFavourite } from "../../components/buttons/buttonFavourite/ButtonFavourite";
 import styles from "./VacancyData.module.css";
 
-export const VacancyData = (props) => {
-  const user_id = JSON.parse(localStorage.getItem("user_id"));
+/**
+ * @typedef {object} Props
+ * @property {function} setVacancyData
+ * @property {} userData
+ * @property {} setUserData
+ * @param {Props} props
+ * @returns
+ */
+
+export const VacancyData = ({ setVacancyData, userData, setUserData }) => {
+  //* Vatiables
   const { vacancy_id } = useParams();
 
+  //* States
+  const [currentVacancyData, setCurrentVacancyData] = useState({});
+
+  //* Functions
   function listSectors(sector_name) {
     if (sector_name !== undefined) {
       if (sector_name.length === 0) {
@@ -75,43 +91,45 @@ export const VacancyData = (props) => {
     }
   }
 
+  //* UseEffects
   useEffect(() => {
-    if (Object.keys(props.vacancyData).length === 0) {
-      const url = "http://127.0.0.1:8000/vacancy/" + vacancy_id;
-
-      const fetchVacancyData = async () => {
-        try {
-          const resp = await api
-            .get(url)
-            .then((response) => props.setVacancyData(response.data))
-            .catch((error) => {
-              console.log(error);
-            });
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchVacancyData();
-    }
+    const url = LIST_VACANCIES_BASE_URL + vacancy_id;
+    const fetchVacancyData = async () => {
+      try {
+        const resp = await api
+          .get(url)
+          .then((response) => {
+            setVacancyData(response.data);
+            return response;
+          })
+          .then((response) => setVacancyData(response.data))
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVacancyData();
   }, []);
 
-
+  //* Main Body
   return (
     <>
       <section className={styles["vacancy-section"]}>
         <div className={styles["vacancy-pre-header-container"]}>
           <p>
-            Published: {stringToDateConverter(props.vacancyData.created_at)}
+            Published: {stringToDateConverter(currentVacancyData.created_at)}
           </p>
           <ButtonFavourite
-            userData={props.userData}
-            setUserData={props.setUserData}
-            vacancyId={props.vacancyData.id}
+            userData={userData}
+            setUserData={setUserData}
+            vacancyId={currentVacancyData.id}
           />
         </div>
 
         {(() => {
-          if (props.vacancyData.active == false) {
+          if (currentVacancyData.active == false) {
             return (
               <div>
                 Vacancy is <b>Diactivated</b>
@@ -121,7 +139,7 @@ export const VacancyData = (props) => {
         })()}
 
         <h2 className={`${styles["vacancy-header"]} h2-common`}>
-          {props.vacancyData.name}
+          {currentVacancyData.name}
         </h2>
 
         <div className={styles["vacancy-container"]}>
@@ -136,7 +154,7 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>VACANCY ID</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {props.vacancyData.id}
+                {currentVacancyData.id}
               </p>
             </div>
           </div>
@@ -152,7 +170,7 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>SALARY</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {props.vacancyData.salary} CZK/month
+                {currentVacancyData.salary} CZK/month
               </p>
             </div>
           </div>
@@ -168,7 +186,9 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>LOCATION</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {props.vacancyData.location ? props.vacancyData.location : "-"}
+                {currentVacancyData.location
+                  ? currentVacancyData.location
+                  : "-"}
               </p>
             </div>
           </div>
@@ -184,7 +204,7 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>CONTRACT TYPE</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {props.vacancyData.contract_type}
+                {currentVacancyData.contract_type}
               </p>
             </div>
           </div>
@@ -201,8 +221,8 @@ export const VacancyData = (props) => {
               <p>WORKING HOURHS</p>
               <p className={styles["vacancy-parameter-value"]}>
                 {workingHoursRange(
-                  props.vacancyData.hours_from,
-                  props.vacancyData.hours_to
+                  currentVacancyData.hours_from,
+                  currentVacancyData.hours_to
                 )}
               </p>
             </div>
@@ -219,7 +239,7 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>GENDER</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {props.vacancyData.gender}
+                {currentVacancyData.gender}
               </p>
             </div>
           </div>
@@ -235,27 +255,27 @@ export const VacancyData = (props) => {
             <div className={styles["vacancy-item-text"]}>
               <p>SECTOR</p>
               <p className={styles["vacancy-parameter-value"]}>
-                {listSectors(props.vacancyData.sector_name)}
+                {listSectors(currentVacancyData.sector_name)}
               </p>
             </div>
           </div>
 
-          {checkResidence(props.vacancyData)}
-          {checkVisaAssistance(props.vacancyData)}
+          {checkResidence(currentVacancyData)}
+          {checkVisaAssistance(currentVacancyData)}
         </div>
 
         <div className={styles["vacancy-container"]}>
           <div>
             <h2>Description</h2>
             <div className={styles["discription-text-container"]}>
-              <p>{props.vacancyData.description}</p>
+              <p>{currentVacancyData.description}</p>
             </div>
           </div>
 
           <div>
             <h2>Requirements</h2>
             <div className={styles["discription-text-container"]}>
-              <p>{props.vacancyData.requirements}</p>
+              <p>{currentVacancyData.requirements}</p>
             </div>
           </div>
         </div>

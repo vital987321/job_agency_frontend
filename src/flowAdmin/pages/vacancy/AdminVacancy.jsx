@@ -111,7 +111,6 @@ export const AdminVacancy = () => {
         </span>
       </div>
       <VacancyData
-        vacancyData={vacancyData}
         setVacancyData={setVacancyData}
         userData={userData}
         setUserData={setUserData}

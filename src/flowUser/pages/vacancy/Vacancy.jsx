@@ -31,7 +31,6 @@ export const Vacancy = (props) => {
   return (
     <>
       <VacancyData
-        vacancyData={vacancyData}
         setVacancyData={setVacancyData}
         userData={userData}
         setUserData={setUserData}
