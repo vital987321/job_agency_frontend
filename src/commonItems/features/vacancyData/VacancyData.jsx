@@ -22,8 +22,8 @@ import styles from "./VacancyData.module.css";
 /**
  * @typedef {object} Props
  * @property {function} setVacancyData
- * @property {} userData
- * @property {} setUserData
+ * @property {object} userData
+ * @property {function} setUserData
  * @param {Props} props
  * @returns
  */
@@ -99,7 +99,7 @@ export const VacancyData = ({ setVacancyData, userData, setUserData }) => {
         const resp = await api
           .get(url)
           .then((response) => {
-            setVacancyData(response.data);
+            setCurrentVacancyData(response.data);
             return response;
           })
           .then((response) => setVacancyData(response.data))
@@ -153,7 +153,10 @@ export const VacancyData = ({ setVacancyData, userData, setUserData }) => {
             </div>
             <div className={styles["vacancy-item-text"]}>
               <p>VACANCY ID</p>
-              <p className={styles["vacancy-parameter-value"]}>
+              <p
+                className={styles["vacancy-parameter-value"]}
+                data-testid='vacancyId'
+              >
                 {currentVacancyData.id}
               </p>
             </div>
@@ -185,7 +188,10 @@ export const VacancyData = ({ setVacancyData, userData, setUserData }) => {
             </div>
             <div className={styles["vacancy-item-text"]}>
               <p>LOCATION</p>
-              <p className={styles["vacancy-parameter-value"]}>
+              <p
+                className={styles["vacancy-parameter-value"]}
+                data-testid='location'
+              >
                 {currentVacancyData.location
                   ? currentVacancyData.location
                   : "-"}

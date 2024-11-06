@@ -69,7 +69,7 @@ describe('ButtonFavourite', () => {
         const button=screen.getByRole('button')
         expect(button).toHaveAttribute('title', "Remove from Favourites")
     })
-    it.only('should have correct behaviour on click', async  () => {
+    it('should have correct behaviour on click', async  () => {
         const props={
             ...validProps,
             userData: userDbData,

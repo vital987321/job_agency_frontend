@@ -22,7 +22,7 @@ describe("ListVacancies", () => {
     })
 
   const validProps = {
-    listVacanciesRequestUrl: "./vacancy",
+    listVacanciesRequestUrl: "./vacancy/",
 
   };
 
