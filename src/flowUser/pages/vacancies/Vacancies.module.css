@@ -1,0 +1,28 @@
+@import '../../../data/constants.css';
+
+.vacancies-container{
+    margin-top: 50px;
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:1024px) {
+    .vacancies-container{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+.vacancies-pagination-section{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+.vacancy-filter-button-general img{
+    margin-left:1rem;
+}
+.vacancy-in-button-icon{
+    margin-left:1rem;
+}
+
+

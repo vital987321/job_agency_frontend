@@ -1,0 +1,25 @@
+.homeSection{
+position:relative;
+height: 100vh;
+overflow: hidden;
+
+}
+
+.slogan{
+    position:absolute;
+    left:5vw;
+    top: 40vh
+}
+
+
+.backgroundContainer{
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+    z-index: -1;
+}
+
+.backgroundPic{
+    width:100%;
+    min-width: 1188px;
+}

@@ -1,0 +1,15 @@
+
+.statusApproved{
+    color: #33D625;
+    margin-left: 15px;
+}
+
+.statusRejected{
+    color: #d62b25;
+    margin-left: 15px;
+}
+
+.statusPending {
+    color: lightgray;
+    margin-left: 15px;
+}

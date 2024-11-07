@@ -1,0 +1,79 @@
+@import '../../../data/constants.css';
+
+
+.contacts-component-body{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:1024px) {
+    .contacts-component-body{
+        margin-left: 5px;
+        margin-right: 5px;
+    }    
+}
+
+iframe{
+    width: 600px;
+    height:450px;
+    border:0
+}
+@media screen and (max-width:1024px) {
+    iframe{
+       width:500px
+    } 
+}
+@media screen and (max-width:768px) {
+     iframe{
+        width:100%
+     } 
+}
+
+.contacts-components-header{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.contacts-components-subheader{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.contacts-and-map-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+@media screen and (max-width:768px) {
+    .contacts-and-map-container{
+        grid-template-columns: 1fr;
+
+    }   
+}
+
+.contacts-container{
+
+}
+
+.contacts-small-icon{
+    height: 1rem;
+}
+
+.contacts-single-item-container{
+    margin-top: 20px;
+    display: flex;
+}
+
+.contacts-single-item-text{
+    margin-left: 10px;
+}
+
+.contacts-components-subfooter{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.contacts-register-text{
+    margin-top: 40px;
+}

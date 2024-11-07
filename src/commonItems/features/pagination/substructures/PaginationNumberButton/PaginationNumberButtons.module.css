@@ -1,0 +1,29 @@
+@import '../../../../../data/constants.css';
+
+.paginationButton{
+    /* text-decoration: none; */
+    border: solid 1px grey;
+    margin-left: 10px;
+    padding: 3px 4px 2px;
+    border-radius: 3px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+@media screen and (max-width:768px) {
+    .paginationButton{
+        margin-left: 20px;
+        /* font-size: larger; */
+        padding: 6px;
+    }
+}
+
+.paginationButton:hover{
+    border: solid 1px black;
+    box-shadow: 0 0 3px grey, 0 0 5px lightgray;
+}
+
+
+.paginationButtonCurrent{
+    background-color: var(--button-general-background-color3);
+}

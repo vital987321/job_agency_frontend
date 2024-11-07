@@ -1,0 +1,92 @@
+@import '../../../../../data/constants.css';
+
+
+.user-application-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-bottom: 100px;
+}
+@media screen and (max-width:1024px) {
+    .user-application-section{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.user-application-header-line-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-application-header{
+}
+
+.user-application-id-container{
+    margin-top: 50px;
+}
+
+.user-application-data-container{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 30px 40px;
+}
+@media screen and (max-width:768px){
+    .user-application-data-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+.user-application-data-item-block{
+    margin-left:30px;
+}
+
+.user-application-data-item {
+    display: flex;
+    align-items:start;
+    /* border: 1px solid green; */
+}
+
+.user-application-data-item img{
+    height: 30px;
+}
+
+.user-application-data-item-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 5px; */
+    margin-left:15px;
+}
+
+.user-application-message-container{
+    margin-top:20px
+}
+
+
+
+.user-application-vacancy-id-container{
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* border: solid 1px; */
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: left;
+    align-items: start;
+}
+
+.user-application-vacancy-details-link{
+ margin-top: 0;
+ margin-left: 20px;
+}
+
+.user-application-message-block{
+    margin-top:30px;
+}
+
+.user-application-status-buttons-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,24 @@
+@import '../../../../../data/constants.css';
+
+
+.vacancies-favourite-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top: 100px;
+}
+@media screen and (max-width:1024px) {
+    .vacancies-favourite-section{
+        margin-left: 5px;
+        margin-right: 5px;
+}
+}
+
+.vacancies-favourite-section-header {
+    text-align: center;
+}
+
+.vacancies-favourite-pagination-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: right;
+}

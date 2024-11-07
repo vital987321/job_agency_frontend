@@ -1,0 +1,17 @@
+
+.sidebar{
+    background-color: var(--design-color2);
+    height: 100vh;
+    width: 250px;
+    box-sizing: border-box;
+    padding:20px 10px;
+
+    position: fixed;
+    overflow: auto;
+}
+
+.mainContainer{
+    margin-left: 250px;
+    /* position: relative; */
+    /* width: calc(100% - 250px); */
+}

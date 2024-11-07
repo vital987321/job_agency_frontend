@@ -1,13 +1,19 @@
+
 import './App.css';
-import { BodyComponent } from './Components/BodyComponent';
+import { RouterComponent } from './router/RouterComponent';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthProvider';
 
-
-function App() {
-  return (
-    <>
-      <BodyComponent />
-    </>
-  );
+const App=()=>{
+  return(
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          {RouterComponent}
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  )
 }
-
 export default App;
+

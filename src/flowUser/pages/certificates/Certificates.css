@@ -1,0 +1,47 @@
+@import '../../../data/constants.css';
+
+
+.certificates-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+
+.certificate-section-header{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.certificates-list{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 40px;
+}
+@media screen and (max-width:768px) {
+    .certificates-list{
+        grid-template-columns: 1fr;
+    }  
+}
+.certificate-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.certificate-img{
+    border-radius: 10px;
+    width: 100%;
+}
+.certificate-img:hover{
+
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
+  transform: translateY(-0.25em);
+}
+
+
+
+.certificate-description{
+    text-align: center;
+}

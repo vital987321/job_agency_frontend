@@ -1,0 +1,6 @@
+@import "../../data/constants.css";
+
+.main{
+    max-width: var(--global-max-width);
+    margin: 0 auto;
+}

@@ -1,0 +1,69 @@
+.list-applications-container{
+    margin-top: 100px;
+  margin-left: var(--global_margin_left_right);
+  margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:1024px) {
+    .list-applications-container{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+.profile-sent-applications-header{
+    text-align: center;
+  }
+
+.list-applications-table{
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+.applications-row{
+    border-bottom: 1px solid grey;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+@media screen and (max-width:1024px) {
+    .applications-row{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media screen and (max-width:768px) {
+    .applications-row{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .applications-row div{
+        text-align:center;
+    }
+    .vacancy-name{
+        grid-column-start:1;
+        grid-column-end:3;
+    }
+}
+
+.applications-row div{
+    padding: 10px 0;
+}
+
+.vacancy-name{
+    font-weight: bold;
+  }
+
+.application-status{
+    display: inline-block;
+    width: 4rem;
+}
+
+.applications-list-pagination-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+@media screen and (max-width:1024px) {
+    .desk-top-only{
+        display:none
+    }
+}

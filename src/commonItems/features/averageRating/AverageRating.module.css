@@ -1,0 +1,13 @@
+
+.mainBody{
+    display: flex;
+}
+
+.mainBody p{
+    margin-left:10px;
+}
+
+.ratingValue{
+    font-size: large;
+    font-weight: bold;
+}

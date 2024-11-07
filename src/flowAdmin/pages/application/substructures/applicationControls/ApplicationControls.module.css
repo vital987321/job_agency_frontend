@@ -1,0 +1,10 @@
+.admin-application-status-buttons-container {
+    margin-top: 40px;
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+
+.admin-application-status-button {
+    margin-left: 2rem;
+}

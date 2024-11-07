@@ -1,0 +1,29 @@
+@import '../../../data/constants.css';
+
+.main-body{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top: 50px;    
+}
+@media screen and (max-width:1024px){
+    .main-body{
+        margin-left: 10px;
+        margin-right:10px;
+    }
+}
+.reviews-body{
+
+}
+.pagination-section{
+    display: flex;
+    justify-content: end;
+    margin-top: 40px;
+
+}
+
+.new-review-button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+

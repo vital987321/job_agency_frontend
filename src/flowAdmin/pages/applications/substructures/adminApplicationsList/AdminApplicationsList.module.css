@@ -1,0 +1,41 @@
+.admin-applications-list-pagination-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+.admin-list-applications-table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-list-applications-table th{
+    text-align: left;
+    background: #FDFAEB;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding: 20px 5px;
+}
+
+.admin-applications-table-tr {
+    border-bottom: 1px solid grey;
+
+}
+
+.admin-applications-table-tr td {
+    padding: 10px 5px;
+}
+
+.admin-applications-table-tr td:first-child {
+    font-weight: bold;
+}
+
+.admin-application-status{
+    display: inline-block;
+    width: 4rem;
+}
+
+.newapplication{
+    font-weight: bold;
+
+}

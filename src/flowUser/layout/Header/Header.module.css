@@ -1,0 +1,52 @@
+@import '../../../data/constants.css';
+
+.header-container{
+  max-width: var(--global-max-width);
+  margin: 0 auto;
+}
+
+header{
+  background-color: var(--design_color1);
+  box-shadow: 0 3px 6px #888888;
+}
+
+
+.header{
+  margin-left: var(--global_margin_left_right);
+  margin-right: var(--global_margin_left_right);
+  display: grid;
+  grid-template-columns: 1fr 7fr 2fr;
+  grid-column-gap:10px;
+  height: 100px;
+  align-items: center; 
+}
+
+@media screen and (max-width:1024px) {
+  .header{
+    margin-left:5px;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .header{
+    margin-left:5px;
+    margin-right: 5px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction:column-reverse;
+    height: auto;
+  }
+}
+.header-logo{
+  text-align: left;
+}
+@media screen and (max-width:768px) {
+  .header-logo{
+    display: none;
+  }
+}
+
+.logo-img:hover{
+  filter: invert(66%) sepia(69%) saturate(413%) hue-rotate(4deg) brightness(108%) contrast(80%);
+}

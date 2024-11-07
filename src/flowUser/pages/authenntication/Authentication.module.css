@@ -1,0 +1,127 @@
+@import '../../../data/constants.css';
+
+.authentication-modal-window{
+    display: flex;
+    position: fixed;
+    width:100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-Color: rgba(175, 175, 175, 1);
+    justify-content: center;
+    align-items: center; 
+}
+@media screen and (max-width:768px) {
+    .authentication-modal-window{
+    justify-content: start;
+    align-items: start; 
+}
+}
+
+
+.authentication-modal-window-container{
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 450px;
+}
+@media screen and (max-width:768px) {
+    .authentication-modal-window-container{
+    width:100%;
+    height: 100%;
+    border-radius: 0;
+    overflow: auto;
+}
+}
+
+.login-img{
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+}
+@media screen and (max-width:768px) {
+    .login-img{
+        display:none
+    }
+}
+
+.authentication-input-main-container{
+    padding: 20px 20px;
+}
+.close-button-container{
+    text-align: right;
+}
+.close-button{
+    height: 20px;
+}
+@media screen and (max-width:768px) {
+    .close-button{
+        height: 30px;
+    }
+}
+
+.authentication-action-buttons-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.authentication-form{
+    margin: 20px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.authentication-action-buttons{
+    background-color: transparent;
+    border:none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-size: larger;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+.authentication-action-buttons:hover{
+    border: 1px solid #8a8a8a;
+    box-sizing: border-box;
+}
+
+.authentication-action-buttons:nth-child(2){
+    margin-left: 20px;
+}
+
+.authentication-action-button-login{
+    background: #F0D976;
+}
+
+.authentication-text-input{
+    margin-top: 15px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.authentication-submit-button-container{
+    margin-top: 30px;
+    
+}
+
+.password-repeat-space-holder{
+    border: 1px solid transparent;
+    
+}
+
+.authentication-form-error-message{
+    height: 18px;
+    font-size:small;
+    font-weight: bold;
+    color: rgb(160, 0, 8);
+}

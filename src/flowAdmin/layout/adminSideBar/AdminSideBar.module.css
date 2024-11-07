@@ -1,0 +1,75 @@
+@import '../../../data/constants.css';
+
+
+
+.navigation-container{
+    /* margin-top:40px; */
+    display:flex;
+    flex-direction: column;
+}
+
+.comany-container{
+    display:flex;
+    align-items: center;
+}
+
+.home-page-link:hover{
+    /* border: solid 1px var(--button-general-background-color2); */
+}
+
+.main-links{
+    margin-top: 40px;
+}
+
+.home-page-link{
+    text-decoration: none;
+    border: solid 1px transparent;
+    border-radius: 10px;
+}
+
+
+.company-name{
+    color: var(--button-general-background-color1);
+    font-size: larger;
+    margin-left: 5px;;
+}
+
+.admin-nav-link{
+    border:solid 1px transparent;
+    border-radius: 10px;
+    margin-top:10px;
+    padding: 5px 10px;
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+
+.admin-nav-link:hover{
+    border:solid 1px var(--button-general-background-color2);
+}
+
+.admin-nav-link-active{
+    background-color: white;
+    color: black;  
+}
+
+.admin-nav-link-active svg{
+    fill: black;
+
+}
+
+.admin-nav-link-non-active{
+    background-color: none;
+    color: white;
+}
+
+.nav-link-text{
+    margin-left: 10px;
+}
+
+.logOut-button-container{
+    text-align: center;
+    margin-top: 50px;
+}

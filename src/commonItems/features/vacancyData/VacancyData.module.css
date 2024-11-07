@@ -1,0 +1,65 @@
+@import '../../../data//constants.css';
+
+.vacancy-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+@media screen and (max-width:768px) {
+    .vacancy-section{
+        margin-left: 20px;
+        margin-right:20px;
+    }
+}
+
+.vacancy-pre-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.vacancy-header{
+    margin-top: 10px;
+    text-align: left;
+}
+@media screen and (max-width:768px) {
+    .vacancy-header{
+        text-align: center;
+    }
+}
+
+.vacancy-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 20px 40px;
+}
+@media screen and (max-width:768px) {
+    .vacancy-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+.vacancy-item {
+    display: flex;
+    align-items: center;
+}
+
+.vacancy-item-icon{
+    height: 30px;
+    padding: 5px
+}
+
+
+.vacancy-item-text {
+    margin-left: 1rem;
+}
+
+.vacancy-parameter-value{
+    font-size: large;
+    font-weight: bold;
+}
+
+.discription-text-container{
+    margin-top:20px
+}

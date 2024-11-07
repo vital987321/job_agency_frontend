@@ -1,0 +1,23 @@
+.vacancies-list-section{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+.header{
+    text-align: center;
+    margin-top: 80px;
+}
+@media screen and (max-width:1024px) {
+    .vacancies-list-section{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+.vacancies-link-container{
+    margin-top: 30px;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.vacancies-link-icon{
+    padding-left: 20px;
+}

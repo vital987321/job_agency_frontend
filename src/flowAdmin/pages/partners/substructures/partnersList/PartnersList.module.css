@@ -1,0 +1,27 @@
+.list-table{
+  margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+.list-table th{
+    text-align: left;
+    background: #FDFAEB;
+    padding: 20px 17px;
+}
+
+.tableRow{
+  }
+
+.tableRow td{
+    padding: 12px 17px;
+    border-bottom: 1px solid grey;
+  }
+
+  .tableRow td:first-child{
+    font-weight: bold;
+  }
+
+  .deletebutton{
+    margin-left: 10px;
+  }

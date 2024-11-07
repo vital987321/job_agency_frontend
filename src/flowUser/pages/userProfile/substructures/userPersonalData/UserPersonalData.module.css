@@ -1,0 +1,185 @@
+@import '../../../../../data/constants.css';
+
+.profile-user-data-section{
+  margin-left: var(--global_margin_left_right);
+  margin-right: var(--global_margin_left_right);
+  margin-top: 40px;
+}
+@media screen and (max-width:1024px) {
+.profile-user-data-section{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+}
+
+.profile-user-data-form{
+    display: flex;
+    justify-content: space-around;
+}
+@media screen and (max-width:768px) {
+  .profile-user-data-form{
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+}
+
+.profile-user-data-form-cotnainer1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+}
+
+.profile-user-avatar-controls-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-user-data-form-cotnainer2{
+  
+}
+
+.profile-user-data-input-validation-container{
+  margin-top: 15px;
+  /* border: solid 1px red; */
+}
+
+.profile-user-data-input-container{
+    position: relative;
+    /* border: solid 1px red; */
+    width: 400px;
+    
+}
+
+.profile-user-data-form-validation-item{
+  height: 18px;
+  font-size: small;
+  font-weight: bold;
+  color: rgb(160, 0, 8);
+  /* border:solid 1px green; */
+  margin-top: -2px;
+  /* margin-bottom: -18px; */
+}
+
+.profile-user-data-form-text-input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0 3rem 0 15px;
+    box-sizing: border-box;
+    font-size: medium;
+}
+
+.profile-user-data-edit-icon{
+    position: absolute;
+    top: 25%;
+    right: 10px;
+    box-sizing: border-box;
+    height: 1 rem;
+    width: 1 rem;
+}
+
+.profile-form-submit-button{
+    margin-top: 20px;
+    width: 150px;
+}
+
+
+.user-profile-cv-input-upload,
+.user-profile-cv-input-replace,
+.user-profile-avatar-input-upload,
+.user-profile-avatar-input-replace
+{
+    padding-top: 4px;
+    /* border: 1px solid red; */
+    color: rgba(0, 0, 0, 0);
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.user-profile-cv-input-upload::-webkit-file-upload-button,
+.user-profile-cv-input-replace::-webkit-file-upload-button,
+.user-profile-avatar-input-upload::-webkit-file-upload-button,
+.user-profile-avatar-input-replace::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.user-profile-cv-input-upload::before,
+.user-profile-cv-input-replace::before,
+.user-profile-avatar-input-upload::before,
+.user-profile-avatar-input-replace::before{
+    display: inline-block;
+    background: var(--button-general-background-color3);
+  border-radius: 10px;
+  padding: 7px 20px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  color: black;
+}
+
+.user-profile-cv-input-upload:hover::before,
+.user-profile-cv-input-replace:hover::before,
+.user-profile-avatar-input-upload:hover::before,
+.user-profile-avatar-input-replace:hover::before {
+    /* text-decoration: underline; */
+    /* border-color: black; */
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 0, 0);
+    transform: translateY(-0.25em);
+
+  }
+  .user-profile-cv-input-upload:active::before,
+  .user-profile-cv-input-replace:active::before,
+    .user-profile-avatar-input-upload:active::before,
+    .user-profile-avatar-input-replace:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+  .user-profile-cv-input-upload::before{
+    content: 'Upload CV';
+  }
+  .user-profile-cv-input-replace::before{
+    content: 'Replace CV';
+  }
+
+  .user-profile-avatar-input-upload::before {
+      content: 'Upload Photo';
+    }
+  
+    .user-profile-avatar-input-replace::before {
+      content: 'Change Photo';
+    }
+
+  .profile-cv-input-container{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0 15px 0 15px;
+    box-sizing: border-box;
+    font-size: medium;
+    
+  }
+
+  .profile-my-cv-link-container{
+    margin-top: 10px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile-delete-cv-button,
+  .profile-delete-avatar-button{
+    background-color: transparent;
+    border: none;
+    font-size: larger;
+  }
+  .profile-delete-cv-button:hover,
+  .profile-delete-avatar-button:hover{
+    color: rgb(204, 0, 0);
+    font-weight: bold;
+  }

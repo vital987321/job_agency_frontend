@@ -1,0 +1,32 @@
+@import '../../data/constants.css';
+
+.admin-list-items-filter-section{
+    background-color: var(--design-text-color2);
+    margin-left: calc(-1*var(--global_margin_left_right));
+    margin-right: calc(-1*var(--global_margin_left_right));
+    padding: 10px 0;
+}
+.admin-list-items-filter-main-container{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+}
+
+.admin-list-items-filter-form-inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px 25px;
+}
+
+.admin-list-items-filter-input-container{
+    display: grid;
+    grid-template-columns: 33% 67%;
+}
+
+.admin-list-items-filter-input{
+    height: 1.5rem;
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+

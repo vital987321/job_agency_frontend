@@ -1,0 +1,33 @@
+.admin-vacancies-list-container{
+    margin-top: 20px;
+}
+
+.admin-list-vacancies-table{
+    margin-top: 2px;
+    width: 100%;
+    border-collapse: collapse; 
+  }
+
+  .admin-list-vacancies-table th{
+    text-align: left;
+    background: #FDFAEB;
+    padding: 20px 17px;
+}
+  
+  .admin-vacancies-list-tr{
+    border-bottom: 1px solid grey;
+  }
+  
+  .admin-vacancies-list-tr td{
+    padding: 12px 17px;
+  }
+
+  .admin-vacancies-list-tr td:first-child{
+    font-weight: bold;
+  }
+
+  .details-link-button{
+    padding: 10px 15px;
+    border-radius: 8px;
+
+  }

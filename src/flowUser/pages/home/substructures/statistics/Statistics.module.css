@@ -1,0 +1,36 @@
+.statistics-container{
+    padding-left: var(--global_margin_left_right);
+    padding-right: var(--global_margin_left_right);
+    background: var(--design-color2);
+    display: flex;
+    justify-content: space-evenly;
+    height: 150px;   
+}
+
+@media screen and  ( max-width: 768px) {
+    .statistics-container{
+        display:none;
+    }
+}
+
+
+.statistics-subcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    
+}
+
+.statistics-impressive-text{
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+}
+
+.statistics-plain-text{
+    margin-top:20px;
+    text-align: center;
+    color: white;
+}

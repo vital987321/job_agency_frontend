@@ -1,0 +1,32 @@
+@import '../../../data/constants.css';
+
+.admin-vacancy-container{
+    /* position: relative; */
+    padding-top:30px;
+    padding-bottom: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.admin-vacancy-company-container{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    margin-top:20px;
+}
+.admin-vacancy-company-name{
+    font-weight: bold;
+    font-size: large;
+}
+.admin-vacancy-buttons-container{
+    margin-left: var(--global_margin_left_right);
+    margin-right: var(--global_margin_left_right);
+    display: flex;
+    /* justify-content:space-between; */
+    justify-content: left;
+
+    
+}
+
+.admin-vacancy-buttons-container button:not(:first-child){
+    margin-left: 50px;
+}

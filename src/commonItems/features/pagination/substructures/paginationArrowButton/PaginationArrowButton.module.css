@@ -1,0 +1,10 @@
+.pagination-button{
+    border: none;
+    background-color: transparent;
+    width: 100px;
+}
+
+.pagination-button:hover{
+    text-decoration: underline;
+
+}
