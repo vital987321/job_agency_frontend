@@ -2,13 +2,14 @@
 
 .admin-vacancy-form-modal-window-enviroment{
     background-color: var(--modal-window-background_color);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     box-sizing: border-box;
     padding-bottom: 30px;
+    overflow: scroll;
 }
 
 .admin-vacancy-form{

@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
-import { CONTRACT_TYPE } from "../../../data/constants";
-import { GENDER_LIST } from "../../../data/constants";
-import { SECTOR_REQUEST_URL } from "../../../data/constants";
-import { RESIDENCE_TYPES } from "../../../data/constants";
-import {
-  LIST_VACANCIES_BASE_URL,
-  PARTNERS_REQUEST_URL,
+import { CONTRACT_TYPE,
+  GENDER_LIST,
+  RESIDENCE_TYPES,
+  LIST_VACANCIES_BASE_URL
 } from "../../../data/constants";
 import closeIcon from "../../../assets/svg/X.svg";
 import api from "../../../services/api/api";
 import "./AdminVacancyForm.css";
 import { ButtonType1 } from "../../components/buttons/buttonType1/ButtonType1";
 import toast from "react-hot-toast";
+import { fetchSectorsList } from "./assets/fetchSectorsList";
+import { fetchPartnersList } from "./assets/fetchPartnersList";
+import { validateVacancyForm } from "./assets/formValidators/validateVacancyForm";
+import { workingHoursToRequestFormat } from "./assets/workingHoursToRequestFormat";
+import { getVacancySectorsList } from "./assets/getVacancySectorsList";
 
 export const AdminVacancyForm = (props) => {
   //* props
@@ -46,8 +48,17 @@ export const AdminVacancyForm = (props) => {
 
   //* useEffects
   useEffect(() => {
-    fetchAllSectors();
-    fetchAllPartners();
+    const getSectors=async ()=>{
+      await fetchSectorsList()
+      .then((res)=>setSectorFullList(res))
+    }
+    getSectors()
+
+    const getPartners=async ()=>{
+      await fetchPartnersList()
+        .then((res)=>setPartnersList(res))
+    }
+    getPartners()
   }, []);
 
   useEffect(() => {
@@ -55,7 +66,7 @@ export const AdminVacancyForm = (props) => {
       // editing existing vacancy
       try {
         setVacancyCurrentValues({
-          sectors: sectorDbItems(),
+          sectors: getVacancySectorsList(props.vacancyData, sectorFullList),
           residence_type: props.vacancyData.residence_type,
           gender: props.vacancyData.gender,
           contract_type: props.vacancyData.contract_type,
@@ -69,48 +80,6 @@ export const AdminVacancyForm = (props) => {
   }, [sectorFullList]);
 
   //* Functions
-  const fetchAllSectors = async () => {
-    try {
-      const request = await api
-        .get(SECTOR_REQUEST_URL)
-        .then((response) => {
-          setSectorFullList(
-            response.data.results.map((item) => {
-              return {
-                value: item.id,
-                label: item.name,
-              };
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchAllPartners = async () => {
-    try {
-      const request = await api
-        .get(PARTNERS_REQUEST_URL)
-        .then((response) => setPartnersList(response.data.results))
-        .catch((error) => console.log(error));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const sectorDbItems = () => {
-    return props.vacancyData.sector.map((sectorID) => {
-      for (const item of sectorFullList) {
-        if (item.value == sectorID) {
-          return item.value;
-        }
-      }
-    });
-  };
 
   const changeSectorsHandler = (e) => {
     const changedSectorList = [];
@@ -128,90 +97,6 @@ export const AdminVacancyForm = (props) => {
       ...vacancyCurrentValues,
       [e.target.dataset.selectkey]: e.target.value,
     });
-  };
-
-  const formValidation = (data) => {
-    let validation = true;
-    const newValidationErrors = {};
-    if (data.name === "") {
-      newValidationErrors.name = "Vacancy name cannot be empty";
-      validation = false;
-    }
-    if (data.salary && isNaN(data.salary)) {
-      newValidationErrors.salary = "Salary must be a number";
-      validation = false;
-    }
-    if (data.salary && !isNaN(data.salary) && data.salary < 0) {
-      newValidationErrors.salary = "Sallary cannot be negative";
-      validation = false;
-    }
-
-    if (data.location && !data.location.match(/.*[a-zA-Z].*/)) {
-      newValidationErrors.location = "Not valid location";
-      validation = false;
-    }
-
-    const hoursFromValidation = validateWorkingHours(data.hours_from);
-
-    if (!hoursFromValidation.validation) {
-      newValidationErrors.hours_from = hoursFromValidation.errorMessage;
-      validation = false;
-    }
-
-    const hoursToValidation = validateWorkingHours(data.hours_to);
-    if (!hoursToValidation.validation) {
-      newValidationErrors.hours_to = hoursToValidation.errorMessage;
-      validation = false;
-    }
-
-    setValidationErrors(newValidationErrors);
-    return validation;
-  };
-
-  const validateWorkingHours = (workingHoursString) => {
-    if (!workingHoursString) {
-      return {
-        validation: true,
-        errorMessage: "",
-      };
-    }
-    const hours = workingHoursString.split(":")[0];
-    const minutes = workingHoursString.split(":")[1];
-
-    if (isNaN(hours) || isNaN(minutes)) {
-      return {
-        validation: false,
-        errorMessage: "Values must be numeric",
-      };
-    }
-    if (hours % 1 > 0 || minutes % 1 > 0) {
-      return {
-        validation: false,
-        errorMessage: "Values must integers",
-      };
-    }
-    if (hours < 0 || hours > 23) {
-      return {
-        validation: false,
-        errorMessage: "Hours range: 0-23",
-      };
-    }
-    if (minutes < 0 || minutes > 59) {
-      return {
-        validation: false,
-        errorMessage: "Minutes range: 0-59",
-      };
-    }
-
-    return {
-      validation: true,
-      errorMessage: "",
-    };
-  };
-
-  const workingHoursToRequestFormat = (hours, minutes) => {
-    if (!hours) return null;
-    return `${hours}:${minutes ? minutes : "00"}`;
   };
 
   const submitFormHandler = (e) => {
@@ -266,7 +151,9 @@ export const AdminVacancyForm = (props) => {
       }
     };
 
-    if (formValidation(requestData)) {
+    const formValidation=validateVacancyForm(requestData)
+    setValidationErrors(formValidation.validationErrors)
+    if (formValidation.validation){
       if (props.newVacancy) sendPostRequest();
       else sendPatchRequest();
     }
