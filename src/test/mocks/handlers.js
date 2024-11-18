@@ -5,6 +5,8 @@ import {
   USER_REQUEST_URL,
   LIST_REVIEWS_REQUEST_URL,
   LIST_VACANCIES_BASE_URL,
+  PARTNERS_REQUEST_URL,
+  SECTOR_REQUEST_URL,
 } from "../../data/constants";
 
 export const handlers = [
@@ -55,4 +57,22 @@ export const handlers = [
     });
     return HttpResponse.json(data);
   }),
+
+  http.get(PARTNERS_REQUEST_URL,()=>{
+    const partners=db.partner.getAll()
+    const data={
+      count: partners.length,
+      results: partners
+    }
+    return (HttpResponse.json(data))
+  }),
+
+  http.get(SECTOR_REQUEST_URL, ()=>{
+    const sectors=db.sector.getAll()
+    const data={
+      count: sectors.length,
+      results: sectors
+    }
+    return HttpResponse.json(data)
+  })
 ];

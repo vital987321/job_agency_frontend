@@ -49,5 +49,14 @@ export const db=factory({
         status: "Approved",
         avatar: "",
         avg_rating: '3.6'
+    },
+    partner:{
+        id: primaryKey(faker.number.int),
+        hr_name: faker.person.lastName,
+        phone: faker.number.int
+    },
+    sector:{
+        id:  primaryKey(faker.number.int),
+        name: faker.commerce.productName
     }
 })
