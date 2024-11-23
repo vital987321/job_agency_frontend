@@ -6,6 +6,13 @@ import { CONTRACT_TYPE } from "../../data/constants";
 
 export const db=factory({
     // vacancy: vacancyData
+    partner:{
+            id: primaryKey(faker.number.int),
+            company: faker.company.name,
+            hr_name: faker.person.lastName,
+            phone: faker.number.int
+        },
+
     vacancy: {
         id: primaryKey(faker.number.int),
         name: faker.person.jobTitle,
@@ -23,7 +30,7 @@ export const db=factory({
         visa_assistance: faker.datatype.boolean,
         sector_name: ()=> [{id:faker.number.int(), name:faker.commerce.department()},],
         active: ()=>true,
-        partner_data: ()=>'',
+        partner_data: oneOf('partner'),
     },
     user: {
         id: primaryKey(faker.number.int),
@@ -50,11 +57,7 @@ export const db=factory({
         avatar: "",
         avg_rating: '3.6'
     },
-    partner:{
-        id: primaryKey(faker.number.int),
-        hr_name: faker.person.lastName,
-        phone: faker.number.int
-    },
+    
     sector:{
         id:  primaryKey(faker.number.int),
         name: faker.commerce.productName

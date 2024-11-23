@@ -115,7 +115,8 @@ FRONTEND:
         [ ] Add unit tests
         [ ] review the whole project
         [ ] Create represantative DB
-        [ ] Add pop-up messages from react-hot-toast        
+        [ ] Add pop-up messages from react-hot-toast
+        [ ] Rename Admin/user flow to admin/user area        
 
 
 Emplamenting Role-based-authorisation

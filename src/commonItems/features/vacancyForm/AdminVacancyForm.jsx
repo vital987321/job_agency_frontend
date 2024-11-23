@@ -15,13 +15,26 @@ import { validateVacancyForm } from "./assets/formValidators/validateVacancyForm
 import { workingHoursToRequestFormat } from "./assets/workingHoursToRequestFormat";
 import { getVacancySectorsList } from "./assets/getVacancySectorsList";
 
-export const AdminVacancyForm = (props) => {
-  //* props
-  //    newVacancy
-  //    vacancyData
-  //    setVacancyData
-  //    setVacancyFormDisplayValue
-  //    setVacancyListChangedState
+/**
+ * @typedef {object} Props
+ * @property {boolean} [newVacancy]
+ * @property {object} [vacancyData]
+ * @property {function} [setVacancyData]
+ * @property {string} vacancyFormDisplayValue  "block" or "none"
+ * @property {function} setVacancyFormDisplayValue
+ * @property {function} setVacancyListChangedState
+ * @param {Props} props 
+ * @returns {JSX.Element}
+ */
+
+export const AdminVacancyForm = ({
+  newVacancy,
+  vacancyData,
+  setVacancyData,
+  vacancyFormDisplayValue,
+  setVacancyFormDisplayValue,
+  setVacancyListChangedState
+}) => {
 
   //* States
   const [sectorFullList, setSectorFullList] = useState([]);
@@ -56,24 +69,24 @@ export const AdminVacancyForm = (props) => {
 
     const getPartners=async ()=>{
       await fetchPartnersList()
-        .then((res)=>setPartnersList(res))
+      .then((res)=>setPartnersList(res))
     }
     getPartners()
   }, []);
 
   useEffect(() => {
-    if (!props.newVacancy) {
+    if (!newVacancy) {
       // editing existing vacancy
       try {
         setVacancyCurrentValues({
-          sectors: getVacancySectorsList(props.vacancyData, sectorFullList),
-          residence_type: props.vacancyData.residence_type,
-          gender: props.vacancyData.gender,
-          contract_type: props.vacancyData.contract_type,
-          visa_assistance: props.vacancyData.visa_assistance
-            ? props.vacancyData.visa_assistance
+          sectors: getVacancySectorsList(vacancyData, sectorFullList),
+          residence_type: vacancyData.residence_type,
+          gender: vacancyData.gender,
+          contract_type: vacancyData.contract_type,
+          visa_assistance: vacancyData.visa_assistance
+            ? vacancyData.visa_assistance
             : "",
-          partner: props.vacancyData.partner_data.id,
+          partner: vacancyData.partner_data.id,
         });
       } catch {}
     }
@@ -124,12 +137,12 @@ export const AdminVacancyForm = (props) => {
     };
 
     const sendPatchRequest = async () => {
-      const requestUrl = LIST_VACANCIES_BASE_URL + props.vacancyData.id + "/";
+      const requestUrl = LIST_VACANCIES_BASE_URL + vacancyData.id + "/";
       try {
         const response = await api
           .patch(requestUrl, requestData)
-          .then((response) => props.setVacancyData(response.data))
-          .then((result) => props.setVacancyFormDisplayValue("none"))
+          .then((response) => setVacancyData(response.data))
+          .then((result) => setVacancyFormDisplayValue("none"))
           .then((res)=>toast.success('Updated'))
           .catch((error) => console.log(error));
       } catch (error) {
@@ -142,8 +155,8 @@ export const AdminVacancyForm = (props) => {
       try {
         const response = await api
           .post(requestUrl, requestData)
-          .then((result) => props.setVacancyListChangedState({}))
-          .then((result) => props.setVacancyFormDisplayValue("none"))
+          .then((result) => setVacancyListChangedState({}))
+          .then((result) => setVacancyFormDisplayValue("none"))
           .then((res) => toast.success("Vacancy created"))
           .catch((error) => console.log(error));
       } catch (error) {
@@ -154,26 +167,27 @@ export const AdminVacancyForm = (props) => {
     const formValidation=validateVacancyForm(requestData)
     setValidationErrors(formValidation.validationErrors)
     if (formValidation.validation){
-      if (props.newVacancy) sendPostRequest();
+      if (newVacancy) sendPostRequest();
       else sendPatchRequest();
     }
   };
 
   const cancelButtonHandler = (e) => {
     e.preventDefault();
-    props.setVacancyFormDisplayValue("none");
+    setVacancyFormDisplayValue("none");
   };
 
   //* Main Body
   return (
     <div
       className="admin-vacancy-form-modal-window-enviroment"
-      style={{ display: props.vacancyFormDisplayValue }}
+      style={{ display: vacancyFormDisplayValue }}
     >
-      <form className="admin-vacancy-form" onSubmit={submitFormHandler}>
+      <form className="admin-vacancy-form" role='form' onSubmit={submitFormHandler}>
         <div className="admin-vacancy-form-close-button-container">
           <button
             onClick={cancelButtonHandler}
+            title='Close'
             className="admin-vacancy-form-close-button"
           >
             <img src={closeIcon} alt="" />
@@ -188,7 +202,8 @@ export const AdminVacancyForm = (props) => {
               <input
                 className="admin-vacancy-name-input admin-vacancy-form-input"
                 type="text"
-                defaultValue={props.vacancyData.name}
+                aria-label="vacancy name"
+                defaultValue={vacancyData.name}
                 ref={vacancyNameRef}
               />
             </div>
@@ -200,6 +215,7 @@ export const AdminVacancyForm = (props) => {
               <label htmlFor="form-vacancy-conpany-input">Company</label>
               <select
                 className="admin-vacancy-form-input"
+                aria-label='company'
                 id="form-vacancy-company-select"
                 value={vacancyCurrentValues.partner}
                 data-selectkey="partner"
@@ -225,7 +241,7 @@ export const AdminVacancyForm = (props) => {
                   className="admin-vacancy-form-input"
                   id="form-vacancy-salary-input"
                   type="text"
-                  defaultValue={props.vacancyData.salary}
+                  defaultValue={vacancyData.salary}
                   ref={salaryRef}
                 />
               </div>
@@ -241,7 +257,7 @@ export const AdminVacancyForm = (props) => {
                   className="admin-vacancy-form-input"
                   id="form-vacancy-location-input"
                   type="text"
-                  defaultValue={props.vacancyData.location}
+                  defaultValue={vacancyData.location}
                   ref={locationRef}
                 />
               </div>
@@ -302,11 +318,11 @@ export const AdminVacancyForm = (props) => {
                       id="form-vacancy-hours-from-input"
                       type="text"
                       defaultValue={
-                        props.vacancyData.hours_from
-                          ? props.vacancyData.hours_from.split(":")[0]
+                        vacancyData.hours_from
+                          ? vacancyData.hours_from.split(":")[0]
                           : ""
                       }
-                      // defaultValue={props.vacancyData.hours_from.getHours()}
+                      // defaultValue={vacancyData.hours_from.getHours()}
                       ref={hoursFromRef}
                     />
                     <p className="admin-vacancy-form-hours-minutes-label">h</p>
@@ -317,9 +333,10 @@ export const AdminVacancyForm = (props) => {
                       className="admin-vacancy-form-input"
                       id="form-vacancy-minutes-from-input"
                       type="text"
+                      aria-label="minutes from"
                       defaultValue={
-                        props.vacancyData.hours_from
-                          ? props.vacancyData.hours_from.split(":")[1]
+                        vacancyData.hours_from
+                          ? vacancyData.hours_from.split(":")[1]
                           : ""
                       }
                       ref={minutesFromRef}
@@ -347,8 +364,8 @@ export const AdminVacancyForm = (props) => {
                       id="form-vacancy-hours-to-input"
                       type="text"
                       defaultValue={
-                        props.vacancyData.hours_to
-                          ? props.vacancyData.hours_to.split(":")[0]
+                        vacancyData.hours_to
+                          ? vacancyData.hours_to.split(":")[0]
                           : ""
                       }
                       ref={hoursToRef}
@@ -360,10 +377,11 @@ export const AdminVacancyForm = (props) => {
                     <input
                       className="admin-vacancy-form-input"
                       id="form-vacancy-minutes-to-input"
+                      aria-label="minutes to"
                       type="text"
                       defaultValue={
-                        props.vacancyData.hours_to
-                          ? props.vacancyData.hours_to.split(":")[1]
+                        vacancyData.hours_to
+                          ? vacancyData.hours_to.split(":")[1]
                           : ""
                       }
                       ref={minutesToRef}
@@ -442,7 +460,7 @@ export const AdminVacancyForm = (props) => {
                 id="form-vacancy-description"
                 cols="30"
                 rows="6"
-                defaultValue={props.vacancyData.description}
+                defaultValue={vacancyData.description}
                 ref={descriptionRef}
               ></textarea>
             </div>
@@ -453,7 +471,7 @@ export const AdminVacancyForm = (props) => {
                 id="form-vacancy-requirements"
                 cols="30"
                 rows="6"
-                defaultValue={props.vacancyData.requirements}
+                defaultValue={vacancyData.requirements}
                 ref={requirementsRef}
               ></textarea>
             </div>
@@ -461,7 +479,7 @@ export const AdminVacancyForm = (props) => {
 
           <div className="admin-vacancy-form-submit-container">
             <ButtonType1
-              value={props.newVacancy ? "Create vacancy" : "Save changes"}
+              value={newVacancy ? "Create vacancy" : "Save changes"}
               onClickHandler={submitFormHandler}
               strength="1"
             />
