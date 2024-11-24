@@ -3,6 +3,7 @@ import { AdminVacancyForm } from "./AdminVacancyForm";
 import { it, expect, describe, vi, beforeAll, afterAll } from 'vitest'
 import { db } from "../../../test/mocks/db";
 import { delay } from "msw";
+import { CONTRACT_TYPE, GENDER_LIST, RESIDENCE_TYPES } from "../../../data/constants";
 
 describe('AdminVacancyForm', () => {
     var vacancyDb
@@ -77,7 +78,7 @@ describe('AdminVacancyForm', () => {
         expect(residence).toBeInTheDocument()
         const visaAssistance=screen.getByRole('combobox', {name: /visa assistance/i})
         expect(visaAssistance).toBeInTheDocument()
-        const sector=screen. getByRole('listbox', {name: /sector/i})
+        const sector=screen.getByRole('listbox', {name: /sector/i})
         expect(sector).toBeInTheDocument()
         const description=screen.getByRole('textbox', {name: /description/i})
         expect(description).toBeInTheDocument()
@@ -125,6 +126,52 @@ describe('AdminVacancyForm', () => {
         const requirements=screen.getByRole('textbox', {name: /requirements/i})
         expect(requirements.value).toEqual(vacancyDb.requirements)
     })
-
+    it('should provide correct select options for company input field', async () => {
+        renderComponent(getExistingVacancyProps())
+        const company=screen.getByRole('combobox', {name: /company/i})
+        waitFor(()=>expect(company.children.length).toEqual(db.partner.getAll().length+1)) 
+        const dbCompaniesNames=db.partner.getAll().map((item)=>item.company)
+        for (let i=1; i<company.childNodes.length; i++){
+            expect(dbCompaniesNames).toContain(company.childNodes[i].innerHTML)
+        }
+    })
+    it('should provide correct select options for contract type input field', () => {
+        renderComponent(getExistingVacancyProps())
+        const contractType=screen.getByRole('combobox', {name: /contract type/i})
+        expect(contractType.children.length).toEqual(3)
+        for (let item of contractType.childNodes){
+            expect(CONTRACT_TYPE).toContain(item.innerHTML)
+        }
+    })
+    it('should provide correct select options for Gender input field', () => {
+        renderComponent(getExistingVacancyProps())
+        const gender=screen.getByRole('combobox', {name: /gender/i})
+        expect(gender.children.length).toEqual(GENDER_LIST.length)
+        for (let item of gender.childNodes){
+            expect(GENDER_LIST).toContain(item.innerHTML)
+        }
+    })
+    it('should provide correct select options for Residence input field', () => {
+        renderComponent(getExistingVacancyProps())
+        const residence=screen.getByRole('combobox', {name: /residence/i})
+        const residanceList=Object.values(RESIDENCE_TYPES)
+        expect(residence.children.length).toEqual(residanceList.length)
+        for (let item of residence.childNodes){
+            expect(residanceList).toContain(item.innerHTML)
+        }
+    })
+    it('should provide correct list options for Seclor input field', () => {
+        renderComponent(newVacancyProps)
+        const sector=screen.getByRole('listbox', {name: /sector/i})
+        waitFor(()=>expect(sector.children.length).toEqual(db.sector.getAll().length))
+        const sectorsNamesList=db.sector.getAll().map((item)=>item.name)
+        for (let item of sector.childNodes){
+            expect(sectorsNamesList).toContain(item.innerHTML)
+        } 
+    })
+    it('should call setVacancyFormDisplayValue function on closeButton click', () => {
+        renderComponent(newVacancyProps)
+        const closeButton=screen.getByRole('button', {name: /close/i})
+    })
 
 })
