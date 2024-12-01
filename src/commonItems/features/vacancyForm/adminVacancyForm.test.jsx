@@ -4,6 +4,7 @@ import { it, expect, describe, vi, beforeAll, afterAll } from 'vitest'
 import { db } from "../../../test/mocks/db";
 import { delay } from "msw";
 import { CONTRACT_TYPE, GENDER_LIST, RESIDENCE_TYPES } from "../../../data/constants";
+import userEvent from "@testing-library/user-event";
 
 describe('AdminVacancyForm', () => {
     var vacancyDb
@@ -25,6 +26,7 @@ describe('AdminVacancyForm', () => {
 
     const setVacancyFormDisplayValue=vi.fn()
     const setVacancyListChangedState=vi.fn()
+    const setVacancyData=vi.fn()
 
     const newVacancyProps={
             newVacancy: true,
@@ -32,6 +34,7 @@ describe('AdminVacancyForm', () => {
             setVacancyFormDisplayValue,
             vacancyFormDisplayValue:"block",
             setVacancyListChangedState,
+            setVacancyData
         }
     
     const getExistingVacancyProps=()=>{
@@ -51,7 +54,7 @@ describe('AdminVacancyForm', () => {
         const form=screen.getByRole('form')
         expect(form).toBeInTheDocument()
     })
-
+    // Correct inputs
     it('should render form input fields', () => {
         renderComponent(newVacancyProps)
         const name=screen.getByRole('textbox', {name: /vacancy name/i})
@@ -85,6 +88,8 @@ describe('AdminVacancyForm', () => {
         const requirements=screen.getByRole('textbox', {name: /requirements/i})
         expect(requirements).toBeInTheDocument()
     })
+
+    // Buttons
     it('should render form buttons', () => {
         renderComponent(newVacancyProps)
         const submitButton=screen.getByRole('button', {name: /create/i})
@@ -92,6 +97,13 @@ describe('AdminVacancyForm', () => {
         const closeButton=screen.getByRole('button', {name: /close/i})
         expect(closeButton).toBeInTheDocument()
     })
+    it('should render save button on editing existing vacancy', () => {
+        renderComponent(getExistingVacancyProps())
+        const submitButton=screen.getByRole('button', {name: /save/i})
+        expect(submitButton).toBeInTheDocument()
+    })
+
+    // Default values
     it('should render correct initial values', async() => {
         renderComponent(getExistingVacancyProps())
         const name=screen.getByRole('textbox', {name: /vacancy name/i})
@@ -126,6 +138,8 @@ describe('AdminVacancyForm', () => {
         const requirements=screen.getByRole('textbox', {name: /requirements/i})
         expect(requirements.value).toEqual(vacancyDb.requirements)
     })
+
+    // Correct dropdown list
     it('should provide correct select options for company input field', async () => {
         renderComponent(getExistingVacancyProps())
         const company=screen.getByRole('combobox', {name: /company/i})
@@ -169,9 +183,126 @@ describe('AdminVacancyForm', () => {
             expect(sectorsNamesList).toContain(item.innerHTML)
         } 
     })
-    it('should call setVacancyFormDisplayValue function on closeButton click', () => {
+
+    // User Actions
+    it('should call setVacancyFormDisplayValue function on closeButton click', async () => {
         renderComponent(newVacancyProps)
         const closeButton=screen.getByRole('button', {name: /close/i})
+        const user=userEvent.setup()
+        await user.click(closeButton)
+        expect(setVacancyFormDisplayValue).toHaveBeenCalledWith('none')
     })
 
+    // Validation
+    it('should throw "vacancy name empty" message', async () => {
+        renderComponent(newVacancyProps)
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        const user=userEvent.setup()
+        await user.click(submitButton)
+        const nameValidationError=screen.getByText(/vacancy name cannot be empty/i)
+        expect(nameValidationError).toBeInTheDocument()
+    })
+
+    it('should throw message "Salary must be a number"', async () => {
+        renderComponent(newVacancyProps)
+        const salary=screen.getByRole('textbox', {name: /salary/i})
+        const user=userEvent.setup()
+        await user.type(salary, 'a')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const salaryValidationError=screen.getByText(/salary must be a number/i)
+        expect(salaryValidationError).toBeInTheDocument()
+    })
+
+    it('should throw message "Salary cannot be negative"', async () => {
+        renderComponent(newVacancyProps)
+        const salary=screen.getByRole('textbox', {name: /salary/i})
+        const user=userEvent.setup()
+        await user.type(salary, '-4')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const salaryValidationError=screen.getByText(/salary cannot be negative/i)
+        expect(salaryValidationError).toBeInTheDocument()
+    })
+
+    it('should throw message "Location not valid"', async () => {
+        renderComponent(newVacancyProps)
+        const loacation=screen.getByRole('textbox', {name: /location/i})
+        const user=userEvent.setup()
+        await user.type(loacation, '1')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const locationValidationError=screen.getByText(/location not valid/i)
+        expect(locationValidationError).toBeInTheDocument()
+    })
+
+    it('should throw message "Values must be numeric" on incorrect hours input', async () => {
+        renderComponent(newVacancyProps)
+        const hoursFrom=screen.getByRole('textbox', {name: /hours from/i})
+        const user=userEvent.setup()
+        await user.type(hoursFrom, 'a')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const hoursFromValidationError=screen.getByText(/values must be numeric/i)
+        expect(hoursFromValidationError).toBeInTheDocument()
+    })
+    it('should throw message "Values must be integers" on incorrect hours input', async () => {
+        renderComponent(newVacancyProps)
+        const hoursFrom=screen.getByRole('textbox', {name: /hours from/i})
+        const user=userEvent.setup()
+        await user.type(hoursFrom, '1.5')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const hoursFromValidationError=screen.getByText(/values must be integers/i)
+        expect(hoursFromValidationError).toBeInTheDocument()
+    })
+    it('should throw message "Hours range: 0-23" on incorrect hours input', async () => {
+        renderComponent(newVacancyProps)
+        const hoursFrom=screen.getByRole('textbox', {name: /hours from/i})
+        const user=userEvent.setup()
+        await user.type(hoursFrom, '24')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const hoursFromValidationError=screen.getByText(/hours range: 0-23/i)
+        expect(hoursFromValidationError).toBeInTheDocument()
+    })
+    it('should throw message "Minutes range: 0-59" on incorrect hours input', async () => {
+        renderComponent(newVacancyProps)
+        const hoursFrom=screen.getByRole('textbox', {name: /hours from/i})
+        const minutesFrom=screen.getByRole('textbox', {name: /minutes from/i})
+        const user=userEvent.setup()
+        await user.type(hoursFrom, '10')
+        await user.type(minutesFrom, '61')
+        const submitButton=screen.getByRole('button', {name: /create/i})
+        await user.click(submitButton)
+        const minutesFromValidationError=screen.getByText(/minutes range: 0-59/i)
+        expect(minutesFromValidationError).toBeInTheDocument()
+    })
+
+    it('should submit a form with edited vacancy', async () => {
+        renderComponent(getExistingVacancyProps())
+        const user=userEvent.setup()
+        const name=screen.getByRole('textbox', {name: /vacancy name/i})
+        await user.type(name, 'testName')
+        const submitButton=screen.getByRole('button', {name: /save/i})
+        await user.click(submitButton)
+        expect(setVacancyData).toHaveBeenCalledOnce()
+        expect(setVacancyFormDisplayValue).toHaveBeenCalledWith('none')
+    })
+
+    // it('should submit a form with new vacancy', async () => {
+    //     renderComponent(newVacancyProps)
+    //     const user=userEvent.setup()
+    //     const name=screen.getByRole('textbox', {name: /vacancy name/i})
+    //     await user.type(name, 'testName')
+    //     const salary=screen.getByRole('textbox', {name: /salary/i})
+    //     await user.type(salary, '500')
+    //     const company=screen.getByRole('combobox', {name: /company/i})
+    //     await user.selectOptions(company, partnerDb.company)
+    //     const submitButton=screen.getByRole('button', {name: /create/i})
+    //     await user.click(submitButton)
+    //     // expect(setVacancyData).toHaveBeenCalledOnce()
+    //     expect(setVacancyListChangedState).toHaveBeenCalledOnce()
+    //     expect(setVacancyFormDisplayValue).toHaveBeenCalledWith('none')
+    // })
 })

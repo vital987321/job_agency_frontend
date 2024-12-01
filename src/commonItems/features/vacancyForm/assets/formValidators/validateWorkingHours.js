@@ -17,7 +17,7 @@ export const validateWorkingHours = (workingHoursString) => {
     if (hours % 1 > 0 || minutes % 1 > 0) {
       return {
         validation: false,
-        errorMessage: "Values must integers",
+        errorMessage: "Values must be integers",
       };
     }
     if (hours < 0 || hours > 23) {

@@ -12,12 +12,12 @@ export const validateVacancyForm = (data) => {
       validation = false;
     }
     if (data.salary && !isNaN(data.salary) && data.salary < 0) {
-      validationErrors.salary = "Sallary cannot be negative";
+      validationErrors.salary = "Salary cannot be negative";
       validation = false;
     }
 
     if (data.location && !data.location.match(/.*[a-zA-Z].*/)) {
-      validationErrors.location = "Not valid location";
+      validationErrors.location = "Location not valid";
       validation = false;
     }
 

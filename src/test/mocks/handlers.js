@@ -58,6 +58,21 @@ export const handlers = [
     return HttpResponse.json(data);
   }),
 
+  http.post(LIST_VACANCIES_BASE_URL, async ({ request }) => {
+    // const info = await request.formData()
+    const updatedData = { data: 'empty'};
+    return HttpResponse.json(updatedData);
+  }),
+
+  http.patch(LIST_VACANCIES_BASE_URL + ":id/", async ({ request, params }) => {
+    const { id } = params;
+    const vacancyData = db.vacancy.findFirst({
+      where: { id: { equals: id } },
+    });
+    const updatedData = { data: vacancyData };
+    return HttpResponse.json(updatedData);
+  }),
+
   http.get(PARTNERS_REQUEST_URL,()=>{
     const partners=db.partner.getAll()
     const data={
