@@ -142,6 +142,7 @@ export const AdminVacancyForm = ({
         const response = await api
           .patch(requestUrl, requestData)
           .then((response) => setVacancyData(response.data))
+          // .then((res)=>console.log('i am here'))
           .then((result) => setVacancyFormDisplayValue("none"))
           .then((res)=>toast.success('Updated'))
           .catch((error) => console.log(error));
