@@ -1,5 +1,13 @@
 import { validateWorkingHours } from "./validateWorkingHours";
 
+/**
+ * @typedef {object} Props
+ * @property {boolean} validation
+ * @property {Object} validationErrors
+ * @param {Props} data 
+ * @returns {object}
+ */
+
 export const validateVacancyForm = (data) => {
     let validation = true;
     const validationErrors = {};
