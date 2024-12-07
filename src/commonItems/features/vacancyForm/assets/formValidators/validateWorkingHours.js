@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {string} workingHoursString 
+ * @returns {object}
+ */
+
 export const validateWorkingHours = (workingHoursString) => {
     if (!workingHoursString) {
       return {
