@@ -114,7 +114,7 @@ describe('AdminVacancyForm', () => {
         renderComponent(getExistingVacancyProps())
         const optionCompany=await screen.findByRole("option", {name: partnerDb.company})
         waitFor(()=>expect(optionCompany.selected).toBe(true))
-        // Question. Uncomment the next line. In goes after prewipus waiteFor. Why test fails?  
+        // Question. Uncomment the next line. In goes after prewious waiteFor. Why test fails?  
         // expect(optionCompany.selected).toBe(true)
     })
 

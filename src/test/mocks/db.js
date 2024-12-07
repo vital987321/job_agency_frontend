@@ -34,7 +34,7 @@ export const db=factory({
     },
     user: {
         id: primaryKey(faker.number.int),
-        userName: faker.internet.userName,
+        username: faker.internet.userName,
         first_name: faker.person.firstName,
         last_name:faker.person.lastName,
         email: faker.internet.email,

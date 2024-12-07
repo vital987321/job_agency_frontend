@@ -18,6 +18,14 @@ export const handlers = [
     };
     return HttpResponse.json(data);
   }),
+  http.get(USER_REQUEST_URL+ ":id", ({ request, params }) => {
+    const {id}= params;
+    const userData = db.user.findFirst({
+      where: { id: { equals: parseInt(id) } },
+    });
+    return HttpResponse.json(userData);
+    // return HttpResponse.json({data:userData});
+  }),
 
   http.patch(USER_REQUEST_URL + ":id/", async ({ request, params }) => {
     const { id } = params;
