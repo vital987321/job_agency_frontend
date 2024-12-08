@@ -46,6 +46,7 @@ export const AdminVacancyForm = ({
     gender: GENDER_LIST[0],
     contract_type: CONTRACT_TYPE[0],
     visa_assistance: "",
+    partner:''
   });
 
   //* Refs
@@ -83,12 +84,13 @@ export const AdminVacancyForm = ({
           residence_type: vacancyData.residence_type,
           gender: vacancyData.gender,
           contract_type: vacancyData.contract_type,
-          visa_assistance: vacancyData.visa_assistance
-            ? vacancyData.visa_assistance
-            : "",
+          visa_assistance: vacancyData.visa_assistance,
+          // visa_assistance: vacancyData.visa_assistance
+          // ? vacancyData.visa_assistance
+          // : "",
           partner: vacancyData.partner_data.id,
         });
-      } catch {}
+      } catch(error) {console.log(error)}
     }
   }, [sectorFullList]);
 
@@ -142,7 +144,6 @@ export const AdminVacancyForm = ({
         const response = await api
           .patch(requestUrl, requestData)
           .then((response) => setVacancyData(response.data))
-          // .then((res)=>console.log('i am here'))
           .then((result) => setVacancyFormDisplayValue("none"))
           .then((res)=>toast.success('Updated'))
           .catch((error) => console.log(error));
